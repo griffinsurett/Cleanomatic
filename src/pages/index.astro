@@ -1,11 +1,43 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import ContentTemplate from '../components/ContentTemplate.astro';
+import ItemsTemplate from '../components/ItemsTemplate.astro';
+import CollectionsCard from '../components/CollectionsCard.astro';
+import { getHomepageSections } from '../utils/sections.js';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+/** 
+ * Example: a home page that shows featured sections from your config.
+ */
+const pageTitle = "Home Page";
+const pageDescription = "Welcome to our Astro-powered website.";
+const featuredImage = "/assets/homepage-banner.jpg"; // Example image
+const crawl = true; // Home page should be crawlable
+const homepageSections = getHomepageSections(); // e.g., services, projects, etc.
 ---
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  image={featuredImage}
+  ogType="website"
+  crawl={crawl}
+>
+  <Section>
+    <h1>Welcome to Our Website</h1>
+    <p>Your go-to platform for services and projects.</p>
+  </Section>
 
-<Layout>
-	<Welcome />
+  <!-- Dynamically Render Homepage Sections -->
+  {homepageSections.map((sec, index) => (
+    <Section key={index}>
+      <ContentTemplate collection={sec.collection}>
+        <ItemsTemplate
+          collection={sec.collection}
+          queryName={sec.queryName}
+          ItemComponent={CollectionsCard}
+          gap="1.5rem"
+        />
+      </ContentTemplate>
+    </Section>
+  ))}
 </Layout>

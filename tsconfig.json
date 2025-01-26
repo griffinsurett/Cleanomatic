@@ -1,5 +1,21 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"]
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "strict": false,               // Disables all strict type-checking
+    "noImplicitAny": false,        // Allows 'any' type implicitly
+    "noImplicitThis": false,       // Allows 'this' to have implicit 'any' type
+    "esModuleInterop": true,
+    "allowJs": true,               // Allows JavaScript files in the project
+    "skipLibCheck": true,          // Skips type-checking of library files
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "paths": {
+      "~/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
