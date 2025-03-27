@@ -37,16 +37,6 @@
   --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* Dark mode overrides */
-.dark {
-  --color-bg: #111111;
-  --color-text: #ffffff;
-  --color-primary: #2563eb;
-  --color-secondary: #dc2626;
-  --color-accent: #34d399;
-  --color-neutral: #1f2937;
-}
-
 /* Base element styling */
 body {
   font-family: var(--font-base);
