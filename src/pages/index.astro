@@ -1,43 +1,57 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Section from '../components/Section.astro';
-import ContentTemplate from '../components/ContentTemplate.astro';
-import ItemsTemplate from '../components/ItemsTemplate.astro';
-import CollectionsCard from '../components/CollectionsCard.astro';
-import { getHomepageSections } from '../utils/sections.js';
-
-/** 
- * Example: a home page that shows featured sections from your config.
- */
-const pageTitle = "Home Page";
-const pageDescription = "Welcome to our Astro-powered website.";
-const featuredImage = "/assets/homepage-banner.jpg"; // Example image
-const crawl = true; // Home page should be crawlable
-const homepageSections = getHomepageSections(); // e.g., services, projects, etc.
+import Layout from "@/layouts/Layout.astro";
+import Section from "@/components/Section.astro";
+import Card from "@/components/LoopComponents/Card";
+import Modal from "@/components/Modal";
 ---
-<Layout
-  title={pageTitle}
-  description={pageDescription}
-  image={featuredImage}
-  ogType="website"
-  crawl={crawl}
->
-  <Section>
-    <h1>Welcome to Our Website</h1>
-    <p>Your go-to platform for services and projects.</p>
-  </Section>
 
-  <!-- Dynamically Render Homepage Sections -->
-  {homepageSections.map((sec, index) => (
-    <Section key={index}>
-      <ContentTemplate collection={sec.collection}>
-        <ItemsTemplate
-          collection={sec.collection}
-          queryName={sec.queryName}
-          ItemComponent={CollectionsCard}
-          gap="1.5rem"
-        />
-      </ContentTemplate>
-    </Section>
-  ))}
+  <!-- Hero Section with two buttons -->
+  <Layout title="Welcome to Cleanomatic">
+
+    <Section
+      heading={[
+        { text: "Welcome to Cleanomatic – Your Trusted Cleaning Experts in New Jersey!", tagName: "h1" },
+      ]}
+      description="Welcome to Cleanomatic, your one-stop solution for professional cleaning services in New Jersey. With over 23 years of experience, our team is committed to delivering top-tier cleaning solutions for both residential and commercial clients."
+      buttons={[
+        { text: "About Us", link: "/about" },
+        { text: "Our Services", link: "/services" }
+      ]}
+    />
+
+    <Section
+    heading={[
+      { text: "Cleaning done right, Cleanomatic!", tagName: "h2" },
+      { text: "Your Trusted Cleaning Professionals for 23+ Years.", tagName: "h5" }
+    ]}
+    description="With over 23 years of experience, the Cleanomatic team is committed to delivering top-tier cleaning solutions for both residential and commercial clients. Whether you need thorough tile and grout restoration, air duct cleaning, or emergency water damage restoration, we have the expertise and tools to get the job done right."
+    buttons={[
+      { text: "About Us", link: "/about" },
+    ]}
+  />
+  
+
+
+  {/* Services */}
+  <Section
+    collection="services"
+    query="getAll"
+    component={Card}
+  />
+
+    {/* Testimonials */}
+    <Section
+    collection="testimonials"
+    query="getAll"
+    component={Card}
+  />
+  
+  {/* Projects */}
+  <Section
+    collection="projects"
+    query="getAll"
+    component={Card}
+  />
+
 </Layout>
+

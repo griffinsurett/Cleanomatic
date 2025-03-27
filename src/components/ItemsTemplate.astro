@@ -1,34 +1,52 @@
 ---
-import { executeQuery } from "../utils/queries/executeQuery.js";
+import Card from "./LoopComponents/Card.jsx";
+import { queryItems } from "@/utils/CollectionQueryUtils.js";
 
 const {
   collection,
-  ItemComponent,
-  queryName,
-  columns = 3,
-  gap = '1.5rem',
-  className = '',
-  ...rest
+  query,
+  items: initialItems,
+  ItemComponent, // Can be a component or an object { component, props }
+  itemsClass,
+  itemClass,
+  HasPage, // New prop from Section.astro
+  pathname = "",
+  ...props
 } = Astro.props;
 
-if (!queryName || typeof queryName !== 'string') {
-  throw new Error(`A valid "queryName" prop must be provided to ItemsTemplate.`);
+let items = initialItems || [];
+if (!initialItems && collection && query) {
+  items = await queryItems(query, collection, pathname);
 }
 
-const items = await executeQuery(queryName, rest);
-const hasItems = Array.isArray(items) && items.length > 0;
+const isObjectComponent =
+  typeof ItemComponent === "object" && ItemComponent !== null;
+const RenderComponent = isObjectComponent
+  ? ItemComponent.component
+  : ItemComponent || Card;
 ---
-{hasItems ? (
-  <div class={`flex flex-wrap w-full ${className}`} style={`gap: ${gap};`}>
-    {items.map((item) => (
-      <ItemComponent
-        key={item.slug}
-        {...item}
-        collection={collection}
-        currentPath={Astro.url.pathname}
-      />
-    ))}
-  </div>
+{items && items.length > 0 ? (
+  <ul class={itemsClass} aria-label="Items List" {...props}>
+    {items.map((item) => {
+      let componentProps = {};
+      if (isObjectComponent) {
+        componentProps =
+          typeof ItemComponent.props === "function"
+            ? ItemComponent.props(item)
+            : ItemComponent.props || {};
+      }
+      return (
+        <RenderComponent
+          key={item.slug}
+          item={item}
+          itemClass={itemClass}
+          collectionName={collection}
+          HasPage={HasPage}
+          {...componentProps}
+        />
+      );
+    })}
+  </ul>
 ) : (
-  <p class="text-center text-gray-666 italic py-4">No items available.</p>
+  <p>No items found.</p>
 )}

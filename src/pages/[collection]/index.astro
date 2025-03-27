@@ -1,61 +1,54 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Section from '../../components/Section.astro';
-import ContentTemplate from '../../components/ContentTemplate.astro';
-import ItemsTemplate from '../../components/ItemsTemplate.astro';
-import CollectionsCard from '../../components/CollectionsCard.astro';
-import { generateCollectionPaths } from '../../utils/collections';
-import { getCollectionSections } from '../../utils/sections.js';
-import { collections } from '../../content/config';
-import { getCollectionPageData } from '../../utils/collections/collectionPageData.js';
+// src/pages/[collection]/index.astro
+import Layout from "@/layouts/Layout.astro";
+import Section from "@/components/Section.astro";
+import Card from "@/components/LoopComponents/Card";
+import { collections } from "@/content/config";
+import { getCollectionMeta } from "@/utils/FetchMeta";
+import { capitalize } from "@/utils/ContentUtils";
+
+export async function getStaticPaths() {
+  const collectionNames = Object.keys(collections);
+  const allPaths = [];
+  for (const collName of collectionNames) {
+    const meta = await getCollectionMeta(collName);
+    if (meta.hasPage !== false) {
+      allPaths.push({ params: { collection: collName } });
+    }
+  }
+  return allPaths;
+}
 
 const { collection } = Astro.params;
-
-/**
- * 1) Build static paths for collections that have hasPage = true
- */
-export async function getStaticPaths() {
-  return await generateCollectionPaths();
-}
-
-// 2) Confirm the collection is valid
-const colObj = collections[collection];
-if (!colObj) {
-  throw new Error(`Collection "${collection}" not found.`);
-}
-
-// 3) Grab metadata for SEO
-const { title, description, featuredImage, crawl } = colObj.metadata;
-
-// 4) Retrieve “sections” to define content blocks
-const sections = getCollectionSections(collection);
+let meta = {};
+try {
+  meta = await getCollectionMeta(collection);
+} catch {}
 ---
-<Layout
-  title={title}
-  description={description}
-  image={featuredImage || ""}
-  ogType="website"
-  crawl={crawl} 
->
-  <!-- Example top-level hero or heading for the collection -->
-  <Section>
-    <h1 class="text-3xl mb-5">{title}</h1>
-    <p class="text-lg mb-8">{description}</p>
-  </Section>
-
-  <!-- Render each configured section from metadata -->
-  {sections.map((sec) => (
-    <Section>
-      <ContentTemplate collection={sec.collection}>
-        <ItemsTemplate
-          collection={sec.collection}
-          queryName={sec.queryName}
-          ItemComponent={CollectionsCard}
-          currentCollection={collection}
-          columns={3}
-          gap="1.5rem"
-        />
-      </ContentTemplate>
-    </Section>
-  ))}
+<Layout title={capitalize(collection)} description={meta.description}>
+  {meta.sections && meta.sections.length > 0 ? (
+    meta.sections.map((section, i) => (
+      <Section
+        key={i}
+        collection={section.collection}
+        query={section.query}
+        heading={section.heading}
+        description={section.description ?? meta.description}
+        component={Card}
+        button={section.button}
+        sectionClass={section.sectionClass}
+        itemsClass={section.itemsClass}
+        itemClass={section.itemClass}
+        contentClass={section.contentClass}
+        buttonsSectionClass={section.buttonsSectionClass}
+      />
+    ))
+  ) : (
+    <Section
+      collection={collection}
+      query="getAll"
+      component={Card}
+      description={meta.description}
+    />
+  )}
 </Layout>
