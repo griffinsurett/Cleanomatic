@@ -49,8 +49,8 @@
 
 /* Base element styling */
 body {
-  /* font-family: var(--font-base); */
-  /* font-size: var(--font-size-base); */
+  font-family: var(--font-base);
+  font-size: var(--font-size-base);
   background-color: var(--color-bg);
   color: var(--color-text);
 }
@@ -94,7 +94,7 @@ body {
 /* Base typography */
 @layer base {
   p {
-    margin-bottom: var(--spacing-md);
+    @apply text-base mb-4 leading-relaxed;
   }
 }
 
@@ -115,7 +115,7 @@ body {
 }
 
 
-/* @keyframes fade-in-up {
+ @keyframes fade-in-up {
     from {
       opacity: 0;
       transform: translateY(4rem);
@@ -124,12 +124,12 @@ body {
       opacity: 1;
       transform: translateY(0);
     }
-  } */
+  } 
   
-  /* .scroll-fade-up {
+  .scroll-fade-up {
     animation: fade-in-up linear;
     animation-timeline: view();
     animation-range: entry 0% cover 45%;
   }
-   */
+   
   
