@@ -61,7 +61,7 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
 ---
 {isDynamic ? (
   <section
-    class={`${sectionClass} w-full py-[var(--spacing-lg)] lg:px-[var(--spacing-md)]`}
+    class={`${sectionClass} w-full py-[var(--spacing-lg)] lg:px-[var(--spacing-md)] min-h-[80vh]`}
     data-collection={collectionName}
     {...props}
   >
@@ -115,7 +115,7 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
     </div>
   </section>
 ) : (
-  <section class={`${sectionClass} w-full lg:px-[var(--spacing-md)]`} {...props}>
+  <section class={`${sectionClass} w-full lg:px-[var(--spacing-md)] min-h-[80vh]`} {...props}>
     <div class={`${contentClass} w-3/4`}>
       {finalHeadingArray.map((head, i) => {
         const headObj = typeof head === "string" ? { text: head } : head;
