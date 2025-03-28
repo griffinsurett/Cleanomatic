@@ -57,13 +57,13 @@ body {
   @apply text-2xl font-semibold text-[var(--color-text)] md:text-3xl;
 }
 .h3 {
-  @apply text-2xl font-semibold text-[var(--color-text)] md:text-3xl;
+  @apply text-xl font-semibold text-[var(--color-text)] md:text-3xl;
 }
 .h4 {
-  @apply text-2xl font-medium text-[var(--color-text)];
+  @apply text-lg font-medium text-[var(--color-text)] md:text-2xl;
 }
 .h5 {
-  @apply text-xl font-medium text-[var(--color-text)];
+  @apply text-lg font-medium text-[var(--color-text)] md:text-xl;
 }
 .h6 {
   @apply text-lg font-medium text-[var(--color-text)];
