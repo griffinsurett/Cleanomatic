@@ -37,7 +37,6 @@
 /* Base element styling */
 body {
   font-family: var(--font-base);
-  /* font-size: var(--font-size-base); */
   background-color: var(--color-bg);
   color: var(--color-text);
 }
