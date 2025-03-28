@@ -99,13 +99,13 @@ body {
   }
 }
 
-.animate-slide-right {
+/* .animate-slide-right {
   animation: slide-right 0.5s ease-out forwards;
   
-}
+} */
 
 
- @keyframes fade-in-up {
+ /* @keyframes fade-in-up {
     from {
       opacity: 0;
       transform: translateY(4rem);
@@ -121,5 +121,5 @@ body {
     animation-timeline: view();
     animation-range: entry 0% cover 45%;
   }
-   
+    */
   
