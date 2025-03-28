@@ -3,6 +3,8 @@ import Layout from "@/layouts/Layout.astro";
 import Section from "@/components/Section.astro";
 import Card from "@/components/LoopComponents/Card";
 import Modal from "@/components/Modal";
+import Picture from "astro/components/Picture.astro";
+import DavidTruck from "@/assets/cleanomatic-truck-1.jpg";
 ---
 
   <!-- Hero Section with two buttons -->
@@ -17,8 +19,18 @@ import Modal from "@/components/Modal";
         { text: "Request Estimate", link: "/contact" },
       ]}
       sectionClass="min-h-[85vh] flex items-center justify-center bg-cover bg-center"
+    >
+    <Picture
+    src={DavidTruck}
+    alt="Cleanomatic Truck"
+    class="absolute inset-0 w-full h-full object-cover opacity-50"
+    loading="eager"
+    fetchpriority="high"
+    format="webp"
+    fallbackFormat="jpeg"
     />
-
+  </Section>
+        
     <Section
     heading={[
       { text: "Cleaning done right, Cleanomatic!", tagName: "h2" },

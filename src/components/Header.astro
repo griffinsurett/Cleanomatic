@@ -22,7 +22,7 @@ const finalQueries = await buildContentQueries({
 const headerMenu = finalQueries.MainNavMenu || [];
 ---
 
-<header class="flex justify-between items-center p-[var(--spacing-md)]">
+<header class="flex justify-between items-center p-[var(--spacing-md)] bg-[var(--color-bg)] shadow-md sticky top-0 z-50">
   <a href="/" class="flex flex-col">
     <Heading tagName={"h1"} className="h2">
       {SiteData.title}
