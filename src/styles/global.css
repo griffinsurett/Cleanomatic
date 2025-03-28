@@ -88,10 +88,11 @@ body {
   }
 }
 
-/* .animate-slide-right {
-  animation: slide-right 0.5s ease-out forwards;
-  
-} */
+@layer utilities {
+  .animate-slide-right {
+    animation: slide-right 0.5s ease-out forwards;
+  }
+}
 
 
  /* @keyframes fade-in-up {
