@@ -69,10 +69,10 @@ body {
 .h6 {
   @apply text-base font-medium md:text-lg;
 }
-p {
+/* p {
     @apply mb-4 leading-relaxed text-base;
   }
-}
+} */
 
 @keyframes slide-right {
   0% {
