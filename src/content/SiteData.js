@@ -1,4 +1,4 @@
-import Logo from "@/assets/cleanomaticvanright3.svg"; // Update if you have a custom logo
+import Logo from "@/assets/cleanomaticvanright3.png"; // Update if you have a custom logo
 
 export const SiteData = {
   title: "Cleanomatic",
