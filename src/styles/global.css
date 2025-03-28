@@ -55,13 +55,13 @@ body {
 
 /* Global header styles (these are our dynamic header classes) */
 .h1 {
-  @apply text-5xl font-bold text-[var(--color-text)];
+  @apply text-2xl font-bold text-[var(--color-text)] md:text-5xl;
 }
 .h2 {
-  @apply text-3xl font-semibold text-[var(--color-text)];
+  @apply text-2xl font-semibold text-[var(--color-text)] md:text-3xl;
 }
 .h3 {
-  @apply text-3xl font-semibold text-[var(--color-text)];
+  @apply text-2xl font-semibold text-[var(--color-text)] md:text-3xl;
 }
 .h4 {
   @apply text-2xl font-medium text-[var(--color-text)];
@@ -71,14 +71,6 @@ body {
 }
 .h6 {
   @apply text-lg font-medium text-[var(--color-text)];
-}
-
-@media (max-width: 768px) {
-  .h1,
-  .h2,
-  .h3 {
-    @apply text-2xl;
-  }
 }
 
 /* Base typography */
