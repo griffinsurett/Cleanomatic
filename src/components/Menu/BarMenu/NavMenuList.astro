@@ -6,7 +6,7 @@
 const { items = [], class: extraClass = '' } = Astro.props;
 import MenuItem from './MenuItem.astro';
 ---
-<ul class={`list-none m-0 p-0 ${extraClass}`}>
+<ul class={`list-none m-0 p-0 flex justify-between ${extraClass}`}>
   {items.map((item) => (
     <MenuItem item={item} depth={0} />
   ))}

@@ -22,8 +22,9 @@ const finalQueries = await buildContentQueries({
 const headerMenu = finalQueries.MainNavMenu || [];
 ---
 
-<header class="flex justify-between items-center p-[var(--spacing-md)] bg-[var(--color-bg)] shadow-md sticky top-0 z-50">
-  <a href="/" class="flex flex-col">
+<header class="flex flex-col justify-between items-center shadow-md sticky top-0 z-50">
+<div class="main-header bg-secondary text-bg w-full">
+  <a href="/" class="flex flex-col items-start justify-left py-[var(--spacing-md)]">
     <Heading tagName={"h1"} className="h2">
       {SiteData.title}
     </Heading>
@@ -41,5 +42,8 @@ const headerMenu = finalQueries.MainNavMenu || [];
       />
     </div>
   </a>
+</div>
+<div class="header-bottom w-full bg-primary">
   <Menu items={headerMenu} hamburgerOnly={false} />
+</div>
 </header>

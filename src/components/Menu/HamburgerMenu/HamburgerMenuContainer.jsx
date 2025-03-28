@@ -9,7 +9,7 @@ export default function MobileMenuContainer({ items, isOpen, onClose }) {
       onClose={onClose}
       overlayClass="bg-black bg-opacity-50"
       className="bg-white rounded shadow-lg p-4 w-full h-full overflow-auto"
-      closeButton={false}
+      closeButton={true}
     >
       <nav onClick={(e) => e.stopPropagation()}>
         <ul className="space-y-2">
