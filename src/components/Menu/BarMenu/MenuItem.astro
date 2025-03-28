@@ -10,7 +10,7 @@
 const { item, depth = 0 } = Astro.props;
 import SubMenu from './SubMenu.astro';
 ---
-<li class="relative hamburger-menu-item font-bold">
+<li class="relative hamburger-menu-item font-medium">
   <a href={item.slug} class="flex items-center text-[var(--color-bg)] px-[var(--spacing-sm)] py-[var(--spacing-md)]">
     {item.label}
     {item.children && item.children.length > 0 && (
