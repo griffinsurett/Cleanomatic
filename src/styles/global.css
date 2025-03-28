@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 /* Design tokens (colors, spacing, etc.) */
-:root {
+@theme {
   /* Colors */
   --color-bg: #ffffff;
   --color-text: #111111;
@@ -35,6 +35,7 @@
 }
 
 /* Base element styling */
+@layer base {
 body {
   font-family: var(--font-base);
   background-color: var(--color-bg);
@@ -68,10 +69,7 @@ body {
 .h6 {
   @apply text-base font-medium text-[var(--color-text)] md:text-lg;
 }
-
-/* Base typography */
-@layer base {
-  p {
+p {
     @apply mb-4 leading-relaxed text-base;
   }
 }
