@@ -73,7 +73,7 @@ body {
 /* Base typography */
 @layer base {
   p {
-    @apply text-sm mb-4 leading-relaxed md:text-md;
+    @apply text-sm mb-4 leading-relaxed;
   }
 }
 
