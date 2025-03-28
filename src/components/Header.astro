@@ -8,31 +8,38 @@ import Heading from "./Heading";
 const baseMainNavMenu = [
   { id: "home", label: "Home", slug: "/" },
   { id: "about", label: "About Us", slug: "/about-us" },
-  { id: "contact", label: "Contact", slug: "/contact-us", position: "append", weight: 100 },
+  {
+    id: "contact",
+    label: "Contact",
+    slug: "/contact-us",
+    position: "append",
+    weight: 100,
+  },
 ];
-const finalQueries = await buildContentQueries({ MainNavMenu: baseMainNavMenu });
+const finalQueries = await buildContentQueries({
+  MainNavMenu: baseMainNavMenu,
+});
 const headerMenu = finalQueries.MainNavMenu || [];
 ---
+
 <header class="flex justify-between items-center p-[var(--spacing-md)]">
   <a href="/" class="flex flex-col">
-      <Heading tagName={"h1"} className="h2"> 
-        {SiteData.title}
+    <Heading tagName={"h1"} className="h2">
+      {SiteData.title}
+    </Heading>
+    <div class="tagline-and-logo flex items-center justify-center items-center">
+      <Heading tagName={"h2"} className="h5">
+        {SiteData.tagline}
       </Heading>
-      <div class="tagline-and-logo flex items-center justify-center items-center">
-        <Heading tagName={"h2"} className="h5">
-          {SiteData.tagline}
-        </Heading>
-        <Image
+      <Image
         src={SiteData.logo.src}
         alt={`${SiteData.title} logo`}
-        class="animate-slide-right h-7 w-12 md:h-10 w-24"
-        format="webp"
+        class="h-8 w-auto md:h-10 animate-slide-right"
         loading="eager"
-        quality={"low"}
         fetchpriority="high"
         aria-hidden="true"
       />
-      </div>
-    </a>
+    </div>
+  </a>
   <Menu items={headerMenu} hamburgerOnly={false} />
 </header>
