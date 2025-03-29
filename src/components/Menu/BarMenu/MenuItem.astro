@@ -10,11 +10,11 @@
 const { item, depth = 0 } = Astro.props;
 import SubMenu from './SubMenu.astro';
 ---
-<li class="relative hamburger-menu-item font-medium py-[var(--spacing-sm)] hover:bg-secondary">
-  <a href={item.slug} class="flex items-center text-[var(--color-bg)] px-[var(--spacing-sm)]">
+<li class="relative hamburger-menu-item hover:bg-secondary">
+  <a href={item.slug} class="flex items-center text-[var(--color-bg)] font-medium p-[var(--spacing-md)]">
     {item.label}
     {item.children && item.children.length > 0 && (
-      <span class="arrow ml-[var(--spacing-sm)] transition-transform duration-200">▼</span>
+      <span class="arrow ml-[var(--spacing-sm)] font-xs transition-transform duration-200">▼</span>
     )}
   </a>
   {item.children && item.children.length > 0 && (
