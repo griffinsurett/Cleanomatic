@@ -47,7 +47,7 @@ body {
 
 @layer components {
   .header-inner {
-    @apply mx-auto px-[var(--spacing-sm)] sm:px-[var(--spacing-md)] lg:px-[var(--spacing-lg)];
+    @apply px-[var(--spacing-sm)] sm:px-[var(--spacing-md)] lg:px-[var(--spacing-lg)];
     max-width: 1200px;
   }
 
