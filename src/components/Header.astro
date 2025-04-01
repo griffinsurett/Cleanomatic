@@ -66,13 +66,13 @@ const phoneItems = await buildMenuQueries({ PhoneNumberMenu });
         class="phone-and-cta-on-header hidden md:flex justify-between items-center w-1/2"
       >
         <!-- phone number menu -->
-        <!-- <ul class="phone-list flex">
+        <ul class="phone-list flex">
           {
             ContactData.phone.map((phone, index) => (
               <PhoneNumber type={phone.type} number={phone.number} />
             ))
           }
-        </ul> -->
+        </ul>
         <Button variant="secondary" href={CTAdata.buttonLink}
           >{CTAdata.buttonText}</Button
         >
