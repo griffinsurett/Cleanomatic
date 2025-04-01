@@ -59,10 +59,10 @@ body {
 
 /* Global header styles (these are our dynamic header classes) */
 .h1 {
-  @apply text-2xl font-bold uppercase;
+  @apply text-2xl font-bold md:text-3xl uppercase;
 }
 .h2 {
-  @apply text-2xl font-semibold uppercase;
+  @apply text-2xl font-semibold md:text-3xl uppercase;
 }
 .h3 {
   @apply text-xl font-semibold md:text-2xl uppercase;

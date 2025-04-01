@@ -9,7 +9,7 @@ export default function PhoneNumber({ type, number }) {
           href={`tel:${number}`}
           className="flex flex-col items-center p-[var(--spacing-md)]"
         >
-          <span className="phone-type h2">{type}:</span>
+          <span className="phone-type h3">{type}:</span>
           <span className="phone-number h6">{number}</span>
         </a>
       </li>
