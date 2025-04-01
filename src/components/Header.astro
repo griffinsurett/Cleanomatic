@@ -1,0 +1,75 @@
+---
+import { SiteData } from "@/content/SiteData";
+import { buildMenuQueries } from "@/utils/ArrayQueryUtils";
+import Menu from "../components/Menu/Menu.astro";
+import MenuItem from "../components/Menu/BarMenu/MenuItem.astro"; // default main menu item
+import { Image } from "astro:assets";
+
+const MainNavMenu = [
+  { id: "home", label: "Home", slug: "/" },
+  { id: "about", label: "About Us", slug: "/about-us" },
+  { id: "contact", label: "Contact", slug: "/contact-us", position: "append", weight: 100 },
+];
+
+const headerItems = await buildMenuQueries({ MainNavMenu })
+---
+<header
+  class="flex flex-col justify-between items-center shadow-md sticky top-0 z-50"
+>
+  <div
+    class="top-header w-full flex justify-center items-center py-[var(--spacing-md)] bg-primary text-bg"
+  >
+    <div class="text-md font-bold">
+      {SiteData.tagline}
+    </div>
+  </div>
+  <div
+    class="main-header py-[var(--spacing-sm)] bg-accent text-bg w-full flex justify-between items-center"
+  >
+    <a
+      href="/"
+      class="flex flex-col items-start justify-left py-[var(--spacing-md)]"
+    >
+    <div class="text-3xl font-bold">
+      {SiteData.title}
+    </div>
+      <div
+        class="tagline-and-logo flex items-center justify-center items-center"
+      >
+        <div class="text-sm font-normal">
+          {SiteData.tagline}
+        </div>
+        <Image
+          src={SiteData.logo.src}
+          alt={`${SiteData.title} logo`}
+          class="h-8 w-auto md:h-10 animate-slide-right"
+          loading="eager"
+          fetchpriority="high"
+          aria-hidden="true"
+        />
+      </div>
+    </a>
+    <!-- mobile menu -->
+    <Menu 
+    items={headerItems} 
+    hamburgerOnly={false} 
+    menuClass="menu-class flex md:hidden text-text" 
+    menuItem={{ component: MenuItem, class: "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] hover:bg-secondary" }}
+    submenuItem={{ component: MenuItem, class: "bg-primary" }}
+    isHierarchical={true}
+    breakpoint="md"
+    />
+  </div>
+  <div class="hidden md:flex header-bottom w-full items-center bg-primary">
+    <!-- desktop menu -->
+    <Menu 
+    items={headerItems} 
+    hamburgerOnly={false} 
+    menuClass="menu-class" 
+    menuItem={{ component: MenuItem, class: "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] hover:bg-secondary" }}
+    submenuItem={{ component: MenuItem, class: "bg-primary" }}
+    isHierarchical={true}
+    breakpoint="none"
+    />
+  </div>
+</header>
