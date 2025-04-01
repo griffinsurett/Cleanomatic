@@ -24,3 +24,8 @@ export function normalizeRef(ref: any): string {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
   
+  // NEW HELPER FOR UPPERCASE
+export function uppercase(str: string): string {
+  if (!str) return '';
+  return str.toUpperCase();
+}
