@@ -8,12 +8,15 @@ import Modal from "@/components/Modal";
 <Layout>
   <!-- Hero Section with two buttons -->
   <Section 
-  heading={{ text: "Homepage", tagName: "h1" }}
-  description="Welcome to Astro!" 
-  buttons={[
-    { text: "See Our CTA", link: "/contact-us" },
-    { text: "Learn More About Us", link: "/about-us" }
-  ]}
+heading={[
+  {
+    text: "Welcome to Cleanomatic – Your Trusted Cleaning Experts in New Jersey!",
+    tagName: "h1",
+  },
+]}
+description="Welcome to Cleanomatic, your one-stop solution for professional cleaning services in New Jersey. With over 23 years of experience"
+buttons={[{ text: "Request Estimate", link: "/contact" }]}
+sectionClass="min-h-[85vh] flex items-center justify-center bg-cover bg-center z-10"
 />
 
  {/* Services */}
