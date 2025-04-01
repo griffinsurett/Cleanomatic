@@ -20,7 +20,16 @@ export const CTAdata = {
 
 export const ContactData = {
   email: "cleanomaticnj@gmail.com",
-  phone: "7329950995",
+  phone: [
+    {
+      type: "office",
+      number: "7329950995",
+    },
+    {
+      type: "cell",
+      number: "7329950995",
+    },
+  ]
 };
 
 export const SocialData = [

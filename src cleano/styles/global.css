@@ -43,14 +43,6 @@ body {
   color: var(--color-text);
 }
 
-/* Container for centered layouts */
-.container {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: var(--spacing-md);
-}
-
 /* Global header styles (these are our dynamic header classes) */
 .h1 {
   @apply text-2xl font-bold;

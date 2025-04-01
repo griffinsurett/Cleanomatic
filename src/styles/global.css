@@ -20,6 +20,7 @@
   --spacing-md: 0.8rem;
   --spacing-lg: 1rem;
   --spacing-xl: 1.5rem;
+  --spacing-2xl: 2rem;
   
   /* Border Radius */
   --radius-xs: 0.125rem;
@@ -44,12 +45,16 @@ body {
   overflow-x: hidden;
 }
 
-/* Container for centered layouts */
-.container {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: var(--spacing-md);
+@layer components {
+  .header-inner {
+    @apply mx-auto px-[var(--spacing-sm)] sm:px-[var(--spacing-md)] lg:px-[var(--spacing-lg)];
+    max-width: 1200px;
+  }
+
+  .container {
+    @apply mx-auto px-[var(--spacing-md)] sm:px-[var(--spacing-lg)] lg:px-[var(--spacing-xl)];
+    max-width: 1200px;
+  }
 }
 
 /* Global header styles (these are our dynamic header classes) */

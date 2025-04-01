@@ -27,7 +27,7 @@ export default function Button({
 
   // Combine any passed class names with variant-specific classes, default padding,
   // no border-radius, and a transition on hover.
-  const combinedClassNames = `${classname} ${variantClasses} rounded-none py-[var(--spacing-md)] px-[var(--spacing-xl)] transform transition-all duration-300 ease-in-out`;
+  const combinedClassNames = `${classname} ${variantClasses} rounded-none py-[var(--spacing-md)] px-[var(--spacing-2xl)] transform transition-all duration-300 ease-in-out`;
 
   return (
     <Component

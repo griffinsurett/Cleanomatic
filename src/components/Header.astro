@@ -1,78 +1,116 @@
 ---
-import { SiteData, CTAdata } from "@/content/SiteData";
+import { SiteData, ContactData, CTAdata } from "@/content/SiteData";
 import { buildMenuQueries } from "@/utils/ArrayQueryUtils";
 import Menu from "../components/Menu/Menu.astro";
 import MenuItem from "../components/Menu/BarMenu/MenuItem.astro"; // default main menu item
 import { Image } from "astro:assets";
 import Button from "./Button";
+import PhoneNumber from "../components/LoopComponents/PhoneNumber";
+
+console.log(ContactData.phone);
 
 const MainNavMenu = [
   { id: "home", label: "Home", slug: "/" },
   { id: "about", label: "About Us", slug: "/about-us" },
-  { id: "contact", label: "Contact", slug: "/contact-us", position: "append", weight: 100 },
+  {
+    id: "contact",
+    label: "Contact",
+    slug: "/contact-us",
+    position: "append",
+    weight: 100,
+  },
 ];
 
-const headerItems = await buildMenuQueries({ MainNavMenu })
+const PhoneNumberMenu = ContactData.phone;
+
+const headerItems = await buildMenuQueries({ MainNavMenu });
+const phoneItems = await buildMenuQueries({ PhoneNumberMenu });
 ---
+
 <header
   class="flex flex-col justify-between items-center shadow-md sticky top-0 z-50"
 >
   <div
     class="top-header w-full flex justify-center items-center py-[var(--spacing-md)] bg-primary text-bg"
   >
-    <div class="text-md font-bold">
-      {SiteData.tagline}
+    <div class="header-inner">
+      <div class="text-md font-bold">
+        {SiteData.tagline}
+      </div>
+    </div>
+  </div>
+  <div class="main-header py-[var(--spacing-sm)] bg-accent text-bg w-full flex justify-center">
+    <div class="header-inner flex justify-between items-center w-full">
+      <a
+        href="/"
+        class="flex flex-col items-start justify-left py-[var(--spacing-md)]"
+      >
+        <div class="text-3xl font-bold">
+          {SiteData.title}
+        </div>
+        <div class="tagline-and-logo flex justify-center items-center">
+          <div class="text-sm font-normal">
+            {SiteData.tagline}
+          </div>
+          <Image
+            src={SiteData.logo.src}
+            alt={`${SiteData.title} logo`}
+            class="h-6 w-auto md:h-8 animate-slide-right"
+            loading="eager"
+            fetchpriority="high"
+            aria-hidden="true"
+          />
+        </div>
+      </a>
+      <div
+        class="phone-and-cta-on-header hidden md:flex justify-between items-center w-1/2"
+      >
+        <!-- phone number menu -->
+        <ul class="phone-list flex">
+          {
+            ContactData.phone.map((phone, index) => (
+              <PhoneNumber type={phone.type} number={phone.number} />
+            ))
+          }
+        </ul>
+        <Button variant="secondary" href={CTAdata.buttonLink}
+          >{CTAdata.buttonText}</Button
+        >
+      </div>
+      <!-- mobile menu -->
+      <Menu
+        items={headerItems}
+        hamburgerOnly={false}
+        menuClass="menu-class flex md:hidden text-text"
+        menuItem={{
+          component: MenuItem,
+          class:
+            "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] hover:bg-secondary",
+        }}
+        submenuItem={{ component: MenuItem, class: "bg-primary" }}
+        isHierarchical={true}
+        breakpoint="md"
+      />
     </div>
   </div>
   <div
-    class="main-header py-[var(--spacing-sm)] bg-accent text-bg w-full flex justify-between items-center"
+    class="bottom-header hidden md:flex header-bottom w-full items-center bg-primary flex justify-center"
   >
-    <a
-      href="/"
-      class="flex flex-col items-start justify-left py-[var(--spacing-md)]"
-    >
-    <div class="text-3xl font-bold">
-      {SiteData.title}
+    <div class="header-inner w-full flex">
+      <!-- desktop menu -->
+      <Menu
+        items={headerItems}
+        hamburgerOnly={false}
+        menuClass="menu-class flex justify-between items-center"
+        menuItem={{
+          component: MenuItem,
+          class:
+            "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] hover:bg-secondary",
+        }}
+        submenuItem={{ component: MenuItem, class: "bg-primary" }}
+        isHierarchical={true}
+        breakpoint="none"
+      />
     </div>
-      <div
-        class="tagline-and-logo flex items-center justify-center items-center"
-      >
-        <div class="text-sm font-normal">
-          {SiteData.tagline}
-        </div>
-        <Image
-          src={SiteData.logo.src}
-          alt={`${SiteData.title} logo`}
-          class="h-6 w-auto md:h-8 animate-slide-right"
-          loading="eager"
-          fetchpriority="high"
-          aria-hidden="true"
-        />
-      </div>
-    </a>
-    <!-- mobile menu -->
-    <Menu 
-    items={headerItems} 
-    hamburgerOnly={false} 
-    menuClass="menu-class flex md:hidden text-text" 
-    menuItem={{ component: MenuItem, class: "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] hover:bg-secondary" }}
-    submenuItem={{ component: MenuItem, class: "bg-primary" }}
-    isHierarchical={true}
-    breakpoint="md"
-    />
-    <Button variant="secondary" href={CTAdata.buttonLink} classname="py-[var(--spacing-md)] px-[var(--spacing-xl)]">{CTAdata.buttonText}</Button>
-
-  </div>
-  <div class="hidden md:flex header-bottom w-full items-center bg-primary">
-    <!-- desktop menu -->
-    <Menu 
-    items={headerItems} 
-    hamburgerOnly={false} 
-    menuClass="menu-class" 
-    menuItem={{ component: MenuItem, class: "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] hover:bg-secondary" }}
-    submenuItem={{ component: MenuItem, class: "bg-primary" }}
-    isHierarchical={true}
-    breakpoint="none"
-    />
   </div>
 </header>
