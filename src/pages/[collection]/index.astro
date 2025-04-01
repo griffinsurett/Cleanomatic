@@ -2,10 +2,10 @@
 // src/pages/[collection]/index.astro
 import Layout from "@/layouts/Layout.astro";
 import Section from "@/components/Section.astro";
-import Card from "src/components/LoopComponents/Card";
-import { collections } from "src/content/config";
-import { getCollectionMeta } from "src/utils/FetchMeta";
-import { capitalize } from "src/utils/ContentUtils";
+import Card from "@/components/LoopComponents/Card";
+import { collections } from "@/content/config";
+import { getCollectionMeta } from "@/utils/FetchMeta";
+import { capitalize } from "@/utils/ContentUtils";
 
 export async function getStaticPaths() {
   const collectionNames = Object.keys(collections);
@@ -25,33 +25,31 @@ try {
   meta = await getCollectionMeta(collection);
 } catch {}
 ---
-
 <Layout title={capitalize(collection)} description={meta.description}>
-  {
-    meta.sections && meta.sections.length > 0 ? (
-      meta.sections.map((section, i) => (
-        <Section
-          key={i}
-          collection={section.collection}
-          query={section.query}
-          heading={section.heading}
-          description={section.description ?? meta.description}
-          component={Card}
-          button={section.button}
-          sectionClass={section.sectionClass}
-          itemsClass={section.itemsClass}
-          itemClass={section.itemClass}
-          contentClass={section.contentClass}
-          buttonsSectionClass={section.buttonsSectionClass}
-        />
-      ))
-    ) : (
+  {meta.sections && meta.sections.length > 0 ? (
+    meta.sections.map((section, i) => (
       <Section
-        collection={collection}
-        query="getAll"
+        key={i}
+        collection={section.collection}
+        query={section.query}
+        heading={section.heading || { text: capitalize(section.collection), tagName: "h2" }}
+        description={section.description ?? meta.description}
         component={Card}
-        description={meta.description}
+        button={section.button}
+        sectionClass={section.sectionClass}
+        itemsClass={section.itemsClass}
+        itemClass={section.itemClass}
+        contentClass={section.contentClass}
+        buttonsSectionClass={section.buttonsSectionClass}
       />
-    )
-  }
+    ))
+  ) : (
+    <Section
+      collection={collection}
+      query="getAll"
+      component={Card}
+      heading={{ text: capitalize(collection), tagName: "h2" }}
+      description={meta.description}
+    />
+  )}
 </Layout>
