@@ -7,41 +7,39 @@ import Modal from "@/components/Modal";
 
 <Layout title="Welcome to Cleanomatic">
   <!-- Hero Section with two buttons -->
-  <Section 
-heading={[
-  {
-    text: "Welcome to Cleanomatic – Your Trusted Cleaning Experts in New Jersey!",
-    tagName: "h1",
-  },
-]}
-description="Welcome to Cleanomatic, your one-stop solution for professional cleaning services in New Jersey. With over 23 years of experience"
-buttons={[{ text: "Request Estimate", link: "/contact" }]}
-sectionClass="min-h-[85vh] flex items-center justify-center bg-cover bg-center z-10"
-/>
+  <Section
+    heading={[
+      {
+        text: "Welcome to Cleanomatic – Your Trusted Cleaning Experts in New Jersey!",
+        tagName: "h1",
+      },
+    ]}
+    description="Welcome to Cleanomatic, your one-stop solution for professional cleaning services in New Jersey. With over 23 years of experience"
+    buttons={[{ text: "Request Estimate", link: "/contact" }]}
+    sectionClass="min-h-[70vh] flex items-center justify-center bg-cover bg-center z-10"
+  />
 
- {/* Services */}
- <Section
- collection="services"
- query="getAll"
- component={Card}
- heading={{ text: "Our Services", tagName: "h2" }}
-/>
+  {/* Services */}
+  <Section
+    collection="services"
+    query="getAll"
+    component={Card}
+    heading={{ text: "Our Services", tagName: "h2" }}
+  />
 
-{/* Projects */}
-<Section
- collection="projects"
- query="getAll"
- component={Card}
- heading={{ text: "Our Projects", tagName: "h2" }}
-/>
+  {/* Projects */}
+  <Section
+    collection="projects"
+    query="getAll"
+    component={Card}
+    heading={{ text: "Our Projects", tagName: "h2" }}
+  />
 
-{/* Testimonials */}
-<Section
- collection="testimonials"
- query="getAll"
- component={Card}
- heading={{ text: "Client Testimonials", tagName: "h2" }}
-/>
-
+  {/* Testimonials */}
+  <Section
+    collection="testimonials"
+    query="getAll"
+    component={Card}
+    heading={{ text: "Client Testimonials", tagName: "h2" }}
+  />
 </Layout>
-

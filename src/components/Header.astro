@@ -1,9 +1,10 @@
 ---
-import { SiteData } from "@/content/SiteData";
+import { SiteData, CTAdata } from "@/content/SiteData";
 import { buildMenuQueries } from "@/utils/ArrayQueryUtils";
 import Menu from "../components/Menu/Menu.astro";
 import MenuItem from "../components/Menu/BarMenu/MenuItem.astro"; // default main menu item
 import { Image } from "astro:assets";
+import Button from "./Button";
 
 const MainNavMenu = [
   { id: "home", label: "Home", slug: "/" },
@@ -42,7 +43,7 @@ const headerItems = await buildMenuQueries({ MainNavMenu })
         <Image
           src={SiteData.logo.src}
           alt={`${SiteData.title} logo`}
-          class="h-8 w-auto md:h-10 animate-slide-right"
+          class="h-6 w-auto md:h-8 animate-slide-right"
           loading="eager"
           fetchpriority="high"
           aria-hidden="true"
@@ -59,6 +60,8 @@ const headerItems = await buildMenuQueries({ MainNavMenu })
     isHierarchical={true}
     breakpoint="md"
     />
+    <Button variant="secondary" href={CTAdata.buttonLink} classname="py-[var(--spacing-md)] px-[var(--spacing-xl)]">{CTAdata.buttonText}</Button>
+
   </div>
   <div class="hidden md:flex header-bottom w-full items-center bg-primary">
     <!-- desktop menu -->
