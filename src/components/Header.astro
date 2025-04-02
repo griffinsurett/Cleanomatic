@@ -6,6 +6,7 @@ import MenuItem from "../components/Menu/BarMenu/MenuItem.astro"; // default mai
 import { Image } from "astro:assets";
 import Button from "./Button";
 import PhoneNumber from "../components/LoopComponents/PhoneNumber";
+import Logo from "../components/Logo.astro"; // import the new Logo component
 
 console.log(ContactData.phone);
 
@@ -36,29 +37,9 @@ const breakpoint = "lg";
       </div>
     </div>
   </div>
-  <div class={`main-header bg-accent text-bg ${breakpoint}:w-full flex justify-center w-full`}>
+  <div class={`main-header bg-accent text-bg ${breakpoint}:w-full flex justify-center w-full lg:py-[var(--spacing-md)]`}>
     <div class="header-inner flex justify-between items-center w-full">
-      <a
-        href="/"
-        class="flex flex-col items-start justify-left py-[var(--spacing-md)]"
-      >
-        <div class="h1">
-          {SiteData.title}
-        </div>
-        <div class="tagline-and-logo flex justify-center items-center">
-          <div class="h6">
-            {SiteData.tagline}
-          </div>
-          <Image
-            src={SiteData.logo.src}
-            alt={`${SiteData.title} logo`}
-            class="h-6 w-auto md:h-8 animate-slide-right"
-            loading="eager"
-            fetchpriority="high"
-            aria-hidden="true"
-          />
-        </div>
-      </a>
+      <Logo /> <!-- Use the new Logo component here -->
       <div class={`phone-and-cta-on-header hidden ${breakpoint}:flex justify-between items-center w-1/2`}>
         <!-- phone number menu -->
         <ul class="phone-list flex">
