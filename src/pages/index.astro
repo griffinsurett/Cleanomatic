@@ -26,9 +26,21 @@ import Modal from "@/components/Modal";
     query="getAll"
     component={ServiceCard}
     heading={{ text: "Our Services", tagName: "h2" }}
-    sectionClass="flex flex-col justify-center items-center text-center my-[var(--spacing-4xl)]"
+    sectionClass="flex flex-col justify-center items-center text-center my-[var(--spacing-2xl)]"
     contentClass="container flex flex-wrap flex-col justify-between items-center w-full"
     itemsClass="flex flex-wrap justify-center items-center flex-1/2"
+  />
+
+    {/* Testimonials */}
+    <Section
+    collection="testimonials"
+    query="getAll"
+    component={Card}
+    sectionClass="flex flex-col justify-center items-center text-center my-[var(--spacing-2xl)] bg-accent text-bg"
+    contentClass="container flex flex-wrap flex-col justify-between items-center w-full"
+    itemsClass="flex justify-center items-center flex-wrap flex-1/2 gap-10 my-[var(--spacing-2xl)] p-[var(--spacing-lg)] md:p-0"
+    heading={{ text: "Client Testimonials", tagName: "h2" }}
+    buttons={[{ text: "View All Testimonials", variant: "secondary" }]}
   />
 
   {/* Projects */}
@@ -37,16 +49,8 @@ import Modal from "@/components/Modal";
     query="getAll"
     component={Card}
     heading={{ text: "Our Projects", tagName: "h2" }}
-    buttons={[{ text: "View All Projects", variant: "secondary" }]}
-    sectionClass="flex flex-col justify-center items-center text-center text-bg bg-accent"
-    itemsClass="flex flex-wrap justify-center items-center flex-1/2 py-[var(--spacing-lg)]"
+    sectionClass="flex flex-col justify-center items-center text-center my-[var(--spacing-2xl)]"
+    itemsClass="flex justify-center items-center flex-wrap flex-1/2 py-[var(--spacing-lg)]"
   />
 
-  {/* Testimonials */}
-  <Section
-    collection="testimonials"
-    query="getAll"
-    component={Card}
-    heading={{ text: "Client Testimonials", tagName: "h2" }}
-  />
 </Layout>

@@ -11,7 +11,7 @@ export default function Card({ item, collectionName, HasPage }) {
   const effectiveHasPage =
     item.data.hasPage !== undefined ? item.data.hasPage : HasPage;
   return (
-    <li className="card text-left p-[var(--spacing-sm)]">
+    <li className="card text-left p-[var(--spacing-xl)] text-text bg-bg">
       <Heading tagName={"h3"} className="h3 mb-[var(--spacing-sm)]">{item.data.title}</Heading>
       <p className="mb-[var(--spacing-sm)]">{item.data.description || item.body}</p>
       {effectiveHasPage && (
