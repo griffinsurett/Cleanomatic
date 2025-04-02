@@ -7,7 +7,7 @@ export default function Button({
   children,
   classname = "",
   href,
-  variant, // "primary" or "secondary"
+  variant, // "primary", "secondary", or "underline"
   ...props
 }) {
   // Default to an anchor tag if href is provided and no override is specified,
@@ -23,11 +23,15 @@ export default function Button({
     variantClasses = "bg-[var(--color-accent)] text-[var(--color-bg)] hover:bg-[var(--color-primary)]";
   } else if (variant === "secondary") {
     variantClasses = "bg-[var(--color-primary)] text-[var(--color-bg)] hover:bg-[var(--color-secondary)]";
+  } else if (variant === "underline") {
+    variantClasses = "underline text-[var(--color-primary)] hover:text-[var(--color-secondary)]";
   }
 
-  // Combine any passed class names with variant-specific classes, default padding,
-  // no border-radius, and a transition on hover.
-  const combinedClassNames = `${classname} ${variantClasses} rounded-none py-[var(--spacing-md)] px-[var(--spacing-2xl)] transform transition-all duration-300 ease-in-out h4`;
+  // Use a different set of utility classes for the underline variant.
+  const combinedClassNames =
+    variant === "underline"
+      ? `${classname} ${variantClasses} transition-colors duration-300 ease-in-out`
+      : `${classname} ${variantClasses} rounded-none py-[var(--spacing-md)] px-[var(--spacing-2xl)] transform transition-all duration-300 ease-in-out h4`;
 
   return (
     <Component

@@ -76,7 +76,7 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
             </Heading>
           );
         })}
-        {finalDescription && <p class={description?.class}>{finalDescription}</p>}
+        {/* {finalDescription && <p class={description?.class}>{finalDescription}</p>} */}
       </div>
       <slot name="aboveItemsInjection" />
       <ItemsTemplate
@@ -96,7 +96,8 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
             const btnDefaults = {
               text: capitalize(collectionName),
               link: `/${collectionName}`,
-              class: ""
+              class: "",
+              variant: "primary", // default variant
             };
             const finalButtonProps = { ...btnDefaults, ...btn };
             return (
@@ -105,6 +106,7 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
                 href={finalButtonProps.link}
                 classname={finalButtonProps.class}
                 ariaLabel={finalButtonProps.text}
+                variant={finalButtonProps.variant}
               >
                 {finalButtonProps.text}
               </Button>

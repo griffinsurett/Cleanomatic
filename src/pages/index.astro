@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Section from "@/components/Section.astro";
 import Card from "@/components/LoopComponents/Card";
+import ServiceCard from "@/components/LoopComponents/ServiceCard";
 import Modal from "@/components/Modal";
 ---
 
@@ -15,7 +16,7 @@ import Modal from "@/components/Modal";
       },
     ]}
     description="Welcome to Cleanomatic, your one-stop solution for professional cleaning services in New Jersey. With over 23 years of experience"
-    buttons={[{ text: "Request Estimate", link: "/contact" }]}
+    buttons={[{ text: "Request Estimate", link: "/contact", class: "mt-[var(--spacing-lg)]" }]}
     sectionClass="min-h-[70vh] flex items-center justify-center bg-cover bg-center z-10"
   />
 
@@ -23,8 +24,11 @@ import Modal from "@/components/Modal";
   <Section
     collection="services"
     query="getAll"
-    component={Card}
+    component={ServiceCard}
     heading={{ text: "Our Services", tagName: "h2" }}
+    sectionClass="flex flex-col justify-center items-center text-center my-[var(--spacing-4xl)]"
+    contentClass="container flex flex-wrap flex-col justify-between items-center w-full"
+    itemsClass="flex flex-wrap justify-center items-center flex-1/2"
   />
 
   {/* Projects */}
@@ -33,6 +37,9 @@ import Modal from "@/components/Modal";
     query="getAll"
     component={Card}
     heading={{ text: "Our Projects", tagName: "h2" }}
+    buttons={[{ text: "View All Projects", variant: "secondary" }]}
+    sectionClass="flex flex-col justify-center items-center text-center text-bg bg-accent"
+    itemsClass="flex flex-wrap justify-center items-center flex-1/2 py-[var(--spacing-lg)]"
   />
 
   {/* Testimonials */}

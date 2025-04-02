@@ -21,7 +21,9 @@
   --spacing-lg: 1rem;
   --spacing-xl: 1.5rem;
   --spacing-2xl: 2rem;
-  
+  --spacing-3xl: 5rem;
+  --spacing-4xl: 10rem;
+
   /* Border Radius */
   --radius-xs: 0.125rem;
   --radius-sm: 0.25rem;
