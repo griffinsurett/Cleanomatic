@@ -22,24 +22,22 @@ const MainNavMenu = [
 ];
 
 const PhoneNumberMenu = ContactData.phone;
-
 const headerItems = await buildMenuQueries({ MainNavMenu });
+
+// Define a breakpoint variable to update responsive classes in one place.
+const breakpoint = "lg";
 ---
 
-<header
-  class="flex flex-col justify-between items-center shadow-md sticky top-0 z-50 shadow-xl"
->
-  <div
-    class="top-header w-full flex justify-center items-center py-[var(--spacing-sm)] md:py-[var(--spacing-md)] bg-primary text-bg"
-  >
+<header class="flex flex-col justify-between items-center sticky top-0 z-50 shadow-xl">
+  <div class="top-header w-full flex justify-center items-center py-[var(--spacing-sm)] md:py-[var(--spacing-md)] bg-primary text-bg">
     <div class="header-inner">
       <div class="text-md h5">
         {SiteData.tagline}
       </div>
     </div>
   </div>
-  <div class="main-header bg-accent text-bg w-full flex justify-center w-11/12">
-    <div class="header-inner flex justify-between items-center w-11/12">
+  <div class={`main-header bg-accent text-bg ${breakpoint}:w-full flex justify-center w-full`}>
+    <div class="header-inner flex justify-between items-center w-full">
       <a
         href="/"
         class="flex flex-col items-start justify-left py-[var(--spacing-md)]"
@@ -61,26 +59,22 @@ const headerItems = await buildMenuQueries({ MainNavMenu });
           />
         </div>
       </a>
-      <div
-        class="phone-and-cta-on-header hidden md:flex justify-between items-center w-1/2"
-      >
+      <div class={`phone-and-cta-on-header hidden ${breakpoint}:flex justify-between items-center w-1/2`}>
         <!-- phone number menu -->
         <ul class="phone-list flex">
-          {
-            ContactData.phone.map((phone, index) => (
-              <PhoneNumber type={phone.type} number={phone.number} />
-            ))
-          }
+          {ContactData.phone.map((phone, index) => (
+            <PhoneNumber type={phone.type} number={phone.number} />
+          ))}
         </ul>
-        <Button variant="secondary" href={CTAdata.buttonLink}
-          >{CTAdata.buttonText}</Button
-        >
+        <Button variant="secondary" href={CTAdata.buttonLink}>
+          {CTAdata.buttonText}
+        </Button>
       </div>
       <!-- mobile menu -->
       <Menu
         items={headerItems}
         hamburgerOnly={false}
-        menuClass="menu-class flex md:hidden text-text"
+        menuClass={`menu-class flex ${breakpoint}:hidden text-text`}
         menuItem={{
           component: MenuItem,
           class:
@@ -88,13 +82,11 @@ const headerItems = await buildMenuQueries({ MainNavMenu });
         }}
         submenuItem={{ component: MenuItem, class: "bg-primary" }}
         isHierarchical={true}
-        breakpoint="md"
+        breakpoint={breakpoint}
       />
     </div>
   </div>
-  <div
-    class="bottom-header hidden md:flex header-bottom w-full items-center bg-primary flex justify-center"
-  >
+  <div class={`bottom-header hidden ${breakpoint}:flex header-bottom w-full items-center bg-primary flex justify-center`}>
     <div class="header-inner w-full flex">
       <!-- desktop menu -->
       <Menu
