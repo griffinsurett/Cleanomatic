@@ -27,7 +27,7 @@ export const ContactData = {
     },
     {
       type: "cell",
-      number: "7329950995",
+      number: "7329950909",
     },
   ]
 };
