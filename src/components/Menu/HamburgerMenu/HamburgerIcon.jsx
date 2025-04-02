@@ -10,7 +10,7 @@ export default function HamburgerIcon({ isOpen, onChange, hamburgerTransform = t
         checked={isOpen}
         onChange={onChange}
       />
-      <label htmlFor="hamburger-toggle" className="block w-8 h-8 cursor-pointer">
+      <label htmlFor="hamburger-toggle" className="flex w-8 h-8 cursor-pointer margin-auto justify-center items-center bg-primary p-[var(--spacing-sm)]">
         {hamburgerTransform ? (
           <>
             <span
