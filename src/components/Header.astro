@@ -6,30 +6,35 @@ import MenuItem from "../components/Menu/BarMenu/MenuItem.astro"; // default mai
 import { Image } from "astro:assets";
 import Button from "./Button";
 import PhoneNumber from "../components/LoopComponents/PhoneNumber";
-import Logo from "../components/Logo.astro"; // import the new Logo component
+import Logo from "../components/Logo.astro"; // New Logo component
 
 console.log(ContactData.phone);
 
 const MainNavMenu = [
   { id: "home", label: "Home", slug: "/" },
   { id: "about", label: "About Us", slug: "/about-us" },
-  {
-    id: "contact",
-    label: "Contact",
-    slug: "/contact-us",
-    position: "append",
-    weight: 100,
-  },
+  { id: "contact", label: "Contact", slug: "/contact-us", position: "append", weight: 100 },
 ];
 
-const PhoneNumberMenu = ContactData.phone;
 const headerItems = await buildMenuQueries({ MainNavMenu });
 
-// Define a breakpoint variable to update responsive classes in one place.
-const breakpoint = "lg";
----
+// Define all Tailwind breakpoints (as of 2025)
+const breakpoints = ["sm", "md", "lg", "xl", "2xl"];
 
+// Helper function that converts a given literal class value into a string of responsive classes
+const buildResponsiveClasses = (value) =>
+  breakpoints.map(bp => `${bp}:${value}`).join(" ");
+
+// Generate literal responsive class strings for properties
+const responsiveWFull = buildResponsiveClasses("w-full"); 
+const responsivePyMd = buildResponsiveClasses("py-[var(--spacing-md)]");
+const responsiveFlex = buildResponsiveClasses("flex");
+
+// For the mobile menu, we want it visible only on mobile (e.g. hidden on lg and up)
+const mobileMenuClasses = "lg:hidden";
+---
 <header class="flex flex-col justify-between items-center sticky top-0 z-50 shadow-xl">
+  <!-- Top Header -->
   <div class="top-header w-full flex justify-center items-center py-[var(--spacing-sm)] md:py-[var(--spacing-md)] bg-primary text-bg">
     <div class="header-inner">
       <div class="text-md h5">
@@ -37,11 +42,12 @@ const breakpoint = "lg";
       </div>
     </div>
   </div>
-  <div class={`main-header bg-accent text-bg ${breakpoint}:w-full flex justify-center w-full lg:py-[var(--spacing-md)]`}>
+  <!-- Main Header -->
+  <div class={`main-header bg-accent text-bg ${responsiveWFull} flex justify-center w-full ${responsivePyMd} lg:py-[var(--spacing-md)]`}>
     <div class="header-inner flex justify-between items-center w-full">
-      <Logo /> <!-- Use the new Logo component here -->
-      <div class={`phone-and-cta-on-header hidden ${breakpoint}:flex justify-between items-center w-1/2`}>
-        <!-- phone number menu -->
+      <Logo />
+      <div class={`phone-and-cta-on-header hidden ${responsiveFlex} justify-between items-center w-1/2`}>
+        <!-- Phone Number Menu -->
         <ul class="phone-list flex">
           {ContactData.phone.map((phone, index) => (
             <PhoneNumber type={phone.type} number={phone.number} />
@@ -51,33 +57,32 @@ const breakpoint = "lg";
           {CTAdata.buttonText}
         </Button>
       </div>
-      <!-- mobile menu -->
+      <!-- Mobile Menu -->
       <Menu
         items={headerItems}
         hamburgerOnly={false}
-        menuClass={`menu-class flex ${breakpoint}:hidden text-text`}
+        menuClass={`menu-class flex ${mobileMenuClasses} text-text`}
         menuItem={{
           component: MenuItem,
-          class:
-            "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] hover:bg-secondary",
+          class: "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] hover:bg-secondary",
         }}
         submenuItem={{ component: MenuItem, class: "bg-primary" }}
         isHierarchical={true}
-        breakpoint={breakpoint}
+        breakpoint="lg"
       />
     </div>
   </div>
-  <div class={`bottom-header hidden ${breakpoint}:flex header-bottom w-full items-center bg-primary flex justify-center`}>
+  <!-- Bottom Header -->
+  <div class={`bottom-header hidden ${responsiveFlex} header-bottom w-full items-center bg-primary flex justify-center`}>
     <div class="header-inner w-full flex">
-      <!-- desktop menu -->
+      <!-- Desktop Menu -->
       <Menu
         items={headerItems}
         hamburgerOnly={false}
         menuClass="menu-class flex justify-between items-center"
         menuItem={{
           component: MenuItem,
-          class:
-            "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] h4 hover:bg-secondary",
+          class: "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] h4 hover:bg-secondary",
         }}
         submenuItem={{ component: MenuItem, class: "bg-primary h6" }}
         isHierarchical={true}
