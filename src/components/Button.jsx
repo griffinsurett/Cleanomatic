@@ -1,5 +1,6 @@
 // src/components/Button.jsx
-import ImageUsed from "@/assets/favicon.svg";
+import React from "react";
+import DefaultIcon from "@/assets/favicon.svg"; // Neutral default icon for the template
 
 // Default base button classes for non-underline variants.
 const baseButtonClasses =
@@ -22,7 +23,7 @@ const buttonVariantDefaults = {
     buttonClasses: baseButtonClasses,
     iconDefaults: {
       hoverOnly: true,
-      animateIcon: false,
+      animateIcon: true,
     },
   },
   underline: {
@@ -30,7 +31,7 @@ const buttonVariantDefaults = {
       "underline text-[var(--color-primary)] hover:text-[var(--color-secondary)]",
     buttonClasses: "", // Override default button classes for underline.
     iconDefaults: {
-      className: "hidden", 
+      className: "hidden",
       hoverOnly: false,
       animateIcon: false,
     },
@@ -46,6 +47,7 @@ export default function Button({
   href,
   variant, // "primary", "secondary", or "underline"
   iconProps = {}, // Consolidated icon properties
+  showIcon = false, // New prop: controls whether an icon is rendered
   ...props
 }) {
   // Default the variant to "primary" if not provided.
@@ -65,32 +67,32 @@ export default function Button({
     animateIcon,           // from mergedIconProps
   } = mergedIconProps;
 
-  // Use provided icon element or default to the favicon.svg image.
-  const finalIcon =
-    element !== undefined ? element : (
-      <img src={ImageUsed.src} alt="Icon" className="h-8 w-8" />
-    );
+  // If showIcon is false, then no icon is rendered.
+  const finalIcon = showIcon
+    ? element !== undefined
+      ? element
+      : <img src={DefaultIcon.src} alt="Icon" className="h-8 w-8" />
+    : null;
 
-  // Determine icon container classes.
-  // When hoverOnly is true, we render inline with initial zero width and no margin,
-  // and on hover the container expands to auto width, adds margin, and slides in if animateIcon is true.
+  // Determine icon container classes if an icon is to be rendered.
   let iconContainerClasses = "";
-  if (hoverOnly) {
-    if (animateIcon) {
-      iconContainerClasses =
-        position === "right"
-          ? "inline-flex w-0 overflow-hidden transform -translate-x-4 opacity-0 transition-all duration-300 ease-in-out group-hover:w-auto group-hover:ml-2 group-hover:translate-x-0 group-hover:opacity-100"
-          : "inline-flex w-0 overflow-hidden transform translate-x-4 opacity-0 transition-all duration-300 ease-in-out group-hover:w-auto group-hover:mr-2 group-hover:translate-x-0 group-hover:opacity-100";
+  if (finalIcon) {
+    if (hoverOnly) {
+      if (animateIcon) {
+        iconContainerClasses =
+          position === "right"
+            ? "inline-flex w-0 overflow-hidden transform -translate-x-4 opacity-0 transition-all duration-300 ease-in-out group-hover:w-auto group-hover:ml-2 group-hover:translate-x-0 group-hover:opacity-100"
+            : "inline-flex w-0 overflow-hidden transform translate-x-4 opacity-0 transition-all duration-300 ease-in-out group-hover:w-auto group-hover:mr-2 group-hover:translate-x-0 group-hover:opacity-100";
+      } else {
+        iconContainerClasses =
+          position === "right"
+            ? "inline-flex w-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out group-hover:w-auto group-hover:ml-2 group-hover:opacity-100"
+            : "inline-flex w-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out group-hover:w-auto group-hover:mr-2 group-hover:opacity-100";
+      }
     } else {
       iconContainerClasses =
-        position === "right"
-          ? "inline-flex w-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out group-hover:w-auto group-hover:ml-2 group-hover:opacity-100"
-          : "inline-flex w-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out group-hover:w-auto group-hover:mr-2 group-hover:opacity-100";
+        position === "right" ? "ml-2 inline-flex" : "mr-2 inline-flex";
     }
-  } else {
-    // If hoverOnly is false, simply render inline with standard margin.
-    iconContainerClasses =
-      position === "right" ? "ml-2 inline-flex" : "mr-2 inline-flex";
   }
 
   // If the merged icon props specify a class that contains "hidden", then just use that.
