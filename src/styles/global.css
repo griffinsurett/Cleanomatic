@@ -11,12 +11,13 @@
   --color-accent: #DB1417;        
   --color-accent-secondary: #A00000; 
   --color-neutral: #f3f4f6;
-  
+  --color-tertiary: #FBC505;
   /* Typography */
   --font-base: 'Inter', sans-serif;
   --font-heading: 'Poppins', sans-serif;
   
   /* Spacing tokens */
+  --spacing-xs: 0.2rem;
   --spacing-sm: 0.4rem;
   --spacing-md: 0.7rem;
   --spacing-lg: 1rem;
@@ -62,19 +63,19 @@ body {
 
 /* Global header styles (these are our dynamic header classes) */
 .h1 {
-  @apply text-2xl font-bold md:text-5xl uppercase;
+  @apply text-2xl font-bold md:text-5xl uppercase italic;
 }
 .h2 {
-  @apply text-2xl font-bold md:text-4xl uppercase;
+  @apply text-3xl font-bold md:text-4xl uppercase italic;
 }
 .h3 {
-  @apply text-xl font-semibold md:text-3xl uppercase;
+  @apply text-xl font-semibold md:text-3xl uppercase italic;
 }
 .h4 {
-  @apply text-lg font-medium md:text-xl uppercase;
+  @apply text-lg font-semibold md:text-xl uppercase;
 }
 .h5 {
-  @apply text-base font-medium md:text-lg uppercase;
+  @apply text-base font-semibold md:text-lg uppercase;
 }
 .h6 {
   @apply text-base font-medium md:text-lg uppercase;

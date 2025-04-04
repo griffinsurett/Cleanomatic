@@ -28,14 +28,14 @@ const headerItems = await buildMenuQueries({ MainNavMenu });
 // Define a breakpoint variable to update responsive classes in one place.
 ---
 <header class="flex flex-col justify-between items-center sticky top-0 z-50 shadow-xl">
-  <div class="top-header w-full flex justify-center items-center py-[var(--spacing-sm)] md:py-[var(--spacing-md)] bg-primary text-bg">
+  <div class="top-header w-full flex justify-center items-center py-[var(--spacing-sm)] md:py-[var(--spacing-md)] bg-primary text-tertiary">
     <div class="header-inner">
-      <div class="text-md h5">
-        {SiteData.tagline}
+      <div class="text-md h4 font-bold">
+        24 Hour Emergency Service
       </div>
     </div>
   </div>
-  <div class={`main-header bg-accent text-bg lg:w-full flex justify-center w-full p-[var(--spacing-lg)] lg:py-[var(--spacing-md)]`}>
+  <div class={`main-header bg-accent text-bg lg:w-full flex justify-center w-full p-[var(--spacing-sm)] lg:p-[var(--spacing-lg)] lg:py-[var(--spacing-md)]`}>
     <div class="header-inner flex justify-between items-center w-full">
       <Logo /> <!-- Use the new Logo component here -->
       <div class={`phone-and-cta-on-header hidden lg:flex justify-between items-center w-1/2`}>
