@@ -6,11 +6,10 @@
   /* Colors */
   --color-bg: #ffffff;
   --color-text: #111111;
-  /* Blue colors for primary branding */
-  --color-primary: #0000FE;      /* Primary blue */
-  --color-secondary: #6564F0;    /* Secondary blue */
-  --color-accent: #DB1417;         /* Primary accent red */
-  --color-accent-secondary: #A00000; /* Secondary accent red */
+  --color-primary: #0000FE;      
+  --color-secondary: #111eb5; /*6564F0*/
+  --color-accent: #DB1417;        
+  --color-accent-secondary: #A00000; 
   --color-neutral: #f3f4f6;
   
   /* Typography */
