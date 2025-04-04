@@ -11,9 +11,9 @@ export default function Card({ item, collectionName, HasPage }) {
   const effectiveHasPage =
     item.data.hasPage !== undefined ? item.data.hasPage : HasPage;
   return (
-    <li className="card p-[var(--spacing-xl)] flex md:flex-1/2 flex-col justify-center items-center text-left max-w-full md:max-w-6/12">
-      <div className="card-container w-9/12">
-      <div className="card-content md:w-9/12 flex flex-col items-start">
+    <li className="card p-[var(--spacing-xl)] flex md:flex-1/2 flex-col md:justify-left items-center text-left max-w-full md:max-w-6/12">
+      <div className="card-container lg:w-8/12">
+      <div className="card-content flex flex-col">
       <Heading tagName={"h3"} className="h3 mb-[var(--spacing-sm)] text-[var(--color-text)]">{item.data.title}</Heading>
       <p className="mb-[var(--spacing-sm)]">{item.data.description || item.body}</p>
       </div>
