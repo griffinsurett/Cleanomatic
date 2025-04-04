@@ -61,7 +61,7 @@ body {
 
 /* Global header styles (these are our dynamic header classes) */
 .h1 {
-  @apply text-2xl font-bold md:text-4xl uppercase;
+  @apply text-2xl font-bold md:text-5xl uppercase;
 }
 .h2 {
   @apply text-2xl font-bold md:text-4xl uppercase;
