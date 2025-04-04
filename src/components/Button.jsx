@@ -4,7 +4,7 @@ import DefaultIcon from "@/assets/favicon.svg"; // Neutral default icon for the 
 
 // Default base button classes for non-underline variants.
 const baseButtonClasses =
-  "rounded-none py-[var(--spacing-md)] px-[var(--spacing-2xl)] transform transition-all duration-300 ease-in-out h4";
+  "rounded-none py-[var(--spacing-md)] px-[var(--spacing-2xl)] transform transition-all duration-300 ease-in-out text-base font-semibold text-stroke md:text-lg xl:text-2xl uppercase italic";
 
 // Consolidate variant defaults here.
 const buttonVariantDefaults = {

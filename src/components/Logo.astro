@@ -11,11 +11,11 @@ const {
 } = Astro.props;
 ---
 <a href="/" class={`flex flex-col items-start justify-left py-[var(--spacing-md)] ${containerClass}`}>
-  <div class={`h2 ${titleClass}`}>
+  <div class={`md:font-black h2 ${titleClass}`}>
     {SiteData.title}
   </div>
   <div class={`tagline-and-logo flex justify-center items-center ${taglineClass}`}>
-    <div class="text-sm md:text-lg font-bold italic px-[var(--spacing-md)] md:px-[var(--spacing-lg)]">
+    <div class="text-sm text-stroke md:text-lg font-bold italic px-[var(--spacing-md)] md:px-[var(--spacing-lg)]">
       {SiteData.tagline}
     </div>
     <Image

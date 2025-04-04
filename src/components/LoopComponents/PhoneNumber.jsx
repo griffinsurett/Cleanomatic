@@ -8,8 +8,8 @@ export default function PhoneNumber({ type, number }) {
         href={`tel:${number}`}
         className="flex flex-col items-center p-[var(--spacing-md)]"
       >
-        <span className="phone-type h3">{uppercase(type)}:</span>
-        <span className="phone-number h6">{formatPhoneNumber(number)}</span>
+        <span className="phone-type h4 lg:h3 italic">{uppercase(type)}:</span>
+        <span className="phone-number h5 lg:h4 italic">{formatPhoneNumber(number)}</span>
       </a>
     </li>
   );
