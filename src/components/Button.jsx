@@ -47,7 +47,7 @@ export default function Button({
   href,
   variant, // "primary", "secondary", or "underline"
   iconProps = {}, // Consolidated icon properties
-  showIcon = true, // New prop: controls whether an icon is rendered
+  showIcon = false, // New prop: controls whether an icon is rendered
   ...props
 }) {
   // Default the variant to "primary" if not provided.
