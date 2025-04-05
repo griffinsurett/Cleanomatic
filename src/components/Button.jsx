@@ -1,5 +1,5 @@
 // src/components/Button.jsx
-import DefaultIcon from "@/assets/favicon.svg"; // Neutral default icon for the template
+import DefaultIcon from "@/assets/cleanomaticvanright3.png";
 
 // Default base button classes for non-underline variants.
 const baseButtonClasses =
@@ -70,7 +70,7 @@ export default function Button({
   const finalIcon = showIcon
     ? element !== undefined
       ? element
-      : <img src={DefaultIcon.src} alt="Icon" className="h-8 w-8" />
+      : <img src={DefaultIcon.src} alt="Icon" className="h-4 w-10" />
     : null;
 
   // Determine icon container classes if an icon is to be rendered.

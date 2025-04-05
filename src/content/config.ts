@@ -105,4 +105,7 @@ export const collections = {
   testimonials: defineCollection({
     schema: ({ image }) => baseSchema({ image }),
   }), 
+  benefits: defineCollection({
+    schema: ({ image }) => baseSchema({ image }),
+  }),
 };
