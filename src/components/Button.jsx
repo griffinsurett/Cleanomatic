@@ -1,5 +1,4 @@
 // src/components/Button.jsx
-import React from "react";
 import DefaultIcon from "@/assets/favicon.svg"; // Neutral default icon for the template
 
 // Default base button classes for non-underline variants.
@@ -47,7 +46,7 @@ export default function Button({
   href,
   variant, // "primary", "secondary", or "underline"
   iconProps = {}, // Consolidated icon properties
-  showIcon = false, // New prop: controls whether an icon is rendered
+  showIcon = true, // New prop: controls whether an icon is rendered
   ...props
 }) {
   // Default the variant to "primary" if not provided.

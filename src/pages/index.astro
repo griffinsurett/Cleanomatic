@@ -4,6 +4,7 @@ import Section from "@/components/Section.astro";
 import Card from "@/components/LoopComponents/Card";
 import ServiceCard from "@/components/LoopComponents/ServiceCard";
 import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
+import ReactWrapper from "@/components/ReactWrapper";
 import { Image } from "astro:assets";
 ---
 
@@ -41,6 +42,22 @@ import { Image } from "astro:assets";
       fetchpriority="high"
     />
   </Section>
+
+  <ReactWrapper>
+    <Image
+      src={HeroBg}
+      alt="Cleanomatic Truck"
+      format="webp"
+      quality={"low"}
+      width={280}
+      height={120}
+      class=""
+      loading="lazy"
+      decoding="async"
+      fetchpriority="low"
+    />
+  </ReactWrapper>
+
 
   {/* Services */}
   <Section
