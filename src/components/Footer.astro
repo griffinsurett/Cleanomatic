@@ -19,11 +19,12 @@ const FooterMenu = [
 ---
 
 <footer>
-  <div class="flex flex-col md:flex-row justify-between items-start italic bg-accent text-bg p-[var(--spacing-lg)]">
-    <div class="footer-logo w-1/3">
-      <Logo className="logo h5" />
+  <div class="flex flex-col md:flex-row justify-between items-start italic bg-accent text-bg py-[var(--spacing-2xl)] px-[var(--spacing-xl)]">
+    <div class="footer-logo md:w-1/4 lg:w-1/3">
+      <Logo />
     </div>
-    <Menu 
+    <div class="footer-menus h5 italic flex flex-col md:flex-row justify-between md:w-2/3 lg:w-3/5">
+      <Menu 
       listClass="flex flex-col justify-start items-start gap-[var(--spacing-sm)]" 
       items={await buildMenuQueries({ FooterMenu })} 
     />
@@ -36,6 +37,7 @@ const FooterMenu = [
     listClass="flex flex-col justify-start items-start gap-[var(--spacing-sm)]"
     menuItem={{ component: PhoneNumber, class: "phone-menu-item text-right" }}
   />
+    </div>
   </div>
   <div class="bg-primary text-bg p-[var(--spacing-lg)] md:p-[var(--spacing-md)]">
     <div class="footer-copyright flex flex-col md:flex-row justify-center items-center text-center h6 italic gap-[var(--spacing-xs)]">
