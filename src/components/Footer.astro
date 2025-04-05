@@ -1,10 +1,9 @@
 ---
 import { buildMenuQueries } from "@/utils/ArrayQueryUtils";
 import Menu from "./Menu/BarMenu/NavMenu.astro";
-import { getPhoneNumberMenuItems } from "@/queries/PhoneNumberMenuQuery";
-const phoneMenuItems = await getPhoneNumberMenuItems();
+import { getContactMenuItems } from "@/queries/ContactMenuQuery";
+import { getSocialMenuItems } from "@/queries/SocialMenuQuery";
 import PhoneNumber from "./LoopComponents/PhoneNumber/FooterPhoneNumber"; // updated phone number component
-import Heading from "./Heading";
 import Logo from "./Logo.astro";
 
 const FooterMenu = [
@@ -20,26 +19,25 @@ const FooterMenu = [
 ---
 
 <footer>
-  <div class="footer-blue flex flex-col md:flex-row justify-center items-center h4 bg-primary text-bg p-4">
-    <div class="footer-logo">
-      <Logo className="logo" />
+  <div class="flex flex-col md:flex-row justify-between items-start italic bg-accent text-bg p-[var(--spacing-lg)]">
+    <div class="footer-logo w-1/3">
+      <Logo className="logo h5" />
     </div>
     <Menu 
-      listClass="flex flex-col md:flex-row gap-[var(--spacing-sm)]" 
+      listClass="flex flex-col justify-start items-start gap-[var(--spacing-sm)]" 
       items={await buildMenuQueries({ FooterMenu })} 
     />
+    <Menu
+    items={await getSocialMenuItems()}
+    listClass="flex flex-col justify-start items-start gap-[var(--spacing-sm)]"
+    />
+    <Menu
+    items={await getContactMenuItems()}
+    listClass="flex flex-col justify-start items-start gap-[var(--spacing-sm)]"
+    menuItem={{ component: PhoneNumber, class: "phone-menu-item text-right" }}
+  />
   </div>
-  <div class="footer-red bg-accent text-bg p-[var(--spacing-lg)] md:p-[var(--spacing-md)]">
-    <div class="call-david flex flex-col md:flex-row justify-center items-center uppercase py-[var(--spacing-sm)] gap-x-[var(--spacing-sm)]">
-      <Heading tagName={"h5"} className="h5 italic">
-        Call David
-      </Heading>
-      <Menu
-        items={phoneMenuItems}
-        listClass="flex flex-col md:flex-row gap-[var(--spacing-xs)]"
-        menuItem={{ component: PhoneNumber, class: "phone-menu-item" }}
-      />
-    </div>
+  <div class="bg-primary text-bg p-[var(--spacing-lg)] md:p-[var(--spacing-md)]">
     <div class="footer-copyright flex flex-col md:flex-row justify-center items-center text-center h6 italic gap-[var(--spacing-xs)]">
       <p class="text-[var(--font-size-sm)]">
         &copy; {new Date().getFullYear()} Cleanomatic. All rights reserved.

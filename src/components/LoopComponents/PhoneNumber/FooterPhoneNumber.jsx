@@ -9,9 +9,8 @@ export default function PhoneNumber({ item }) {
       <a
         // Prepend "tel:" for the clickable link
         href={`tel:${phoneNumber}`}
-        className="flex items-center md:p-[var(--spacing-md)]"
       >
-        <span className="phone-type h5 italic pr-[var(--spacing-sm)]">{item.label}:</span>
+        <span className="phone-type h5 italic pr-[var(--spacing-xs)]">{item.label}:</span>
         <span className="phone-number h5 italic">{formatPhoneNumber(phoneNumber)}</span>
       </a>
     </li>
