@@ -10,18 +10,22 @@ const {
   imageClass = "",
 } = Astro.props;
 ---
-<a href="/" class={`flex flex-col items-start justify-left py-[var(--spacing-md)] ${containerClass}`}>
-  <div class={`md:font-black h2 ${titleClass}`}>
+
+<a
+  href="/"
+  class={`flex flex-col items-center justify-center py-[var(--spacing-md)] ${containerClass}`}
+>
+  <div class={`md:font-black h1 ${titleClass}`}>
     {SiteData.title}
   </div>
-  <div class={`tagline-and-logo flex justify-center items-center ${taglineClass}`}>
-    <div class="text-sm text-stroke md:text-lg font-bold italic px-[var(--spacing-md)] md:px-[var(--spacing-lg)]">
-      {SiteData.tagline}
-    </div>
+  <div
+    class={`tagline-and-logo w-fit flex justify-center items-center text-sm text-stroke md:text-xl font-bold italic ${taglineClass}`}
+  >
+    {SiteData.tagline}
     <Image
       src={SiteData.logo.src}
       alt={`${SiteData.title} logo`}
-      class={`h-6 w-auto md:h-8 animate-slide-right ${imageClass}`}
+      class={`h-4 w-auto md:h-6 animate-slide-right mx-[var(--spacing-xs)] ${imageClass}`}
       loading="eager"
       fetchpriority="high"
       aria-hidden="true"
