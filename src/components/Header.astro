@@ -1,14 +1,13 @@
 ---
-import { SiteData, ContactData, CTAdata } from "@/content/SiteData";
+import { SiteData, CTAdata } from "@/content/SiteData";
 import { buildMenuQueries } from "@/utils/ArrayQueryUtils";
 import Menu from "../components/Menu/Menu.astro";
 import MenuItem from "../components/Menu/BarMenu/MenuItem.astro"; // default main menu item
+import PhoneNumber from "./LoopComponents/PhoneNumber/HeaderPhoneNumber"; // updated phone number component
 import { Image } from "astro:assets";
 import Button from "./Button";
-import PhoneNumber from "../components/LoopComponents/PhoneNumber";
-import Logo from "../components/Logo.astro"; // import the new Logo component
-
-console.log(ContactData.phone);
+import Logo from "../components/Logo.astro"; // new Logo component
+import { getPhoneNumberMenuItems } from "@/queries/PhoneNumberMenuQuery";
 
 const MainNavMenu = [
   { id: "home", label: "Home", slug: "/" },
@@ -22,52 +21,62 @@ const MainNavMenu = [
   },
 ];
 
-const PhoneNumberMenu = ContactData.phone;
 const headerItems = await buildMenuQueries({ MainNavMenu });
-
-// Define a breakpoint variable to update responsive classes in one place.
+const phoneMenuItems = await getPhoneNumberMenuItems();
 ---
-<header class="flex flex-col justify-between items-center sticky top-0 z-50 shadow-xl">
-  <div class="top-header w-full flex justify-center items-center py-[var(--spacing-sm)] md:py-[var(--spacing-md)] bg-primary text-tertiary">
+
+<header
+  class="flex flex-col justify-between items-center sticky top-0 z-50 shadow-xl"
+>
+  <div
+    class="top-header w-full flex justify-center items-center py-[var(--spacing-sm)] md:py-[var(--spacing-md)] bg-primary text-tertiary"
+  >
     <div class="header-inner">
-      <div class="text-md h4 font-bold italic">
-        24 Hour Emergency Service
-      </div>
+      <div class="text-md h4 font-bold italic">24 Hour Emergency Service</div>
     </div>
   </div>
-  <div class={`main-header bg-accent text-bg lg:w-full flex justify-center w-full p-[var(--spacing-sm)] lg:p-[var(--spacing-lg)] lg:py-[var(--spacing-md)]`}>
+  <div
+    class="main-header bg-accent text-bg lg:w-full flex justify-center w-full p-[var(--spacing-sm)] lg:p-[var(--spacing-lg)] lg:py-[var(--spacing-md)]"
+  >
     <div class="header-inner flex justify-between items-center w-full">
-      <Logo /> <!-- Use the new Logo component here -->
-      <div class={`phone-and-cta-on-header hidden lg:flex justify-between items-center w-1/2`}>
-        <!-- phone number menu -->
-        <ul class="phone-list flex">
-          {ContactData.phone.map((phone, index) => (
-            <PhoneNumber type={phone.type} number={phone.number} />
-          ))}
-        </ul>
+      <Logo />
+      <div
+        class="phone-and-cta-on-header hidden lg:flex justify-between items-center w-1/2"
+      >
+        <!-- Phone number menu using the dynamic Menu component -->
+        <Menu
+          items={phoneMenuItems}
+          menuClass="phone-list flex"
+          menuItem={{ component: PhoneNumber, class: "phone-menu-item" }}
+        />
         <Button variant="secondary" href={CTAdata.buttonLink}>
           {CTAdata.buttonText}
         </Button>
       </div>
-      <!-- mobile menu -->
+      <!-- Mobile menu -->
       <Menu
         items={headerItems}
         hamburgerOnly={false}
-        menuClass={`menu-class bg-primary flex lg:hidden text-text`}
+        menuClass="menu-class bg-primary flex lg:hidden text-text"
         menuItem={{
           component: MenuItem,
           class:
             "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] hover:bg-secondary",
         }}
-        submenuItem={{ component: MenuItem, class: "bg-primary py-[var(--spacing-sm)]" }}
+        submenuItem={{
+          component: MenuItem,
+          class: "bg-primary py-[var(--spacing-sm)]",
+        }}
         isHierarchical={true}
-        breakpoint={"lg"}
+        breakpoint="lg"
       />
     </div>
   </div>
-  <div class={`bottom-header hidden lg:flex header-bottom w-full items-center bg-primary justify-center`}>
+  <div
+    class="bottom-header hidden lg:flex header-bottom w-full items-center bg-primary justify-center"
+  >
     <div class="header-inner w-full flex">
-      <!-- desktop menu -->
+      <!-- Desktop menu -->
       <Menu
         items={headerItems}
         hamburgerOnly={false}

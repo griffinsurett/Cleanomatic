@@ -6,7 +6,8 @@ const {
   menuItem,         // object: { component, class }
   submenuItem,      // object: { component, class }
   isHierarchical = true, 
-  breakpoint
+  breakpoint,
+  listClass
 } = Astro.props;
 ---
   <NavMenuList 
@@ -16,4 +17,5 @@ const {
     submenuItem={submenuItem}
     isHierarchical={isHierarchical}
     breakpoint={breakpoint}
+    listClass={listClass}
   />

@@ -84,7 +84,7 @@ body {
     @apply mb-4 leading-relaxed text-base;
   } */
 
-  .text-stroke,.h1,.h2,.h3,.h4,.h5,.h6 {
+  .text-stroke,.h1,.h2,.h3,.h4,.h5 {
     -webkit-text-stroke: 1px var(--color-text);  
   }
 }
