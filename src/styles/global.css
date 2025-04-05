@@ -63,22 +63,22 @@ body {
 
 /* Global header styles (these are our dynamic header classes) */
 .h1 {
-  @apply text-3xl font-bold md:text-5xl uppercase italic;
+  @apply text-3xl font-bold md:text-4xl lg:text-5xl uppercase italic;
 }
 .h2 {
-  @apply text-3xl font-bold md:text-4xl uppercase italic;
+  @apply text-3xl font-bold lg:text-4xl uppercase italic;
 }
 .h3 {
-  @apply text-xl font-bold md:text-3xl uppercase italic;
+  @apply text-xl font-bold md:text-2xl lg:text-3xl uppercase italic;
 }
 .h4 {
-  @apply text-lg font-bold md:text-2xl uppercase;
+  @apply text-lg font-bold md:text-xl lg:text-2xl uppercase;
 }
 .h5 {
-  @apply text-base font-bold md:text-xl;
+  @apply text-sm font-bold md:text-base lg:text-xl;
 }
 .h6 {
-  @apply text-base font-medium md:text-lg;
+  @apply text-sm font-medium md:text-base lg:text-lg;
 }
 /* p {
     @apply mb-4 leading-relaxed text-base;
