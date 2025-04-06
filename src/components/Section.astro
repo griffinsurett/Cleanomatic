@@ -24,21 +24,11 @@ import {
   resolveMetaProps,
   resolveHeading,
   resolveDescription,
-  resolveContainerClasses,
   resolveButtonsArray,
   getSectionItems,
 } from "@/utils/SectionUtils";
 import { capitalize } from "@/utils/ContentUtils";
-
-// Import component mapping
-import Card from "./LoopComponents/Card.jsx";
-import ServiceCard from "./LoopComponents/ServiceCard.astro";
-
-const componentMapping = {
-  Card,
-  ServiceCard,
-  // add other component mappings here
-};
+import { componentMapping } from "@/utils/ComponentMapping"; // Import mapping
 
 const {
   collection: collectionName,
@@ -72,7 +62,7 @@ let finalComponent = ItemComponent || defaultSection.component;
 
 // If the final component is provided as a string, map it to the actual component.
 if (typeof finalComponent === "string") {
-  finalComponent = componentMapping[finalComponent] || Card; // fallback to Card if mapping not found
+  finalComponent = componentMapping[finalComponent] || componentMapping["Card"];
 }
 
 let items = [];
@@ -114,7 +104,7 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
         query={queryType}
         itemsClass={finalItemsClass}
         itemClass={itemClass}
-        ItemComponent={finalComponent}  {/* Use our merged component */}
+        ItemComponent={finalComponent}  {/* Use our mapped component */}
         HasPage={itemsDefaultHasPage}
         pathname={Astro.url.pathname}
       />
