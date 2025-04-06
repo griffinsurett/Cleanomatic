@@ -36,11 +36,11 @@ const FooterMenu = [
 
 <footer class="flex justify-center items-center flex-col w-full">
   <div class="w-full flex flex-col lg:flex-row justify-between items-start italic bg-accent text-bg py-[var(--spacing-3xl)] px-[var(--spacing-xl)] lg:px-[var(--spacing-xl)]">
-    <div class="footer-logo w-full lg:w-1/3 mb-[var(--spacing-lg)]">
+    <div class="footer-logo w-full lg:w-1/3 md:mb-[var(--spacing-xl)] mb-0">
       <Logo />
     </div>
     <div class="footer-menus w-full h5 italic flex flex-col sm:flex-row justify-between lg:w-3/5">
-      <div class="footer-menu w-full">
+      <div class="footer-menu w-full md:my-[var(--spacing-lg)] my-0">
         <Heading tagName="h4" className={menuHeadingClass}>
           Info
         </Heading>
@@ -49,7 +49,7 @@ const FooterMenu = [
           items={await buildMenuQueries({ FooterMenu })}
         />
       </div>
-      <div class="social-menu w-full">
+      <div class="social-menu w-full md:my-[var(--spacing-lg)] my-0">
         <Heading tagName="h4" className={menuHeadingClass}>
           Follow Us
         </Heading>
@@ -58,7 +58,7 @@ const FooterMenu = [
           listClass={menuListClass}
         />
       </div>
-      <div class="contact-info w-full">
+      <div class="contact-info w-full md:my-[var(--spacing-lg)] my-0">
         <Heading tagName="h4" className={menuHeadingClass}>
           Contact Us
         </Heading>
