@@ -83,9 +83,6 @@ import { Image } from "astro:assets";
     collection="testimonials"
     query="getAll"
     component={Card}
-    sectionClass="flex justify-center items-center w-full text-center bg-primary text-bg"
-    contentClass="container flex flex-wrap flex-col justify-center items-center w-full py-[var(--spacing-2xl)] px-[var(--spacing-lg)]"
-    itemsClass="flex flex-wrap md:flex-nowrap justify-center items-stretch gap-[var(--spacing-xl)] my-[var(--spacing-lg)] md:my-[var(--spacing-2xl)]"
     heading={{ text: "Client Testimonials", tagName: "h2" }}
   />
 
@@ -95,8 +92,6 @@ import { Image } from "astro:assets";
     query="getAll"
     component={Card}
     heading={{ text: "Our Projects", tagName: "h2" }}
-    sectionClass="flex flex-col justify-center items-center text-center"
-    itemsClass="flex justify-center items-center flex-wrap flex-1/2 py-[var(--spacing-lg)]"
   />
 
    {/* FAQ Section */}

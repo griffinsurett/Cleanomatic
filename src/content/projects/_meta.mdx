@@ -2,6 +2,10 @@
 heading: "Our Projects"
 description: "A showcase of completed and ongoing projects."
 itemsHasPage: false
+defaultSection:
+  sectionClass: "flex flex-col justify-center items-center text-center"
+  contentClass: "container flex flex-wrap flex-col justify-center items-center w-full py-[var(--spacing-lg)] px-[var(--spacing-lg)]"
+  itemsClass: "flex justify-center items-center flex-wrap flex-1/2 py-[var(--spacing-lg)]"
 sections:
   - collection: "projects"
     query: "getAll"
@@ -11,7 +15,7 @@ sections:
     query: "related"
 addToQuery: [
   {
-    "id": "MainNavMenu",
+    "id": "MainNavMenu"
   }
 ]
 ---
