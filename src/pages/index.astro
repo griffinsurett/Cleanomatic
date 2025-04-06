@@ -4,7 +4,6 @@ import Section from "@/components/Section.astro";
 import Card from "@/components/LoopComponents/Card";
 import ServiceCard from "@/components/LoopComponents/ServiceCard.astro";
 import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
-import ReactWrapper from "@/components/ReactWrapper";
 import { Image } from "astro:assets";
 ---
 
@@ -64,9 +63,9 @@ import { Image } from "astro:assets";
     query="getAll"
     component={ServiceCard}
     heading={{ text: "Our Services", tagName: "h2" }}
-    sectionClass="flex justify-center items-center text-center"
+    sectionClass="flex justify-center items-center text-center bg-accent"
     contentClass="container flex flex-wrap flex-col justify-center items-center w-full py-[var(--spacing-2xl)] px-[var(--spacing-lg)]"
-    itemsClass="flex flex-wrap justify-center items-stretch gap-[var(--spacing-xl)]"
+    itemsClass="flex flex-wrap justify-center items-stretch gap-[var(--spacing-xl)] my-[var(--spacing-2xl)]"
     buttonsSectionClass="hidden"
   />
 
@@ -75,11 +74,10 @@ import { Image } from "astro:assets";
     collection="testimonials"
     query="getAll"
     component={Card}
-    sectionClass="flex justify-center items-center text-center bg-accent text-bg"
+    sectionClass="flex justify-center items-center text-center bg-primary text-bg"
     contentClass="container flex flex-wrap flex-col justify-between items-center w-full py-[var(--spacing-3xl)]"
     itemsClass="flex flex-wrap md:flex-nowrap justify-center items-stretch flex-1/2 gap-[var(--spacing-xl)] my-[var(--spacing-2xl)] p-[var(--spacing-lg)] md:p-0"
     heading={{ text: "Client Testimonials", tagName: "h2" }}
-    buttons={[{ text: "View All Testimonials", variant: "secondary" }]}
   />
 
   {/* Projects */}

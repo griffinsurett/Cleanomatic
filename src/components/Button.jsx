@@ -9,7 +9,7 @@ const baseButtonClasses =
 const buttonVariantDefaults = {
   primary: {
     variantClasses:
-      "bg-[var(--color-accent)] text-[var(--color-bg)] hover:bg-[var(--color-primary)]",
+      "bg-[var(--color-accent)] text-[var(--color-bg)] hover:bg-[var(--color-accent-secondary)]",
     buttonClasses: baseButtonClasses,
     iconDefaults: {
       hoverOnly: true,

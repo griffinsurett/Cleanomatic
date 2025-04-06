@@ -10,7 +10,7 @@ export default function HamburgerMenuContainer({ items, isOpen, onClose, breakpo
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      overlayClass="bg-black bg-opacity-50"
+      overlayClass="bg-primary bg-opacity-50"
       className="rounded shadow-lg p-4 w-full h-full overflow-auto"
       closeButton={true}
     >
