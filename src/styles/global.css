@@ -44,7 +44,7 @@
 @layer base {
 body {
   font-family: var(--font-base);
-  background-color: var(--color-bg);
+  background-color: var(--color-primary);
   color: var(--color-text);
   overflow-x: hidden;
 }
