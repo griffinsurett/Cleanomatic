@@ -78,7 +78,7 @@ body {
   @apply text-lg font-bold md:text-lg lg:text-xl;
 }
 .h6 {
-  @apply text-sm font-bold md:text-lg lg:text-lg;
+  @apply font-bold text-lg;
 }
 /* p {
     @apply mb-4 leading-relaxed text-base;
