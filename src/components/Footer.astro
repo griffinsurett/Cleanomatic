@@ -9,7 +9,7 @@ import Heading from "./Heading";
 
 // Define shared class strings for menus, headings, and menu items.
 const menuListClass = "flex flex-col justify-start items-start gap-[var(--spacing-sm)] h6";
-const menuHeadingClass = "text-2xl mb-[var(--spacing-md)] text-bg";
+const menuHeadingClass = "text-2xl lg:text-3xl mb-[var(--spacing-md)] text-bg";
 const menuItemClass = "phone-menu-item text-right"; // Used for menu items in Contact Info
 
 const FooterMenu = [
@@ -34,13 +34,13 @@ const FooterMenu = [
 ];
 ---
 
-<footer>
-  <div class="flex flex-col md:flex-row justify-between items-start italic bg-accent text-bg py-[var(--spacing-3xl)] px-[var(--spacing-xl)]">
-    <div class="footer-logo w-full md:w-1/4 lg:w-1/3 mb-[var(--spacing-lg)]">
+<footer class="flex justify-center items-center flex-col w-full">
+  <div class="w-full flex flex-col lg:flex-row justify-between items-start italic bg-accent text-bg py-[var(--spacing-3xl)] px-[var(--spacing-xl)] lg:px-[var(--spacing-xl)]">
+    <div class="footer-logo w-full lg:w-1/3 mb-[var(--spacing-lg)]">
       <Logo />
     </div>
-    <div class="footer-menus h5 italic flex flex-col md:flex-row justify-between md:w-2/3 lg:w-3/5">
-      <div class="footer-menu">
+    <div class="footer-menus w-full h5 italic flex flex-col sm:flex-row justify-between lg:w-3/5">
+      <div class="footer-menu w-full">
         <Heading tagName="h4" className={menuHeadingClass}>
           Info
         </Heading>
@@ -49,7 +49,7 @@ const FooterMenu = [
           items={await buildMenuQueries({ FooterMenu })}
         />
       </div>
-      <div class="social-menu">
+      <div class="social-menu w-full">
         <Heading tagName="h4" className={menuHeadingClass}>
           Follow Us
         </Heading>
@@ -58,7 +58,7 @@ const FooterMenu = [
           listClass={menuListClass}
         />
       </div>
-      <div class="contact-info">
+      <div class="contact-info w-full">
         <Heading tagName="h4" className={menuHeadingClass}>
           Contact Us
         </Heading>
@@ -73,7 +73,7 @@ const FooterMenu = [
       </div>
     </div>
   </div>
-  <div class="bg-primary text-bg p-[var(--spacing-lg)]">
+  <div class="w-full bg-primary text-bg p-[var(--spacing-lg)]">
     <div class="footer-copyright flex flex-col md:flex-row justify-center items-center text-center italic gap-[var(--spacing-xs)]">
       <p>
         &copy; {new Date().getFullYear()} Cleanomatic. All rights reserved.
