@@ -67,6 +67,7 @@ export const metaSchema = z.object({
   description: descriptionSchema.optional(),
   hasPage: z.boolean().default(true),
   itemsHasPage: z.boolean().default(true),
+  defaultSection: sectionSchema.optional(),
   sections: z.array(sectionSchema).optional(),
   itemsSections: z.array(sectionSchema).optional(),
   addToQuery: z.array(QueryItemSchema).optional(),

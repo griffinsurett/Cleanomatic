@@ -71,15 +71,12 @@ import { Image } from "astro:assets";
 
   {/* Services */}
   <Section
-    collection="services"
-    query="getAll"
-    component={ServiceCard}
-    heading={{ text: "Our Services", tagName: "h2" }}
-    sectionClass="flex justify-center items-center text-center text-accent bg-bg"
-    contentClass="container flex flex-wrap flex-col justify-center items-center w-full py-[var(--spacing-xl)] px-[var(--spacing-lg)]"
-    itemsClass="flex flex-wrap justify-center items-stretch gap-[var(--spacing-xl)] my-[var(--spacing-lg)] md:my-[var(--spacing-2xl)]"
-    buttonsSectionClass="hidden"
-  />
+  collection="services"
+  query="getAll"
+  component={ServiceCard}
+  buttonsSectionClass="hidden"
+/>
+
 
   {/* Testimonials */}
   <Section
