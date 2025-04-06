@@ -8,7 +8,7 @@ import Logo from "./Logo.astro";
 import Heading from "./Heading";
 
 // Define shared class strings for menus and headings.
-const menuListClass = "flex flex-col justify-start items-start gap-[var(--spacing-sm)]";
+const menuListClass = "flex flex-col justify-start items-start gap-[var(--spacing-sm)] h6";
 const menuHeadingClass = "h4 mb-[var(--spacing-md)] text-bg";
 
 const FooterMenu = [
@@ -72,8 +72,8 @@ const FooterMenu = [
       </div>
     </div>
   </div>
-  <div class="bg-primary text-bg p-[var(--spacing-lg)] md:p-[var(--spacing-md)]">
-    <div class="footer-copyright flex flex-col md:flex-row justify-center items-center text-center h6 italic gap-[var(--spacing-xs)]">
+  <div class="bg-primary text-bg p-[var(--spacing-lg)]">
+    <div class="footer-copyright flex flex-col md:flex-row justify-center items-center text-center italic gap-[var(--spacing-xs)]">
       <p class="text-[var(--font-size-sm)]">
         &copy; {new Date().getFullYear()} Cleanomatic. All rights reserved.
       </p>

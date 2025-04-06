@@ -75,10 +75,10 @@ body {
   @apply text-lg font-bold md:text-xl lg:text-2xl uppercase;
 }
 .h5 {
-  @apply text-sm font-bold md:text-base lg:text-xl;
+  @apply text-lg font-bold md:text-lg lg:text-xl;
 }
 .h6 {
-  @apply text-sm font-medium md:text-base lg:text-lg;
+  @apply text-sm font-bold md:text-lg lg:text-lg;
 }
 /* p {
     @apply mb-4 leading-relaxed text-base;
