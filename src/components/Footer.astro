@@ -7,9 +7,10 @@ import PhoneNumber from "./LoopComponents/ContactMenu/ContactInfo"; // updated c
 import Logo from "./Logo.astro";
 import Heading from "./Heading";
 
-// Define shared class strings for menus and headings.
+// Define shared class strings for menus, headings, and menu items.
 const menuListClass = "flex flex-col justify-start items-start gap-[var(--spacing-sm)] h6";
 const menuHeadingClass = "h4 mb-[var(--spacing-md)] text-bg";
+const menuItemClass = "phone-menu-item text-right"; // Used for menu items in Contact Info
 
 const FooterMenu = [
   {
@@ -66,7 +67,7 @@ const FooterMenu = [
           listClass={menuListClass}
           menuItem={{
             component: PhoneNumber,
-            class: "phone-menu-item text-right",
+            class: menuItemClass,
           }}
         />
       </div>
