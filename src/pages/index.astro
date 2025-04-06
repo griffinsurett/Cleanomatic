@@ -5,6 +5,7 @@ import Card from "@/components/LoopComponents/Card";
 import ServiceCard from "@/components/LoopComponents/ServiceCard.astro";
 import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
 import { Image } from "astro:assets";
+import Accordion from "@/components/LoopComponents/Accordion";
 ---
 
 <Layout title="Welcome to Cleanomatic">
@@ -74,7 +75,7 @@ import { Image } from "astro:assets";
     query="getAll"
     component={ServiceCard}
     heading={{ text: "Our Services", tagName: "h2" }}
-    sectionClass="flex justify-center items-center text-center text-bg bg-accent"
+    sectionClass="flex justify-center items-center text-center text-accent bg-bg"
     contentClass="container flex flex-wrap flex-col justify-center items-center w-full py-[var(--spacing-xl)] px-[var(--spacing-lg)]"
     itemsClass="flex flex-wrap justify-center items-stretch gap-[var(--spacing-xl)] my-[var(--spacing-lg)] md:my-[var(--spacing-2xl)]"
     buttonsSectionClass="hidden"
@@ -100,4 +101,12 @@ import { Image } from "astro:assets";
     sectionClass="flex flex-col justify-center items-center text-center"
     itemsClass="flex justify-center items-center flex-wrap flex-1/2 py-[var(--spacing-lg)]"
   />
+
+   {/* FAQ Section */}
+   <!-- <Section
+   collection="faq"
+   query="getAll"
+   component={Accordion}
+   clientDirective="idle"  
+ /> -->
 </Layout>

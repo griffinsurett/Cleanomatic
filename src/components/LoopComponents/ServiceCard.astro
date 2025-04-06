@@ -9,8 +9,8 @@ const { item, collectionName, HasPage } = Astro.props;
 const effectiveHasPage = item.data.hasPage !== undefined ? item.data.hasPage : HasPage;
 ---
 
-<li class="card w-full md:flex-2/5 lg:flex-1/4 border-1 border-text flex flex-col items-center">
-  <div class="card-image w-full">
+<li class="card w-full md:flex-2/5 lg:flex-1/4 border-1 box-shadow-primary bg-text border-text flex flex-col items-center">
+  <div class="card-image w-full hover:opacity-50 duration-500">
     {item.data.featuredImage && (
       <div class="w-full h-38 md:h-48">  <!-- Fixed height for all screen sizes -->
         <Image 

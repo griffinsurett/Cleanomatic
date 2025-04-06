@@ -85,6 +85,7 @@ const baseSchema = ({ image }: { image: Function }) =>
     tags: z.array(z.string()).optional(),
   });
 
+// In src/content/config.ts
 export const collections = {
   services: defineCollection({
     schema: ({ image }) =>
@@ -108,4 +109,9 @@ export const collections = {
   benefits: defineCollection({
     schema: ({ image }) => baseSchema({ image }),
   }),
+  // New FAQs collection using the existing baseSchema
+  faq: defineCollection({
+    schema: ({ image }) => baseSchema({ image }),
+  }),
 };
+

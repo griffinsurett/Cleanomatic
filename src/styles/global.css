@@ -59,6 +59,10 @@ body {
     @apply mx-auto px-[var(--spacing-md)] sm:px-[var(--spacing-lg)] lg:px-[var(--spacing-xl)];
     max-width: 1200px;
   }
+
+  .box-shadow-primary {
+    @apply shadow-[var(--shadow)];
+  }
 }
 
 /* Global header styles (these are our dynamic header classes) */
