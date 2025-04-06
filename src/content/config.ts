@@ -41,7 +41,7 @@ const buttonSchema = z.object({
 const sectionSchema = z.object({
   collection: z.string().optional(), // optional if not dynamic
   query: z.string().optional(),
-  component: z.function().optional(),
+  component: z.union([z.function(), z.string()]).optional(),
   heading: headingSchema.optional(),
   description: descriptionSchema.optional(),
   buttons: z.array(buttonSchema).optional(),

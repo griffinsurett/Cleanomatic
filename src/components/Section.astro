@@ -16,6 +16,7 @@
  * This hierarchy ensures that the highest priority values are used where explicitly provided,
  * while sensible defaults are always available.
  */
+
 import Heading from "./Heading.jsx";
 import Button from "./Button.jsx";
 import ItemsTemplate from "./ItemsTemplate.astro";
@@ -29,10 +30,20 @@ import {
 } from "@/utils/SectionUtils";
 import { capitalize } from "@/utils/ContentUtils";
 
+// Import component mapping
+import Card from "./LoopComponents/Card.jsx";
+import ServiceCard from "./LoopComponents/ServiceCard.astro";
+
+const componentMapping = {
+  Card,
+  ServiceCard,
+  // add other component mappings here
+};
+
 const {
   collection: collectionName,
   query: queryType,
-  component: ItemComponent,
+  component: ItemComponent, // explicit component prop from the page
   heading,
   description,
   buttons,
@@ -49,11 +60,20 @@ const meta = await resolveMetaProps(collectionName, queryType);
 // Extract default section settings from meta (if defined)
 const defaultSection = meta.defaultSection || {};
 
-// Merge default values with any explicit overrides
+// Merge defaults with any explicit overrides
 const finalSectionClass = sectionClass || defaultSection.sectionClass || "";
 const finalContentClass = contentClass || defaultSection.contentClass || "";
 const finalItemsClass = itemsClass || defaultSection.itemsClass || "";
 const finalButtonsSectionClass = buttonsSectionClass || defaultSection.buttonsSectionClass || "";
+
+// Determine the component to render:
+// Priority: explicit prop > defaultSection.component (from meta)
+let finalComponent = ItemComponent || defaultSection.component;
+
+// If the final component is provided as a string, map it to the actual component.
+if (typeof finalComponent === "string") {
+  finalComponent = componentMapping[finalComponent] || Card; // fallback to Card if mapping not found
+}
 
 let items = [];
 const isDynamic = Boolean(collectionName && queryType);
@@ -94,7 +114,7 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
         query={queryType}
         itemsClass={finalItemsClass}
         itemClass={itemClass}
-        ItemComponent={ItemComponent}
+        ItemComponent={finalComponent}  {/* Use our merged component */}
         HasPage={itemsDefaultHasPage}
         pathname={Astro.url.pathname}
       />
