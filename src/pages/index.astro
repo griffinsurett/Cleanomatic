@@ -10,6 +10,9 @@ import { Image } from "astro:assets";
 <Layout title="Welcome to Cleanomatic">
   <!-- Hero Section with two buttons -->
   <Section
+    backgroundImage={HeroBg}
+    backgroundOverlayClass="bg-text opacity-70"
+    
     heading={[
       {
         text: "Welcome to Cleanomatic – Your Trusted Cleaning Experts in New Jersey!",
@@ -22,23 +25,11 @@ import { Image } from "astro:assets";
       {
         text: "Request Estimate",
         link: "/contact",
-        class: "mt-[var(--spacing-sm)]",
       },
     ]}
-    sectionClass="min-h-[80vh] md:min-h-[70vh] flex items-center justify-center bg-cover bg-fixed bg-center z-100 md:p-[var(--spacing-lg)] bg-secondary"
+    buttonsSectionClass="mt-[var(--spacing-xl)]"
+    sectionClass="min-h-[80vh] md:min-h-[70vh] flex items-center justify-center bg-cover bg-fixed bg-center z-100 md:p-[var(--spacing-lg)] text-bg"
   >
-    <Image
-      src={HeroBg}
-      alt="Cleanomatic Truck"
-      format="webp"
-      quality={"low"}
-      width={1200}
-      height={800}
-      class="parallax absolute inset-0 object-cover w-full h-full z-[-1] opacity-30"
-      loading="eager"
-      decoding="async"
-      fetchpriority="high"
-    />
   </Section>
 
   <Section
@@ -55,18 +46,6 @@ import { Image } from "astro:assets";
     itemsClass="flex flex-wrap justify-center items-stretch flex-1/2"
     buttonsSectionClass="hidden"
   >
-  <Image
-  src={HeroBg}
-  alt="Cleanomatic Truck"
-  format="webp"
-  quality={"low"}
-  width={1200}
-  height={800}
-  class="parallax absolute inset-0 object-cover w-full h-full z-[-1] opacity-30"
-  loading="eager"
-  decoding="async"
-  fetchpriority="high"
-/>
   </Section>
 
   {/* Services */}

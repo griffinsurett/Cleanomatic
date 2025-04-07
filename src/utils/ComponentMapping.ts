@@ -1,4 +1,4 @@
-// src/utils/componentMapping.ts
+// src/utils/ComponentMapping.ts
 
 // Eagerly import all .jsx and .astro files from the LoopComponents directory.
 const modules = import.meta.glob('../components/LoopComponents/*.{jsx,astro}', { eager: true });

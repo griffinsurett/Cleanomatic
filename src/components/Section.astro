@@ -13,12 +13,12 @@
  *    - If neither the Section props nor the meta file provide a value, automatically generate a default.
  *      For the heading, this fallback is the collection slug capitalized (e.g., "services" becomes "Services").
  *
- * This hierarchy ensures that the highest priority values are used where explicitly provided,
- * while sensible defaults are always available.
+ * Extended to support optimized background images and overlay classes.
  */
-import Heading from "./Heading.jsx";
+ import Heading from "./Heading.jsx";
 import Button from "./Button.jsx";
 import ItemsTemplate from "./ItemsTemplate.astro";
+import { Image } from "astro:assets";
 import {
   resolveMetaProps,
   resolveHeading,
@@ -42,6 +42,9 @@ const {
   itemsClass,
   itemClass,
   buttonsSectionClass,
+  // New props for background image and overlay
+  backgroundImage,           // e.g. an imported image asset or URL string
+  backgroundOverlayClass,    // e.g. "bg-black opacity-50"
   ...props
 } = Astro.props;
 
@@ -83,100 +86,114 @@ const buttonsArray = resolveButtonsArray(
 const itemsDefaultHasPage = meta.itemsHasPage ?? false;
 ---
 
-{isDynamic ? (
-  <section
-    class={`${finalSectionClass} w-full py-[var(--spacing-lg)] lg:px-[var(--spacing-md)]`}
-    data-collection={collectionName}
-    {...props}
-  >
-    <div class={`${finalContentClass} w-3/4 my-[var(--spacing-lg)]`}>
-      {finalHeadingArray.map((head, i) => {
-        const headObj = typeof head === "string" ? { text: head } : head;
-        const Tag = headObj.tagName || "h2";
-        return (
-          <Heading key={i} tagName={Tag} className={headObj.class || ""}>
-            {headObj.text}
-          </Heading>
-        );
-      })}
-      <slot name="aboveItemsInjection" />
-      <ItemsTemplate
-        items={items}
-        collection={collectionName}
-        query={queryType}
-        itemsClass={finalItemsClass}
-        itemClass={itemClass}
-        ItemComponent={finalComponent}
-        HasPage={itemsDefaultHasPage}
-        pathname={Astro.url.pathname}
+<!-- Outer section: relative for layering -->
+<section
+  class={`${finalSectionClass} relative w-full ${isDynamic ? "py-[var(--spacing-lg)] lg:px-[var(--spacing-md)]" : "lg:px-[var(--spacing-md)]"}`}
+  data-collection={collectionName}
+  {...props}
+>
+  <!-- Optimized Background Image Layer -->
+  {backgroundImage && (
+    <div class="absolute inset-0 z-0" aria-hidden="true">
+      <Image
+        src={backgroundImage}
+        alt=""
+        class="w-full h-full object-cover"
+        format="webp"
+        quality={"low"}
+        sizes="100vw"
+        loading="eager"
+        fetchpriority="high"
       />
-      <slot name="belowItemsInjection" />
-      <div class={finalButtonsSectionClass}>
-        {buttonsArray.length > 0 &&
-          buttonsArray.map((btn, index) => {
-            const btnDefaults = {
-              text: capitalize(collectionName),
-              link: `/${collectionName}`,
-              class: "",
-              variant: "primary",
-            };
-            const finalButtonProps = { ...btnDefaults, ...btn };
-            return (
-              <Button
-                key={index}
-                href={finalButtonProps.link}
-                className={finalButtonProps.class}
-                ariaLabel={finalButtonProps.text}
-                variant={finalButtonProps.variant}
-              >
-                {finalButtonProps.text}
-              </Button>
-            );
-          })}
-      </div>
-      <slot />
     </div>
-  </section>
-) : (
-  <section class={`${finalSectionClass} w-full lg:px-[var(--spacing-md)]`} {...props}>
-    <div class={`${finalContentClass} w-3/4`}>
-      {finalHeadingArray.map((head, i) => {
-        const headObj = typeof head === "string" ? { text: head } : head;
-        const Tag = headObj.tagName || "h2";
-        return (
-          <Heading key={i} tagName={Tag} className={headObj.class || ""}>
-            {headObj.text}
-          </Heading>
-        );
-      })}
-      {finalDescription && (
-        <p class={description?.class}>
-          {finalDescription}
-        </p>
-      )}
-      <slot />
-      <div class={finalButtonsSectionClass}>
-        {buttonsArray.length > 0 &&
-          buttonsArray.map((btn, index) => {
-            const btnDefaults = {
-              text: capitalize(collectionName),
-              link: `/${collectionName}`,
-              class: "",
-            };
-            const finalButtonProps = { ...btnDefaults, ...btn };
-            return (
-              <Button
-                key={index}
-                href={finalButtonProps.link}
-                className={finalButtonProps.class}
-                ariaLabel={finalButtonProps.text}
-                variant={finalButtonProps.variant}
-              >
-                {finalButtonProps.text}
-              </Button>
-            );
-          })}
-      </div>
-    </div>
-  </section>
-)}
+  )}
+  
+  <!-- Background Overlay Layer using overlay class -->
+  {backgroundOverlayClass && (
+    <div class={`absolute inset-0 ${backgroundOverlayClass} z-0`} aria-hidden="true"></div>
+  )}
+  <!-- Content container with relative positioning and higher z-index to sit above backgrounds -->
+  <div class={`${finalContentClass} relative w-3/4 z-10 ${isDynamic ? "my-[var(--spacing-lg)]" : ""}`}>
+    {finalHeadingArray.map((head, i) => {
+      const headObj = typeof head === "string" ? { text: head } : head;
+      const Tag = headObj.tagName || "h2";
+      return (
+        <Heading key={i} tagName={Tag} className={headObj.class || ""}>
+          {headObj.text}
+        </Heading>
+      );
+    })}
+    {isDynamic ? (
+      <>
+        <slot name="aboveItemsInjection" />
+        <ItemsTemplate
+          items={items}
+          collection={collectionName}
+          query={queryType}
+          itemsClass={finalItemsClass}
+          itemClass={itemClass}
+          ItemComponent={finalComponent}
+          HasPage={itemsDefaultHasPage}
+          pathname={Astro.url.pathname}
+        />
+        <slot name="belowItemsInjection" />
+        <div class={finalButtonsSectionClass}>
+          {buttonsArray.length > 0 &&
+            buttonsArray.map((btn, index) => {
+              const btnDefaults = {
+                text: capitalize(collectionName),
+                link: `/${collectionName}`,
+                class: "",
+                variant: "primary",
+              };
+              const finalButtonProps = { ...btnDefaults, ...btn };
+              return (
+                <Button
+                  key={index}
+                  href={finalButtonProps.link}
+                  className={finalButtonProps.class}
+                  ariaLabel={finalButtonProps.text}
+                  variant={finalButtonProps.variant}
+                >
+                  {finalButtonProps.text}
+                </Button>
+              );
+            })}
+        </div>
+        <slot />
+      </>
+    ) : (
+      <>
+        {finalDescription && (
+          <p class={description?.class}>
+            {finalDescription}
+          </p>
+        )}
+        <slot />
+        <div class={finalButtonsSectionClass}>
+          {buttonsArray.length > 0 &&
+            buttonsArray.map((btn, index) => {
+              const btnDefaults = {
+                text: capitalize(collectionName),
+                link: `/${collectionName}`,
+                class: "",
+                variant: "primary",
+              };
+              const finalButtonProps = { ...btnDefaults, ...btn };
+              return (
+                <Button
+                  key={index}
+                  href={finalButtonProps.link}
+                  className={finalButtonProps.class}
+                  ariaLabel={finalButtonProps.text}
+                  variant={finalButtonProps.variant}
+                >
+                  {finalButtonProps.text}
+                </Button>
+              );
+            })}
+        </div>
+      </>
+    )}
+  </div>
+</section>
