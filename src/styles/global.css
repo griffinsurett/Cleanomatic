@@ -70,7 +70,7 @@ body {
   @apply text-3xl font-bold md:text-4xl lg:text-5xl uppercase italic;
 }
 .h2 {
-  @apply text-3xl font-bold md:text-4xl lg:text-5xl uppercase italic;
+  @apply text-2xl font-bold md:text-4xl lg:text-5xl uppercase italic;
 }
 .h3 {
   @apply text-xl font-bold md:text-2xl uppercase italic;
