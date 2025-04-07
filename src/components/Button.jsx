@@ -29,7 +29,7 @@ const buttonVariantDefaults = {
   underline: {
     variantClasses:
       "underline text-[var(--color-primary)] hover:text-[var(--color-secondary)]",
-    buttonClasses: "", // Override default button classes for underline.
+    buttonClasses: "",
     iconDefaults: {
       className: "hidden",
       hoverOnly: false,
@@ -38,7 +38,6 @@ const buttonVariantDefaults = {
   },
 };
 
-// Mark this component as async so we can await getImage()
 export default async function Button({
   as: ComponentProp,
   type = "button",
@@ -48,46 +47,40 @@ export default async function Button({
   href,
   variant, // "primary", "secondary", or "underline"
   iconProps = {}, // Consolidated icon properties
-  showIcon = true, // New prop: controls whether an icon is rendered
+  showIcon = true, // Controls whether an icon is rendered
   ...props
 }) {
-  // Default the variant to "primary" if not provided.
   variant = variant || "primary";
-
-  // Pull in the variant defaults.
   const { variantClasses, buttonClasses, iconDefaults } =
     buttonVariantDefaults[variant] || buttonVariantDefaults.primary;
 
-  // Merge the variant's icon defaults with any custom iconProps.
   const mergedIconProps = { ...iconDefaults, ...iconProps };
   const {
-    element,               // The actual icon element (e.g., <img />, emoji, etc.)
-    position = "right",    // "left" or "right"
-    className: iconCustomClass = "", // Additional class for the icon container
-    hoverOnly,             // from mergedIconProps
-    animateIcon,           // from mergedIconProps
+    element,
+    position = "right",
+    className: iconCustomClass = "",
+    hoverOnly,
+    animateIcon,
   } = mergedIconProps;
 
-  // If showIcon is true and no custom element is provided,
-  // use Astro's getImage to optimize the default icon.
+  // If no custom icon is provided, use getImage to generate an optimized default icon.
   let optimizedDefaultIcon = null;
   if (showIcon && element === undefined) {
     optimizedDefaultIcon = await getImage({ src: DefaultIcon }, {
       format: "webp",
-      quality: 20,
-      width: 40, // Adjust width as needed
+      quality: 80,
+      width: 40,    // Explicit width in pixels
+      height: 40,   // Explicit height in pixels
+      sizes: "40px" // Inform the browser the rendered image is ~40px wide
     });
   }
 
-  // Set finalIcon to either the custom icon element or the optimized default icon.
   const finalIcon = showIcon
     ? element !== undefined
       ? element
-      : // Display the optimized default icon.
-        <img src={optimizedDefaultIcon?.src} alt="Icon" className="h-4 w-10" />
+      : <img src={optimizedDefaultIcon?.src} alt="Icon" className="h-4 w-10" />
     : null;
 
-  // Determine icon container classes if an icon is to be rendered.
   let iconContainerClasses = "";
   if (finalIcon) {
     if (hoverOnly) {
@@ -108,21 +101,16 @@ export default async function Button({
     }
   }
 
-  // If the merged icon props specify a class that contains "hidden", then just use that.
   const finalIconContainerClass = iconCustomClass.includes("hidden")
     ? iconCustomClass
     : `${iconCustomClass} ${iconContainerClasses}`.trim();
 
-  // Ensure the button container is positioned relatively so that any inline icon behavior works.
   const containerDefaults = "relative inline-flex items-center group";
-
-  // Build the overall class names.
   const combinedClassNames =
     variant === "underline"
       ? `${className} ${variantClasses} transition-colors duration-300 ease-in-out ${containerDefaults} inline-flex items-center group`
       : `${className} ${variantClasses} ${buttonClasses} ${containerDefaults}`;
 
-  // Determine the component to render.
   const ComponentFinal = ComponentProp ?? (href ? "a" : "button");
 
   return (
