@@ -13,12 +13,13 @@
  *    - If neither the Section props nor the meta file provide a value, automatically generate a default.
  *      For the heading, this fallback is the collection slug capitalized (e.g., "services" becomes "Services").
  *
- * Extended to support optimized background images and overlay classes.
+ * Extended to support a background object for background images and overlays.
+ * Now using Astro's getImage to generate an optimized low-res WebP background.
  */
  import Heading from "./Heading.jsx";
 import Button from "./Button.jsx";
 import ItemsTemplate from "./ItemsTemplate.astro";
-import { Image } from "astro:assets";
+import { getImage } from "astro:assets";
 import {
   resolveMetaProps,
   resolveHeading,
@@ -42,9 +43,8 @@ const {
   itemsClass,
   itemClass,
   buttonsSectionClass,
-  // New props for background image and overlay
-  backgroundImage,           // e.g. an imported image asset or URL string
-  backgroundOverlayClass,    // e.g. "bg-black opacity-50"
+  // Grouped background properties into one object
+  background, // expected keys: image, imageClass, overlayClass
   ...props
 } = Astro.props;
 
@@ -84,6 +84,18 @@ const buttonsArray = resolveButtonsArray(
   Astro.url.pathname
 );
 const itemsDefaultHasPage = meta.itemsHasPage ?? false;
+
+// Use getImage to generate an optimized version of the background image.
+// Note: Pass an object with the image in the src property.
+let optimizedBackground = null;
+if (background?.image) {
+  optimizedBackground = await getImage({ src: background.image }, {
+    format: "webp",
+    quality: 80,
+    width: 1200,
+    // placeholder: "blur", // Enable if you want a low-res blur effect.
+  });
+}
 ---
 
 <!-- Outer section: relative for layering -->
@@ -92,25 +104,17 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
   data-collection={collectionName}
   {...props}
 >
-  <!-- Optimized Background Image Layer -->
-  {backgroundImage && (
-    <div class="absolute inset-0 z-0" aria-hidden="true">
-      <Image
-        src={backgroundImage}
-        alt=""
-        class="w-full h-full object-cover"
-        format="webp"
-        quality={"low"}
-        sizes="100vw"
-        loading="eager"
-        fetchpriority="high"
-      />
-    </div>
+  <!-- Optimized Background Image Layer as a CSS background, with additional image classes -->
+  {optimizedBackground && (
+    <div
+      class={`absolute inset-0 z-0 ${background?.imageClass || ""}`}
+      style={`background-image: url('${optimizedBackground.src}');`}
+      aria-hidden="true"
+    ></div>
   )}
-  
-  <!-- Background Overlay Layer using overlay class -->
-  {backgroundOverlayClass && (
-    <div class={`absolute inset-0 ${backgroundOverlayClass} z-0`} aria-hidden="true"></div>
+  <!-- Background Overlay Layer using overlay class from the background object -->
+  {background?.overlayClass && (
+    <div class={`absolute inset-0 ${background.overlayClass} z-0`} aria-hidden="true"></div>
   )}
   <!-- Content container with relative positioning and higher z-index to sit above backgrounds -->
   <div class={`${finalContentClass} relative w-3/4 z-10 ${isDynamic ? "my-[var(--spacing-lg)]" : ""}`}>
