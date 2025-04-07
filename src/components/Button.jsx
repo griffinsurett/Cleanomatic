@@ -1,5 +1,6 @@
 // src/components/Button.jsx
 import DefaultIcon from "@/assets/cleanomaticvanright3.png";
+import { getImage } from "astro:assets";
 
 // Default base button classes for non-underline variants.
 const baseButtonClasses =
@@ -37,7 +38,8 @@ const buttonVariantDefaults = {
   },
 };
 
-export default function Button({
+// Mark this component as async so we can await getImage()
+export default async function Button({
   as: ComponentProp,
   type = "button",
   onClick,
@@ -66,11 +68,23 @@ export default function Button({
     animateIcon,           // from mergedIconProps
   } = mergedIconProps;
 
-  // If showIcon is false, then no icon is rendered.
+  // If showIcon is true and no custom element is provided,
+  // use Astro's getImage to optimize the default icon.
+  let optimizedDefaultIcon = null;
+  if (showIcon && element === undefined) {
+    optimizedDefaultIcon = await getImage({ src: DefaultIcon }, {
+      format: "webp",
+      quality: 80,
+      width: 40, // Adjust width as needed
+    });
+  }
+
+  // Set finalIcon to either the custom icon element or the optimized default icon.
   const finalIcon = showIcon
     ? element !== undefined
       ? element
-      : <img src={DefaultIcon.src} alt="Icon" className="h-4 w-10" />
+      : // Display the optimized default icon.
+        <img src={optimizedDefaultIcon?.src} alt="Icon" className="h-4 w-10" />
     : null;
 
   // Determine icon container classes if an icon is to be rendered.
