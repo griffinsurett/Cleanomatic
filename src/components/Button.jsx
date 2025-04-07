@@ -74,7 +74,7 @@ export default async function Button({
   if (showIcon && element === undefined) {
     optimizedDefaultIcon = await getImage({ src: DefaultIcon }, {
       format: "webp",
-      quality: 80,
+      quality: 20,
       width: 40, // Adjust width as needed
     });
   }
