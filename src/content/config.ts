@@ -107,9 +107,6 @@ export const collections = {
   testimonials: defineCollection({
     schema: ({ image }) => baseSchema({ image }),
   }), 
-  benefits: defineCollection({
-    schema: ({ image }) => baseSchema({ image }),
-  }),
   // New FAQs collection using the existing baseSchema
   faq: defineCollection({
     schema: ({ image }) => baseSchema({ image }),
