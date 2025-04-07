@@ -3,14 +3,17 @@ import NavMenu from "./BarMenu/NavMenu.astro";
 import HamburgerNavMenu from "./HamburgerMenu/HamburgerNavMenu.jsx";
 import defaultTheme from "tailwindcss/defaultTheme";
 
+// New props: barMenu and hamburgerMenu objects for customizations
 const {
   items,
   breakpoint = "none",
   menuClass = "",
-  listClass = "", // NEW prop for styling the ul
+  listClass = "",
   menuItem,
   submenuItem,
   isHierarchical = true,
+  barMenu,        // e.g. { menuItem, submenuItem, listClass }
+  hamburgerMenu,  // e.g. { hamburgerIconClass, hamburgerIconTransform, menuBackground, menuOverlay, listClass }
 } = Astro.props as {
   items: any;
   breakpoint?: keyof typeof defaultTheme.screens | "none";
@@ -19,6 +22,18 @@ const {
   menuItem?: any;
   submenuItem?: any;
   isHierarchical?: boolean;
+  barMenu?: {
+    menuItem?: any;
+    submenuItem?: any;
+    listClass?: string;
+  };
+  hamburgerMenu?: {
+    hamburgerIconClass?: string;
+    hamburgerIconTransform?: boolean;
+    menuBackground?: string;
+    menuOverlay?: string;
+    listClass?: string;
+  };
 };
 
 const noBreakpoint = breakpoint === "none";
@@ -45,21 +60,23 @@ const hideClass = !noBreakpoint && responsiveClasses[breakpoint] ? responsiveCla
       <nav class={`hidden ${showClass} ${menuClass}`}>
         <NavMenu
           items={items}
-          menuItem={menuItem}
-          submenuItem={submenuItem}
+          menuItem={barMenu?.menuItem || menuItem}
+          submenuItem={barMenu?.submenuItem || submenuItem}
           isHierarchical={isHierarchical}
           breakpoint={breakpoint}
-          listClass={listClass}  
+          listClass={barMenu?.listClass || listClass}  
         />
       </nav>
       <div class={`block ${hideClass}`}>
         <HamburgerNavMenu
           client:media={`(max-width: ${bpValue})`}
           items={items}
-          menuItem={menuItem}
-          submenuItem={submenuItem}
+          menuItem={hamburgerMenu?.menuItem || menuItem}
+          submenuItem={hamburgerMenu?.submenuItem || submenuItem}
           isHierarchical={isHierarchical}
           breakpoint={breakpoint}
+          listClass={hamburgerMenu?.listClass || listClass}
+          hamburgerMenu={hamburgerMenu}
         />
       </div>
     </>
@@ -67,11 +84,11 @@ const hideClass = !noBreakpoint && responsiveClasses[breakpoint] ? responsiveCla
     <nav class={menuClass}>
       <NavMenu
         items={items}
-        menuItem={menuItem}
-        submenuItem={submenuItem}
+        menuItem={barMenu?.menuItem || menuItem}
+        submenuItem={barMenu?.submenuItem || submenuItem}
         isHierarchical={isHierarchical}
         breakpoint={breakpoint}
-        listClass={listClass} 
+        listClass={barMenu?.listClass || listClass}  
       />
     </nav>
   )
