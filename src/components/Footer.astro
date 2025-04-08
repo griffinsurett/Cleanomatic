@@ -12,9 +12,9 @@ import BusinessHoursItem from "./Menu/BusinessHoursItem.astro";
 
 // Define shared class strings for menus, headings, and menu items.
 const menuListClass =
-  "flex flex-col justify-start items-start gap-[var(--spacing-sm)] pb-[var(--spacing-lg)] h6";
-const menuHeadingClass = "h4 text-bg my-[var(--spacing-sm)]";
-const menuItemClass = "phone-menu-item text-right";
+  "flex flex-col justify-start items-start gap-[var(--spacing-sm)] pb-[var(--spacing-lg)]";
+const menuHeadingClass = "h5 text-bg my-[var(--spacing-sm)]";
+const menuItemClass = "phone-menu-item text-right text-base";
 
 const FooterMenu = [
   {
@@ -40,7 +40,7 @@ const FooterMenu = [
 
 <footer class="flex justify-center items-center flex-col w-full">
   <div
-    class="w-full flex flex-col lg:flex-row justify-center items-center italic bg-accent text-bg pt-[var(--spacing-3xl)] pb-[var(--spacing-3xl)] md:pb-[var(--spacing-xl)] px-[var(--spacing-xl)] lg:px-[var(--spacing-xl)]"
+    class="w-full flex flex-col lg:flex-row justify-center items-center bg-accent text-bg pt-[var(--spacing-3xl)] pb-[var(--spacing-3xl)] md:pb-[var(--spacing-xl)] px-[var(--spacing-xl)] lg:px-[var(--spacing-xl)]"
   >
     <div
       class="footer-wrapper w-full header-and-footer-wrap flex flex-wrap justify-between items-start"
@@ -56,7 +56,7 @@ const FooterMenu = [
         </p>
       </div>
       <div
-        class="footer-menus w-full h5 italic flex flex-wrap sm:flex-row justify-between lg:w-2/3"
+        class="footer-menus w-full flex flex-wrap sm:flex-row justify-between lg:w-2/3"
       >
         <div class="footer-menu">
           <Heading tagName="h4" className={menuHeadingClass}> Info </Heading>
@@ -78,7 +78,7 @@ const FooterMenu = [
             }}
           />
         </div>
-        <div class="business-hours-menu grow md:grow-0">
+        <div class="business-hours-menu h6 text-stroke grow md:grow-0 italic">
           <Heading tagName="h4" className={menuHeadingClass}>
             Business Hours
           </Heading>
