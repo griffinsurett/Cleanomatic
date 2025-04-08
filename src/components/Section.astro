@@ -13,8 +13,9 @@
  *    - If neither the Section props nor the meta file provide a value, automatically generate a default.
  *      For the heading, this fallback is the collection slug capitalized (e.g., "services" becomes "Services").
  *
- * Extended to support a background object for background images and overlays.
- * Now using Astro's getImage to generate an optimized low-res WebP background.
+ * Extended to support a background media object for background videos and images.
+ * If a video is provided, it will be used as the background, with the background image as a poster/fallback.
+ * Otherwise, the provided image is optimized using Astro's getImage.
  */
  import Heading from "./Heading.jsx";
 import Button from "./Button.jsx";
@@ -34,7 +35,7 @@ import { capitalize } from "@/utils/ContentUtils";
 const {
   collection: collectionName,
   query: queryType,
-  component: ItemComponent, // Optional explicit component prop
+  component: ItemComponent,
   heading,
   description,
   buttons,
@@ -43,8 +44,8 @@ const {
   itemsClass,
   itemClass,
   buttonsSectionClass,
-  // Grouped background properties into one object
-  background, // expected keys: image, imageClass, overlayClass
+  // Renamed from "background" to "backgroundMedia"
+  backgroundMedia, // expected structure: { video?: { src, videoClass }, image?: { src, imageClass }, overlayClass }
   ...props
 } = Astro.props;
 
@@ -85,14 +86,13 @@ const buttonsArray = resolveButtonsArray(
 );
 const itemsDefaultHasPage = meta.itemsHasPage ?? false;
 
-// Use getImage to generate an optimized version of the background image.
-// Note: Pass an object with the image in the src property.
-let optimizedBackground = null;
-if (background?.image) {
-  optimizedBackground = await getImage({
-    src: background.image,
+let optimizedBackgroundImage = null;
+if (backgroundMedia?.image && backgroundMedia.image.src) {
+  // Optimize the fallback background image.
+  optimizedBackgroundImage = await getImage({ src: backgroundMedia.image.src }, {
     format: "webp",
     quality: 50,
+    width: 1200,
     placeholder: "blur",
   });
 }
@@ -104,19 +104,35 @@ if (background?.image) {
   data-collection={collectionName}
   {...props}
 >
-  <!-- Optimized Background Image Layer as a CSS background, with additional image classes -->
-  {optimizedBackground && (
-    <div
-      class={`absolute inset-0 z-0 ${background?.imageClass || ""}`}
-      style={`background-image: url('${optimizedBackground.src}');`}
+  {backgroundMedia?.video && backgroundMedia.video.src ? (
+    // Render background video if provided.
+    <video
+      class={`absolute inset-0 z-0 w-full h-full object-cover ${backgroundMedia.video.videoClass || ""}`}
+      autoPlay
+      muted
+      loop
+      playsInline
+      poster={optimizedBackgroundImage ? optimizedBackgroundImage.src : ""}
       aria-hidden="true"
-    ></div>
+    >
+      <source src={backgroundMedia.video.src} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  ) : (
+    // Otherwise, render the optimized background image.
+    optimizedBackgroundImage && (
+      <div
+        class={`absolute inset-0 z-0 ${backgroundMedia?.image?.imageClass || ""}`}
+        style={`background-image: url('${optimizedBackgroundImage.src}');`}
+        aria-hidden="true"
+      ></div>
+    )
   )}
-  <!-- Background Overlay Layer using overlay class from the background object -->
-  {background?.overlayClass && (
-    <div class={`absolute inset-0 ${background.overlayClass} z-0`} aria-hidden="true"></div>
+  <!-- Render optional overlay -->
+  {backgroundMedia?.overlayClass && (
+    <div class={`absolute inset-0 ${backgroundMedia.overlayClass} z-0`} aria-hidden="true"></div>
   )}
-  <!-- Content container with relative positioning and higher z-index to sit above backgrounds -->
+  <!-- Content container -->
   <div class={`${finalContentClass} relative w-3/4 z-10 ${isDynamic ? "my-[var(--spacing-lg)]" : ""}`}>
     {finalHeadingArray.map((head, i) => {
       const headObj = typeof head === "string" ? { text: head } : head;

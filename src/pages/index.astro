@@ -7,9 +7,11 @@ import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
 <Layout title="Welcome to Cleanomatic">
   <!-- Hero Section with two buttons -->
   <Section
-    background={{
-      image: HeroBg, // an imported image or URL
-      imageClass: "filter brightness-75 bg-center bg-cover h-full lg:bg-fixed",
+    backgroundMedia={{
+      image: {
+        src: HeroBg, // imported image as fallback/poster
+        imageClass: "filter brightness-75 bg-cover bg-center lg:bg-fixed",
+      },
       overlayClass: "bg-black opacity-50",
     }}
     heading={[
@@ -28,8 +30,7 @@ import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
     ]}
     buttonsSectionClass="mt-[var(--spacing-xl)]"
     sectionClass="min-h-[80vh] md:min-h-[70vh] flex items-center justify-center bg-cover bg-fixed bg-center z-100 md:p-[var(--spacing-lg)] text-bg text-base md:text-xl"
-  >
-  </Section>
+  />
 
   <Section
     heading={[
@@ -44,16 +45,10 @@ import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
     contentClass="container flex flex-wrap flex-col w-full py-[var(--spacing-2xl)] px-[var(--spacing-lg)]"
     itemsClass="flex flex-wrap justify-center items-stretch flex-1/2"
     buttonsSectionClass="hidden"
-  >
-  </Section>
+  />
 
   {/* Services */}
-  <Section
-  collection="services"
-  query="getAll"
-  buttonsSectionClass="hidden"
-/>
-
+  <Section collection="services" query="getAll" buttonsSectionClass="hidden" />
 
   {/* Testimonials */}
   <Section
@@ -69,8 +64,8 @@ import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
     heading={{ text: "Our Projects", tagName: "h2" }}
   />
 
-   {/* FAQ Section */}
-   <!-- <Section
+  {/* FAQ Section */}
+  <!-- <Section
    collection="faq"
    query="getAll"
    component={Accordion}
