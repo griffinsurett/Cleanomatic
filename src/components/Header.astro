@@ -25,16 +25,27 @@ const headerItems = await buildMenuQueries({ MainNavMenu });
 const phoneMenuItems = await getPhoneNumberMenuItems();
 const breakpoint = "lg";
 ---
-<header class="flex flex-col justify-between items-center sticky top-0 z-[150] shadow-xl">
-  <div class="top-header w-full flex justify-center items-center py-[var(--spacing-xs)] md:py-[var(--spacing-md)] bg-primary text-tertiary">
-    <div class="header-inner">
+
+<header
+  class="flex flex-col justify-between items-center sticky top-0 z-[150] shadow-xl"
+>
+  <div
+    class="top-header w-full flex justify-center items-center py-[var(--spacing-xs)] md:py-[var(--spacing-md)] bg-primary text-tertiary"
+  >
+    <div class="header-and-footer-wrap">
       <div class="text-md h4 font-bold italic">24 Hour Emergency Service</div>
     </div>
   </div>
-  <div class="main-header bg-accent text-bg lg:w-full flex justify-center w-full p-[var(--spacing-md)]">
-    <div class="header-inner flex justify-between items-center w-full">
+  <div
+    class="main-header bg-accent text-bg lg:w-full flex justify-center w-full p-[var(--spacing-md)]"
+  >
+    <div
+      class="header-and-footer-wrap flex justify-between items-center w-full"
+    >
       <Logo titleClass="h1" />
-      <div class="phone-and-cta-on-header hidden lg:flex justify-between items-center w-1/2">
+      <div
+        class="phone-and-cta-on-header hidden lg:flex justify-between items-center w-1/2"
+      >
         <!-- Phone number menu using the dynamic Menu component -->
         <Menu
           items={phoneMenuItems}
@@ -51,7 +62,8 @@ const breakpoint = "lg";
         menuClass="menu-class bg-primary flex lg:hidden text-text"
         menuItem={{
           component: MenuItem,
-          class: "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] hover:bg-secondary",
+          class:
+            "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] hover:bg-secondary",
         }}
         submenuItem={{
           component: MenuItem,
@@ -66,20 +78,24 @@ const breakpoint = "lg";
           menuOverlay: "bg-black bg-opacity-50",
           listClass: "flex flex-col",
           closeButton: true,
-          closeButtonClass: "absolute top-0 right-0 m-4 text-white hover:text-red-500"
+          closeButtonClass:
+            "absolute top-0 right-0 m-4 text-white hover:text-red-500",
         }}
       />
     </div>
   </div>
-  <div class="bottom-header hidden lg:flex header-bottom w-full items-center bg-primary justify-center">
-    <div class="header-inner w-full flex">
+  <div
+    class="bottom-header hidden lg:flex header-bottom w-full items-center bg-primary justify-center"
+  >
+    <div class="header-and-footer-wrap w-full flex">
       <!-- Desktop menu -->
       <Menu
         items={headerItems}
         menuClass="menu-class flex justify-between items-center"
         menuItem={{
           component: MenuItem,
-          class: "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] h4 hover:bg-secondary",
+          class:
+            "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] h4 hover:bg-secondary",
         }}
         submenuItem={{ component: MenuItem, class: "bg-primary h6" }}
         isHierarchical={true}

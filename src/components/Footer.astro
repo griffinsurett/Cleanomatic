@@ -11,9 +11,10 @@ import { getBusinessHours } from "@/queries/BusinessHoursQuery";
 import BusinessHoursItem from "./Menu/BusinessHoursItem.astro";
 
 // Define shared class strings for menus, headings, and menu items.
-const menuListClass = "flex flex-col justify-start items-start gap-[var(--spacing-sm)] h6";
+const menuListClass =
+  "flex flex-col justify-start items-start gap-[var(--spacing-sm)] h6";
 const menuHeadingClass = "h4 text-bg my-[var(--spacing-md)] md:mt-0";
-const menuItemClass = "phone-menu-item text-right"; 
+const menuItemClass = "phone-menu-item text-right";
 
 const FooterMenu = [
   {
@@ -38,24 +39,32 @@ const FooterMenu = [
 ---
 
 <footer class="flex justify-center items-center flex-col w-full">
-  <div class="w-full flex flex-col lg:flex-row justify-center items-center italic bg-accent text-bg pt-[var(--spacing-3xl)] pb-[var(--spacing-3xl)] md:pb-[var(--spacing-xl)] px-[var(--spacing-xl)] lg:px-[var(--spacing-xl)]">
-    <div class="footer-wrapper w-full header-inner flex flex-wrap justify-between items-start">
-      <div class="w-full lg:w-1/4 md:mb-[var(--spacing-lg)] mb-0 lg:text-left text-center flex flex-col lg:items-center">
-        <Logo titleClass="font-bold text-4xl lg:text-5xl text-stroke uppercase italic;" />
+  <div
+    class="w-full flex flex-col lg:flex-row justify-center items-center italic bg-accent text-bg pt-[var(--spacing-3xl)] pb-[var(--spacing-3xl)] md:pb-[var(--spacing-xl)] px-[var(--spacing-xl)] lg:px-[var(--spacing-xl)]"
+  >
+    <div
+      class="footer-wrapper w-full header-and-footer-wrap flex flex-wrap justify-between items-start"
+    >
+      <div
+        class="w-full lg:w-1/4 md:mb-[var(--spacing-lg)] mb-0 lg:text-left text-center flex flex-col lg:items-center"
+      >
+        <Logo
+          titleClass="font-bold text-4xl lg:text-5xl text-stroke uppercase italic;"
+        />
         <p class="text-base">
           {SiteData.description}
         </p>
       </div>
-      <div class="footer-menus w-full h5 italic flex flex-wrap sm:flex-row justify-between lg:w-2/3">
+      <div
+        class="footer-menus w-full h5 italic flex flex-wrap sm:flex-row justify-between lg:w-2/3"
+      >
         <div class="footer-menu">
-          <Heading tagName="h4" className={menuHeadingClass}>
-            Info
-          </Heading>
+          <Heading tagName="h4" className={menuHeadingClass}> Info </Heading>
           <Menu
             listClass={menuListClass}
             items={await buildMenuQueries({ FooterMenu })}
           />
-        </div>     
+        </div>
         <div class="contact-info">
           <Heading tagName="h4" className={menuHeadingClass}>
             Contact Us
@@ -74,20 +83,21 @@ const FooterMenu = [
             Business Hours
           </Heading>
           <Menu
-          items={await getBusinessHours()}
-          menuItem={{
-            component: BusinessHoursItem, // Import the component you just created
-            class: "custom-business-hours", // optional additional classes
-          }}
-          listClass="business-hours-list flex flex-col"
-        />
-        
+            items={await getBusinessHours()}
+            menuItem={{
+              component: BusinessHoursItem, // Import the component you just created
+              class: "custom-business-hours", // optional additional classes
+            }}
+            listClass="business-hours-list flex flex-col"
+          />
         </div>
       </div>
     </div>
   </div>
   <div class="w-full bg-primary text-bg p-[var(--spacing-lg)]">
-    <div class="footer-copyright flex flex-col md:flex-row justify-center items-center text-center italic gap-[var(--spacing-xs)]">
+    <div
+      class="footer-copyright flex flex-col md:flex-row justify-center items-center text-center italic gap-[var(--spacing-xs)]"
+    >
       <p>
         &copy; {new Date().getFullYear()} Cleanomatic. All rights reserved.
       </p>
