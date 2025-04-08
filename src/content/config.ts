@@ -50,7 +50,6 @@ const sectionSchema = z.object({
   itemsClass: z.string().optional(),
   itemClass: z.string().optional(),
   contentClass: z.string().optional(),
-  // NEW: Allow a custom class for the heading area
   headingAreaClass: z.string().optional(),
 });
 

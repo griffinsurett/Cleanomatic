@@ -44,8 +44,8 @@ const {
   itemsClass,
   itemClass,
   buttonsSectionClass,
-  // NEW: headingAreaClass for customized styling of the heading area
-  headingAreaClass = "",
+  // Destructure headingAreaClass from Astro.props
+  headingAreaClass,
   // Renamed from "background" to "backgroundMedia"
   backgroundMedia,
   ...props
@@ -64,6 +64,10 @@ const {
   { sectionClass, contentClass, itemsClass, buttonsSectionClass },
   defaultSection
 );
+
+// NEW: Merge headingAreaClass from Astro.props with the default from meta/defaultSection.
+const finalHeadingAreaClass =
+  headingAreaClass || defaultSection.headingAreaClass || "";
 
 // Resolve headings and description.
 const finalHeadingArray = resolveHeading(heading, meta.heading, collectionName);
@@ -135,7 +139,7 @@ if (backgroundMedia?.image && backgroundMedia.image.src) {
   <!-- Content container: contains both the heading area and items -->
   <div class={`${finalContentClass} relative z-10 w-3/4 ${isDynamic ? "my-[var(--spacing-lg)]" : ""}`}>
     <!-- Heading Area: wrapped inside the content container -->
-    <div class={`section-heading-area ${headingAreaClass}`}>
+    <div class={`section-heading-area ${finalHeadingAreaClass}`}>
       {finalHeadingArray.map((head, i) => {
         const headObj = typeof head === "string" ? { text: head } : head;
         const Tag = headObj.tagName || "h2";
