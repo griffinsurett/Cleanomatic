@@ -3,6 +3,8 @@ import Layout from "@/layouts/Layout.astro";
 import Section from "@/components/Section.astro";
 import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
 import GoogleMap from "@/components/GoogleMap.astro";
+import { Picture } from "astro:assets";
+import BenefitsImage from "@/assets/background.svg"
 ---
 
 <Layout title="Welcome to Cleanomatic">
@@ -11,7 +13,7 @@ import GoogleMap from "@/components/GoogleMap.astro";
     backgroundMedia={{
       image: {
         src: HeroBg, // imported image as fallback/poster
-        imageClass: "filter brightness-75 bg-cover bg-center lg:bg-fixed",
+        imageClass: "filter brightness-50 bg-cover bg-center lg:bg-fixed",
       },
       overlayClass: "bg-black opacity-50",
     }}
@@ -30,8 +32,8 @@ import GoogleMap from "@/components/GoogleMap.astro";
       },
     ]}
     buttonsSectionClass="mt-[var(--spacing-xl)]"
-    sectionClass="min-h-[80vh] md:min-h-[70vh] flex items-center justify-center bg-cover bg-fixed bg-center z-100 md:p-[var(--spacing-lg)] text-bg text-base md:text-xl"
-    />
+    sectionClass="min-h-[80vh] md:min-h-[70vh] flex flex-col items-center justify-center bg-cover bg-fixed bg-center z-100 md:p-[var(--spacing-lg)] text-bg text-base md:text-xl"
+  />
 
   <Section
     heading={[
@@ -43,10 +45,25 @@ import GoogleMap from "@/components/GoogleMap.astro";
     ]}
     description="With over 23 years of experience, the Cleanomatic team is committed to delivering top-tier cleaning solutions for both residential and commercial clients. Whether you need thorough tile and grout restoration, air duct cleaning, or emergency water damage restoration, we have the expertise and tools to get the job done right."
     sectionClass="flex justify-center items-center text-left min-h-[80vh] md:min-h-[50vh] px-[var(--spacing-xl)]"
-    contentClass="container flex flex-wrap flex-col w-full py-[var(--spacing-2xl)] px-[var(--spacing-lg)]"
-    itemsClass="flex flex-wrap justify-center items-stretch flex-1/2"
+    contentClass="container flex flex-col-reverse lg:flex-row-reverse justify-between w-full py-[var(--spacing-2xl)] px-[var(--spacing-lg)] gap-[var(--spacing-lg)] lg:gap-[var(--spacing-md)]"
+    headingAreaClass="flex flex-col items-start w-full lg:max-w-1/2"
     buttonsSectionClass="hidden"
+  >
+  <div class="image-section lg:max-w-1/2">
+    <Picture
+    src={HeroBg}
+    alt={"Benefits of Cleanomatic"}
+    formats={["avif", "webp"]}
+    fallbackFormat="jpg"
+    loading="eager"
+    quality={"low"}
+    fetchpriority="high"
+    aria-hidden="true"
+    width={530}
+    height={400}
   />
+  </div>
+  </Section>
 
   {/* Services */}
   <Section collection="services" query="getAll" buttonsSectionClass="hidden" />
@@ -59,14 +76,13 @@ import GoogleMap from "@/components/GoogleMap.astro";
   />
 
   <Section sectionClass="p-0 m-0" />
-    <!-- <GoogleMap class="w-screen h-[350px]"/> -->
-  </Section>
+  <!-- <GoogleMap class="w-screen h-[350px]"/> -->
+</Layout>
 
-  {/* FAQ Section */}
-  <!-- <Section
+{/* FAQ Section */}
+<!-- <Section
    collection="faq"
    query="getAll"
    component={Accordion}
    clientDirective="idle"  
  /> -->
-</Layout>

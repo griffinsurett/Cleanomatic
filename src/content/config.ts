@@ -7,7 +7,7 @@ export const headingSchema = z.union([
   z.object({
     text: z.string(),
     class: z.string().optional(),
-    tagName: z.string().optional(), // e.g. "h2", "h3"
+    tagName: z.string().optional(),
   }),
   z.array(
     z.union([
@@ -39,17 +39,18 @@ const buttonSchema = z.object({
 
 // Updated sectionSchema using the isolated heading and description schemas.
 const sectionSchema = z.object({
-  collection: z.string().optional(), // optional if not dynamic
+  collection: z.string().optional(),
   query: z.string().optional(),
   component: z.union([z.function(), z.string()]).optional(),
   heading: headingSchema.optional(),
   description: descriptionSchema.optional(),
   buttons: z.array(buttonSchema).optional(),
-  buttonsSectionClass: z.string().optional(), // now a plain string
+  buttonsSectionClass: z.string().optional(),
   sectionClass: z.string().optional(),
   itemsClass: z.string().optional(),
   itemClass: z.string().optional(),
   contentClass: z.string().optional(),
+  headingAreaClass: z.string().optional(),
 });
 
 export const QueryItemSchema = z.object({
@@ -86,7 +87,6 @@ const baseSchema = ({ image }: { image: Function }) =>
     tags: z.array(z.string()).optional(),
   });
 
-// In src/content/config.ts
 export const collections = {
   services: defineCollection({
     schema: ({ image }) =>
@@ -98,9 +98,7 @@ export const collections = {
   testimonials: defineCollection({
     schema: ({ image }) => baseSchema({ image }),
   }), 
-  // New FAQs collection using the existing baseSchema
   faq: defineCollection({
     schema: ({ image }) => baseSchema({ image }),
   }),
 };
-

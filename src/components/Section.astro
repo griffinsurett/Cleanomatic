@@ -17,8 +17,7 @@
  * If a video is provided, it will be used as the background, with the background image as a poster/fallback.
  * Otherwise, the provided image is optimized using Astro's getImage.
  */
-
- import Heading from "./Heading.jsx";
+import Heading from "./Heading.jsx";
 import Button from "./Button.jsx";
 import ItemsTemplate from "./ItemsTemplate.astro";
 import { getImage } from "astro:assets";
@@ -45,8 +44,10 @@ const {
   itemsClass,
   itemClass,
   buttonsSectionClass,
+  // NEW: headingAreaClass for customized styling of the heading area
+  headingAreaClass = "",
   // Renamed from "background" to "backgroundMedia"
-  backgroundMedia, // expected structure: { video?: { src, videoClass, autoPlay, muted, loop, playsInline, controls, preload }, image?: { src, imageClass }, overlayClass }
+  backgroundMedia,
   ...props
 } = Astro.props;
 
@@ -89,7 +90,6 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
 
 let optimizedBackgroundImage = null;
 if (backgroundMedia?.image && backgroundMedia.image.src) {
-  // Optimize the fallback background image.
   optimizedBackgroundImage = await getImage({ src: backgroundMedia.image.src }, {
     format: "webp",
     quality: 50,
@@ -106,7 +106,6 @@ if (backgroundMedia?.image && backgroundMedia.image.src) {
   {...props}
 >
   {backgroundMedia?.video && backgroundMedia.video.src ? (
-    // Render background video if provided.
     <video
       class={`absolute inset-0 z-0 w-full h-full object-cover ${backgroundMedia.video.videoClass || ""}`}
       autoPlay={backgroundMedia.video.autoPlay !== undefined ? backgroundMedia.video.autoPlay : true}
@@ -122,7 +121,6 @@ if (backgroundMedia?.image && backgroundMedia.image.src) {
       Your browser does not support the video tag.
     </video>
   ) : (
-    // Otherwise, render the optimized background image.
     optimizedBackgroundImage && (
       <div
         class={`absolute inset-0 z-0 ${backgroundMedia?.image?.imageClass || ""}`}
@@ -131,21 +129,29 @@ if (backgroundMedia?.image && backgroundMedia.image.src) {
       ></div>
     )
   )}
-  <!-- Render optional overlay -->
   {backgroundMedia?.overlayClass && (
     <div class={`absolute inset-0 ${backgroundMedia.overlayClass} z-0`} aria-hidden="true"></div>
   )}
-  <!-- Content container -->
-  <div class={`${finalContentClass} relative w-3/4 z-10 ${isDynamic ? "my-[var(--spacing-lg)]" : ""}`}>
-    {finalHeadingArray.map((head, i) => {
-      const headObj = typeof head === "string" ? { text: head } : head;
-      const Tag = headObj.tagName || "h2";
-      return (
-        <Heading key={i} tagName={Tag} className={headObj.class || ""}>
-          {headObj.text}
-        </Heading>
-      );
-    })}
+  <!-- Content container: contains both the heading area and items -->
+  <div class={`${finalContentClass} relative z-10 w-3/4 ${isDynamic ? "my-[var(--spacing-lg)]" : ""}`}>
+    <!-- Heading Area: wrapped inside the content container -->
+    <div class={`section-heading-area ${headingAreaClass}`}>
+      {finalHeadingArray.map((head, i) => {
+        const headObj = typeof head === "string" ? { text: head } : head;
+        const Tag = headObj.tagName || "h2";
+        return (
+          <Heading key={i} tagName={Tag} className={headObj.class || ""}>
+            {headObj.text}
+          </Heading>
+        );
+      })}
+      {finalDescription && (
+        <p class={description?.class}>
+          {finalDescription}
+        </p>
+      )}
+    </div>
+    <!-- Items or slot content rendered below the heading area -->
     {isDynamic ? (
       <>
         <slot name="aboveItemsInjection" />
@@ -187,11 +193,6 @@ if (backgroundMedia?.image && backgroundMedia.image.src) {
       </>
     ) : (
       <>
-        {finalDescription && (
-          <p class={description?.class}>
-            {finalDescription}
-          </p>
-        )}
         <slot />
         <div class={finalButtonsSectionClass}>
           {buttonsArray.length > 0 &&
