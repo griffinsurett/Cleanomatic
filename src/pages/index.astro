@@ -2,7 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Section from "@/components/Section.astro";
 import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
-import GoogleMap from "@/components/GoogleMap";
+import GoogleMap from "@/components/GoogleMap.astro";
 ---
 
 <Layout title="Welcome to Cleanomatic">
@@ -59,7 +59,7 @@ import GoogleMap from "@/components/GoogleMap";
   />
 
   <Section sectionClass="p-0 m-0" />
-    <GoogleMap client:visible className="w-screen h-[350px]"/>
+    <GoogleMap class="w-screen h-[350px]"/>
   </Section>
 
   {/* FAQ Section */}
