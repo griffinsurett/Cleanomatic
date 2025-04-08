@@ -76,6 +76,7 @@ export default async function Button({
       format: "webp",
       quality: 5,
       width: 20, // Adjust width as needed
+      sizes: "16px",  // Inform the browser about the intended display size
     });
   }
 
