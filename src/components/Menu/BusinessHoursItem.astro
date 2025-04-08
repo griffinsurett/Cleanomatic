@@ -1,0 +1,32 @@
+---
+/*
+  BusinessHoursItem Component.
+  A non-clickable menu item for displaying business hours.
+  Uses item.label as the day of the week and item.slug as the operating hours.
+*/
+const {
+  item,
+  depth = 0,
+  menuItem,      // object: { component, class, submenuArrow }
+  submenuItem,   // object: { component, class, submenuArrow }
+  isHierarchical = false,
+  breakpoint,
+  active = true, // new prop for active state
+} = Astro.props;
+
+const mainClass = menuItem && menuItem.class ? menuItem.class : "";
+---
+
+<li class="relative business-hours-item">
+  <!-- Using a div instead of an anchor to make it non-clickable -->
+  <div class={`flex items-center justify-between ${mainClass} ${active ? "bg-[var(--color-secondary)]" : ""}`}>
+    <!-- Left: Day of the week -->
+    <span class="h6 pr-[var(--spacing-sm)]">
+      {item.label}:
+    </span>
+    <!-- Right: Operating Hours -->
+    <span class="h6">
+      {item.slug}
+    </span>
+  </div>
+</li>

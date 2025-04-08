@@ -9,6 +9,15 @@ export const SiteData = {
     src: Logo,
     alt: "Cleanomatic logo",
   },
+  businessHours: [
+    { day: "Monday", hours: "9 AM–6:30 PM" },
+    { day: "Tuesday", hours: "9 AM–6:30 PM" },
+    { day: "Wednesday", hours: "9 AM–6:30 PM" },
+    { day: "Thursday", hours: "9 AM–6:30 PM" },
+    { day: "Friday", hours: "9 AM–5 PM" },
+    { day: "Saturday", hours: "Closed" },
+    { day: "Sunday", hours: "Closed" },
+  ],
 };
 
 export const CTAdata = {
