@@ -95,15 +95,6 @@ export const collections = {
         parent: z.union([reference("services"), z.array(reference("services"))]).optional(),
       }),
   }),
-  projects: defineCollection({
-    schema: ({ image }) =>
-      baseSchema({ image }).extend({
-        beforeImage: image().optional(),
-        afterImage: image().optional(),
-        services: z.union([reference("services"), z.array(reference("services"))]).optional(),
-        testimonials: z.union([reference("testimonials"), z.array(reference("testimonials"))]).optional(),
-      }),
-  }),
   testimonials: defineCollection({
     schema: ({ image }) => baseSchema({ image }),
   }), 
