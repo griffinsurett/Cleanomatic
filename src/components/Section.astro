@@ -91,7 +91,7 @@ let optimizedBackground = null;
 if (background?.image) {
   optimizedBackground = await getImage({ src: background.image }, {
     format: "webp",
-    quality: 80,
+    quality: 50,
     placeholder: "blur", 
   });
 }
