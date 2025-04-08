@@ -85,7 +85,7 @@ export default async function Button({
     ? element !== undefined
       ? element
       : // Display the optimized default icon.
-        <img src={optimizedDefaultIcon?.src} alt="Icon" className="h-4 w-10" />
+        <img src={optimizedDefaultIcon?.src} alt="Icon" className="h-4 w-10" loading="lazy" />
     : null;
 
   // Determine icon container classes if an icon is to be rendered.
