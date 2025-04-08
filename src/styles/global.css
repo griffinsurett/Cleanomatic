@@ -67,7 +67,7 @@
 
   /* Global header styles (these are our dynamic header classes) */
   .h1 {
-    @apply text-3xl font-bold md:text-4xl lg:text-5xl uppercase italic;
+    @apply text-3xl font-black lg:text-4xl xl:text-5xl uppercase italic;
   }
   .h2 {
     @apply text-2xl font-bold md:text-4xl lg:text-5xl uppercase italic;

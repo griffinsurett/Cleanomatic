@@ -5,7 +5,7 @@ import { SiteData } from "@/content/SiteData";
 // Accept optional props to override or extend classes.
 const {
   containerClass = "",
-  titleClass = "",
+  titleClass = "h1",
   taglineClass = "",
   imageClass = "",
 } = Astro.props;
@@ -13,9 +13,9 @@ const {
 
 <a
   href="/"
-  class={`flex flex-col lg:items-center justify-center items-start ${containerClass}`}
+  class={`flex flex-col xl:items-center justify-center items-start ${containerClass}`}
 >
-  <div class={`md:font-black ${titleClass}`}>
+  <div class={`${titleClass}`}>
     {SiteData.title}
   </div>
   <div
