@@ -5,6 +5,10 @@ import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
 import GoogleMap from "@/components/GoogleMap.astro";
 import { Picture } from "astro:assets";
 import BenefitsImage from "@/assets/background.svg";
+import { getBusinessHours } from "@/queries/BusinessHoursQuery";
+import BusinessHoursItem from "@/components/Menu/BusinessHoursItem.astro";
+import Menu from "@/components/Menu/Menu.astro";
+import Heading from "@/components/Heading";
 ---
 
 <Layout title="Welcome to Cleanomatic" image={HeroBg}>
@@ -21,7 +25,7 @@ import BenefitsImage from "@/assets/background.svg";
       {
         text: "Welcome to Cleanomatic – Your Trusted Cleaning Experts in New Jersey!",
         tagName: "h1",
-        class: "text-bg h2 font-black",
+        class: "text-bg h1",
       },
     ]}
     description="Welcome to Cleanomatic, your one-stop solution for professional cleaning services in New Jersey. With over 23 years of experience"
@@ -31,11 +35,25 @@ import BenefitsImage from "@/assets/background.svg";
         link: "/contact",
       },
     ]}
-    buttonsSectionClass="mt-[var(--spacing-xl)]"
-    sectionClass="min-h-[80vh] md:min-h-[50vh] lg:min-h-[60vh] xl:min-h-[70vh] flex flex-col items-center xl:items-end justify-center bg-cover bg-fixed bg-center z-100 md:p-[var(--spacing-lg)] text-bg text-base md:text-xl"
-    headingAreaClass="xl:max-w-2/3"
-
+    buttonsSectionClass="mt-[var(--spacing-3xl)] sm:mt-0"
+    sectionClass="min-h-[100vh] md:min-h-[50vh] lg:min-h-[100vh] xl:min-h-[80vh] flex flex-col items-center xl:items-end justify-center bg-cover bg-fixed bg-center z-100 md:p-[var(--spacing-sm)] text-bg text-base md:text-xl"
+    contentClass="mt-[-150px] sm:mt-0"
+    headingAreaClass="xl:max-w-7/8"
+>
+<div class="business-hours-menu text-stroke italic my-[var(--spacing-md)]">
+  <Heading tagName="h4" className={"h4 text-bg my-[var(--spacing-sm)] italic"}>
+    Business Hours:
+  </Heading>
+  <Menu
+    items={await getBusinessHours()}
+    menuItem={{
+      component: BusinessHoursItem, // Import the component you just created
+      class: "flex justify-start items-start", // optional additional classes
+    }}
+    listClass="business-hours-list flex flex-col list-disc pl-[var(--spacing-2xl)]"
   />
+</div>
+</Section>
 
   <Section
     heading={[

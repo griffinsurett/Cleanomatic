@@ -3,7 +3,7 @@ import { normalizePath } from "@/utils/ContentUtils";
 const { 
   items = [], 
   class: extraClass = '', 
-  listClass = '', // NEW prop for ul classes
+  listClass = 'list-none', // NEW prop for ul classes
   menuItem,
   submenuItem,
   isHierarchical = true, 
@@ -15,7 +15,7 @@ const currentPath = normalizePath(Astro.url.pathname);
 import DefaultMenuItem from './MenuItem.astro';
 const RenderComponent = menuItem && menuItem.component ? menuItem.component : DefaultMenuItem;
 ---
-<ul class={`list-none m-0 p-0 ${listClass} ${extraClass}`}>
+<ul class={`m-0 p-0 ${listClass} ${extraClass}`}>
   {items.map((item) => {
     const normalizedSlug = normalizePath(item.slug);
     return (
