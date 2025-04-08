@@ -89,10 +89,11 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
 // Note: Pass an object with the image in the src property.
 let optimizedBackground = null;
 if (background?.image) {
-  optimizedBackground = await getImage({ src: background.image }, {
+  optimizedBackground = await getImage({
+    src: background.image,
     format: "webp",
     quality: 50,
-    placeholder: "blur", 
+    placeholder: "blur",
   });
 }
 ---
