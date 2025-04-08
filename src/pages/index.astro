@@ -4,7 +4,7 @@ import Section from "@/components/Section.astro";
 import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
 import GoogleMap from "@/components/GoogleMap.astro";
 import { Picture } from "astro:assets";
-import BenefitsImage from "@/assets/background.svg"
+import BenefitsImage from "@/assets/background.svg";
 ---
 
 <Layout title="Welcome to Cleanomatic">
@@ -37,7 +37,7 @@ import BenefitsImage from "@/assets/background.svg"
 
   <Section
     heading={[
-      { text: "Cleaning done right, Cleanomatic!", tagName: "h2" },
+      { text: "Cleaning done right, Cleanomatic!", tagName: "h2", class: "text-accent h2" },
       {
         text: "Your Trusted Cleaning Professionals for 23+ Years.",
         tagName: "h5",
@@ -49,20 +49,19 @@ import BenefitsImage from "@/assets/background.svg"
     headingAreaClass="flex flex-col items-start w-full md:max-w-1/2"
     buttonsSectionClass="hidden"
   >
-  <div class="image-section md:max-w-1/2">
-    <Picture
-    src={HeroBg}
-    alt={"Benefits of Cleanomatic"}
-    formats={["avif", "webp"]}
-    fallbackFormat="jpg"
-    loading="eager"
-    quality={"low"}
-    fetchpriority="high"
-    aria-hidden="true"
-    width={530}
-    height={400}
-  />
-  </div>
+    <div class="image-section md:max-w-1/2">
+      <Picture
+        src={HeroBg}
+        alt={"Benefits of Cleanomatic"}
+        formats={["avif", "webp"]}
+        fallbackFormat="jpg"
+        loading="eager"
+        quality={"low"}
+        fetchpriority="high"
+        aria-hidden="true"
+        class="w-[538px] h-fit"
+      />
+    </div>
   </Section>
 
   {/* Services */}
