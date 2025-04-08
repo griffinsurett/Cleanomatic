@@ -4,7 +4,7 @@ import { SiteData } from "@/content/SiteData";
 
 // Accept optional props to override or extend classes.
 const {
-  containerClass = "",
+  containerClass = "sm:items-center items-start",
   titleClass = "h1",
   taglineClass = "",
   imageClass = "",
@@ -13,7 +13,7 @@ const {
 
 <a
   href="/"
-  class={`flex flex-col xl:items-center justify-center items-start ${containerClass}`}
+  class={`flex flex-col justify-center ${containerClass}`}
 >
   <div class={`${titleClass}`}>
     {SiteData.title}
