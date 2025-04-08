@@ -17,6 +17,7 @@
  * If a video is provided, it will be used as the background, with the background image as a poster/fallback.
  * Otherwise, the provided image is optimized using Astro's getImage.
  */
+
  import Heading from "./Heading.jsx";
 import Button from "./Button.jsx";
 import ItemsTemplate from "./ItemsTemplate.astro";
@@ -45,7 +46,7 @@ const {
   itemClass,
   buttonsSectionClass,
   // Renamed from "background" to "backgroundMedia"
-  backgroundMedia, // expected structure: { video?: { src, videoClass }, image?: { src, imageClass }, overlayClass }
+  backgroundMedia, // expected structure: { video?: { src, videoClass, autoPlay, muted, loop, playsInline, controls, preload }, image?: { src, imageClass }, overlayClass }
   ...props
 } = Astro.props;
 
@@ -108,10 +109,12 @@ if (backgroundMedia?.image && backgroundMedia.image.src) {
     // Render background video if provided.
     <video
       class={`absolute inset-0 z-0 w-full h-full object-cover ${backgroundMedia.video.videoClass || ""}`}
-      autoPlay
-      muted
-      loop
-      playsInline
+      autoPlay={backgroundMedia.video.autoPlay !== undefined ? backgroundMedia.video.autoPlay : true}
+      muted={backgroundMedia.video.muted !== undefined ? backgroundMedia.video.muted : true}
+      loop={backgroundMedia.video.loop !== undefined ? backgroundMedia.video.loop : true}
+      playsInline={backgroundMedia.video.playsInline !== undefined ? backgroundMedia.video.playsInline : true}
+      controls={backgroundMedia.video.controls || false}
+      preload={backgroundMedia.video.preload || "metadata"}
       poster={optimizedBackgroundImage ? optimizedBackgroundImage.src : ""}
       aria-hidden="true"
     >
