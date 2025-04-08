@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Section from "@/components/Section.astro";
 import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
+import GoogleMap from "@/components/GoogleMap.astro";
 ---
 
 <Layout title="Welcome to Cleanomatic">
@@ -56,6 +57,10 @@ import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
     query="getAll"
     heading={{ text: "Client Testimonials", tagName: "h2" }}
   />
+
+  <Section sectionClass="p-0 m-0" />
+    <GoogleMap client:visible class="w-screen h-[350px]"/>
+  </Section>
 
   {/* FAQ Section */}
   <!-- <Section
