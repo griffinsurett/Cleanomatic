@@ -1,24 +1,23 @@
 // src/components/Menu/HamburgerMenu/HamburgerMenuItem.jsx
 import React from "react";
-import { hasSubMenuItems } from "@/utils/MenuUtils";
+import { hasSubMenuItems, getEffectiveMenuItemClass } from "@/utils/MenuUtils";
 
 export default function HamburgerMenuItem({ item, depth = 0, onClose, breakpoint, menuItem, submenuItem, isHierarchical }) {
   const [open, setOpen] = React.useState(false);
   const hasSub = hasSubMenuItems(item, isHierarchical);
-  
-  // Use submenuItem.class for submenu items (depth > 0) and menuItem.class for primary items (depth === 0)
-  const containerClass = depth > 0 
-    ? (submenuItem && submenuItem.class ? submenuItem.class : "")
-    : (menuItem && menuItem.class ? menuItem.class : "");
-  
+
+  // Use the new utility function to determine the effective class.
+  const containerClass = getEffectiveMenuItemClass(depth, menuItem, submenuItem);
+
   // For children, check for submenu override first.
-  const RenderComponent = submenuItem && submenuItem.component 
-    ? submenuItem.component 
-    : (menuItem && menuItem.component ? menuItem.component : HamburgerMenuItem);
+  const RenderComponent =
+    submenuItem && submenuItem.component
+      ? submenuItem.component
+      : (menuItem && menuItem.component ? menuItem.component : HamburgerMenuItem);
 
   const handleContainerClick = (e) => {
-    // Toggle open state only if clicking outside of a link or button
-    if (hasSub && !e.target.closest('a') && !e.target.closest('button')) {
+    // Toggle open state only if clicking outside a link or button.
+    if (hasSub && !e.target.closest("a") && !e.target.closest("button")) {
       setOpen((prev) => !prev);
     }
   };
