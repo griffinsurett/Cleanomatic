@@ -1,3 +1,4 @@
+// src/components/Menu/HamburgerMenu/HamburgerMenuItem.jsx
 import React from "react";
 import { hasSubMenuItems } from "@/utils/MenuUtils";
 
@@ -5,7 +6,10 @@ export default function HamburgerMenuItem({ item, depth = 0, onClose, breakpoint
   const [open, setOpen] = React.useState(false);
   const hasSub = hasSubMenuItems(item, isHierarchical);
   
-  const mainClass = menuItem && menuItem.class ? menuItem.class : "";
+  // Use submenuItem.class for submenu items (depth > 0) and menuItem.class for primary items (depth === 0)
+  const containerClass = depth > 0 
+    ? (submenuItem && submenuItem.class ? submenuItem.class : "")
+    : (menuItem && menuItem.class ? menuItem.class : "");
   
   // For children, check for submenu override first.
   const RenderComponent = submenuItem && submenuItem.component 
@@ -13,6 +17,7 @@ export default function HamburgerMenuItem({ item, depth = 0, onClose, breakpoint
     : (menuItem && menuItem.component ? menuItem.component : HamburgerMenuItem);
 
   const handleContainerClick = (e) => {
+    // Toggle open state only if clicking outside of a link or button
     if (hasSub && !e.target.closest('a') && !e.target.closest('button')) {
       setOpen((prev) => !prev);
     }
@@ -24,21 +29,21 @@ export default function HamburgerMenuItem({ item, depth = 0, onClose, breakpoint
   };
 
   return (
-    <li className={`py-2 pl-${depth * 4} ${mainClass}`}>
-      <div onClick={handleContainerClick} className={`flex items-center justify-between ${hasSub ? "cursor-pointer" : ""}`}>
-        <a href={item.slug} onClick={onClose}>
+    <li className={`py-[var(--spacing-sm)] ${containerClass}`}>
+      <div onClick={handleContainerClick} className="flex justify-center items-center cursor-pointer">
+        <a href={item.slug} onClick={onClose} className="block">
           {item.label}
         </a>
         {hasSub && (
-          <button onClick={handleArrowClick} className="focus:outline-none" aria-label="Toggle submenu">
-            <span className={`inline-block transform transition-transform duration-200 ${open ? "rotate-180" : ""}`}>
+          <button onClick={handleArrowClick} className="focus:outline-none m-[var(--spacing-sm)]" aria-label="Toggle submenu">
+            <span className="inline-block transform transition-transform duration-200">
               {submenuItem && submenuItem.submenuArrow ? submenuItem.submenuArrow : "▼"}
             </span>
           </button>
         )}
       </div>
       {hasSub && open && (
-        <ul className="ml-4 mt-2">
+        <ul className="text-center">
           {item.children.map((child) => (
             <RenderComponent
               key={child.id}
