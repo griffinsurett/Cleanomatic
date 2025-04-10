@@ -50,9 +50,7 @@ export default function MobileCallButtonModal({ children }) {
           onClose={closeModal}
           closeButton={true}
           closeButtonClass="text-bg absolute top-0 right-0 m-[var(--spacing-sm)]"
-          // Here we set an explicit see-through black overlay:
-          overlayClass="bg-primary bg-opacity-50"
-          // Removing any background from the modal content container unless needed:
+          overlayClass="bg-[rgba(0,0,0,0.7)]"
           className="flex items-center justify-center"
         >
           {children}

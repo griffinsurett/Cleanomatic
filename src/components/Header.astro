@@ -62,8 +62,8 @@ const mobileMediaQuery = `(max-width: ${breakpointsMapping[breakpoint] - 1}px)`;
         <MobileCallButtonModal client:media={mobileMediaQuery}>
           <Menu
             items={phoneMenuItems}
-            menuClass="phone-list bg-accent gap-[var(--spacing-xl)] flex"
-            listClass="flex flex-col justify-center gap-[var(--spacing-sm)] text-bg"
+            menuClass="phone-list bg-accent gap-[var(--spacing-xl)] flex justify-center items-center w-[60vw] h-[40vh] overflow-y-auto"
+            listClass="flex flex-col justify-center gap-[var(--spacing-xl)] text-bg"
             menuItem={{ component: PhoneNumber, class: "cursor-pointer h4" }}
             
           />
