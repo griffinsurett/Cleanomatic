@@ -62,36 +62,38 @@ const mobileMediaQuery = `(max-width: ${breakpointsMapping[breakpoint] - 1}px)`;
         <MobileCallButtonModal client:media={mobileMediaQuery}>
           <Menu
             items={phoneMenuItems}
-            menuClass="phone-list bg-accent flex"
-            listClass="flex flex-col justify-center gap-[var(--spacing-sm)] w-screen h-screen text-bg"
+            menuClass="phone-list bg-accent p-[var(--spacing-xl)] flex"
+            listClass="flex flex-col justify-center gap-[var(--spacing-sm)] text-bg"
             menuItem={{ component: PhoneNumber, class: "cursor-pointer h4" }}
             
           />
         </MobileCallButtonModal>
-        <!-- Mobile menu -->
         <Menu
-          items={headerItems}
-          menuClass="menu-class bg-primary flex lg:hidden text-text"
-          menuItem={{
-            component: MenuItem,
-            class: "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] h2 hover:bg-secondary",
-          }}
-          submenuItem={{
-            component: MenuItem,
-            class: "bg-primary py-[var(--spacing-sm)] h5 italic",
-          }}
-          isHierarchical={true}
-          breakpoint={breakpoint}
-          hamburgerMenu={{
-            hamburgerIconClass: "bg-primary",
-            hamburgerIconTransform: false,
-            menuBackground: "bg-primary bg-opacity-75",
-            menuOverlay: "bg-black bg-opacity-50",
-            listClass: "flex flex-col",
-            closeButton: true,
-            closeButtonClass: "absolute top-0 right-0 m-4 text-white hover:text-red-500",
-          }}
-        />
+        items={headerItems}
+        menuClass="menu-class bg-primary flex lg:hidden text-text justify-center items-center"
+        menuItem={{
+          component: MenuItem,
+          class:
+            "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] h2 hover:bg-secondary",
+        }}
+        submenuItem={{
+          component: MenuItem,
+          class: "bg-primary py-[var(--spacing-sm)] h5 italic",
+        }}
+        isHierarchical={true}
+        breakpoint={breakpoint}
+        hamburgerMenu={{
+          hamburgerIconClass: "bg-primary",
+          hamburgerIconTransform: false,
+          menuBackground: "bg-primary bg-opacity-75 flex items-center justify-center w-full",
+          menuOverlay: "bg-black bg-opacity-50",
+          listClass: "",
+          closeButton: true,
+          closeButtonClass:
+            "absolute top-0 right-0 m-4 text-white hover:text-red-500",
+        }}
+        
+      />      
       </div>
     </div>
   </div>
