@@ -55,7 +55,7 @@ export default function Modal({
       >
         {closeButton && (
           <button onClick={onClose} className={closeButtonClass} aria-label="Close modal">
-            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
+            <svg className="w-6 h-6 cursor-pointer" viewBox="0 0 24 24" fill="none">
               <line x1="4" y1="4" x2="20" y2="20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
               <line x1="20" y1="4" x2="4" y2="20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             </svg>

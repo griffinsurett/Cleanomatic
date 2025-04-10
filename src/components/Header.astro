@@ -8,6 +8,7 @@ import { Image } from "astro:assets";
 import Button from "./Button";
 import Logo from "../components/Logo.astro"; // new Logo component
 import { getPhoneNumberMenuItems } from "@/queries/PhoneNumberMenuQuery";
+import MobileCallButtonModal from "../components/MobileCallButtonModal.jsx"; // updated component
 
 const MainNavMenu = [
   { id: "home", label: "Home", slug: "/" },
@@ -23,29 +24,29 @@ const MainNavMenu = [
 
 const headerItems = await buildMenuQueries({ MainNavMenu });
 const phoneMenuItems = await getPhoneNumberMenuItems();
+
 const breakpoint = "lg";
+const breakpointsMapping = {
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+  "2xl": 1536,
+};
+// Use the breakpoint variable to create a media query:
+const mobileMediaQuery = `(max-width: ${breakpointsMapping[breakpoint] - 1}px)`;
 ---
 
-<header
-  class="flex flex-col justify-between items-center sticky top-0 z-[150] shadow-xl"
->
-  <div
-    class="top-header w-full flex justify-center items-center py-[var(--spacing-xs)] sm:py-[var(--spacing-md)] bg-primary text-tertiary"
-  >
+<header class="flex flex-col justify-between items-center sticky top-0 z-[150] shadow-xl">
+  <div class="top-header w-full flex justify-center items-center py-[var(--spacing-xs)] sm:py-[var(--spacing-md)] bg-primary text-tertiary">
     <div class="header-and-footer-wrap">
       <div class="h4 font-bold italic">24 Hour Emergency Service</div>
     </div>
   </div>
-  <div
-    class="main-header bg-accent text-bg lg:w-full flex justify-center w-full p-[var(--spacing-md)]"
-  >
-    <div
-      class="header-and-footer-wrap flex justify-between items-center w-full"
-    >
+  <div class="main-header bg-accent text-bg lg:w-full flex justify-center w-full p-[var(--spacing-md)]">
+    <div class="header-and-footer-wrap flex justify-between items-center w-full">
       <Logo />
-      <div
-        class="phone-and-cta-on-header hidden lg:flex justify-between items-center xl:w-1/2"
-      >
+      <div class="phone-and-cta-on-header hidden lg:flex justify-right items-center">
         <!-- Phone number menu using the dynamic Menu component -->
         <Menu
           items={phoneMenuItems}
@@ -56,37 +57,45 @@ const breakpoint = "lg";
           {CTAdata.buttonText}
         </Button>
       </div>
-      <!-- Mobile menu -->
-      <Menu
-        items={headerItems}
-        menuClass="menu-class bg-primary flex lg:hidden text-text"
-        menuItem={{
-          component: MenuItem,
-          class:
-            "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] h2 hover:bg-secondary",
-        }}
-        submenuItem={{
-          component: MenuItem,
-          class: "bg-primary py-[var(--spacing-sm)] h5 italic",
-        }}
-        isHierarchical={true}
-        breakpoint={breakpoint}
-        hamburgerMenu={{
-          hamburgerIconClass: "bg-primary",
-          hamburgerIconTransform: false,
-          menuBackground: "bg-primary bg-opacity-75",
-          menuOverlay: "bg-black bg-opacity-50",
-          listClass: "flex flex-col",
-          closeButton: true,
-          closeButtonClass:
-            "absolute top-0 right-0 m-4 text-white hover:text-red-500",
-        }}
-      />
+      <div class="mobile-menu flex justify-right items-center gap-[var(--spacing-md)] lg:hidden">
+        <!-- Mobile call button modal (with dynamic media query based on breakpoint) -->
+        <MobileCallButtonModal client:media={mobileMediaQuery}>
+          <Menu
+            items={phoneMenuItems}
+            menuClass="phone-list bg-accent flex"
+            listClass="flex flex-col justify-center gap-[var(--spacing-sm)] w-screen h-screen text-bg"
+            menuItem={{ component: PhoneNumber, class: "cursor-pointer h4" }}
+            
+          />
+        </MobileCallButtonModal>
+        <!-- Mobile menu -->
+        <Menu
+          items={headerItems}
+          menuClass="menu-class bg-primary flex lg:hidden text-text"
+          menuItem={{
+            component: MenuItem,
+            class: "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] h2 hover:bg-secondary",
+          }}
+          submenuItem={{
+            component: MenuItem,
+            class: "bg-primary py-[var(--spacing-sm)] h5 italic",
+          }}
+          isHierarchical={true}
+          breakpoint={breakpoint}
+          hamburgerMenu={{
+            hamburgerIconClass: "bg-primary",
+            hamburgerIconTransform: false,
+            menuBackground: "bg-primary bg-opacity-75",
+            menuOverlay: "bg-black bg-opacity-50",
+            listClass: "flex flex-col",
+            closeButton: true,
+            closeButtonClass: "absolute top-0 right-0 m-4 text-white hover:text-red-500",
+          }}
+        />
+      </div>
     </div>
   </div>
-  <div
-    class="bottom-header hidden lg:flex header-bottom w-full items-center bg-primary justify-center"
-  >
+  <div class="bottom-header hidden lg:flex header-bottom w-full items-center bg-primary justify-center">
     <div class="header-and-footer-wrap w-full flex">
       <!-- Desktop menu -->
       <Menu
@@ -94,8 +103,7 @@ const breakpoint = "lg";
         menuClass="menu-class flex justify-between items-center"
         menuItem={{
           component: MenuItem,
-          class:
-            "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] h4 hover:bg-secondary italic",
+          class: "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] h4 hover:bg-secondary italic",
         }}
         submenuItem={{ component: MenuItem, class: "bg-primary h6" }}
         isHierarchical={true}

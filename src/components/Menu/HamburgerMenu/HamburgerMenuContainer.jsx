@@ -28,9 +28,8 @@ export default function HamburgerMenuContainer({
       closeButton={hamburgerMenu?.closeButton ?? false}
       closeButtonClass={hamburgerMenu?.closeButtonClass || "absolute top-0 right-0 m-[var(--spacing-sm)]"}
     >
-      {/* Wrap nav in a flex container to center the menu items */}
-      <nav onClick={(e) => e.stopPropagation()} className="h-full flex flex-col justify-center items-center">
-        <ul className={`w-full space-y-2 text-center ${listClass || ""}`}>
+      <nav onClick={(e) => e.stopPropagation()}>
+        <ul className={`space-y-2 ${listClass || ""}`}>
           {items.map((item) => (
             <RenderComponent 
               key={item.id} 
