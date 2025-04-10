@@ -1,4 +1,5 @@
 // src/content/config.ts
+import { file } from "astro/loaders";
 import { defineCollection, reference, z } from "astro:content";
 
 // Isolated Heading Schema – allows a string, an object, or an array of these.
@@ -99,6 +100,10 @@ export const collections = {
     schema: ({ image }) => baseSchema({ image }),
   }), 
   faq: defineCollection({
+    schema: ({ image }) => baseSchema({ image }),
+  }),
+  serviceAreas: defineCollection({
+    loader: file("src/content/serviceAreas/serviceAreas.json"),
     schema: ({ image }) => baseSchema({ image }),
   }),
 };
