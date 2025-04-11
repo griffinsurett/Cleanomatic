@@ -1,0 +1,139 @@
+---
+// src/components/Button.astro
+import DefaultIcon from "@/assets/cleanomaticvanright3.png";
+
+// Destructure props from Astro.props
+const {
+  as: ComponentProp,
+  type = "button",
+  onClick,
+  children,
+  className = "",
+  href,
+  variant,
+  iconProps = {},
+  showIcon = true,
+  ...props
+} = Astro.props;
+
+// Default the variant to "primary" if not provided.
+const finalVariant = variant || "primary";
+
+// Base button classes for non-underline variants.
+const baseButtonClasses =
+  "rounded-none py-[var(--spacing-md)] px-[var(--spacing-2xl)] transform transition-all duration-300 ease-in-out text-base font-semibold text-stroke md:text-lg xl:text-2xl uppercase italic";
+
+// Variant defaults definition.
+const buttonVariantDefaults = {
+  primary: {
+    variantClasses:
+      "bg-[var(--color-accent)] text-[var(--color-bg)] hover:bg-[var(--color-accent-secondary)]",
+    buttonClasses: baseButtonClasses,
+    iconDefaults: {
+      hoverOnly: true,
+      animateIcon: true,
+    },
+  },
+  secondary: {
+    variantClasses:
+      "bg-[var(--color-primary)] text-[var(--color-bg)] hover:bg-[var(--color-secondary)]",
+    buttonClasses: baseButtonClasses,
+    iconDefaults: {
+      hoverOnly: true,
+      animateIcon: true,
+    },
+  },
+  underline: {
+    variantClasses:
+      "underline text-[var(--color-primary)] hover:text-[var(--color-secondary)]",
+    buttonClasses: "",
+    iconDefaults: {
+      className: "hidden",
+      hoverOnly: false,
+      animateIcon: false,
+    },
+  },
+};
+
+const { variantClasses, buttonClasses, iconDefaults } =
+  buttonVariantDefaults[finalVariant] || buttonVariantDefaults.primary;
+
+// Merge the variant's icon defaults with any custom iconProps.
+const mergedIconProps = { ...iconDefaults, ...iconProps };
+const {
+  element,               // The actual icon element, e.g. an <img />, emoji, etc.
+  position = "right",    // "left" or "right"
+  className: iconCustomClass = "", // Additional classes for the icon container.
+  hoverOnly,
+  animateIcon,
+} = mergedIconProps;
+
+// Use a local variable for the image source rather than inline optional chaining.
+let defaultIconSrc = "";
+if (DefaultIcon) {
+  defaultIconSrc = DefaultIcon.src;
+}
+
+// Determine the final icon: either the provided element or the default one.
+const finalIcon =
+  showIcon
+    ? element !== undefined
+      ? element
+      : (<img src={defaultIconSrc} alt="Icon" class="h-4 w-10" loading="lazy" />)
+    : null;
+
+// Determine icon container classes if an icon is to be rendered.
+let iconContainerClasses = "";
+if (finalIcon) {
+  if (hoverOnly) {
+    if (animateIcon) {
+      iconContainerClasses =
+        position === "right"
+          ? "inline-flex w-0 overflow-hidden transform -translate-x-4 opacity-0 transition-all duration-300 ease-in-out group-hover:w-auto group-hover:ml-2 group-hover:translate-x-0 group-hover:opacity-100"
+          : "inline-flex w-0 overflow-hidden transform translate-x-4 opacity-0 transition-all duration-300 ease-in-out group-hover:w-auto group-hover:mr-2 group-hover:translate-x-0 group-hover:opacity-100";
+    } else {
+      iconContainerClasses =
+        position === "right"
+          ? "inline-flex w-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out group-hover:w-auto group-hover:ml-2 group-hover:opacity-100"
+          : "inline-flex w-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out group-hover:w-auto group-hover:mr-2 group-hover:opacity-100";
+    }
+  } else {
+    iconContainerClasses = position === "right" ? "ml-2 inline-flex" : "mr-2 inline-flex";
+  }
+}
+
+const finalIconContainerClass = iconCustomClass.includes("hidden")
+  ? iconCustomClass
+  : `${iconCustomClass} ${iconContainerClasses}`.trim();
+
+// Ensure the button container is relatively positioned.
+const containerDefaults = "relative inline-flex items-center group";
+
+// Build the overall class names.
+const combinedClassNames =
+  finalVariant === "underline"
+    ? `${className} ${variantClasses} transition-colors duration-300 ease-in-out ${containerDefaults} inline-flex items-center group`
+    : `${className} ${variantClasses} ${buttonClasses} ${containerDefaults}`;
+
+// Determine the component to render (supports custom "as" prop).
+const ComponentFinal = ComponentProp ?? (href ? "a" : "button");
+---
+<ComponentFinal
+  {...(ComponentFinal === "button" ? { type } : {})}
+  {...(ComponentFinal === "a" ? { href } : {})}
+  onClick={onClick}
+  class={combinedClassNames}
+  {...props}
+>
+  {children}
+  {finalIcon && position === "right" && (
+    <span class={finalIconContainerClass}>
+      {finalIcon}
+    </span>
+  )}
+  {finalIcon && position === "left" && (
+    <span class={finalIconContainerClass}>
+      {finalIcon}
+    </span>
+  )}
+</ComponentFinal>
