@@ -41,9 +41,9 @@ import Heading from "@/components/Heading";
     headingAreaClass="xl:max-w-7/8"
 >
 <div class="business-hours-menu text-stroke italic my-[var(--spacing-md)]">
-  <Heading tagName="h4" className={"h4 text-bg my-[var(--spacing-sm)] italic"}>
+  <label class={"h4 text-bg my-[var(--spacing-sm)] italic"}>
     Business Hours:
-  </Heading>
+  </label>
   <Menu
     items={await getBusinessHours()}
     menuItem={{
