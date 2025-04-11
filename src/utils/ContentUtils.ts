@@ -1,4 +1,29 @@
 // src/utils/ContentUtils.ts
+export function getCanonicalSlug(entry: any): string {
+  // Try auto-generated slug first (for MDX/Markdown entries)
+  let slug = entry.slug;
+  // If there's a data object (e.g. from JSON or MDX frontmatter), try data.slug then data.id.
+  if (!slug && entry.data) {
+    slug = entry.data.slug || entry.data.id;
+  }
+  // Finally, check if entry has an id property directly.
+  if (!slug && entry.id) {
+    slug = entry.id;
+  }
+  if (!slug) {
+    throw new Error("Missing both slug and id for entry");
+  }
+  // Ensure both properties are in sync:
+  if (entry.data) {
+    entry.data.slug = slug;
+    entry.data.id = slug;
+  } else {
+    entry.slug = slug;
+    entry.id = slug;
+  }
+  return slug;
+}
+
 export function normalizeRef(ref: any): string {
     if (typeof ref === 'string') {
       return ref.trim().replace(/,$/, '');
