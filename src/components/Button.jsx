@@ -38,7 +38,7 @@ const buttonVariantDefaults = {
   },
 };
 
-// Mark this component as async so we can await getImage() when on SSR.
+// Mark this component as async so we can await getImage()
 export default async function Button({
   as: ComponentProp,
   type = "button",
@@ -68,30 +68,23 @@ export default async function Button({
     animateIcon,           // from mergedIconProps
   } = mergedIconProps;
 
-  // Optimize icon only on SSR. On client hydration, fall back to the default URL.
+  // If showIcon is true and no custom element is provided,
+  // use Astro's getImage to optimize the default icon.
   let optimizedDefaultIcon = null;
   if (showIcon && element === undefined) {
-    if (import.meta.env.SSR) {
-      optimizedDefaultIcon = await getImage(
-        { src: DefaultIcon },
-        {
-          format: "webp",
-          quality: 5,
-          width: 20, // Adjust width as needed
-          sizes: "16px", // Inform the browser about the intended display size
-        }
-      );
-    } else {
-      // On the client, simply use the unoptimized static asset URL
-      optimizedDefaultIcon = { src: DefaultIcon };
-    }
+    optimizedDefaultIcon = await getImage({ src: DefaultIcon }, {
+      format: "webp",
+      quality: 5,
+      width: 20, // Adjust width as needed
+      sizes: "16px",  // Inform the browser about the intended display size
+    });
   }
 
   // Set finalIcon to either the custom icon element or the optimized default icon.
   const finalIcon = showIcon
     ? element !== undefined
       ? element
-      : // Display the optimized or fallback default icon.
+      : // Display the optimized default icon.
         <img src={optimizedDefaultIcon?.src} alt="Icon" className="h-4 w-10" loading="lazy" />
     : null;
 
