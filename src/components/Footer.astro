@@ -51,21 +51,21 @@ const FooterMenu = [
         <Logo
         containerClass="flex flex-col items-center"
         />
-        <p class="text-base mt-[var(--spacing-sm)] px-[var(--spacing-lg)] xl:px-0">
+        <p class="text-base mt-[var(--spacing-sm)] px-[var(--spacing-lg)]">
           {SiteData.description}
         </p>
       </div>
       <div
         class="footer-menus w-full flex flex-wrap sm:flex-row justify-between xl:w-2/3"
       >
-        <div class="footer-menu">
+        <div class="footer-menu w-full sm:w-1/2 md:w-auto">
           <Heading tagName="h4" className={menuHeadingClass}> Info </Heading>
           <Menu
             listClass={menuListClass}
             items={await buildMenuQueries({ FooterMenu })}
           />
         </div>
-        <div class="contact-info">
+        <div class="contact-info w-full sm:w-1/2 md:w-auto">
           <Heading tagName="h4" className={menuHeadingClass}>
             Contact Us
           </Heading>
@@ -78,7 +78,7 @@ const FooterMenu = [
             }}
           />
         </div>
-        <div class="business-hours-menu h6 text-stroke grow lg:grow-0 italic">
+        <div class="business-hours-menu h6 text-stroke grow md:grow-0 italic">
           <Heading tagName="h4" className={menuHeadingClass}>
             Business Hours
           </Heading>
