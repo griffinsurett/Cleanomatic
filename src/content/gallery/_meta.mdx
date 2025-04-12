@@ -1,16 +1,18 @@
 ---
 heading: 
-  - text: "Gallery"
+  - text: "Check Out Our Work"
     tagName: "h2"
     class: "h2 text-accent"
 description: "A collection of beautiful images showcasing our work."
 hasPage: true
 itemsHasPage: true
 defaultSection:
-  sectionClass: "flex justify-center items-center text-center py-[var(--spacing-xl)]"
-  contentClass: "container mx-auto flex flex-col items-center py-[var(--spacing-xl)]"
+  sectionClass: "flex justify-center items-center text-center bg-bg px-[var(--spacing-xl)]"
+  contentClass: "container flex flex-wrap flex-col justify-center w-full py-[var(--spacing-xl)] px-[var(--spacing-lg)]"
+  itemsClass: "flex flex-wrap justify-between items-stretch gap-[var(--spacing-xl)] my-[var(--spacing-lg)] md:my-[var(--spacing-2xl)]"
   component: "GalleryCard"
   buttonsSectionClass: "hidden"
+  headingAreaClass: "hidden"
 addToQuery: [
 {
 "id": "MainNavMenu",

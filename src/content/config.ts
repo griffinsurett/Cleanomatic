@@ -109,7 +109,7 @@ export const collections = {
   gallery: defineCollection({
     loader: file("src/content/gallery/gallery.json"), // file-loaded collection
     schema: ({ image }) => baseSchema({ image }).extend({
-      src: z.string(),
+      src: image(),
     }),
   }),
 };

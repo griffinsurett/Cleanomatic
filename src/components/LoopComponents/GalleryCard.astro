@@ -1,19 +1,17 @@
 ---
+// src/components/LoopComponents/GalleryCard.astro
 import { Image } from "astro:assets";
 const { item } = Astro.props;
-
 console.log("GalleryCard", item);
 ---
-<li class="gallery-card p-4">
-  {item.src && (
+<li class="gallery-card p-[var(--spacing-sm)] flex flex-col items-center justify-center w-full md:flex-1/5">
+  {item.data.src && (
     <Image
-      src={item.src}
-      alt={item.title}
-      class="w-full h-auto object-cover"
+      src={item.data.src}
+      alt={item.data.title}
+      class="w-full object-cover"
       loading="lazy"
       format="webp"
     />
   )}
-  <h3 class="mt-2 text-lg font-bold">{item.title}</h3>
-  {item.description && <p class="text-sm">{item.description}</p>}
 </li>

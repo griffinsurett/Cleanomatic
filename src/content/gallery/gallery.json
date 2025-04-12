@@ -2,20 +2,26 @@
     {
       "title": "Sunset Over Beach",
       "description": "A beautiful sunset over the beach.",
-      "src": "@/assets/Alex-Lampa.jpg",
+      "src": "@/assets/dryervent2.jpg",
       "id": "sunset-over-beach"
     },
     {
       "title": "Mountain Landscape",
       "description": "A scenic view of mountains during sunrise.",
-      "src": "@/assets/Alex-Lampa.jpg",
+      "src": "@/assets/dryervent2.jpg",
       "id": "mountain-landscape"
     },
     {
       "title": "City Lights",
       "description": "The city skyline illuminated at night.",
-      "src": "@/assets/Alex-Lampa.jpg",
+      "src": "@/assets/dryervent2.jpg",
       "id": "city-lights"
+    },
+    {
+      "title": "City Lights2",
+      "description": "The city skyline illuminated at night.",
+      "src": "@/assets/dryervent2.jpg",
+      "id": "city-lights2"
     }
   ]
   
