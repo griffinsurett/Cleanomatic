@@ -4,14 +4,16 @@ import { Image } from "astro:assets";
 const { item } = Astro.props;
 console.log("GalleryCard", item);
 ---
-<li class="gallery-card p-[var(--spacing-sm)] flex flex-col items-center justify-center w-full md:flex-1/5">
-  {item.data.src && (
-    <Image
-      src={item.data.src}
-      alt={item.data.title}
-      class="w-full object-cover"
-      loading="lazy"
-      format="webp"
-    />
-  )}
+<li class="gallery-card p-[var(--spacing-sm)] h-64 flex flex-col items-center justify-center w-full md:flex-1/5">
+  <div class="relative w-full h-full overflow-hidden">
+    {item.data.src && (
+      <Image
+        src={item.data.src}
+        alt={item.data.title}
+        class="absolute inset-0 w-full h-full object-cover transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+        loading="lazy"
+        format="webp"
+      />
+    )}
+  </div>
 </li>
