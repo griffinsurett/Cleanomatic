@@ -1,0 +1,21 @@
+[
+    {
+      "title": "Sunset Over Beach",
+      "description": "A beautiful sunset over the beach.",
+      "src": "@/assets/Alex-Lampa.jpg",
+      "id": "sunset-over-beach"
+    },
+    {
+      "title": "Mountain Landscape",
+      "description": "A scenic view of mountains during sunrise.",
+      "src": "@/assets/Alex-Lampa.jpg",
+      "id": "mountain-landscape"
+    },
+    {
+      "title": "City Lights",
+      "description": "The city skyline illuminated at night.",
+      "src": "@/assets/Alex-Lampa.jpg",
+      "id": "city-lights"
+    }
+  ]
+  

@@ -106,4 +106,10 @@ export const collections = {
     loader: file("src/content/serviceAreas/serviceAreas.json"),
     schema: ({ image }) => baseSchema({ image }),
   }),
+  gallery: defineCollection({
+    loader: file("src/content/gallery/gallery.json"), // file-loaded collection
+    schema: ({ image }) => baseSchema({ image }).extend({
+      src: z.string(),
+    }),
+  }),
 };
