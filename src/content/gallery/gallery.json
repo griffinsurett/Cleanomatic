@@ -16,12 +16,6 @@
       "description": "The city skyline illuminated at night.",
       "src": "@/assets/dryervent2.jpg",
       "id": "city-lights"
-    },
-    {
-      "title": "City Lights2",
-      "description": "The city skyline illuminated at night.",
-      "src": "@/assets/dryervent2.jpg",
-      "id": "city-lights2"
     }
   ]
   
