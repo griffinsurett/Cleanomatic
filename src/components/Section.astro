@@ -44,9 +44,7 @@ const {
   itemsClass,
   itemClass,
   buttonsSectionClass,
-  // Destructure headingAreaClass from Astro.props
   headingAreaClass,
-  // Renamed from "background" to "backgroundMedia"
   backgroundMedia,
   ...props
 } = Astro.props;
@@ -97,7 +95,6 @@ if (backgroundMedia?.image && backgroundMedia.image.src) {
   optimizedBackgroundImage = await getImage({ src: backgroundMedia.image.src }, {
     format: "webp",
     quality: 50,
-    width: 1200,
     placeholder: "blur",
   });
 }
