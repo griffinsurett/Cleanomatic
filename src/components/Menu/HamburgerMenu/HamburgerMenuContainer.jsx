@@ -23,13 +23,13 @@ export default function HamburgerMenuContainer({
       // Use hamburgerMenu.menuOverlay if provided; otherwise default to bg-black bg-opacity-50.
       overlayClass={hamburgerMenu?.menuOverlay || "bg-black bg-opacity-50"}
       // Append hamburgerMenu.menuBackground classes to the modal container.
-      className={`bg-bg ${hamburgerMenu?.menuBackground || ""} rounded shadow-lg p-4 w-full h-full overflow-auto`}
+      className={`bg-bg ${hamburgerMenu?.menuBackground || ""} rounded shadow-lg p-[var(--spacing-md)] w-full h-full overflow-auto`}
       // Control whether the close button is shown and allow custom styling via closeButtonClass.
       closeButton={hamburgerMenu?.closeButton ?? false}
       closeButtonClass={hamburgerMenu?.closeButtonClass || "absolute top-0 right-0 m-[var(--spacing-sm)]"}
     >
       <nav onClick={(e) => e.stopPropagation()}>
-        <ul className={`space-y-2 ${listClass || ""}`}>
+        <ul className={`${listClass || ""}`}>
           {items.map((item) => (
             <RenderComponent 
               key={item.id} 
