@@ -2,6 +2,7 @@
 // src/pages/[collection]/index.astro
 import Layout from "@/layouts/Layout.astro";
 import Section from "@/components/Section.astro";
+import SecondaryHero from "@/components/StaticSections/SecondaryHero.astro";
 import Card from "@/components/LoopComponents/Card";
 import { collections } from "@/content/config";
 import { getCollectionMeta } from "@/utils/FetchMeta";
@@ -26,6 +27,7 @@ try {
 } catch {}
 ---
 <Layout title={capitalize(collection)} description={meta.description}>
+  <SecondaryHero title={capitalize(collection)} />
   {meta.sections && meta.sections.length > 0 ? (
     meta.sections.map((section, i) => (
       <Section
