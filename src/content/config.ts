@@ -86,6 +86,7 @@ const baseSchema = ({ image }: { image: Function }) =>
     sections: z.array(sectionSchema).optional(),
     addToQuery: z.array(QueryItemSchema).optional(),
     tags: z.array(z.string()).optional(),
+    icon: z.string().optional(),
   });
 
 export const collections = {
@@ -111,5 +112,9 @@ export const collections = {
     schema: ({ image }) => baseSchema({ image }).extend({
       src: image(),
     }),
+  }),
+  benefits: defineCollection({
+    loader: file("src/content/benefits/benefits.json"), // file-loaded collection
+    schema: ({ image }) => baseSchema({ image }),
   }),
 };
