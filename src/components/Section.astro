@@ -48,14 +48,23 @@ const {
   headingAreaClass,
   backgroundMedia,
   topContentClass = "", // extra classes on the top content wrapper
-  itemPlacement = "",  // when set to "top-content-section", dynamic items are nested under the heading
-  // New prop: slotPlacement decides where the default slot content is rendered.
-  // If slotPlacement === "top-content-section", it is rendered inside the top-content-section container.
-  // Otherwise (any other value), it is rendered in a separate container.
-  slotPlacement = "", 
-  childSlotClass = "", // extra classes for the default slot container when not injected in top-content-section
+  itemPlacement = "",  // can be a string or an array of selectors (e.g. "top-content-section")
+  slotPlacement = "",  // can be a string or an array of selectors
+  childSlotClass = "", // extra classes for the default slot container when not injected in the target container
   ...props
 } = Astro.props;
+
+// Convert placement props to arrays for flexible checking.
+const itemPlacementArray = Array.isArray(itemPlacement)
+  ? itemPlacement
+  : itemPlacement
+  ? [itemPlacement]
+  : [];
+const slotPlacementArray = Array.isArray(slotPlacement)
+  ? slotPlacement
+  : slotPlacement
+  ? [slotPlacement]
+  : [];
 
 const meta = await resolveMetaProps(collectionName, queryType);
 const defaultSection = meta.defaultSection || {};
@@ -100,20 +109,20 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
 
 let optimizedBackgroundImage = null;
 if (backgroundMedia?.image && backgroundMedia.image.src) {
-  optimizedBackgroundImage = await getImage(
-    { src: backgroundMedia.image.src },
-    {
-      format: "webp",
-      quality: 50,
-      placeholder: "blur",
-    }
-  );
+  optimizedBackgroundImage = await getImage({
+    src: backgroundMedia.image.src,
+    format: "webp",
+    quality: 50,
+    placeholder: "blur",
+  });
 }
 ---
 
 <!-- Outer section: relative for layering -->
 <section
-  class={`${finalSectionClass} relative w-full ${isDynamic ? "py-[var(--spacing-lg)] lg:px-[var(--spacing-md)]" : "lg:px-[var(--spacing-md)]"}`}
+  class={`${finalSectionClass} relative w-full ${
+    isDynamic ? "py-[var(--spacing-lg)] lg:px-[var(--spacing-md)]" : "lg:px-[var(--spacing-md)]"
+  }`}
   data-collection={collectionName}
   {...props}
 >
@@ -168,15 +177,15 @@ if (backgroundMedia?.image && backgroundMedia.image.src) {
       </div>
 
       {/*
-        If slotPlacement equals "top-content-section", render the default slot here.
+        Check the slotPlacement array. If it includes "top-content-section", render the default slot here.
       */}
-      {slotPlacement === "top-content-section" && <slot />}
+      {slotPlacementArray.includes("top-content-section") && <slot />}
       
       {/*
-        If itemPlacement equals "top-content-section" and section is dynamic,
-        render dynamic items and buttons inside this container.
+        Check the itemPlacement array. If it includes "top-content-section" and the section is dynamic, 
+        render dynamic items (with injection slots and buttons) in this container.
       */}
-      {itemPlacement === "top-content-section" && isDynamic && (
+      {itemPlacementArray.includes("top-content-section") && isDynamic && (
         <>
           <slot name="aboveItemsInjection" />
           <ItemsTemplate
@@ -218,10 +227,10 @@ if (backgroundMedia?.image && backgroundMedia.image.src) {
     </div>
 
     {/*
-      If itemPlacement is NOT "top-content-section" and section is dynamic,
-      render dynamic items and buttons below the top-content-section.
+      If itemPlacement does not include "top-content-section" and the section is dynamic,
+      render dynamic items and buttons in a separate container.
     */}
-    {itemPlacement !== "top-content-section" && isDynamic && (
+    {!itemPlacementArray.includes("top-content-section") && isDynamic && (
       <>
         <slot name="aboveItemsInjection" />
         <ItemsTemplate
@@ -262,8 +271,7 @@ if (backgroundMedia?.image && backgroundMedia.image.src) {
     )}
 
     {/*
-      For non-dynamic sections, render the default button block
-      if any button exists.
+      For non-dynamic sections, render the default button block if any button exists.
     */}
     {!isDynamic && buttonsArray.length > 0 && (
       <div class={`${finalButtonsSectionClass} order-last`}>
@@ -291,10 +299,11 @@ if (backgroundMedia?.image && backgroundMedia.image.src) {
     )}
 
     {/*
-      If slotPlacement is not "top-content-section", render the default slot
-      in a container that uses a flexbox order class (like "order-last").
+      Finally, check the slotPlacement array. If it does NOT include "top-content-section",
+      then render the default slot in its own container.
+      Here you can use flexbox order classes (such as "order-last") as defined in your CSS.
     */}
-    {slotPlacement !== "top-content-section" && (
+    {!slotPlacementArray.includes("top-content-section") && (
       <div class={`default-child-slot ${childSlotClass}`}>
         <slot />
       </div>
