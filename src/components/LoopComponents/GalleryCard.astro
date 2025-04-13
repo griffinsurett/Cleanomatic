@@ -3,7 +3,7 @@
 import { Image } from "astro:assets";
 const { item } = Astro.props;
 ---
-<li class="gallery-card p-[var(--spacing-sm)] h-64 flex flex-col items-center justify-center w-full md:flex-1/5">
+<li class="gallery-card lg:p-[var(--spacing-sm)] h-78 flex flex-col items-center justify-center w-full md:flex-1/5">
   <div class="relative w-full h-full overflow-hidden">
     {item.data.src && (
       <Image

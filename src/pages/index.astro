@@ -3,13 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import Section from "@/components/Section.astro";
 import PrimaryHero from "@/components/StaticSections/PrimaryHero.astro";
 import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
-import GoogleMap from "@/components/GoogleMap.astro";
 import { Picture } from "astro:assets";
-import BenefitsImage from "@/assets/background.svg";
-import { getBusinessHours } from "@/queries/BusinessHoursQuery";
-import BusinessHoursItem from "@/components/Menu/BusinessHoursItem.astro";
-import Menu from "@/components/Menu/Menu.astro";
-import Button from "@/components/Button";
 import ListItem from "@/components/LoopComponents/ListItem.astro";
 ---
 
@@ -34,14 +28,14 @@ import ListItem from "@/components/LoopComponents/ListItem.astro";
         variant: "secondary",
       },
     ]}
-    sectionClass="flex justify-center text-left min-h-[80vh] xl:min-h-[100vh]"
+    sectionClass="flex justify-center items-center text-left min-h-[60vh] xl:min-h-[100vh]"
     contentClass="flex justify-between items-start py-[var(--spacing-2xl)] flex-col-reverse md:flex-row-reverse gap-[var(--spacing-xl)] lg:gap-[var(--spacing-2xl)]"
     headingAreaClass="flex flex-col"
-    topContentClass="flex flex-col gap-[var(--spacing-md)] w-full md:max-w-3/5"
+    topContentClass="flex flex-col gap-[var(--spacing-md)]"
     itemPlacement="top-content-section"
     itemsClass="flex flex-col items-start justify-start gap-[var(--spacing-md)]"
     component={ListItem}
-    childSlotClass="sticky top-0 w-full"
+    childSlotClass="lg:sticky lg:top-0 w-full"
   >
     <div class="image-section">
       <Picture
