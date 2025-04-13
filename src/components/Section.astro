@@ -17,6 +17,7 @@
  * If a video is provided, it will be used as the background, with the background image as a poster/fallback.
  * Otherwise, the provided image is optimized using Astro's getImage.
  */
+// src/components/Section.astro
 import Heading from "./Heading.jsx";
 import Button from "./Button.jsx";
 import ItemsTemplate from "./ItemsTemplate.astro";
@@ -46,6 +47,8 @@ const {
   buttonsSectionClass,
   headingAreaClass,
   backgroundMedia,
+  topContentClass = "", // prop for extra classes on the top content wrapper
+  itemPlacement = "",  // when set to "top-content-section", items are nested under the heading
   ...props
 } = Astro.props;
 
@@ -63,7 +66,7 @@ const {
   defaultSection
 );
 
-// NEW: Merge headingAreaClass from Astro.props with the default from meta/defaultSection.
+// Merge headingAreaClass from Astro.props with the default.
 const finalHeadingAreaClass =
   headingAreaClass || defaultSection.headingAreaClass || "";
 
@@ -92,11 +95,14 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
 
 let optimizedBackgroundImage = null;
 if (backgroundMedia?.image && backgroundMedia.image.src) {
-  optimizedBackgroundImage = await getImage({ src: backgroundMedia.image.src }, {
-    format: "webp",
-    quality: 50,
-    placeholder: "blur",
-  });
+  optimizedBackgroundImage = await getImage(
+    { src: backgroundMedia.image.src },
+    {
+      format: "webp",
+      quality: 50,
+      placeholder: "blur",
+    }
+  );
 }
 ---
 
@@ -133,27 +139,69 @@ if (backgroundMedia?.image && backgroundMedia.image.src) {
   {backgroundMedia?.overlayClass && (
     <div class={`absolute inset-0 ${backgroundMedia.overlayClass} z-0`} aria-hidden="true"></div>
   )}
-  <!-- Content container: contains both the heading area and items -->
-  <div class={`${finalContentClass} relative z-10 w-3/4 ${isDynamic ? "my-[var(--spacing-lg)]" : ""}`}>
-    <!-- Heading Area: wrapped inside the content container -->
-    <div class={`section-heading-area ${finalHeadingAreaClass}`}>
-      {finalHeadingArray.map((head, i) => {
-        const headObj = typeof head === "string" ? { text: head } : head;
-        const Tag = headObj.tagName || "h2";
-        return (
-          <Heading key={i} tagName={Tag} className={headObj.class || ""}>
-            {headObj.text}
-          </Heading>
-        );
-      })}
-      {finalDescription && (
-        <p class={description?.class}>
-          {finalDescription}
-        </p>
-      )}
+
+  <!-- Content container: holds heading and items sections -->
+  <div class={`${finalContentClass} content-section relative z-10 w-3/4 ${isDynamic ? "my-[var(--spacing-lg)]" : ""}`}>
+    <!-- Top Content Section: wrapping the heading area -->
+    <div class={`top-content-section ${topContentClass}`}>
+      <div class={`section-heading-area ${finalHeadingAreaClass}`}>
+        {finalHeadingArray.map((head, i) => {
+          const headObj = typeof head === "string" ? { text: head } : head;
+          const Tag = headObj.tagName || "h2";
+          return (
+            <Heading key={i} tagName={Tag} className={headObj.class || ""}>
+              {headObj.text}
+            </Heading>
+          );
+        })}
+        {finalDescription && (
+          <p class={description?.class}>
+            {finalDescription}
+          </p>
+        )}
+      </div>
+      {itemPlacement === "top-content-section" && isDynamic ? (
+        <>
+          <slot name="aboveItemsInjection" />
+          <ItemsTemplate
+            items={items}
+            collection={collectionName}
+            query={queryType}
+            itemsClass={finalItemsClass}
+            itemClass={itemClass}
+            ItemComponent={finalComponent}
+            HasPage={itemsDefaultHasPage}
+            pathname={Astro.url.pathname}
+          />
+          <slot name="belowItemsInjection" />
+          <div class={finalButtonsSectionClass}>
+            {buttonsArray.length > 0 &&
+              buttonsArray.map((btn, index) => {
+                const btnDefaults = {
+                  text: capitalize(collectionName),
+                  link: `/${collectionName}`,
+                  class: "",
+                  variant: "primary",
+                };
+                const finalButtonProps = { ...btnDefaults, ...btn };
+                return (
+                  <Button
+                    key={index}
+                    href={finalButtonProps.link}
+                    className={finalButtonProps.class}
+                    ariaLabel={finalButtonProps.text}
+                    variant={finalButtonProps.variant}
+                  >
+                    {finalButtonProps.text}
+                  </Button>
+                );
+              })}
+          </div>
+        </>
+      ) : null}
     </div>
-    <!-- Items or slot content rendered below the heading area -->
-    {isDynamic ? (
+
+    {itemPlacement !== "top-content-section" && isDynamic ? (
       <>
         <slot name="aboveItemsInjection" />
         <ItemsTemplate
@@ -190,35 +238,11 @@ if (backgroundMedia?.image && backgroundMedia.image.src) {
               );
             })}
         </div>
-        <slot />
       </>
-    ) : (
-      <>
-        <slot />
-        <div class={finalButtonsSectionClass}>
-          {buttonsArray.length > 0 &&
-            buttonsArray.map((btn, index) => {
-              const btnDefaults = {
-                text: capitalize(collectionName),
-                link: `/${collectionName}`,
-                class: "",
-                variant: "primary",
-              };
-              const finalButtonProps = { ...btnDefaults, ...btn };
-              return (
-                <Button
-                  key={index}
-                  href={finalButtonProps.link}
-                  className={finalButtonProps.class}
-                  ariaLabel={finalButtonProps.text}
-                  variant={finalButtonProps.variant}
-                >
-                  {finalButtonProps.text}
-                </Button>
-              );
-            })}
-        </div>
-      </>
-    )}
+    ) : null}
+      <!-- Default child slot is always rendered inside the section at a fixed location -->
+  <div class="default-child-slot">
+    <slot />
+  </div>
   </div>
 </section>
