@@ -34,15 +34,16 @@ import ListItem from "@/components/LoopComponents/ListItem.astro";
         variant: "secondary",
       },
     ]}
-    sectionClass="flex justify-center items-center text-left min-h-[80vh] xl:min-h-[100vh]"
-    contentClass="container flex justify-between py-[var(--spacing-2xl)] flex-col-reverse md:flex-row-reverse gap-[var(--spacing-xl)] lg:gap-[var(--spacing-2xl)]"
-    headingAreaClass="flex flex-col items-start"
-    topContentClass="flex flex-col items-start justify-start gap-[var(--spacing-md)] w-full md:max-w-1/2"
+    sectionClass="flex justify-center text-left min-h-[80vh] xl:min-h-[100vh]"
+    contentClass="flex justify-between items-start py-[var(--spacing-2xl)] flex-col-reverse md:flex-row-reverse gap-[var(--spacing-xl)] lg:gap-[var(--spacing-2xl)]"
+    headingAreaClass="flex flex-col"
+    topContentClass="flex flex-col gap-[var(--spacing-md)] w-full md:max-w-3/5"
     itemPlacement="top-content-section"
     itemsClass="flex flex-col items-start justify-start gap-[var(--spacing-md)]"
     component={ListItem}
+    childSlotClass="sticky top-0 w-full"
   >
-    <div class="image-section sticky top-0">
+    <div class="image-section">
       <Picture
         src={HeroBg}
         alt={"Benefits of Cleanomatic"}
