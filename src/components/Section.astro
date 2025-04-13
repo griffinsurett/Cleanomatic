@@ -18,7 +18,6 @@
  * Otherwise, the provided image is optimized using Astro's getImage.
  */
 // src/components/Section.astro
-// src/components/Section.astro
 import Heading from "./Heading.jsx";
 import Button from "./Button.jsx";
 import ItemsTemplate from "./ItemsTemplate.astro";
@@ -49,9 +48,12 @@ const {
   headingAreaClass,
   backgroundMedia,
   topContentClass = "", // extra classes on the top content wrapper
-  itemPlacement = "",  // when "top-content-section", items are nested under heading
-  slotPlacement = "bottom", // NEW prop: "top-content-section" or "bottom" (default)
-  childSlotClass = "", // extra classes for the default slot container
+  itemPlacement = "",  // when set to "top-content-section", dynamic items are nested under the heading
+  // New prop: slotPlacement decides where the default slot content is rendered.
+  // If slotPlacement === "top-content-section", it is rendered inside the top-content-section container.
+  // Otherwise (any other value), it is rendered in a separate container.
+  slotPlacement = "", 
+  childSlotClass = "", // extra classes for the default slot container when not injected in top-content-section
   ...props
 } = Astro.props;
 
@@ -143,10 +145,10 @@ if (backgroundMedia?.image && backgroundMedia.image.src) {
     <div class={`absolute inset-0 ${backgroundMedia.overlayClass} z-0`} aria-hidden="true"></div>
   )}
 
-  <!-- Content container: holds heading, items, and the default slot -->
+  <!-- Content container: holds heading, dynamic items, and the default slot -->
   <div class={`${finalContentClass} content-section relative z-10 w-3/4 ${isDynamic ? "my-[var(--spacing-lg)]" : ""}`}>
     
-    <!-- Top Content Section: heading area (and slot if desired) -->
+    <!-- Top Content Section: wrapping the heading area -->
     <div class={`top-content-section ${topContentClass}`}>
       <div class={`section-heading-area ${finalHeadingAreaClass}`}>
         {finalHeadingArray.map((head, i) => {
@@ -168,15 +170,11 @@ if (backgroundMedia?.image && backgroundMedia.image.src) {
       {/*
         If slotPlacement equals "top-content-section", render the default slot here.
       */}
-      {slotPlacement === "top-content-section" && (
-        <div class={`default-child-slot ${childSlotClass}`}>
-          <slot />
-        </div>
-      )}
-
+      {slotPlacement === "top-content-section" && <slot />}
+      
       {/*
-        If itemPlacement equals "top-content-section", render dynamic items (with injections and buttons)
-        inside the top-content-section.
+        If itemPlacement equals "top-content-section" and section is dynamic,
+        render dynamic items and buttons inside this container.
       */}
       {itemPlacement === "top-content-section" && isDynamic && (
         <>
@@ -220,7 +218,8 @@ if (backgroundMedia?.image && backgroundMedia.image.src) {
     </div>
 
     {/*
-      If itemPlacement is not "top-content-section" and the section is dynamic, render dynamic items below the top-content-section.
+      If itemPlacement is NOT "top-content-section" and section is dynamic,
+      render dynamic items and buttons below the top-content-section.
     */}
     {itemPlacement !== "top-content-section" && isDynamic && (
       <>
@@ -263,7 +262,7 @@ if (backgroundMedia?.image && backgroundMedia.image.src) {
     )}
 
     {/*
-      For non-dynamic sections, render the default button block (the "old button")
+      For non-dynamic sections, render the default button block
       if any button exists.
     */}
     {!isDynamic && buttonsArray.length > 0 && (
@@ -292,7 +291,8 @@ if (backgroundMedia?.image && backgroundMedia.image.src) {
     )}
 
     {/*
-      If slotPlacement is NOT "top-content-section" (e.g. "bottom") then render the default slot here.
+      If slotPlacement is not "top-content-section", render the default slot
+      in a container that uses a flexbox order class (like "order-last").
     */}
     {slotPlacement !== "top-content-section" && (
       <div class={`default-child-slot ${childSlotClass}`}>
