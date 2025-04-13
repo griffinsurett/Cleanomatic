@@ -19,7 +19,6 @@ export default function LocationItem({ item, collectionName, HasPage }) {
   // Use the explicit item value if defined; otherwise, rely on the meta value (passed as HasPage)
   const effectiveHasPage =
     item.data.hasPage !== undefined ? item.data.hasPage : HasPage;
-  console.log("effectiveHasPage", effectiveHasPage);
   
   // Base classes for the item.
   const baseClasses = "flex items-center gap-[var(--spacing-xs)] p-[var(--spacing-sm)]";
