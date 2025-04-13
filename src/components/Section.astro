@@ -18,6 +18,7 @@
  * Otherwise, the provided image is optimized using Astro's getImage.
  */
 // src/components/Section.astro
+// src/components/Section.astro
 import Heading from "./Heading.jsx";
 import Button from "./Button.jsx";
 import ItemsTemplate from "./ItemsTemplate.astro";
@@ -47,8 +48,10 @@ const {
   buttonsSectionClass,
   headingAreaClass,
   backgroundMedia,
-  topContentClass = "", // prop for extra classes on the top content wrapper
-  itemPlacement = "",  // when set to "top-content-section", items are nested under the heading
+  topContentClass = "", // extra classes on the top content wrapper
+  itemPlacement = "",  // when "top-content-section", items are nested under heading
+  slotPlacement = "bottom", // NEW prop: "top-content-section" or "bottom" (default)
+  childSlotClass = "", // extra classes for the default slot container
   ...props
 } = Astro.props;
 
@@ -140,9 +143,10 @@ if (backgroundMedia?.image && backgroundMedia.image.src) {
     <div class={`absolute inset-0 ${backgroundMedia.overlayClass} z-0`} aria-hidden="true"></div>
   )}
 
-  <!-- Content container: holds heading and items sections -->
+  <!-- Content container: holds heading, items, and the default slot -->
   <div class={`${finalContentClass} content-section relative z-10 w-3/4 ${isDynamic ? "my-[var(--spacing-lg)]" : ""}`}>
-    <!-- Top Content Section: wrapping the heading area -->
+    
+    <!-- Top Content Section: heading area (and slot if desired) -->
     <div class={`top-content-section ${topContentClass}`}>
       <div class={`section-heading-area ${finalHeadingAreaClass}`}>
         {finalHeadingArray.map((head, i) => {
@@ -160,7 +164,21 @@ if (backgroundMedia?.image && backgroundMedia.image.src) {
           </p>
         )}
       </div>
-      {itemPlacement === "top-content-section" && isDynamic ? (
+
+      {/*
+        If slotPlacement equals "top-content-section", render the default slot here.
+      */}
+      {slotPlacement === "top-content-section" && (
+        <div class={`default-child-slot ${childSlotClass}`}>
+          <slot />
+        </div>
+      )}
+
+      {/*
+        If itemPlacement equals "top-content-section", render dynamic items (with injections and buttons)
+        inside the top-content-section.
+      */}
+      {itemPlacement === "top-content-section" && isDynamic && (
         <>
           <slot name="aboveItemsInjection" />
           <ItemsTemplate
@@ -198,10 +216,13 @@ if (backgroundMedia?.image && backgroundMedia.image.src) {
               })}
           </div>
         </>
-      ) : null}
+      )}
     </div>
 
-    {itemPlacement !== "top-content-section" && isDynamic ? (
+    {/*
+      If itemPlacement is not "top-content-section" and the section is dynamic, render dynamic items below the top-content-section.
+    */}
+    {itemPlacement !== "top-content-section" && isDynamic && (
       <>
         <slot name="aboveItemsInjection" />
         <ItemsTemplate
@@ -239,10 +260,44 @@ if (backgroundMedia?.image && backgroundMedia.image.src) {
             })}
         </div>
       </>
-    ) : null}
-      <!-- Default child slot is always rendered inside the section at a fixed location -->
-  <div class="default-child-slot">
-    <slot />
-  </div>
+    )}
+
+    {/*
+      For non-dynamic sections, render the default button block (the "old button")
+      if any button exists.
+    */}
+    {!isDynamic && buttonsArray.length > 0 && (
+      <div class={`${finalButtonsSectionClass} order-last`}>
+        {buttonsArray.map((btn, index) => {
+          const btnDefaults = {
+            text: capitalize(collectionName),
+            link: `/${collectionName}`,
+            class: "",
+            variant: "primary",
+          };
+          const finalButtonProps = { ...btnDefaults, ...btn };
+          return (
+            <Button
+              key={index}
+              href={finalButtonProps.link}
+              className={finalButtonProps.class}
+              ariaLabel={finalButtonProps.text}
+              variant={finalButtonProps.variant}
+            >
+              {finalButtonProps.text}
+            </Button>
+          );
+        })}
+      </div>
+    )}
+
+    {/*
+      If slotPlacement is NOT "top-content-section" (e.g. "bottom") then render the default slot here.
+    */}
+    {slotPlacement !== "top-content-section" && (
+      <div class={`default-child-slot ${childSlotClass}`}>
+        <slot />
+      </div>
+    )}
   </div>
 </section>

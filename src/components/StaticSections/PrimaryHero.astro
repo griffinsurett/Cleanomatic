@@ -32,10 +32,11 @@ const businessHours = await getBusinessHours();
       link: "/contact",
     },
   ]}
-  buttonsSectionClass="mt-[var(--spacing-md)] sm:mt-0"
+  buttonsSectionClass="mt-[var(--spacing-md)] order-last sm:mt-0"
   sectionClass="min-h-[100vh] md:min-h-[70vh] lg:min-h-[100vh] xl:min-h-[80vh] flex flex-col items-center xl:items-end justify-center bg-cover bg-fixed bg-center z-100 md:p-[var(--spacing-sm)] text-bg text-base md:text-xl"
   contentClass="mt-[-150px] sm:mt-0 xl:mt-[-50px]"
   headingAreaClass="xl:max-w-7/8"
+  slotPlacement="top-content-section"
 >
   <div class="business-hours-menu text-stroke italic my-[var(--spacing-md)]">
     <label class="h4 text-bg my-[var(--spacing-sm)] italic">
