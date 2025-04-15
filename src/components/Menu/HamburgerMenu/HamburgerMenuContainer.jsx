@@ -21,7 +21,7 @@ export default function HamburgerMenuContainer({
       isOpen={isOpen}
       onClose={onClose}
       // Use hamburgerMenu.menuOverlay if provided; otherwise default to bg-black bg-opacity-50.
-      overlayClass={hamburgerMenu?.menuOverlay || "bg-black bg-opacity-50"}
+      overlayClass={hamburgerMenu?.menuOverlay}
       // Append hamburgerMenu.menuBackground classes to the modal container.
       className={`bg-bg ${hamburgerMenu?.menuBackground || ""} rounded shadow-lg p-[var(--spacing-md)] w-full h-full overflow-auto`}
       // Control whether the close button is shown and allow custom styling via closeButtonClass.

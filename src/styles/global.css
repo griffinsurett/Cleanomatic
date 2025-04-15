@@ -13,6 +13,8 @@
   --color-neutral: #f3f4f6;
   --color-tertiary: #ffca07;
   --color-border: #b1b1b1;
+  --color-light-opacity: #ffffff24;
+  --color-dark-opacity: rgba(0,0,0,0.7);
   /* Typography */
   /* --font-base: 'Inter', sans-serif; */
   /* --font-heading: 'Poppins', sans-serif; */
@@ -48,6 +50,14 @@
     background-color: var(--color-primary);
     color: var(--color-text);
     overflow-x: hidden;
+  }
+
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    -webkit-text-fill-color: var(--color-bg) !important;
+    transition: background-color 5000s ease-in-out 0s;
   }
 
   @layer components {
@@ -133,3 +143,5 @@
     animation-range: entry 0% cover 45%;
   }
     */
+
+    

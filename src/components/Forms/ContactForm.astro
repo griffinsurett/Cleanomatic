@@ -1,0 +1,81 @@
+---
+// src/components/Forms/ContactForm.astro
+import TextInput from "@/components/Forms/Inputs/TextInput.astro";
+import Textarea from "@/components/Forms/Inputs/Textarea.astro";
+import Button from "@/components/Button";
+
+// Props for Tailwind classes. You can override these when importing the component.
+const {
+  // Added placeholder:text-[var(--color-bg)] so that placeholder text matches the background color.
+  inputClasses = "border border-[var(--color-border)] p-[var(--spacing-md)] w-full bg-light-opacity placeholder:text-[var(--color-bg)] text-bg outline-none focus:border-[var(--color-bg)] focus:ring-1 focus:ring-[var(--color-primary)]",
+  wrapperClasses = "mb-[var(--spacing-sm)] w-full"
+} = Astro.props;
+---
+<form
+  class="w-full p-[var(--spacing-md)]"
+  method="post"
+  action="/contact-us"
+  onsubmit="return false;"
+>
+  <!-- Row 1: First Name and Last Name -->
+  <div class="flex flex-col lg:flex-row lg:space-x-[var(--spacing-sm)] mb-[var(--spacing-sm)]">
+    <div class="w-full lg:w-1/2">
+      <TextInput
+        name="firstName"
+        placeholder="First Name"
+        required={true}
+        inputClass={inputClasses}
+        wrapperClass={wrapperClasses}
+      />
+    </div>
+    <div class="w-full lg:w-1/2">
+      <TextInput
+        name="lastName"
+        placeholder="Last Name"
+        required={true}
+        inputClass={inputClasses}
+        wrapperClass={wrapperClasses}
+      />
+    </div>
+  </div>
+
+  <!-- Row 2: Email and Phone -->
+  <div class="flex flex-col lg:flex-row lg:space-x-[var(--spacing-sm)] mb-[var(--spacing-sm)]">
+    <div class="w-full lg:w-1/2">
+      <TextInput
+        name="email"
+        type="email"
+        placeholder="you@example.com"
+        required={true}
+        inputClass={inputClasses}
+        wrapperClass={wrapperClasses}
+      />
+    </div>
+    <div class="w-full lg:w-1/2">
+      <TextInput
+        name="phone"
+        type="tel"
+        placeholder="123-456-7890"
+        inputClass={inputClasses}
+        wrapperClass={wrapperClasses}
+      />
+    </div>
+  </div>
+
+  <!-- Row 3: Message (full width) -->
+  <div class="mb-[var(--spacing-sm)] w-full">
+    <Textarea
+      name="message"
+      placeholder="Tell us more about your needs..."
+      required={true}
+      rows={5}
+      inputClass={inputClasses}
+      wrapperClass={wrapperClasses}
+    />
+  </div>
+
+  <!-- Submit Button (full width) -->
+  <Button type="submit" variant="primary" class="mt-[var(--spacing-sm)] w-full">
+    Submit
+  </Button>
+</form>
