@@ -1,17 +1,17 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+// src/pages/index.astro
+import ExtendedLayout from "@/layouts/ExtendedLayout.astro";
 import Section from "@/components/Section.astro";
 import PrimaryHero from "@/components/StaticSections/PrimaryHero.astro";
-import ContactForm from "@/components/Forms/ContactForm.astro";
-import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
 import { Picture } from "astro:assets";
+import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
 import ListItem from "@/components/LoopComponents/ListItem.astro";
 ---
-
-<Layout title="Welcome to Cleanomatic" image={HeroBg}>
-  <!-- Hero Section with two buttons -->
+<ExtendedLayout title="Welcome to Cleanomatic" image={HeroBg}>
+  <!-- Hero Section with primary call-to-action -->
   <PrimaryHero />
-
+  
+  <!-- Benefits Section with a background picture -->
   <Section collection="benefits" query="getAll">
     <Picture
       src={HeroBg}
@@ -26,41 +26,19 @@ import ListItem from "@/components/LoopComponents/ListItem.astro";
     />
   </Section>
 
-  {/* Services */}
+  <!-- Additional sections such as Services, Service Areas, Testimonials, Gallery, etc. -->
   <Section collection="services" query="getAll" buttonsSectionClass="hidden" />
-
-  <Section collection="serviceAreas" query="getAll" buttons={
-    [
+  <Section
+    collection="serviceAreas"
+    query="getAll"
+    buttons={[
       {
         text: "Contact Us",
         link: "/contact-us",
         variant: "secondary"
       },
-    ]
-  } />
-
-  {/* Benefits */}
-
-  {/* Testimonials */}
-  <Section
-    collection="testimonials"
-    query="getAll"
+    ]}
   />
-
-  <Section 
-    collection="gallery"
-    query="getAll"
-    />
-
-  <!-- <GoogleMap class="w-screen h-[350px]"/> -->
-
-
-</Layout>
-
-{/* FAQ Section */}
-<!-- <Section
-   collection="faq"
-   query="getAll"
-   component={Accordion}
-   clientDirective="idle"  
- /> -->
+  <Section collection="testimonials" query="getAll" />
+  <Section collection="gallery" query="getAll" />
+</ExtendedLayout>

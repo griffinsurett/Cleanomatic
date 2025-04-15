@@ -1,0 +1,9 @@
+---
+// src/layouts/ExtendedLayout.astro
+import BaseLayout from "./BaseLayout.astro";
+import QuoteForm from "@/components/StaticSections/QuoteForm.astro";
+---
+<BaseLayout {...Astro.props}>
+  <slot />
+  <QuoteForm />
+</BaseLayout>

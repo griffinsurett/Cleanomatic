@@ -1,12 +1,10 @@
 ---
-import Layout from "../layouts/Layout.astro";
+// src/pages/contact-us.astro
 import SecondaryHero from "@/components/StaticSections/SecondaryHero.astro";
+import ExtendedLayout from "../layouts/ExtendedLayout.astro";
 ---
-
-<Layout title="Contact Us" description="Get in touch with Cleanomatic">
-  <!-- Using SecondaryHero with the title "Contact Us" -->
+<ExtendedLayout title="Contact Us" description="Get in touch with Cleanomatic">
   <SecondaryHero title="Contact Us" />
-
   <section class="p-[var(--spacing-lg)]">
     <h2 class="text-2xl font-bold">Reach Out to Us</h2>
     <p>
@@ -17,4 +15,4 @@ import SecondaryHero from "@/components/StaticSections/SecondaryHero.astro";
       or call <a href="tel:7329391309" class="underline">732-939-1309</a>.
     </p>
   </section>
-</Layout>
+</ExtendedLayout>

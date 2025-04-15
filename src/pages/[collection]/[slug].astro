@@ -1,12 +1,11 @@
 ---
 // src/pages/[collection]/[slug].astro
 import { getCollection } from "astro:content";
-import Layout from "@/layouts/Layout.astro";
+import ExtendedLayout from "@/layouts/ExtendedLayout.astro";
 import { Image } from "astro:assets";
 import Heading from "@/components/Heading.jsx";
 import Section from "@/components/Section.astro";
 import SecondaryHero from "@/components/StaticSections/SecondaryHero.astro";
-import Card from "@/components/LoopComponents/Card";
 import { collections } from "@/content/config";
 import { getCollectionMeta } from "@/utils/FetchMeta";
 import { getCanonicalSlug } from "@/utils/ContentUtils";
@@ -47,12 +46,13 @@ let meta = {};
 try {
   meta = await getCollectionMeta(collection);
 } catch {}
-// Use sections defined on the item if available; otherwise, fall back to meta.itemsSections.
-const sections = data.sections && data.sections.length > 0 ? data.sections : meta.itemsSections || [];
+const sections = data.sections && data.sections.length > 0
+  ? data.sections
+  : meta.itemsSections || [];
 ---
-<Layout title={data.title} description={data.description}>
+<ExtendedLayout title={data.title} description={data.description}>
   <article>
-    <!-- Hero -->
+    <!-- Hero Section -->
     <SecondaryHero title={data.title} />
     <Heading tagName="h2" class="mb-[var(--spacing-md)]">
       {data.title}
@@ -85,4 +85,4 @@ const sections = data.sections && data.sections.length > 0 ? data.sections : met
       />
     ))}
   </article>
-</Layout>
+</ExtendedLayout>
