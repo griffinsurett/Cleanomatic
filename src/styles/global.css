@@ -104,6 +104,22 @@
     @apply mb-4 leading-relaxed text-base;
   } */
 
+  .section-xs {
+    @apply min-h-[25vh] md:min-h-[30vh] lg:min-h-[40vh];
+  }
+
+  .section-sm {
+    @apply min-h-[80vh] md:min-h-[40vh] xl:min-h-[60vh];
+  }
+
+  .section-main {
+    @apply xl:min-h-[80vh];
+  }
+
+  .section-lg {
+    @apply min-h-[100vh] md:min-h-[80vh];
+  }
+
   .text-stroke,
   .h1,
   .h2,
