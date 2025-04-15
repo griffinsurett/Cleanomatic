@@ -7,7 +7,7 @@ import Button from "@/components/Button";
 // Props for Tailwind classes. You can override these when importing the component.
 const {
   // Added placeholder:text-[var(--color-bg)] so that placeholder text matches the background color.
-  inputClasses = "border border-[var(--color-border)] p-[var(--spacing-md)] w-full bg-light-opacity placeholder:text-[var(--color-bg)] text-bg outline-none focus:border-[var(--color-bg)] focus:ring-1 focus:ring-[var(--color-primary)]",
+  inputClasses = "border border-[var(--color-border)] p-[var(--spacing-md)] w-full bg-light-opacity placeholder:text-[var(--color-bg)] text-bg outline-none focus:border-[var(--color-bg)] focus:ring-1 focus:ring-[var(--color-primary)] focus:bg-primary transition-default",
   wrapperClasses = "mb-[var(--spacing-sm)] w-full"
 } = Astro.props;
 ---
