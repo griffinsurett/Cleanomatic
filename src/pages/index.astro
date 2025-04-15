@@ -11,28 +11,18 @@ import ListItem from "@/components/LoopComponents/ListItem.astro";
   <!-- Hero Section with two buttons -->
   <PrimaryHero />
 
-  <Section
-    collection="benefits"
-    query="getAll"
-    buttons={[
-      {
-        text: "Request Estimate",
-        link: "/contact-us",
-        variant: "secondary",
-      },
-    ]}
-  >
-      <Picture
-        src={HeroBg}
-        alt={"Benefits of Cleanomatic"}
-        formats={["avif", "webp"]}
-        fallbackFormat="jpg"
-        loading="eager"
-        quality={"low"}
-        fetchpriority="high"
-        aria-hidden="true"
-        class="w-[538px] h-fit"
-      />
+  <Section collection="benefits" query="getAll">
+    <Picture
+      src={HeroBg}
+      alt="Benefits of Cleanomatic"
+      formats={["avif", "webp"]}
+      fallbackFormat="jpg"
+      loading="eager"
+      quality="low"
+      fetchpriority="high"
+      aria-hidden="true"
+      class="w-[538px] h-fit"
+    />
   </Section>
 
   {/* Services */}

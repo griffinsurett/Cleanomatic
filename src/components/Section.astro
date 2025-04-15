@@ -123,8 +123,12 @@ if (isDynamic) {
   if (items.length === 0) return;
 }
 
+const effectiveButtons = buttons && buttons.length > 0
+  ? buttons
+  : defaultSection.buttons;
+  
 const buttonsArray = resolveButtonsArray(
-  buttons,
+  effectiveButtons,
   meta.hasPage,
   collectionName,
   Astro.url.pathname
