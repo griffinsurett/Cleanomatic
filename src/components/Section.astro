@@ -21,7 +21,7 @@
 import Heading from "./Heading.jsx";
 import Button from "./Button.jsx";
 import ItemsTemplate from "./ItemsTemplate.astro";
-import { getImage } from "astro:assets";
+import BackgroundMedia from "./BackgroundMedia.astro"; // Import the new modular background media component
 import {
   resolveMetaProps,
   resolveHeading,
@@ -46,11 +46,11 @@ const {
   itemClass,
   buttonsSectionClass,
   headingAreaClass,
-  backgroundMedia,
-  topContentClass = "", // extra classes on the top content wrapper
-  itemPlacement = "",  // can be a string or an array of selectors (e.g. "top-content-section")
-  slotPlacement = "",  // can be a string or an array of selectors
-  childSlotClass = "", // extra classes for the default slot container when not injected in the target container
+  backgroundMedia, // backgroundMedia prop remains the same
+  topContentClass = "",
+  itemPlacement = "",
+  slotPlacement = "",
+  childSlotClass = "",
   ...props
 } = Astro.props;
 
@@ -91,7 +91,7 @@ const finalDescription = resolveDescription(description, meta.description);
 // Resolve the component to render.
 const finalComponent = resolveComponent(ItemComponent, defaultSection.component);
 
-// Fetch dynamic items (if applicable).
+// Fetch dynamic items, if applicable.
 let items = [];
 const isDynamic = Boolean(collectionName && queryType);
 if (isDynamic) {
@@ -106,58 +106,23 @@ const buttonsArray = resolveButtonsArray(
   Astro.url.pathname
 );
 const itemsDefaultHasPage = meta.itemsHasPage ?? false;
-
-let optimizedBackgroundImage = null;
-if (backgroundMedia?.image && backgroundMedia.image.src) {
-  optimizedBackgroundImage = await getImage({
-    src: backgroundMedia.image.src,
-    format: "webp",
-    quality: 50,
-    placeholder: "blur",
-  });
-}
 ---
 
-<!-- Outer section: relative for layering -->
+<!-- Outer section with relative positioning -->
 <section
-  class={`${finalSectionClass} relative w-full ${
-    isDynamic ? "py-[var(--spacing-lg)] lg:px-[var(--spacing-md)]" : "lg:px-[var(--spacing-md)]"
-  }`}
+  class={`${finalSectionClass} relative w-full ${isDynamic ? "py-[var(--spacing-lg)] lg:px-[var(--spacing-md)]" : "lg:px-[var(--spacing-md)]"}`}
   data-collection={collectionName}
   {...props}
 >
-  {backgroundMedia?.video && backgroundMedia.video.src ? (
-    <video
-      class={`absolute inset-0 z-0 w-full h-full object-cover ${backgroundMedia.video.videoClass || ""}`}
-      autoPlay={backgroundMedia.video.autoPlay !== undefined ? backgroundMedia.video.autoPlay : true}
-      muted={backgroundMedia.video.muted !== undefined ? backgroundMedia.video.muted : true}
-      loop={backgroundMedia.video.loop !== undefined ? backgroundMedia.video.loop : true}
-      playsInline={backgroundMedia.video.playsInline !== undefined ? backgroundMedia.video.playsInline : true}
-      controls={backgroundMedia.video.controls || false}
-      preload={backgroundMedia.video.preload || "metadata"}
-      poster={optimizedBackgroundImage ? optimizedBackgroundImage.src : ""}
-      aria-hidden="true"
-    >
-      <source src={backgroundMedia.video.src} type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-  ) : (
-    optimizedBackgroundImage && (
-      <div
-        class={`absolute inset-0 z-0 ${backgroundMedia?.image?.imageClass || ""}`}
-        style={`background-image: url('${optimizedBackgroundImage.src}');`}
-        aria-hidden="true"
-      ></div>
-    )
-  )}
-  {backgroundMedia?.overlayClass && (
-    <div class={`absolute inset-0 ${backgroundMedia.overlayClass} z-0`} aria-hidden="true"></div>
-  )}
+  {/*
+    Delegate background media rendering to the BackgroundMedia component.
+    If backgroundMedia is provided, it handles both the video/image and overlay.
+  */}
+  {backgroundMedia && <BackgroundMedia backgroundMedia={backgroundMedia} />}
 
-  <!-- Content container: holds heading, dynamic items, and the default slot -->
+  <!-- Content container -->
   <div class={`${finalContentClass} content-section relative z-10 w-3/4 ${isDynamic ? "my-[var(--spacing-lg)]" : ""}`}>
-    
-    <!-- Top Content Section: wrapping the heading area -->
+    <!-- Top content section: headings and optional default slot injection -->
     <div class={`top-content-section ${topContentClass}`}>
       <div class={`section-heading-area ${finalHeadingAreaClass}`}>
         {finalHeadingArray.map((head, i) => {
@@ -175,16 +140,7 @@ if (backgroundMedia?.image && backgroundMedia.image.src) {
           </p>
         )}
       </div>
-
-      {/*
-        Check the slotPlacement array. If it includes "top-content-section", render the default slot here.
-      */}
       {slotPlacementArray.includes("top-content-section") && <slot />}
-      
-      {/*
-        Check the itemPlacement array. If it includes "top-content-section" and the section is dynamic, 
-        render dynamic items (with injection slots and buttons) in this container.
-      */}
       {itemPlacementArray.includes("top-content-section") && isDynamic && (
         <>
           <slot name="aboveItemsInjection" />
@@ -299,9 +255,8 @@ if (backgroundMedia?.image && backgroundMedia.image.src) {
     )}
 
     {/*
-      Finally, check the slotPlacement array. If it does NOT include "top-content-section",
-      then render the default slot in its own container.
-      Here you can use flexbox order classes (such as "order-last") as defined in your CSS.
+      Finally, if slotPlacement does not include "top-content-section",
+      render the default slot in its own container.
     */}
     {!slotPlacementArray.includes("top-content-section") && (
       <div class={`default-child-slot ${childSlotClass}`}>
