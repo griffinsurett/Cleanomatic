@@ -21,7 +21,7 @@
 import Heading from "./Heading.jsx";
 import Button from "./Button.jsx";
 import ItemsTemplate from "./ItemsTemplate.astro";
-import BackgroundMedia from "./BackgroundMedia.astro"; // Import the new modular background media component
+import BackgroundMedia from "./BackgroundMedia.astro"; 
 import {
   resolveMetaProps,
   resolveHeading,
@@ -50,7 +50,6 @@ const {
   topContentClass = "",
   itemPlacement = "",
   slotPlacement = "",
-  childSlotClass = "",
   ...props
 } = Astro.props;
 
@@ -259,9 +258,7 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
       render the default slot in its own container.
     */}
     {!slotPlacementArray.includes("top-content-section") && (
-      <div class={`default-child-slot ${childSlotClass}`}>
         <slot />
-      </div>
     )}
   </div>
 </section>
