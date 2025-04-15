@@ -39,6 +39,7 @@ const buttonSchema = z.object({
 });
 
 // Updated sectionSchema using the isolated heading and description schemas.
+// Added new optional properties to match the Section component props.
 const sectionSchema = z.object({
   collection: z.string().optional(),
   query: z.string().optional(),
@@ -52,6 +53,11 @@ const sectionSchema = z.object({
   itemClass: z.string().optional(),
   contentClass: z.string().optional(),
   headingAreaClass: z.string().optional(),
+  // New properties added for slot and layout injection
+  topContentClass: z.string().optional(),
+  itemPlacement: z.union([z.string(), z.array(z.string())]).optional(),
+  slotPlacement: z.union([z.string(), z.array(z.string())]).optional(),
+  childSlotClass: z.string().optional(),
 });
 
 export const QueryItemSchema = z.object({

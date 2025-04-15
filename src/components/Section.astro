@@ -21,7 +21,7 @@
 import Heading from "./Heading.jsx";
 import Button from "./Button.jsx";
 import ItemsTemplate from "./ItemsTemplate.astro";
-import BackgroundMedia from "./BackgroundMedia.astro"; 
+import BackgroundMedia from "./BackgroundMedia.astro";
 import {
   resolveMetaProps,
   resolveHeading,
@@ -46,20 +46,23 @@ const {
   itemClass,
   buttonsSectionClass,
   headingAreaClass,
-  backgroundMedia, // backgroundMedia prop remains the same
+  backgroundMedia,
+  // Added new props; if they aren’t provided as Section props, default to empty strings.
   topContentClass = "",
   itemPlacement = "",
   slotPlacement = "",
+  childSlotClass = "",
   ...props
 } = Astro.props;
 
 // Convert placement props to arrays for flexible checking.
-const itemPlacementArray = Array.isArray(itemPlacement)
+// We use the "final" values after merging with meta (see below)
+let propItemPlacementArray = Array.isArray(itemPlacement)
   ? itemPlacement
   : itemPlacement
   ? [itemPlacement]
   : [];
-const slotPlacementArray = Array.isArray(slotPlacement)
+let propSlotPlacementArray = Array.isArray(slotPlacement)
   ? slotPlacement
   : slotPlacement
   ? [slotPlacement]
@@ -82,6 +85,28 @@ const {
 // Merge headingAreaClass from Astro.props with the default.
 const finalHeadingAreaClass =
   headingAreaClass || defaultSection.headingAreaClass || "";
+
+// Merge the new placement and layout fields in the same way as others.
+const finalTopContentClass =
+  topContentClass || defaultSection.topContentClass || "";
+const finalItemPlacement =
+  itemPlacement || defaultSection.itemPlacement || "";
+const finalSlotPlacement =
+  slotPlacement || defaultSection.slotPlacement || "";
+const finalChildSlotClass =
+  childSlotClass || defaultSection.childSlotClass || "";
+
+// Convert the merged itemPlacement and slotPlacement into arrays.
+const itemPlacementArray = Array.isArray(finalItemPlacement)
+  ? finalItemPlacement
+  : finalItemPlacement
+  ? [finalItemPlacement]
+  : [];
+const slotPlacementArray = Array.isArray(finalSlotPlacement)
+  ? finalSlotPlacement
+  : finalSlotPlacement
+  ? [finalSlotPlacement]
+  : [];
 
 // Resolve headings and description.
 const finalHeadingArray = resolveHeading(heading, meta.heading, collectionName);
@@ -113,16 +138,13 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
   data-collection={collectionName}
   {...props}
 >
-  {/*
-    Delegate background media rendering to the BackgroundMedia component.
-    If backgroundMedia is provided, it handles both the video/image and overlay.
-  */}
   {backgroundMedia && <BackgroundMedia backgroundMedia={backgroundMedia} />}
 
   <!-- Content container -->
   <div class={`${finalContentClass} content-section relative z-10 w-3/4 ${isDynamic ? "my-[var(--spacing-lg)]" : ""}`}>
+    
     <!-- Top content section: headings and optional default slot injection -->
-    <div class={`top-content-section ${topContentClass}`}>
+    <div class={`top-content-section ${finalTopContentClass}`}>
       <div class={`section-heading-area ${finalHeadingAreaClass}`}>
         {finalHeadingArray.map((head, i) => {
           const headObj = typeof head === "string" ? { text: head } : head;
@@ -139,7 +161,11 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
           </p>
         )}
       </div>
+      
+      {/* Inject default slot if the slotPlacement includes "top-content-section" */}
       {slotPlacementArray.includes("top-content-section") && <slot />}
+      
+      {/* Render dynamic items if itemPlacement includes "top-content-section" */}
       {itemPlacementArray.includes("top-content-section") && isDynamic && (
         <>
           <slot name="aboveItemsInjection" />
@@ -182,7 +208,7 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
     </div>
 
     {/*
-      If itemPlacement does not include "top-content-section" and the section is dynamic,
+      When itemPlacement does not include "top-content-section" and the section is dynamic,
       render dynamic items and buttons in a separate container.
     */}
     {!itemPlacementArray.includes("top-content-section") && isDynamic && (
@@ -256,9 +282,12 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
     {/*
       Finally, if slotPlacement does not include "top-content-section",
       render the default slot in its own container.
+      Optionally you could wrap it with finalChildSlotClass, if needed.
     */}
     {!slotPlacementArray.includes("top-content-section") && (
+      <div class={`${finalChildSlotClass}`}>
         <slot />
+      </div>
     )}
   </div>
 </section>
