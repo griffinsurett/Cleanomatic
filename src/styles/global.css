@@ -97,7 +97,7 @@
   } */
 
   .section-xs {
-    @apply min-h-[25vh] md:min-h-[30vh] lg:min-h-[40vh];
+    @apply min-h-[25vh] xl:min-h-[40vh];
   }
 
   .section-sm {
