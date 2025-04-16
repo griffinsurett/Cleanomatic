@@ -45,7 +45,7 @@ export default function MenuCard({ item, className = "", ...props }) {
 
   return (
     <div
-      className={`menu-card w-full h-[30vh] text-center flex flex-col justify-center items-center border border-[var(--color-border)] shadow-sm hover:shadow-lg transition-default ${className}`}
+      className={`menu-card w-full h-[30vh] text-center flex flex-col justify-center items-center border border-[var(--color-border)] shadow-sm ${className}`}
       {...props}
     >
       {/* Icon container wrapped in a clickable link */}
