@@ -72,7 +72,8 @@ export const QueryItemSchema = z.object({
 export const metaSchema = z.object({
   heading: headingSchema.optional(),
   description: descriptionSchema.optional(),
-  keywords: z.array(z.string()).optional(),  
+  keywords: z.array(z.string()).optional(),
+  ogType: z.string().optional(),  
   hasPage: z.boolean().default(true),
   itemsHasPage: z.boolean().default(true),
   defaultSection: sectionSchema.optional(),
@@ -82,13 +83,15 @@ export const metaSchema = z.object({
   addItemsToQuery: z.array(QueryItemSchema).optional(),
 });
 
+// Update baseSchema to include ogType as well.
 const baseSchema = ({ image }: { image: Function }) =>
   z.object({
     title: z.string(),
     featuredImage: image().optional(),
     heading: headingSchema.optional(),
     description: descriptionSchema.optional(),
-    keywords: z.array(z.string()).optional(),  
+    keywords: z.array(z.string()).optional(),
+    ogType: z.string().optional(),  // NEW: Include ogType in individual items too.
     hasPage: z.boolean().optional(),
     sections: z.array(sectionSchema).optional(),
     addToQuery: z.array(QueryItemSchema).optional(),
