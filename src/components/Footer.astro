@@ -65,14 +65,14 @@ const FooterMenu = [
         class="footer-menus w-full flex flex-wrap sm:flex-row justify-between xl:w-2/3"
       >
         <div class="footer-menu w-full sm:w-1/2 md:w-auto">
-          <Heading tagName="h4" className={menuHeadingClass}> Info </Heading>
+          <Heading tagName="label" className={menuHeadingClass}> Info </Heading>
           <Menu
             listClass={menuListClass}
             items={await buildMenuQueries({ FooterMenu })}
           />
         </div>
         <div class="contact-info w-full sm:w-1/2 md:w-auto">
-          <Heading tagName="h4" className={menuHeadingClass}>
+          <Heading tagName="label" className={menuHeadingClass}>
             Contact Us
           </Heading>
           <Menu
@@ -85,7 +85,7 @@ const FooterMenu = [
           />
         </div>
         <div class="business-hours-menu h6 text-stroke grow md:grow-0 italic">
-          <Heading tagName="h4" className={menuHeadingClass}>
+          <Heading tagName="label" className={menuHeadingClass}>
             Business Hours
           </Heading>
           <Menu
