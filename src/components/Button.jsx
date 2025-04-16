@@ -1,5 +1,4 @@
 // src/components/Button.jsx
-import DefaultIcon from "@/assets/cleanomaticvanright3.png";
 import ButtonIcon from "./ButtonIcon"; // Import the new icon component
 
 // Default base button classes for non-underline variants.
