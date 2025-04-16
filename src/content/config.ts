@@ -53,7 +53,6 @@ const sectionSchema = z.object({
   itemClass: z.string().optional(),
   contentClass: z.string().optional(),
   headingAreaClass: z.string().optional(),
-  // New properties added for slot and layout injection
   topContentClass: z.string().optional(),
   itemPlacement: z.union([z.string(), z.array(z.string())]).optional(),
   slotPlacement: z.union([z.string(), z.array(z.string())]).optional(),
@@ -73,6 +72,7 @@ export const QueryItemSchema = z.object({
 export const metaSchema = z.object({
   heading: headingSchema.optional(),
   description: descriptionSchema.optional(),
+  keywords: z.array(z.string()).optional(),  
   hasPage: z.boolean().default(true),
   itemsHasPage: z.boolean().default(true),
   defaultSection: sectionSchema.optional(),
@@ -88,6 +88,7 @@ const baseSchema = ({ image }: { image: Function }) =>
     featuredImage: image().optional(),
     heading: headingSchema.optional(),
     description: descriptionSchema.optional(),
+    keywords: z.array(z.string()).optional(),  
     hasPage: z.boolean().optional(),
     sections: z.array(sectionSchema).optional(),
     addToQuery: z.array(QueryItemSchema).optional(),

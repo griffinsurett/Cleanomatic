@@ -16,6 +16,7 @@ const {
   siteName = SiteData.title,
   ogType,
   crawl = true,
+  keywords,  // New: keywords prop added here
 } = Astro.props;
 ---
 <!DOCTYPE html>
@@ -29,6 +30,7 @@ const {
     robots={robots}
     siteName={siteName}
     ogType={ogType}
+    keywords={keywords}  
   />
   <Theme />
   <slot name="head" />
