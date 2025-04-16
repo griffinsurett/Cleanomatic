@@ -3,14 +3,31 @@
 import Section from "@/components/Section.astro";
 import SecondaryHero from "@/components/StaticSections/SecondaryHero.astro";
 import ExtendedLayout from "@/layouts/ExtendedLayout.astro";
+import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
+import { Picture } from "astro:assets";
+import ServiceCard from "@/components/LoopComponents/ServiceCard.astro";
 ---
+
 <ExtendedLayout
   title="About Us"
   description="Learn more about our company, our mission, and our team."
 >
   <SecondaryHero title="About Us" />
-  <Section
-    heading="About Us"
-    description="We are a company dedicated to providing the best services to our clients. Our mission is to deliver quality and excellence in everything we do."
-  />
+
+  <Section collection="missionVision" query="getAll" />
+
+  <!-- Benefits Section with a background picture -->
+  <Section collection="benefits" query="getAll">
+    <Picture
+      src={HeroBg}
+      alt="Benefits of Cleanomatic"
+      formats={["avif", "webp"]}
+      fallbackFormat="jpg"
+      loading="eager"
+      quality="low"
+      fetchpriority="high"
+      aria-hidden="true"
+      class="w-[538px] h-fit"
+    />
+  </Section>
 </ExtendedLayout>

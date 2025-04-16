@@ -123,4 +123,8 @@ export const collections = {
     loader: file("src/content/benefits/benefits.json"), // file-loaded collection
     schema: ({ image }) => baseSchema({ image }),
   }),
+  missionVision: defineCollection({
+    loader: file("src/content/missionVision/missionVision.json"),
+    schema: ({ image }) => baseSchema({ image }),
+  }),
 };

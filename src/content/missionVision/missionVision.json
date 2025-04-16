@@ -1,0 +1,15 @@
+[
+    {
+      "title": "Our Mission",
+      "description": "To deliver quality cleaning services with integrity and dedication.",
+      "featuredImage": "@/assets/carpet.jpg",
+      "id": "mission"
+    },
+    {
+      "title": "Our Vision",
+      "description": "To become the most trusted and innovative cleaning service provider.",
+      "featuredImage": "@/assets/carpet.jpg",
+      "id": "vision"
+    }
+  ]
+  
