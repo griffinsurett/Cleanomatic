@@ -5,12 +5,11 @@ import SecondaryHero from "@/components/StaticSections/SecondaryHero.astro";
 import ExtendedLayout from "@/layouts/ExtendedLayout.astro";
 import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
 import { Picture } from "astro:assets";
-import ServiceCard from "@/components/LoopComponents/ServiceCard.astro";
 ---
-
 <ExtendedLayout
   title="About Us"
   description="Learn more about our company, our mission, and our team."
+  keywords={["about us", "cleaning services", "cleanomatic", "company history"]} 
 >
   <SecondaryHero title="About Us" />
 
@@ -31,5 +30,4 @@ import ServiceCard from "@/components/LoopComponents/ServiceCard.astro";
     />
   </Section>
   <Section collection="gallery" query="getAll" />
-
 </ExtendedLayout>

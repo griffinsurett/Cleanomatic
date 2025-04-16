@@ -6,7 +6,11 @@ import PrimaryHero from "@/components/StaticSections/PrimaryHero.astro";
 import { Picture } from "astro:assets";
 import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
 ---
-<ExtendedLayout title="Welcome to Cleanomatic" image={HeroBg}>
+<ExtendedLayout
+  title="Welcome to Cleanomatic"
+  image={HeroBg}
+  keywords={["cleaning services", "professional cleaning", "eco-friendly cleaning", "New Jersey cleaning"]}
+>
   <!-- Hero Section with primary call-to-action -->
   <PrimaryHero />
   
@@ -31,11 +35,7 @@ import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
     collection="serviceAreas"
     query="getAll"
     buttons={[
-      {
-        text: "Contact Us",
-        link: "/contact-us",
-        variant: "secondary"
-      },
+      { text: "Contact Us", link: "/contact-us", variant: "secondary" },
     ]}
   />
   <Section collection="testimonials" query="getAll" />

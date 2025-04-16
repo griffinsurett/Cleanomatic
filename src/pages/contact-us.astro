@@ -7,24 +7,21 @@ import { getContactMenuItems } from "@/queries/ContactMenuQuery";
 import ContactCard from "@/components/LoopComponents/ContactMenu/ContactCard";
 import Section from "@/components/Section.astro";
 ---
-
-<ExtendedLayout title="Contact Us" description="Get in touch with Cleanomatic">
+<ExtendedLayout
+  title="Contact Us"
+  description="Get in touch with Cleanomatic"
+  keywords={["contact", "cleanomatic contact", "cleaning services inquiry"]}
+>
   <SecondaryHero title="Contact Us" />
-
-<Section 
-    heading={
-      { text: "Reach Out To Us", tagName: "h3", class: "h3" }
-    }
+  <Section
+    heading={{ text: "Reach Out To Us", tagName: "h3", class: "h3" }}
     sectionClass="section-sm flex items-center justify-center"
     contentClass="container mx-auto text-center"
->
-<Menu
-items={await getContactMenuItems()}
-listClass={'flex gap-[var(--spacing-xl)] py-[var(--spacing-xl)] justify-evenly items-center'}
-menuItem={{
-  component: ContactCard,
-}}
-/>
-</Section>
-
+  >
+    <Menu
+      items={await getContactMenuItems()}
+      listClass={"flex gap-[var(--spacing-xl)] py-[var(--spacing-xl)] justify-evenly items-center"}
+      menuItem={{ component: ContactCard }}
+    />
+  </Section>
 </ExtendedLayout>
