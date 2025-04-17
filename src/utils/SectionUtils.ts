@@ -9,6 +9,11 @@ import { queryItems } from "./CollectionQueryUtils";
  *
  * Where '-n' is only appended if the same baseId has been generated before.
  */
+const sectionIdCounts = new Map<string, number>();
+
+export function resetSectionIds() {
+  sectionIdCounts.clear();
+}
 /**
  * Generate a section ID of form:
  *   {collection}-{query}-{pageSlug}
