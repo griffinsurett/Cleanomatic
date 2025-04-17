@@ -46,6 +46,8 @@
     --transition-default: all 500ms ease-in-out;
     --transition-fast: all 200ms ease-in-out;
     --transition-slow: all 750ms ease-in-out;
+
+    --transition-delay-default: 300ms;
 }
 
 /* Base element styling */
@@ -87,10 +89,10 @@
     @apply text-xl font-bold md:text-xl lg:text-2xl uppercase;
   }
   .h5 {
-    @apply text-lg font-bold lg:text-xl;
+    @apply text-lg font-bold lg:text-xl uppercase;
   }
   .h6 {
-    @apply font-bold text-lg;
+    @apply font-medium text-lg uppercase;
   }
   /* p {
     @apply mb-4 leading-relaxed text-base;

@@ -52,6 +52,7 @@ const {
   itemPlacement = "",
   slotPlacement = "",
   childSlotClass = "",
+  client,
   ...props
 } = Astro.props;
 
@@ -190,6 +191,7 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
             ItemComponent={finalComponent}
             HasPage={itemsDefaultHasPage}
             pathname={Astro.url.pathname}
+            client={client}
           />
           <slot name="belowItemsInjection" />
           <div class={finalButtonsSectionClass}>
@@ -235,6 +237,7 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
           ItemComponent={finalComponent}
           HasPage={itemsDefaultHasPage}
           pathname={Astro.url.pathname}
+          client={client}
         />
         <slot name="belowItemsInjection" />
         <div class={finalButtonsSectionClass}>
