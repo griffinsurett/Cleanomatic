@@ -51,21 +51,5 @@ const faqs = await getCollection("faq");
   />
   <Section collection="testimonials" query="getAll" />
   <Section collection="gallery" query="getAll" />
-
-  <Section
-  heading={[
-    { text: "Frequently Asked Questions", tagName: "h2", class: "h2 text-left w-1/2 mb-[var(--spacing-sm)]" },
-    { text: "Have a question? We have answers!", tagName: "label", class: "h6 text-left w-1/2" },
-  ]}
-  sectionClass="section-sm w-full flex justify-center items-center"
-  contentClass="flex flex-col xl:flex-row justify-between items-center px-[var(--spacing-xl)] lg:px-[var(--spacing-md)]"
-  childSlotClass="flex justify-center items-center w-full"
-  collection="faq"
-  query="getAll"
-  component={AccordionItem}
-  itemsClass="flex flex-col gap-[var(--spacing-lg)]"
-  itemClass=""
-  client="visible"  
-/>
-  
+<Section collection="faq" query="getAll" />  
 </ExtendedLayout>
