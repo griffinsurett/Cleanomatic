@@ -15,7 +15,7 @@ export default function AccordionItem({
       {/* Header: clicking toggles open/closed */}
       <div
         onClick={toggle}
-        className="w-full flex justify-between items-center p-[var(--spacing-xl)] cursor-pointer select-none"
+        className="w-full flex justify-between items-center px-[var(--spacing-xl)] py-[var(--spacing-lg)] cursor-pointer select-none"
       >
         <span className="h6">{item.data.title || item.slug}</span>
         <svg
