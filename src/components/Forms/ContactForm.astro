@@ -1,24 +1,18 @@
 ---
-// src/components/Forms/ContactForm.astro
+/* Uses the generic <Form> wrapper but keeps the same visual layout */
+  import Form      from "@/components/Forms/Form.astro";
 import TextInput from "@/components/Forms/Inputs/TextInput.astro";
-import Textarea from "@/components/Forms/Inputs/Textarea.astro";
-import Button from "@/components/Button";
+import Textarea  from "@/components/Forms/Inputs/Textarea.astro";
 
-// Props for Tailwind classes. You can override these when importing the component.
 const {
-  // Added placeholder:text-[var(--color-bg)] so that placeholder text matches the background color.
   inputClasses = "border border-[var(--color-border)] transition-default p-[var(--spacing-md)] w-full bg-light-opacity placeholder:text-[var(--color-bg)] text-bg outline-none focus:border-[var(--color-bg)] focus:ring-1 focus:ring-[var(--color-primary)] focus:bg-primary",
-  wrapperClasses = "mb-[var(--spacing-sm)] w-full"
+  wrapperClasses = "mb-[var(--spacing-sm)] w-full",
 } = Astro.props;
 ---
-<form
-  name="contact-form"
-  class="w-full p-[var(--spacing-md)]"
-  method="post"
-  data-netlify="true"              
-  netlify-honeypot="bot-field">  
-  <!-- Row 1: First Name and Last Name -->
-  <div class="flex flex-col lg:flex-row lg:space-x-[var(--spacing-sm)] mb-[var(--spacing-sm)]">
+
+<Form name="contact-form">
+  <!-- Row 1 -->
+  <div class="flex flex-col lg:flex-row lg:space-x-[var(--spacing-sm)]">
     <div class="w-full lg:w-1/2">
       <TextInput
         name="firstName"
@@ -39,8 +33,8 @@ const {
     </div>
   </div>
 
-  <!-- Row 2: Email and Phone -->
-  <div class="flex flex-col lg:flex-row lg:space-x-[var(--spacing-sm)] mb-[var(--spacing-sm)]">
+  <!-- Row 2 -->
+  <div class="flex flex-col lg:flex-row lg:space-x-[var(--spacing-sm)]">
     <div class="w-full lg:w-1/2">
       <TextInput
         name="email"
@@ -62,11 +56,11 @@ const {
     </div>
   </div>
 
-  <!-- Row 3: Message (full width) -->
-  <div class="mb-[var(--spacing-sm)] w-full">
+  <!-- Row 3 -->
+  <div class="w-full">
     <Textarea
       name="message"
-      placeholder="Tell us more about your needs..."
+      placeholder="Tell us more about your needs…"
       required={true}
       rows={5}
       inputClass={inputClasses}
@@ -74,8 +68,5 @@ const {
     />
   </div>
 
-  <!-- Submit Button (full width) -->
-  <Button type="submit" variant="primary" className="w-full mt-[var(--spacing-sm)] justify-center cursor-pointer">
-    Submit
-  </Button>
-</form>
+  <!-- Submit button comes from <Form> fallback, so no submit slot needed -->
+</Form>
