@@ -1,13 +1,13 @@
 [
     {
       "title": "Our Mission",
-      "description": "To deliver quality cleaning services with integrity and dedication.",
+      "description": "To deliver expert-level air duct, dryer vent, and home cleaning services that improve indoor air quality, protect families, and restore peace of mind — all with unmatched honesty, professionalism, and personal care. We don’t just clean — we care. Every visit is a promise to leave your home safer, your air cleaner, and your trust earned.",
       "featuredImage": "@/assets/carpet.jpg",
       "id": "mission"
     },
     {
       "title": "Our Vision",
-      "description": "To become the most trusted and innovative cleaning service provider.",
+      "description": "To be New Jersey’s most trusted name in indoor air quality and home restoration — known not just for results, but for relationships, reliability, and relentless dedication to doing the job right. Our vision is a world where every family breathes easier — because they know Cleanomatic is on the job.",
       "featuredImage": "@/assets/carpet.jpg",
       "id": "vision"
     }
