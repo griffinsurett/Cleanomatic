@@ -76,8 +76,7 @@ export default async function Button({
 
   // Determine disabled state.
   // If the disabled prop is passed, or if no href is provided (implying hasPage is false), then disable.
-  const computedDisabled = disabled !== undefined ? disabled : (!href);
-
+const computedDisabled = disabled ?? false;
   // Force disabled rendering as a <button> (i.e. not as an anchor).
   const ComponentFinal =
     computedDisabled
