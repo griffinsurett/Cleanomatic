@@ -69,7 +69,7 @@ const hideClass = !noBreakpoint && responsiveClasses[breakpoint] ? responsiveCla
       </nav>
       <div class={`block ${hideClass}`}>
         <HamburgerNavMenu
-          client:media={`(max-width: ${bpValue})`}
+          client:idle
           items={items}
           menuItem={hamburgerMenu?.menuItem || menuItem}
           submenuItem={hamburgerMenu?.submenuItem || submenuItem}
