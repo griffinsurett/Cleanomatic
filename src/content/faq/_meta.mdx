@@ -6,13 +6,23 @@ heading:
   - text: "Have a question? We have answers!"
     tagName: "label"
     class: "h6 text-left"
-hasPage: false
+hasPage: true
 itemsHasPage: false
 defaultSection:
   client: "visible"
-  sectionClass: "section-sm w-full flex justify-center items-center"
+  sectionClass: "w-full flex justify-center items-center"
   contentClass: "flex justify-between flex-col xl:flex-row"
   topContentClass: "xl:mr-[var(--spacing-2xl)]"
   itemsClass: "flex flex-col gap-[var(--spacing-lg)]"
   component: "AccordionItem"
+  buttonsSectionClass: "hidden"
+sections:
+  - collection: "faq"
+    query: "getAll"
+    headingAreaClass: "hidden"
+addToQuery: [
+  {
+    "id": "MainNavMenu"
+  }
+]
 ---
