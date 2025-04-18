@@ -11,11 +11,11 @@ export default function AccordionItem({
   const toggle = () => setOpen((prev) => !prev);
 
   return (
-    <li className={itemClass}>
+    <li className={`bg-neutral ${itemClass}`}>
       {/* Header: clicking toggles open/closed */}
       <div
         onClick={toggle}
-        className="w-full flex justify-between items-center py-[var(--spacing-lg)] cursor-pointer select-none"
+        className="w-full flex justify-between items-center p-[var(--spacing-xl)] cursor-pointer select-none"
       >
         <span className="h6">{item.data.title || item.slug}</span>
         <svg
@@ -37,7 +37,9 @@ export default function AccordionItem({
           open ? "max-h-96 py-[var(--spacing-sm)] px-[var(--spacing-lg)]" : "max-h-0"
         }`}
       >
+        <p className="py-[var(--spacing-xl)] px-[var(--spacing-lg)]">
         {item.data.description ?? item.body}
+        </p>
       </div>
     </li>
   );
