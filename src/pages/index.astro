@@ -5,9 +5,8 @@ import Section from "@/components/Section.astro";
 import PrimaryHero from "@/components/StaticSections/PrimaryHero.astro";
 import { Picture } from "astro:assets";
 import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
-import AccordionList from "@/components/AccordionList";
-import AccordionItem from "@/components/LoopComponents/AccordionItem";
 import { getCollection } from "astro:content";
+import AccordionItem from "@/components/LoopComponents/AccordionItem";
 
 const faqs = await getCollection("faq");
 ---
@@ -51,5 +50,5 @@ const faqs = await getCollection("faq");
   />
   <Section collection="testimonials" query="getAll" />
   <Section collection="gallery" query="getAll" />
-<Section collection="faq" query="getAll" />  
+<Section collection="faq" query="getAll" component={AccordionItem} />  
 </ExtendedLayout>
