@@ -103,7 +103,7 @@
   }
 
   .section-sm {
-    @apply min-h-[40vh] xl:min-h-[60vh];
+    @apply min-h-[40vh] xl:min-h-[50vh];
   }
 
   .section-main {
