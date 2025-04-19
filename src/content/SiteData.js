@@ -24,7 +24,7 @@ export const CTAdata = {
   title: "Get a Free Quote",
   description: "Contact us today for a free quote on our cleaning services.",
   buttonText: "Contact Us",
-  buttonLink: "/contact",
+  buttonLink: "/contact-us",
 }
 
 export const ContactData = {
