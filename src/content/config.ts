@@ -112,7 +112,19 @@ export const collections = {
     schema: ({ image }) => baseSchema({ image }),
   }), 
   faq: defineCollection({
-    schema: ({ image }) => baseSchema({ image }),
+    schema: ({ image }) =>
+      baseSchema({ image }).extend({
+        /**
+         * Accept either a single service **or** an array of services.
+         * Use service slugs. Astro turns them into full references.
+         */
+        services: z
+          .union([
+            reference("services"),
+            z.array(reference("services")),
+          ])
+          .optional(),
+      }),
   }),
   serviceAreas: defineCollection({
     loader: file("src/content/serviceAreas/serviceAreas.json"),
