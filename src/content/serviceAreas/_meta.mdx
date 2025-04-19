@@ -7,7 +7,7 @@ keywords:
   - "service areas"
   - "cleaning locations"
 hasPage: false
-itemsHasPage: false
+itemsHasPage: true
 defaultSection:
   sectionClass: "section-lg flex justify-center items-center text-center bg-accent text-bg lg:px-[var(--spacing-lg)]"
   itemsClass: "w-full flex flex-wrap justify-center items-stretch gap-[var(--spacing-md)] my-[var(--spacing-lg)] md:my-[var(--spacing-2xl)]"
@@ -17,6 +17,13 @@ defaultSection:
     - text: "Request Estimate"
       link: "/contact-us"
       variant: "secondary"
+itemsSections:
+  - collection: "services"
+    query: "getAll"
+  - collection: "testimonials"
+    query: "getAll"
+  - collection: "gallery"
+    query: "getAll"
 addToQuery: [
     {
       "id": "MainNavMenu",
