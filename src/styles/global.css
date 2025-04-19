@@ -92,7 +92,7 @@
     @apply text-lg font-bold lg:text-xl uppercase;
   }
   .h6 {
-    @apply font-base text-lg uppercase;
+    @apply font-medium text-lg uppercase;
   }
   /* p {
     @apply mb-4 leading-relaxed text-base;
@@ -103,7 +103,7 @@
   }
 
   .section-sm {
-    @apply min-h-[80vh] md:min-h-[40vh] xl:min-h-[60vh];
+    @apply min-h-[40vh] xl:min-h-[60vh];
   }
 
   .section-main {
