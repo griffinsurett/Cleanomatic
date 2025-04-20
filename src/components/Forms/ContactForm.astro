@@ -15,11 +15,17 @@ const currentPage = getCurrentEntryId(Astro);
 console.log("Current page:", currentPage);
 ---
 
-<Form name="contact-form" netlify={true} >
+<Form
+  name="contact-form"
+  netlify={true}
+  enableSuccessBanner={true}
+  successBannerMessage="Thank you for your message. We will get in touch with you shortly."
+  successBannerClass="p-[var(--spacing-sm)] bg-primary text-bg border border-[var(--color-border)] bg-light-opacity"
+>
   <!-- Hidden input for current page -->
   <input type="hidden" name="Page-of-Submission" value={currentPage} />
 
-  <!-- Row 1 -->
+  <!-- Row 1 -->
   <div class="flex flex-col lg:flex-row lg:space-x-[var(--spacing-sm)]">
     <div class="w-full lg:w-1/2">
       <TextInput
@@ -41,7 +47,7 @@ console.log("Current page:", currentPage);
     </div>
   </div>
 
-  <!-- Row 2 -->
+  <!-- Row 2 -->
   <div class="flex flex-col lg:flex-row lg:space-x-[var(--spacing-sm)]">
     <div class="w-full lg:w-1/2">
       <TextInput
@@ -64,7 +70,7 @@ console.log("Current page:", currentPage);
     </div>
   </div>
 
-  <!-- Row 3 -->
+  <!-- Row 3 -->
   <div class="w-full">
     <Textarea
       name="message"
@@ -75,35 +81,4 @@ console.log("Current page:", currentPage);
       wrapperClass={wrapperClasses}
     />
   </div>
-
-  <!-- Submit button comes from <Form> fallback, so no submit slot needed -->
 </Form>
-<script>
-  // Wait until the DOM is ready
-  document.addEventListener("DOMContentLoaded", () => {
-    const form = document.querySelector('form[name="contact-form"]');
-    const successBanner = document.createElement("div");
-    successBanner.className = "p-[var(--spacing-sm)] text-bg border border-[var(--color-border)] bg-light-opacity";
-    successBanner.textContent =
-      "Thank you for your message. We will get in touch with you shortly.";
-
-    form.addEventListener("submit", async (e) => {
-      // 1. Stop the browser from navigating away
-      e.preventDefault();                      
-
-      // 2. Prepare form data
-      const data = new URLSearchParams(new FormData(form));
-
-      // 3. Send it to Netlify
-      await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: data.toString(),
-      });
-
-      // 4. Swap out the form for the banner
-      form.style.display = "none";
-      form.parentNode.insertBefore(successBanner, form.nextSibling);
-    });
-  });
-</script>
