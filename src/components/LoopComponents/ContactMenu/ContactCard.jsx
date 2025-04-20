@@ -2,7 +2,7 @@ import Button from "@/components/Button.jsx";
 import Heading from "@/components/Heading.jsx";
 import { formatPhoneNumber } from "@/utils/ContentUtils";
 
-const iconsvgClass = "h-8 w-8 transition-default hover:h-10 hover:w-10 cursor-pointer";
+const iconsvgClass = "h-7 w-7 transition-default hover:h-9 hover:w-9 cursor-pointer";
 
 // Updated Mail Icon Component (envelope)
 const MailIcon = () => (
@@ -49,7 +49,7 @@ export default function MenuCard({ item, className = "", ...props }) {
       {...props}
     >
       {/* Icon container wrapped in a clickable link */}
-      <a href={linkHref} className="rounded-full bg-accent text-bg flex items-center justify-center p-[var(--spacing-lg)] mb-[var(--spacing-sm)]">
+      <a href={linkHref} className="rounded-full bg-accent text-bg flex items-center justify-center p-[var(--spacing-md)] mb-[var(--spacing-sm)]">
         {isEmail ? <MailIcon /> : <PhoneIcon />}
       </a>
       
