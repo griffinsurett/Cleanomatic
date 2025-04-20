@@ -66,8 +66,8 @@ const meta = await resolveMetaProps(collectionName, queryType);
 const defaultSection = meta.defaultSection || {};
 
 // 2. determine which variant to use (prop overrides meta.defaultSection.variant)
-const variantName = rawVariant ?? defaultSection.variant;
-const variantDefaults = (variantName && SectionVariants[variantName]) || {};
+const variantName = rawVariant ?? defaultSection.variant ?? undefined;
+const variantDefaults = variantName && SectionVariants[variantName] ? SectionVariants[variantName] : {};
 
 // 3. build every “final” class by merging: variant → meta → raw override
 const sectionClass = mergeClass(

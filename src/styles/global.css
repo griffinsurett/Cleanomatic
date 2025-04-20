@@ -99,11 +99,11 @@
   } */
 
   .section-xs {
-    @apply min-h-[25vh] xl:min-h-[40vh];
+    @apply min-h-[25vh] xl:min-h-[35vh];
   }
 
   .section-sm {
-    @apply min-h-[40vh] xl:min-h-[50vh];
+    @apply min-h-[40vh] xl:min-h-[35vh];
   }
 
   .section-main {
