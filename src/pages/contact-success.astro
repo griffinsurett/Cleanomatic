@@ -1,4 +1,5 @@
 ---  
+import Button from "@/components/Button";
 import BaseLayout from "@/layouts/BaseLayout.astro";  
 ---  
 <BaseLayout title="Thank You!">  
@@ -7,6 +8,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     <p class="text-base mb-[var(--spacing-lg)]">  
       We’ve received your message and will get back to you shortly.  
     </p>  
-    <a href="/" class="underline">Return Home</a>  
+    <Button href="/" variant="secondary">Return Home</Button>  
   </section>  
 </BaseLayout>  
