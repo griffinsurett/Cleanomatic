@@ -15,12 +15,12 @@ import Section from "@/components/Section.astro";
   <SecondaryHero title="Contact Us" />
   <Section
     heading={{ text: "Reach Out To Us", tagName: "h3", class: "h3" }}
-    sectionClass="section-sm flex items-center justify-center"
+    sectionClass="section-md py-[var(--spacing-2xl)] lg:py-[var(--spacing-sm)] flex items-center justify-center"
     contentClass="container mx-auto text-center"
   >
     <Menu
       items={await getContactMenuItems()}
-      listClass={"flex gap-[var(--spacing-xl)] py-[var(--spacing-xl)] justify-evenly items-center"}
+      listClass={"flex flex-col lg:flex-row gap-[var(--spacing-xl)] py-[var(--spacing-xl)] justify-evenly items-center"}
       menuItem={{ component: ContactCard }}
     />
   </Section>
