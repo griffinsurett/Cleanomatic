@@ -15,7 +15,7 @@ const currentPage = getCurrentEntryId(Astro);
 console.log("Current page:", currentPage);
 ---
 
-<Form name="contact-form" netlify={true}>
+<Form name="contact-form" netlify={true} action="/contact-success"  >
   <!-- Hidden input for current page -->
   <input type="hidden" name="Page-of-Submission" value={currentPage} />
 
