@@ -11,6 +11,7 @@ const {
   isHierarchical = true,
   breakpoint,
   active = true, // new prop for active state
+  activeClass
 } = Astro.props;
 import SubMenu from "./SubMenu.astro";
 const mainClass = menuItem && menuItem.class ? menuItem.class : "";
@@ -21,7 +22,7 @@ const hasSub =
 <li class={`relative hamburger-menu-item`}>
   <a
     href={item.slug}
-    class={`flex items-center ${mainClass} ${active ? "bg-[var(--color-secondary)]" : ""}`}
+    class={`flex items-center ${mainClass} ${active ? activeClass : ""}`}
   >
     {item.label}
     {

@@ -30,6 +30,7 @@ const currentPath = normalizePath(Astro.url.pathname);
         isHierarchical={isHierarchical}
         breakpoint={breakpoint}
         active={currentPath === normalizedSlug}
+        activeClass={submenuItem?.activeClass || menuItem?.activeClass}
       />
     );
   })}

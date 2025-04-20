@@ -64,7 +64,7 @@ const mobileMediaQuery = `(max-width: ${breakpointsMapping[breakpoint] - 1}px)`;
             items={phoneMenuItems}
             menuClass="phone-list bg-accent gap-[var(--spacing-xl)] flex justify-center items-center w-[60vw] h-[40vh] overflow-y-auto"
             listClass="flex flex-col justify-center gap-[var(--spacing-xl)] text-bg"
-            menuItem={{ component: PhoneNumber, class: "cursor-pointer h4" }}
+            menuItem={{ component: PhoneNumber, class: "cursor-pointer h4"}}
             
           />
         </MobileCallButtonModal>
@@ -75,10 +75,12 @@ const mobileMediaQuery = `(max-width: ${breakpointsMapping[breakpoint] - 1}px)`;
           component: MenuItem,
           class:
             "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] h2",
+          activeClass: "bg-secondary"
         }}
         submenuItem={{
           component: MenuItem,
           class: "bg-primary py-[var(--spacing-sm)] h5 italic",
+          activeClass: "bg-secondary"
         }}
         isHierarchical={true}
         breakpoint={breakpoint}
@@ -106,6 +108,7 @@ const mobileMediaQuery = `(max-width: ${breakpointsMapping[breakpoint] - 1}px)`;
         menuItem={{
           component: MenuItem,
           class: "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] h5 uppercase hover:bg-secondary italic",
+          activeClass: "bg-secondary",
         }}
         submenuItem={{ component: MenuItem, class: "bg-primary h6 uppercase" }}
         isHierarchical={true}

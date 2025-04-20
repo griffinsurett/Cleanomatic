@@ -27,6 +27,7 @@ const RenderComponent = menuItem && menuItem.component ? menuItem.component : De
         isHierarchical={isHierarchical}
         breakpoint={breakpoint}
         active={currentPath === normalizedSlug}
+        activeClass={menuItem?.activeClass}
       />
     );
   })}
