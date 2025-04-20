@@ -43,6 +43,7 @@ const buttonSchema = z.object({
 const sectionSchema = z.object({
   collection: z.string().optional(),
   query: z.string().optional(),
+  variant: z.string().optional(),
   component: z.union([z.function(), z.string()]).optional(),
   heading: headingSchema.optional(),
   description: descriptionSchema.optional(),
@@ -74,7 +75,7 @@ export const metaSchema = z.object({
   heading: headingSchema.optional(),
   description: descriptionSchema.optional(),
   keywords: z.array(z.string()).optional(),
-  ogType: z.string().optional(),  
+  ogType: z.string().optional(),
   hasPage: z.boolean().default(true),
   itemsHasPage: z.boolean().default(true),
   defaultSection: sectionSchema.optional(),
@@ -92,7 +93,7 @@ const baseSchema = ({ image }: { image: Function }) =>
     heading: headingSchema.optional(),
     description: descriptionSchema.optional(),
     keywords: z.array(z.string()).optional(),
-    ogType: z.string().optional(),  // NEW: Include ogType in individual items too.
+    ogType: z.string().optional(), // NEW: Include ogType in individual items too.
     hasPage: z.boolean().optional(),
     sections: z.array(sectionSchema).optional(),
     addToQuery: z.array(QueryItemSchema).optional(),
@@ -105,12 +106,14 @@ export const collections = {
     schema: ({ image }) =>
       baseSchema({ image }).extend({
         icon: z.string().optional(),
-        parent: z.union([reference("services"), z.array(reference("services"))]).optional(),
+        parent: z
+          .union([reference("services"), z.array(reference("services"))])
+          .optional(),
       }),
   }),
   testimonials: defineCollection({
     schema: ({ image }) => baseSchema({ image }),
-  }), 
+  }),
   faq: defineCollection({
     schema: ({ image }) =>
       baseSchema({ image }).extend({
@@ -119,10 +122,7 @@ export const collections = {
          * Use service slugs. Astro turns them into full references.
          */
         services: z
-          .union([
-            reference("services"),
-            z.array(reference("services")),
-          ])
+          .union([reference("services"), z.array(reference("services"))])
           .optional(),
       }),
   }),
@@ -132,9 +132,10 @@ export const collections = {
   }),
   gallery: defineCollection({
     loader: file("src/content/gallery/gallery.json"), // file-loaded collection
-    schema: ({ image }) => baseSchema({ image }).extend({
-      src: image(),
-    }),
+    schema: ({ image }) =>
+      baseSchema({ image }).extend({
+        src: image(),
+      }),
   }),
   benefits: defineCollection({
     loader: file("src/content/benefits/benefits.json"), // file-loaded collection
