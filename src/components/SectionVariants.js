@@ -9,7 +9,7 @@
  * (not overwritten) on top of these.
  */
 export const SectionVariants = {
-  // ─────────── Benefits ───────────
+// ─────────── Benefits ───────────
   benefits: {
     sectionClass: "flex justify-center items-center text-left section-sm",
     contentClass:

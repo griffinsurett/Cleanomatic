@@ -3,15 +3,23 @@
   import Form      from "@/components/Forms/Form.astro";
 import TextInput from "@/components/Forms/Inputs/TextInput.astro";
 import Textarea  from "@/components/Forms/Inputs/Textarea.astro";
+import { getCurrentEntryId } from "@/utils/CurrentEntry";
 
 const {
   inputClasses = "border border-[var(--color-border)] transition-default p-[var(--spacing-md)] w-full bg-light-opacity placeholder:text-[var(--color-bg)] text-bg outline-none focus:border-[var(--color-bg)] focus:ring-1 focus:ring-[var(--color-primary)] focus:bg-primary",
   wrapperClasses = "mb-[var(--spacing-sm)] w-full",
 } = Astro.props;
+
+// Extract current page identifier
+const currentPage = getCurrentEntryId(Astro);
+console.log("Current page:", currentPage);
 ---
 
 <Form name="contact-form" netlify={true}>
-  <!-- Row 1 -->
+  <!-- Hidden input for current page -->
+  <input type="hidden" name="currentPage" value={currentPage} />
+
+  <!-- Row 1 -->
   <div class="flex flex-col lg:flex-row lg:space-x-[var(--spacing-sm)]">
     <div class="w-full lg:w-1/2">
       <TextInput
@@ -33,7 +41,7 @@ const {
     </div>
   </div>
 
-  <!-- Row 2 -->
+  <!-- Row 2 -->
   <div class="flex flex-col lg:flex-row lg:space-x-[var(--spacing-sm)]">
     <div class="w-full lg:w-1/2">
       <TextInput
@@ -56,7 +64,7 @@ const {
     </div>
   </div>
 
-  <!-- Row 3 -->
+  <!-- Row 3 -->
   <div class="w-full">
     <Textarea
       name="message"

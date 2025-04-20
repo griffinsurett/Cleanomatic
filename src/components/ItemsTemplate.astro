@@ -49,7 +49,7 @@ function getItemProps(item) {
 }
 ---
 {items?.length ? (
-  <>
+  <div>
     {/*
       ────────────────────────────────────────────────
       CLIENT‑SIDE ISLANDS
@@ -111,7 +111,7 @@ function getItemProps(item) {
         ))}
       </ul>
     )}
-  </>
+  </div>
 ) : (
   <p>No items found.</p>
 )}
