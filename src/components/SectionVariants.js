@@ -1,5 +1,6 @@
 // src/components/SectionVariants.js
 
+import FAQimg from "@/assets/glen-rushton-PjeZGaKunAI-unsplash.jpg"
 /**
  * SectionVariants
  *
@@ -22,7 +23,7 @@ export const SectionVariants = {
     backgroundMedia: undefined,
     topContentClass: "flex flex-col gap-[var(--spacing-md)]",
     itemPlacement: "top-content-section",
-    slotPlacement: "",
+    childPlacement: "",
     childSlotClass: "lg:sticky lg:top-0",
   },
 
@@ -37,9 +38,9 @@ export const SectionVariants = {
     backgroundMedia: undefined,
     topContentClass: "xl:mr-[var(--spacing-2xl)] lg:sticky lg:top-0",
     itemPlacement: "",
-    slotPlacement: "",
+    childPlacement: "",
     childSlotClass: "",
-  },
+},
 
   // ─────────── Testimonials ───────────
   testimonials: {
@@ -55,7 +56,7 @@ export const SectionVariants = {
     backgroundMedia: undefined,
     topContentClass: "",
     itemPlacement: "",
-    slotPlacement: "",
+    childPlacement: "",
     childSlotClass: "",
   },
 
@@ -73,7 +74,7 @@ export const SectionVariants = {
     backgroundMedia: undefined,
     topContentClass: "",
     itemPlacement: "",
-    slotPlacement: "",
+    childPlacement: "",
     childSlotClass: "",
   },
 
@@ -91,7 +92,7 @@ export const SectionVariants = {
     backgroundMedia: undefined,
     topContentClass: "",
     itemPlacement: "",
-    slotPlacement: "",
+    childPlacement: "",
     childSlotClass: "",
   },
 
@@ -108,7 +109,7 @@ export const SectionVariants = {
     backgroundMedia: undefined,
     topContentClass: "",
     itemPlacement: "",
-    slotPlacement: "",
+    childPlacement: "",
     childSlotClass: "",
   },
 
@@ -126,7 +127,7 @@ export const SectionVariants = {
     backgroundMedia: undefined,
     topContentClass: "",
     itemPlacement: "",
-    slotPlacement: "",
+    childPlacement: "",
     childSlotClass: "",
   },
 };

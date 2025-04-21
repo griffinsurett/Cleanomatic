@@ -56,7 +56,8 @@ const sectionSchema = z.object({
   headingAreaClass: z.string().optional(),
   topContentClass: z.string().optional(),
   itemPlacement: z.union([z.string(), z.array(z.string())]).optional(),
-  slotPlacement: z.union([z.string(), z.array(z.string())]).optional(),
+  childPlacement: z.union([z.string(), z.array(z.string())]).optional(),
+  buttonsPlacement: z.union([z.string(), z.array(z.string())]).optional(),
   childSlotClass: z.string().optional(),
   client: z.enum(["load", "idle", "visible"]).optional(),
 });
