@@ -75,6 +75,7 @@ export const QueryItemSchema = z.object({
 export const metaSchema = z.object({
   heading: headingSchema.optional(),
   description: descriptionSchema.optional(),
+  layout: z.string().optional(),
   keywords: z.array(z.string()).optional(),
   ogType: z.string().optional(),
   hasPage: z.boolean().default(true),
@@ -93,6 +94,8 @@ const baseSchema = ({ image }: { image: Function }) =>
     featuredImage: image().optional(),
     heading: headingSchema.optional(),
     description: descriptionSchema.optional(),
+    layout: z.string().optional(),
+    itemsLayout: z.string().optional(),
     keywords: z.array(z.string()).optional(),
     ogType: z.string().optional(), // NEW: Include ogType in individual items too.
     hasPage: z.boolean().optional(),
