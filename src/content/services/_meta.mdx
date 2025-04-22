@@ -3,6 +3,7 @@ heading:
   - text: "Our Services"
     tagName: "h2"
     class: "h2 text-accent"
+layout: "../../layouts/ServicesLayout.astro"
 keywords:
   - "cleaning services"
   - "professional cleaning"
@@ -23,10 +24,11 @@ sections:
     query: "getAll"
 itemsSections:
   - collection: "testimonials"
-    query: "related"
+    query: "getAll"
   - collection: "faq"
     query: "related"
-    variant: "faq"
+  - collection: "gallery"
+    query: "getAll"
   - collection: "serviceAreas"
     query: "getAll"
   - collection: "services"

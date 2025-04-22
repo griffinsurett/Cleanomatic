@@ -1,0 +1,58 @@
+---
+// src/layouts/ServicesLayout.astro
+import BaseLayout from './BaseLayout.astro';
+import SecondaryHero from '@/components/StaticSections/SecondaryHero.astro';
+import Section from '@/components/Section.astro';
+import Heading from '@/components/Heading.jsx';
+import { Image } from 'astro:assets';
+import { capitalize } from '@/utils/ContentUtils';
+
+const {
+  collection,
+  entry,
+  title: overrideTitle,
+  description: overrideDesc,
+  keywords,
+  ogType,
+  ...rest
+} = Astro.props;
+
+const isItemPage = Boolean(entry);
+const data = entry?.data || {};
+const body = entry?.body || '';
+const pageTitle =
+  overrideTitle ?? (isItemPage ? data.title : capitalize(collection));
+const pageDesc =
+  overrideDesc ?? (isItemPage ? data.description : rest.description);
+---
+<BaseLayout title={pageTitle} description={pageDesc} keywords={keywords} ogType={ogType} {...rest}>
+  <!-- Hero for both collection roots and item pages -->
+  <SecondaryHero title={pageTitle} />
+
+  <!-- Use Section component to wrap item page content -->
+  {isItemPage && (
+    <Section 
+    variant="imageCol"
+    topContentClass="lg:w-2/3"
+    heading={[
+      { text: data.description, class: "h4" },
+    ]}
+    description={body}
+>
+        {data.featuredImage && (
+          <Image
+            src={data.featuredImage}
+            alt={data.title}
+            width={600}
+            height={400}
+            format="avif"
+            class="mb-[var(--spacing-md)]"
+          />
+        )}
+    </Section>
+  )}
+          <!-- {body && <p class="mb-[var(--spacing-md)]">{body}</p>} -->
+
+  <!-- Render the page or collection sections -->
+  <slot />
+</BaseLayout>

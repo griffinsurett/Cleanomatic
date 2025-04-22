@@ -1,4 +1,5 @@
 ---
+// collection/[slug].astro
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import Heading from "@/components/Heading.jsx";
@@ -63,23 +64,6 @@ const sections = data.sections?.length
   keywords={data.keywords}
   ogType={data.ogType}
 >
-  <article>
-    <Heading tagName="h2" class="mb-[var(--spacing-md)]">
-      {data.title}
-    </Heading>
-    {data.description && <p class="mb-[var(--spacing-md)]">{data.description}</p>}
-    {data.featuredImage && (
-      <Image
-        src={data.featuredImage}
-        alt={data.title}
-        width={600}
-        height={400}
-        format="avif"
-        class="mb-[var(--spacing-md)]"
-      />
-    )}
-    {body && <p class="mb-[var(--spacing-md)]">{body}</p>}
-
     {sections.map((section, i) => (
       <Section
         key={i}
@@ -96,5 +80,4 @@ const sections = data.sections?.length
         headingAreaClass={section.headingAreaClass}
       />
     ))}
-  </article>
 </Layout>
