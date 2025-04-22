@@ -18,7 +18,16 @@ import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
   ]}
 >
   <!-- Hero Section with primary call-to-action -->
-  <PrimaryHero />
+  <PrimaryHero
+    heading={[
+      {
+        text: "Welcome to Cleanomatic – Your Trusted Cleaning Experts in New Jersey!",
+        tagName: "h1",
+        class: "text-bg h2",
+      },
+    ]}
+    description="Welcome to Cleanomatic, your one‑stop solution for water removal as well as dryer vent, air duct, furniture, carpet and floor cleaning services in New Jersey."
+  />
 
   <!-- Benefits Section with a background picture -->
   <Section collection="benefits" query="getAll">
@@ -46,5 +55,5 @@ import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
   />
   <Section collection="testimonials" query="getAll" />
   <Section collection="gallery" query="getAll" />
-<Section collection="faq" query="getAll" />  
+  <Section collection="faq" query="getAll" />
 </ExtendedLayout>
