@@ -17,11 +17,12 @@ const {
   value = "",
   required = false,
   inputClass = "",
-  wrapperClass = ""
+  wrapperClass = "",
+  labelClass = ""
 } = Astro.props;
 ---
 <div class={wrapperClass}>
-  {label && <label for={name}>{label}</label>}
+  {label && <label for={name} class={labelClass}>{label}</label>}
   <input
     id={name}
     name={name}

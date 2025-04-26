@@ -40,6 +40,7 @@ const {
   component: ItemComponent,
   heading,
   description,
+  descriptionClass: rawDescriptionClass = "",
   buttons,
   sectionClass: rawSectionClass,
   contentClass: rawContentClass,
@@ -74,11 +75,10 @@ let variantDefaults = {};
 if (variantName) {
   // note the explicit “.js” extension so Vite can find it in production
   const variantsModule = await import("./SectionVariants.js");
-  // grab the matching variant or fallback to {}
   variantDefaults = variantsModule.SectionVariants?.[variantName] ?? {};
 }
 
-// 3️⃣ Merge all class props
+// 4️⃣ Merge all class props
 const sectionClass = mergeClass(
   variantDefaults.sectionClass,
   defaultSection.sectionClass,
@@ -120,13 +120,24 @@ const childSlotClass = mergeClass(
   rawChildSlotClass
 );
 
-// 4️⃣ Background media fallback
+// NEW ➡️ description class merge
+const descriptionClass = mergeClass(
+  variantDefaults.descriptionClass,
+  defaultSection.descriptionClass,
+  rawDescriptionClass,
+  // if description prop is object with its own class
+  description && typeof description === "object" && description.class
+    ? description.class
+    : ""
+);
+
+// 5️⃣ Background media fallback
 const backgroundMedia =
   rawBackgroundMedia ??
   variantDefaults.backgroundMedia ??
   defaultSection.backgroundMedia;
 
-// 5️⃣ Placement props: override → variant → meta → fallback
+// 6️⃣ Placement props
 const itemPlacement =
   rawItemPlacement ||
   variantDefaults.itemPlacement ||
@@ -160,14 +171,14 @@ const buttonsPlacementArray = Array.isArray(buttonsPlacement)
   ? [buttonsPlacement]
   : [];
 
-// 6️⃣ Generate section ID
+// 7️⃣ Generate section ID
 const sectionId = generateSectionId(
   collectionName,
   queryType,
   Astro.url.pathname
 );
 
-// 7️⃣ Heading & description
+// 8️⃣ Heading & description
 const finalHeadingArray = resolveHeading(
   heading,
   meta.heading,
@@ -178,14 +189,14 @@ const finalDescription = resolveDescription(
   meta.description
 );
 
-// 8️⃣ Resolve item component + client
+// 9️⃣ Resolve item component + client
 const finalComponent = resolveComponent(
   ItemComponent,
   defaultSection.component
 );
 const finalClient = rawClient ?? defaultSection.client;
 
-// 9️⃣ Fetch dynamic items
+// 🔟 Fetch dynamic items
 let items = [];
 const isDynamic = Boolean(collectionName && queryType);
 if (isDynamic) {
@@ -197,7 +208,7 @@ if (isDynamic) {
   if (items.length === 0) return;
 }
 
-// 🔟 Buttons array
+// 1️⃣1️⃣ Buttons array
 const effectiveButtons =
   buttons && buttons.length > 0 ? buttons : defaultSection.buttons;
 const buttonsArray = resolveButtonsArray(
@@ -222,13 +233,11 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
   {backgroundMedia && <BackgroundMedia backgroundMedia={backgroundMedia} />}
 
   <div
-    class={`${contentClass} content-section relative z-10 w-3/4 ${
+    class={`${contentClass} relative z-10 w-3/4 ${
       isDynamic ? "my-[var(--spacing-lg)]" : ""
     }`}
   >
-    <!-- === Top Content Wrapper === -->
     <div class={`top-content-section ${topContentClass}`}>
-      <!-- Heading Area -->
       <div class={`section-heading-area ${headingAreaClass}`}>
         {finalHeadingArray.map((head, i) => {
           const headObj = typeof head === "string" ? { text: head } : head;
@@ -239,15 +248,15 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
             </Heading>
           );
         })}
+
+        {/* now using our merged descriptionClass */}
         {finalDescription && (
-          <p class={description?.class}>{finalDescription}</p>
+          <p class={descriptionClass}>{finalDescription}</p>
         )}
       </div>
 
-      <!-- Child slot at top? -->
       {childPlacementArray.includes("top-content-section") && <slot />}
 
-      <!-- Items at top? -->
       {itemPlacementArray.includes("top-content-section") && isDynamic && (
         <>
           <slot name="aboveItemsInjection" />
@@ -266,7 +275,6 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
         </>
       )}
 
-      <!-- Buttons at top? (dynamic only) -->
       {isDynamic &&
         buttonsPlacementArray.includes("top-content-section") &&
         buttonsArray.length > 0 && (
@@ -294,7 +302,6 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
           </div>
         )}
 
-      <!-- Buttons at top? (static only) -->
       {!isDynamic &&
         buttonsPlacementArray.includes("top-content-section") &&
         buttonsArray.length > 0 && (
@@ -323,7 +330,6 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
         )}
     </div>
 
-    <!-- === Main Items Block if not placed at top === -->
     {!itemPlacementArray.includes("top-content-section") && isDynamic && (
       <>
         <slot name="aboveItemsInjection" />
@@ -342,7 +348,6 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
       </>
     )}
 
-    <!-- Buttons in content-section? (dynamic only) -->
     {isDynamic &&
       buttonsPlacementArray.includes("content-section") &&
       buttonsArray.length > 0 && (
@@ -370,7 +375,6 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
         </div>
       )}
 
-    <!-- Buttons in content-section? (static only) -->
     {!isDynamic &&
       buttonsPlacementArray.includes("content-section") &&
       buttonsArray.length > 0 && (
@@ -398,7 +402,6 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
         </div>
       )}
 
-    <!-- Final child slot if not already at top -->
     {!childPlacementArray.includes("top-content-section") && (
       <div class={childSlotClass}>
         <slot />

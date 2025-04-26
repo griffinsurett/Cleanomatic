@@ -8,6 +8,12 @@
  * action          – optional success redirect URL
  * netlify         – boolean flag to inject Netlify attrs (default true)
  * honeypotName    – name of the hidden honeypot field (default "bot-field")
+ * class           – Tailwind classes for the outer container
+ * formLabel       – optional label for the form
+ * labelClass      – Tailwind classes for the form label
+ * enableSuccessBanner – boolean flag to show a success banner
+ * successBannerMessage – message to show in the success banner
+ * successBannerClass – Tailwind classes for the success banner
  * formClass       – extra classes on <form>
  * submitClass     – default Tailwind classes for the fallback button
  * submitLabel     – text for the fallback button (default "Submit")
@@ -18,7 +24,7 @@
  * submit          – optional custom submit content; if omitted we render a
  *                   default <Button />
  */
-import Button from "@/components/Button";
+ import Button from "@/components/Button";
 
 const {
   name = "generic-form",
@@ -26,50 +32,62 @@ const {
   action,
   netlify = false,
   honeypotName = "bot-field",
+
+  /** now using the built-in `class` prop */
+  class: className = "",
+  /** the optional form-wide label text */
+  formLabel = "",
+  /** classes for that form-wide label */
+  labelClass = "",
+
   formClass = "",
   submitClass = "w-full mt-[var(--spacing-sm)] justify-center cursor-pointer",
   submitLabel = "Submit",
 
-  // new banner props
   enableSuccessBanner = false,
   successBannerMessage = "Thank you for your submission!",
   successBannerClass = "p-[var(--spacing-sm)] bg-primary text-bg border border-[var(--color-border)]",
 } = Astro.props;
 ---
 
-<form
-  name={name}
-  method={method}
-  action={action}
-  class={`w-full p-[var(--spacing-md)] ${formClass}`}
-  data-success-banner={enableSuccessBanner}
-  data-success-message={successBannerMessage}
-  data-success-class={successBannerClass}
-  {...(netlify
-    ? { "data-netlify": "true", "netlify-honeypot": honeypotName }
-    : {})}
->
-  {netlify && (
-    <>
-      <input type="hidden" name="form-name" value={name} />
-      <input type="hidden" name={honeypotName} />
-    </>
+<div class={className}>
+  {formLabel && (
+    <label class={labelClass} for={name}>
+      {formLabel}
+    </label>
   )}
+  <form
+    id={name}
+    name={name}
+    method={method}
+    action={action}
+    class={formClass}
+    data-success-banner={enableSuccessBanner}
+    data-success-message={successBannerMessage}
+    data-success-class={successBannerClass}
+    {...(netlify
+      ? { "data-netlify": "true", "netlify-honeypot": honeypotName }
+      : {})}
+  >
+    {netlify && (
+      <>
+        <input type="hidden" name="form-name" value={name} />
+        <input type="hidden" name={honeypotName} />
+      </>
+    )}
 
-  <slot />
+    <slot />
 
-  {Astro.slots.has("submit") ? (
-    <slot name="submit" />
-  ) : (
-    <Button type="submit" variant="primary" className={submitClass}>
-      {submitLabel}
-    </Button>
-  )}
-</form>
+    {Astro.slots.has("submit") ? (
+      <slot name="submit" />
+    ) : (
+      <Button type="submit" variant="primary" className={submitClass}>
+        {submitLabel}
+      </Button>
+    )}
+  </form>
+</div>
 
-{/**  
-  Inlined script to wire up *all* forms with data-success-banner="true"
-**/}
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
     document
