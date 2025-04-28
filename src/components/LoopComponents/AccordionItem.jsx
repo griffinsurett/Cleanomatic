@@ -19,7 +19,7 @@ export default function AccordionItem({
       >
         <span className="h6">{item.data.title || item.slug}</span>
         <svg
-          className={`w-4 h-4 transform transition-transform duration-200 ${
+          className={`w-8 lg:w-4 h-auto transform transition-transform duration-200 ${
             open ? "rotate-180" : "rotate-0"
           }`}
           xmlns="http://www.w3.org/2000/svg"
