@@ -5,6 +5,7 @@
 @theme {
   /* Colors */
   --color-bg: #F2F0EF;
+  --color-bg-2: #e9ecee;
   --color-text: #111111;
   --color-primary: #0000fe;
   --color-secondary: #111eb5; /*6564F0*/
@@ -127,7 +128,7 @@
     -webkit-text-stroke: 1px var(--color-text);
   }
 
-  
+
 }
 
 @keyframes slide-right {

@@ -4,7 +4,7 @@ export const SiteData = {
   title: "Cleanomatic",
   tagline: "A Name You can trust!",
   description:
-    "Cleanomatic provides expert cleaning services including tile and grout cleaning, air duct cleaning, dryer vent cleaning, carpet cleaning, couch cleaning, and water restoration.",
+    "Cleanomatic provides expert Commercial and Residential Cleaning, including tile and grout cleaning, air duct cleaning, dryer vent cleaning, carpet cleaning, couch cleaning, and water restoration. We are a family-owned and operated business with over 20 years of experience, fully licensed and insured.",
   logo: {
     src: Logo,
     alt: "Cleanomatic logo",

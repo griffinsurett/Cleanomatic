@@ -30,7 +30,7 @@ export const SectionVariants = {
 
   // ─────────── FAQ ───────────
   faq: {
-    sectionClass: "section-sm w-full flex justify-center items-center",
+    sectionClass: "section-sm w-full flex justify-center items-center bg-bg-2 py-[50px]",
     contentClass: "flex justify-between flex-col xl:flex-row",
     itemsClass: "flex flex-col gap-[var(--spacing-lg)]",
     itemClass: "",
@@ -51,14 +51,7 @@ export const SectionVariants = {
       "container flex flex-wrap flex-col justify-center items-center w-full py-[var(--spacing-2xl)] px-[var(--spacing-lg)]",
     itemsClass:
       "flex flex-wrap md:flex-nowrap justify-center items-stretch gap-[var(--spacing-xl)] my-[var(--spacing-lg)] md:my-[var(--spacing-2xl)]",
-    itemClass: "",
-    buttonsSectionClass: "",
-    headingAreaClass: "",
     backgroundMedia: undefined,
-    topContentClass: "",
-    itemPlacement: "",
-    childPlacement: "",
-    childSlotClass: "",
   },
 
   // ─────────── Gallery ───────────
@@ -69,14 +62,8 @@ export const SectionVariants = {
       "container flex flex-col justify-center w-full py-[var(--spacing-xl)] px-[var(--spacing-lg)]",
     itemsClass:
       "flex flex-wrap justify-between items-stretch gap-[var(--spacing-xl)] my-[var(--spacing-lg)] md:my-[var(--spacing-2xl)]",
-    itemClass: "",
     buttonsSectionClass: "hidden",
-    headingAreaClass: "",
     backgroundMedia: undefined,
-    topContentClass: "",
-    itemPlacement: "",
-    childPlacement: "",
-    childSlotClass: "",
   },
 
   // ─────────── Mission & Vision ───────────
@@ -87,31 +74,17 @@ export const SectionVariants = {
       "container flex flex-col justify-center w-full py-[var(--spacing-xl)] px-[var(--spacing-lg)]",
     itemsClass:
       "flex items-center gap-[var(--spacing-xl)] py-[var(--spacing-xl)] flex-col xl:flex-row",
-    itemClass: "",
-    buttonsSectionClass: "",
-    headingAreaClass: "",
     backgroundMedia: undefined,
-    topContentClass: "",
-    itemPlacement: "",
-    childPlacement: "",
-    childSlotClass: "",
   },
 
   // ─────────── Service Areas ───────────
   serviceAreas: {
     sectionClass:
       "section-lg flex justify-center items-center text-center bg-accent text-bg lg:px-[var(--spacing-lg)]",
-    contentClass: "",
     itemsClass:
       "w-full flex flex-wrap justify-center items-stretch gap-[var(--spacing-md)] my-[var(--spacing-lg)] md:my-[var(--spacing-2xl)]",
-    itemClass: "",
     buttonsSectionClass: "hidden",
-    headingAreaClass: "",
     backgroundMedia: undefined,
-    topContentClass: "",
-    itemPlacement: "",
-    childPlacement: "",
-    childSlotClass: "",
   },
 
   // ─────────── Services ───────────
@@ -122,13 +95,5 @@ export const SectionVariants = {
       "container flex flex-wrap flex-col justify-center w-full py-[var(--spacing-xl)] px-[var(--spacing-lg)]",
     itemsClass:
       "flex flex-wrap justify-center items-stretch gap-[var(--spacing-xl)] my-[var(--spacing-lg)] md:my-[var(--spacing-2xl)]",
-    itemClass: "",
-    buttonsSectionClass: "",
-    headingAreaClass: "",
-    backgroundMedia: undefined,
-    topContentClass: "",
-    itemPlacement: "",
-    childPlacement: "",
-    childSlotClass: "",
   },
 };
