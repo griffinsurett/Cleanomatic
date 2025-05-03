@@ -14,7 +14,7 @@ export const SectionVariants = {
   imageCol: {
     sectionClass: "flex justify-center items-center text-left section-sm",
     contentClass:
-      "flex justify-between items-start py-[var(--spacing-2xl)] flex-col-reverse md:flex-row-reverse gap-[var(--spacing-xl)] lg:gap-[var(--spacing-2xl)]",
+      "flex justify-between items-center content-container py-[var(--spacing-2xl)] flex-col-reverse md:flex-row-reverse gap-[var(--spacing-xl)] lg:gap-[var(--spacing-2xl)]",
     itemsClass:
       "flex flex-col items-start justify-start gap-[var(--spacing-md)]",
     itemClass: "",
@@ -31,7 +31,7 @@ export const SectionVariants = {
   // ─────────── FAQ ───────────
   faq: {
     sectionClass: "section-sm w-full flex justify-center items-center bg-bg-2 py-[50px]",
-    contentClass: "flex justify-between flex-col xl:flex-row",
+    contentClass: "flex justify-between flex-col xl:flex-row content-container",
     itemsClass: "flex flex-col gap-[var(--spacing-lg)]",
     itemClass: "",
     buttonsSectionClass: "hidden",
@@ -48,7 +48,7 @@ export const SectionVariants = {
     sectionClass:
       "section-main flex justify-center items-center w-full text-center bg-primary text-bg px-[var(--spacing-xl)]",
     contentClass:
-      "container flex flex-wrap flex-col justify-center items-center w-full py-[var(--spacing-2xl)] px-[var(--spacing-lg)]",
+      "content-container container flex flex-wrap flex-col justify-center items-center w-full py-[var(--spacing-2xl)] px-[var(--spacing-lg)]",
     itemsClass:
       "flex flex-wrap md:flex-nowrap justify-center items-stretch gap-[var(--spacing-xl)] my-[var(--spacing-lg)] md:my-[var(--spacing-2xl)]",
     backgroundMedia: undefined,
@@ -59,7 +59,7 @@ export const SectionVariants = {
     sectionClass:
       "section-main flex justify-center items-center text-center bg-bg px-[var(--spacing-xl)]",
     contentClass:
-      "container flex flex-col justify-center w-full py-[var(--spacing-xl)] px-[var(--spacing-lg)]",
+      "content-container flex flex-col justify-center w-full py-[var(--spacing-xl)] px-[var(--spacing-lg)]",
     itemsClass:
       "flex flex-wrap justify-between items-stretch gap-[var(--spacing-xl)] my-[var(--spacing-lg)] md:my-[var(--spacing-2xl)]",
     buttonsSectionClass: "hidden",
@@ -71,7 +71,7 @@ export const SectionVariants = {
     sectionClass:
       "section-md flex justify-center items-center text-center px-[var(--spacing-xl)] bg-accent text-bg",
     contentClass:
-      "container flex flex-col justify-center w-full py-[var(--spacing-xl)] px-[var(--spacing-lg)]",
+      "content-container flex flex-col justify-center w-full py-[var(--spacing-xl)] px-[var(--spacing-lg)]",
     itemsClass:
       "flex items-center gap-[var(--spacing-xl)] py-[var(--spacing-xl)] flex-col xl:flex-row",
     backgroundMedia: undefined,
@@ -81,6 +81,7 @@ export const SectionVariants = {
   serviceAreas: {
     sectionClass:
       "section-lg flex justify-center items-center text-center bg-accent text-bg lg:px-[var(--spacing-lg)]",
+    contentClass: "content-container",
     itemsClass:
       "w-full flex flex-wrap justify-center items-stretch gap-[var(--spacing-md)] my-[var(--spacing-lg)] md:my-[var(--spacing-2xl)]",
     buttonsSectionClass: "hidden",
@@ -90,10 +91,10 @@ export const SectionVariants = {
   // ─────────── Services ───────────
   services: {
     sectionClass:
-      "section-main flex justify-center items-center text-center bg-bg px-[var(--spacing-xl)]",
+      "section-main flex justify-center text-center bg-bg px-[var(--spacing-xl)]",
     contentClass:
-      "container flex flex-wrap flex-col justify-center w-full py-[var(--spacing-xl)] px-[var(--spacing-lg)]",
+      "box-container flex flex-col justify-center items-center py-[var(--spacing-xl)] px-[var(--spacing-lg)]",
     itemsClass:
-      "flex flex-wrap justify-center items-stretch gap-[var(--spacing-xl)] my-[var(--spacing-lg)] md:my-[var(--spacing-2xl)]",
+      "flex flex-wrap justify-center items-center gap-[var(--spacing-xl)] my-[var(--spacing-lg)] md:my-[var(--spacing-2xl)]",
   },
 };

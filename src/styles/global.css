@@ -99,6 +99,14 @@
     @apply mb-4 leading-relaxed text-base;
   } */
 
+  .content-container {
+    @apply w-9/10 lg:w-8/10;
+  }
+
+  .box-container {
+    @apply w-full lg:w-85/100;
+  }
+
   .section-xs {
     @apply min-h-[25vh] xl:min-h-[35vh];
   }
