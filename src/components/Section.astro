@@ -223,11 +223,8 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
 <section
   id={sectionId}
   data-collection={collectionName}
-  class={`${sectionClass} relative w-full ${
-    isDynamic
-      ? "py-[var(--spacing-lg)] lg:px-[var(--spacing-md)]"
-      : "lg:px-[var(--spacing-md)]"
-  }`}
+  class={`${sectionClass} relative w-full 
+  `}
   {...props}
 >
   {backgroundMedia && <BackgroundMedia backgroundMedia={backgroundMedia} />}

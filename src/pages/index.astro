@@ -28,6 +28,68 @@ import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
     ]}
     description="Welcome to Cleanomatic, your one‑stop solution for water removal as well as dryer vent, air duct, furniture, carpet and floor cleaning services in New Jersey."
   />
+      
+  <!-- Additional sections such as Services, Service Areas, Testimonials, Gallery, etc. -->
+  <Section collection="services" query="getAll" buttonsSectionClass="hidden" />
+
+          <!-- About -->
+          <Section
+          headingAreaClass="text-left"
+          sectionClass= "flex justify-center items-center text-left section-sm lg:w-full px-0",
+          contentClass= "flex flex-col justify-center items-center text-left",
+          topContentClass= "text-left flex flex-col justify-start items-start",
+          childSlotClass= "flex flex-col justify-start items-start gap-[var(--spacing-lg)]",
+            heading={[
+              {
+                text: "Keeping Jersey Clean Since 1999!",
+                tagName: "label",
+                class: "text-primary h5",
+              },
+              {
+                text: "Welcome to Cleanomatic!",
+                tagName: "h2",
+                class: "text-accent h2",
+              },
+              {
+                text: "Your Trusted Cleaning Experts in New Jersey, Licensed and Fully Insured!",
+                tagName: "h6",
+                class: "text-text h6",
+              }
+            ]}
+          >
+        <div class="about-content flex">
+          <div class="about-left lg:w-1/2">
+            <p>
+              Cleanomatic is a licensed and fully insured company with over 20 years of experience in the cleaning industry. Our team of experts is dedicated to providing you with 
+        the highest quality cleaning services, using the latest techniques and eco-friendly products to ensure your home or business is clean, safe, and healthy.
+            </p>
+            <p>
+              At Cleanomatic, we understand that every customer has unique needs, which is why we offer a wide range of services to meet your specific requirements. Whether you need a one-time deep cleaning or regular maintenance, we have the expertise and equipment to get the job done right.
+            </p>
+            <p>
+              Our commitment to customer satisfaction is unmatched, and we take pride in our attention to detail and personalized service. We are here to help you achieve a clean and healthy environment for you and your family or employees.
+            </p>
+            <p>
+              Thank you for considering Cleanomatic for your cleaning needs. We look forward to serving you and exceeding your expectations!
+            </p>
+          </div>
+          <div class="about-right lg:w-1/2">
+            <p>
+              Welcome to Cleanomatic, your one-stop solution for water removal as well as dryer vent, air duct, furniture, carpet and floor cleaning services in New Jersey. We are a licensed and fully insured company with over 20 years of experience in the cleaning industry. Our team of experts is dedicated to providing you with
+          the highest quality cleaning services, using the latest techniques and eco-friendly products to ensure your home or business is clean, safe, and healthy.
+            </p>
+            <p>
+              At Cleanomatic, we understand that every customer has unique needs, which is why we offer a wide range of services to meet your specific requirements. Whether you need a one-time deep cleaning or regular maintenance, we have the expertise and equipment to get the job done right.
+            </p>
+            <p>
+              Our commitment to customer satisfaction is unmatched, and we take pride in our attention to detail and personalized service. We are here to help you achieve a clean and healthy environment for you and your family or employees.
+            </p>
+            <p>
+              Thank you for considering Cleanomatic for your cleaning needs. We look forward to serving you and exceeding your expectations!
+            </p>
+        </div>
+        </div>
+        </Section>
 
   <!-- Benefits Section with a background picture -->
   <Section collection="benefits" query="getAll">
@@ -44,8 +106,6 @@ import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
     />
   </Section>
 
-  <!-- Additional sections such as Services, Service Areas, Testimonials, Gallery, etc. -->
-  <Section collection="services" query="getAll" buttonsSectionClass="hidden" />
   <Section
     collection="serviceAreas"
     query="getAll"
