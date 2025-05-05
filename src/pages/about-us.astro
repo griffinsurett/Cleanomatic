@@ -139,34 +139,6 @@ const aboutContainer = "text-center lg:text-left w-full"
     </div>
   </Section>
 
-  <!-- Benefits Section with a background picture -->
-  <Section
-    heading={[
-      { text: "A Legacy of Trust and Quality", tagName: "label", class: "h4" },
-      {
-        text: "Meet David Derhi – Owner & Operator",
-        tagName: "h2",
-        class: "h2 mb-[var(--spacing-sm)] text-accent",
-      },
-    ]}
-    description="David’s story is one of hustle, heart, and hard-earned respect. He began his career driving taxis and running car services before pivoting into hospitality. When a friend introduced him to the carpet cleaning business, David found his true calling — working with his hands, helping people, and building relationships. With nothing but a van, a vacuum, and an ironclad work ethic, Cleanomatic was born. Two decades later, he’s still the one picking up the phone, arriving at your door, and with the help of his family, leaving your home healthier than he found it."
-    sectionClass="flex justify-center items-center text-left section-lg"
-    contentClass="content-container flex justify-between items-start py-[var(--spacing-2xl)] flex-col-reverse md:flex-row-reverse gap-[var(--spacing-xl)] lg:gap-[var(--spacing-2xl)] text-xl"
-    topContentClass="w-full lg:min-w-1/2"
-  >
-    <Picture
-      src={David}
-      alt="Benefits of Cleanomatic"
-      formats={["avif", "webp"]}
-      fallbackFormat="jpg"
-      loading="eager"
-      quality="low"
-      fetchpriority="high"
-      aria-hidden="true"
-      class="w-full h-fit"
-    />
-  </Section>
-
-  <Section collection="missionVision" query="getAll" />
+  <Section collection="missionVision" query="getAll" topContentClass="hidden" />
   <Section collection="gallery" query="getAll" />
 </ExtendedLayout>
