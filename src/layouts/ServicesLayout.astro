@@ -5,6 +5,7 @@ import SecondaryHero from '@/components/StaticSections/SecondaryHero.astro';
 import Section from '@/components/Section.astro';
 import { Image } from 'astro:assets';
 import { capitalize } from '@/utils/ContentUtils';
+import QuoteForm from '@/components/StaticSections/QuoteForm.astro';
 
 const {
   collection,
@@ -37,6 +38,9 @@ const pageDesc =
       { text: data.description, class: "h4" },
     ]}
     description={body}
+    buttons={[
+      { text: "Get a Quote", link: `#static-default-${entry.slug}`, variant: "primary" },
+    ]}
 >
         {data.featuredImage && (
           <Image
@@ -54,4 +58,5 @@ const pageDesc =
 
   <!-- Render the page or collection sections -->
   <slot />
+  <QuoteForm />
 </BaseLayout>
