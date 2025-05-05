@@ -3,9 +3,12 @@
 import Section from "@/components/Section.astro";
 import SecondaryHero from "@/components/StaticSections/SecondaryHero.astro";
 import ExtendedLayout from "@/layouts/ExtendedLayout.astro";
-import generations from "@/assets/generations.jpg";
 import David from "@/assets/david.jpg";
 import { Picture } from "astro:assets";
+import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
+
+const paragraphClass = "w-full lg:w-19/20";
+const aboutContainer = "text-center lg:text-left w-full"
 ---
 
 <ExtendedLayout
@@ -15,33 +18,125 @@ import { Picture } from "astro:assets";
 >
   <SecondaryHero title="About Us" />
 
-  <!-- About Section with a background picture -->
   <Section
+    headingAreaClass="text-center lg:text-left"
+    sectionClass="flex justify-center items-center text-left section-sm lg:w-full px-0",
+    contentClass="content-container flex flex-col justify-center items-center text-left",
+    topContentClass="text-left flex flex-col justify-start items-start w-full py-[var(--spacing-xl)] lg:py-[var(--spacing-2xl)]",
+    childSlotClass="flex flex-col justify-start items-start gap-[var(--spacing-lg)]",
     heading={[
-      { text: "Who is Cleanomatic?", tagName: "label", class: "h4" },
       {
-        text: "New Jersey’s Trusted Experts in Air Duct, Dryer Vent & Indoor Air Quality Solutions",
+        text: "Keeping Jersey Clean Since 1999!",
+        tagName: "label",
+        class: "text-secondary h5",
+      },
+      {
+        text: "Welcome to Cleanomatic!",
         tagName: "h2",
-        class: "h2 text-accent mb-[var(--spacing-sm)]",
+        class: "text-accent h2",
+      },
+      {
+        text: "Your Trusted Cleaning Experts in New Jersey, Licensed and Fully Insured!",
+        tagName: "h6",
+        class: "text-text h6",
       },
     ]}
-    description="With over 22 years of hands-on experience and hundreds of happy clients, Cleanomatic has become a household name for dependable, honest cleaning services throughout Monmouth and Ocean County. From air ducts to dryer vents, carpets to emergency water damage, our owner-operated team puts integrity and results first."
-    sectionClass="flex justify-center items-center text-left section-lg"
-    contentClass="content-container flex justify-between items-start py-[var(--spacing-2xl)] flex-col md:flex-row gap-[var(--spacing-xl)] lg:gap-[var(--spacing-2xl)] text-xl"
-    topContentClass="w-full lg:min-w-1/2"
-    childSlotClass="lg:sticky lg:top-0"
   >
-    <Picture
-      src={generations}
-      alt="Benefits of Cleanomatic"
-      formats={["avif", "webp"]}
-      fallbackFormat="jpg"
-      loading="eager"
-      quality="low"
-      fetchpriority="high"
-      aria-hidden="true"
-      class="w-full h-fit"
-    />
+    <div
+      class="about-content flex gap-[var(--spacing-2xl)] flex-col lg:flex-row lg:gap-[var(--spacing-3xl)] w-full"
+    >
+      <div class=`about-left ${aboutContainer}`>
+        <p class={paragraphClass}>
+          Cleanomatic is a licensed and fully insured company with over 20 years
+          of experience in the cleaning industry. Our team of experts is
+          dedicated to providing you with the highest quality cleaning services,
+          using the latest techniques and eco-friendly products to ensure your
+          home or business is clean, safe, and healthy.
+        </p>
+        <br />
+        <p class={paragraphClass}>
+          At Cleanomatic, we understand that every customer has unique needs,
+          which is why we offer a wide range of services to meet your specific
+          requirements. Whether you need a one-time deep cleaning or regular
+          maintenance, we have the expertise and equipment to get the job done
+          right.
+        </p>
+        <br />
+
+        <p class={paragraphClass}>
+          Our commitment to customer satisfaction is unmatched, and we take
+          pride in our attention to detail and personalized service. We are here
+          to help you achieve a clean and healthy environment for you and your
+          family or employees.
+        </p>
+        <br />
+
+        <p class={paragraphClass}>
+          Thank you for considering Cleanomatic for your cleaning needs. We look
+          forward to serving you and exceeding your expectations!
+        </p>
+        <br />
+
+        <Picture
+          src={HeroBg}
+          alt="Benefits of Cleanomatic"
+          formats={["avif", "webp"]}
+          fallbackFormat="jpg"
+          loading="eager"
+          quality="low"
+          fetchpriority="high"
+          aria-hidden="true"
+          class="w-[528px] h-fit"
+        />
+      </div>
+      <div class=`about-right ${aboutContainer}`>
+        <Picture
+          src={HeroBg}
+          alt="Benefits of Cleanomatic"
+          formats={["avif", "webp"]}
+          fallbackFormat="jpg"
+          loading="eager"
+          quality="low"
+          fetchpriority="high"
+          aria-hidden="true"
+          class="w-[528px] h-fit"
+        />
+        <br />
+        <p class={paragraphClass}>
+          Welcome to Cleanomatic, your one-stop solution for water removal as
+          well as dryer vent, air duct, furniture, carpet and floor cleaning
+          services in New Jersey. We are a licensed and fully insured company
+          with over 20 years of experience in the cleaning industry. Our team of
+          experts is dedicated to providing you with the highest quality
+          cleaning services, using the latest techniques and eco-friendly
+          products to ensure your home or business is clean, safe, and healthy.
+        </p>
+        <br />
+
+        <p class={paragraphClass}>
+          At Cleanomatic, we understand that every customer has unique needs,
+          which is why we offer a wide range of services to meet your specific
+          requirements. Whether you need a one-time deep cleaning or regular
+          maintenance, we have the expertise and equipment to get the job done
+          right.
+        </p>
+        <br />
+
+        <p class={paragraphClass}>
+          Our commitment to customer satisfaction is unmatched, and we take
+          pride in our attention to detail and personalized service. We are here
+          to help you achieve a clean and healthy environment for you and your
+          family or employees.
+        </p>
+        <br />
+
+        <p class={paragraphClass}>
+          Thank you for considering Cleanomatic for your cleaning needs. We look
+          forward to serving you and exceeding your expectations!
+        </p>
+        <br />
+      </div>
+    </div>
   </Section>
 
   <!-- Benefits Section with a background picture -->

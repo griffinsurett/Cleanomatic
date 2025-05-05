@@ -15,9 +15,12 @@ export default function AccordionItem({
       {/* Header: clicking toggles open/closed */}
       <div
         onClick={toggle}
-        className="w-full flex justify-between items-center px-[var(--spacing-xl)] py-[var(--spacing-lg)] cursor-pointer select-none"
+        className="flex justify-between items-center px-[var(--spacing-xl)] py-[var(--spacing-lg)] cursor-pointer select-none"
       >
+        <div className="accordion-text grow w-5/6">
         <span className="h6">{item.data.title || item.slug}</span>
+        </div>
+        <div className="accordion-icon w-1/6 flex justify-end items-center">
         <svg
           className={`w-8 lg:w-4 h-auto transform transition-transform duration-200 ${
             open ? "rotate-180" : "rotate-0"
@@ -29,6 +32,7 @@ export default function AccordionItem({
         >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>
+        </div>
       </div>
 
       {/* Body: conditionally rendered */}

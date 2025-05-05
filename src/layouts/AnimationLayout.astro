@@ -1,0 +1,39 @@
+---
+/**
+ * AnimationLayout – wraps your page and sets up CSS timeline
+ * animations (view()/scroll()) with an IO fallback.
+ */
+import "@/styles/animations.css";
+---
+<html lang="en">
+  <head>
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+
+    <script is:inline client:idle>
+      (function() {
+        // detect CSS timeline support
+        const hasTimeline = CSS.supports("animation-timeline", "view()")
+                         || CSS.supports("animation-timeline", "scroll()");
+        if (hasTimeline) {
+          document.documentElement.classList.add("use-timeline");
+        } else {
+          document.documentElement.classList.add("use-io");
+          // IO fallback for appear animations
+          const io = new IntersectionObserver((entries, obs) => {
+            entries.forEach(({ target, isIntersecting }) => {
+              if (isIntersecting) {
+                target.classList.add("visible");
+                obs.unobserve(target);
+              }
+            });
+          }, { threshold: 0.1 });
+          document.querySelectorAll(".animate-on-appear")
+                  .forEach(el => io.observe(el));
+        }
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+/* src/styles/global.css */
+@import "tailwindcss";
+
+/* Timeline‑based animations when supported */
+@layer utilities {
+  @supports ((animation-timeline: view()) or (animation-timeline: scroll())) {
+    .use-timeline .animate-on-appear {
+      animation-name: fade-in-up;
+      animation-duration: 1s;
+      animation-timeline: view();
+      animation-fill-mode: both;
+    }
+  }
+}
+
+/* Intersection Observer fallback */
+@layer utilities {
+  @supports not ((animation-timeline: view()) or (animation-timeline: scroll())) {
+    .use-io .animate-on-appear {
+      opacity: 0;
+      transform: translateY(1rem);
+      transition: opacity 500ms ease-out, transform 500ms ease-out;
+    }
+    .use-io .animate-on-appear.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Keyframes for fade‑in‑up */
+@layer utilities {
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
