@@ -30,22 +30,23 @@ const {
   name = "generic-form",
   method = "post",
   action,
-  netlify = false,
-  honeypotName = "bot-field",
-
-  /** now using the built-in `class` prop */
+  /** now using the built‑in `class` prop */
   class: className = "",
-  /** the optional form-wide label text */
+  /** optional form‑wide label text */
   formLabel = "",
-  /** classes for that form-wide label */
+  /** classes for that form‑wide label */
   labelClass = "",
-
+  /** extra classes on the <form> itself */
   formClass = "",
+  /** default classes for the submit button */
   submitClass = "w-full mt-[var(--spacing-sm)] justify-center cursor-pointer",
+  /** text for the submit button */
   submitLabel = "Submit",
-
+  /** enable the JS success banner on submit? */
   enableSuccessBanner = false,
+  /** banner text */
   successBannerMessage = "Thank you for your submission!",
+  /** banner classes */
   successBannerClass = "p-[var(--spacing-sm)] bg-primary text-bg border border-[var(--color-border)]",
 } = Astro.props;
 ---
@@ -65,17 +66,7 @@ const {
     data-success-banner={enableSuccessBanner}
     data-success-message={successBannerMessage}
     data-success-class={successBannerClass}
-    {...(netlify
-      ? { "data-netlify": "true", "netlify-honeypot": honeypotName }
-      : {})}
   >
-    {netlify && (
-      <>
-        <input type="hidden" name="form-name" value={name} />
-        <input type="hidden" name={honeypotName} />
-      </>
-    )}
-
     <slot />
 
     {Astro.slots.has("submit") ? (
