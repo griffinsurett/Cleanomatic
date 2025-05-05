@@ -35,7 +35,7 @@ export const SectionVariants = {
     itemsClass: "flex flex-col gap-[var(--spacing-lg)]",
     itemClass: "",
     buttonsSectionClass: "hidden",
-    headingAreaClass: "",
+    headingAreaClass: "text-center lg:text-left",
     backgroundMedia: undefined,
     topContentClass: "xl:mr-[var(--spacing-2xl)] lg:sticky lg:top-0",
     itemPlacement: "",
