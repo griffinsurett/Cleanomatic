@@ -16,15 +16,15 @@ export async function getStaticPaths() {
     const meta = await getCollectionMeta(coll).catch(() => ({}));
     const entries = await getCollection(coll);
     const { itemsHasPage = true } = meta;
-    entries.forEach(e => {
+    entries.forEach((e) => {
       if (e.data.hasPage === undefined) e.data.hasPage = itemsHasPage;
     });
     entries
-      .filter(e => e.data.hasPage)
-      .forEach(entry => {
+      .filter((e) => e.data.hasPage)
+      .forEach((entry) => {
         paths.push({
           params: { collection: coll, slug: getCanonicalSlug(entry) },
-          props:  { collection: coll, entry },
+          props: { collection: coll, entry },
         });
       });
   }
@@ -36,13 +36,11 @@ const { data, body } = entry;
 const meta = await getCollectionMeta(collection).catch(() => ({}));
 
 // 2) Default specifier (must match the glob keys)
-const spec = 
-  meta.itemsLayout
-  || meta.layout
-  || '../../layouts/CollectionsLayout.astro';
+const spec =
+  meta.itemsLayout || meta.layout || "../../layouts/CollectionsLayout.astro";
 
 // 3) Register all layouts two levels up
-const layoutImporters = import.meta.glob('../../layouts/*.astro');
+const layoutImporters = import.meta.glob("../../layouts/*.astro");
 
 // 4) Lookup and import the chosen layout
 const importer = layoutImporters[spec];
@@ -55,7 +53,10 @@ const { default: Layout } = await importer();
 const sections = data.sections?.length
   ? data.sections
   : meta.itemsSections || [];
+
+  console.log("robots", data.robots);
 ---
+
 <Layout
   collection={collection}
   entry={entry}
@@ -63,14 +64,18 @@ const sections = data.sections?.length
   description={data.description}
   keywords={data.keywords}
   ogType={data.ogType}
+  robots={data.robots} 
 >
-    {sections.map((section, i) => (
+  {
+    sections.map((section, i) => (
       <Section
         key={i}
         variant={section.variant}
         collection={section.collection}
         query={section.query}
         heading={section.heading}
+        description={section.description}
+        descriptionClass={section.descriptionClass}
         buttons={section.buttons}
         sectionClass={section.sectionClass}
         contentClass={section.contentClass}
@@ -78,6 +83,8 @@ const sections = data.sections?.length
         itemClass={section.itemClass}
         buttonsSectionClass={section.buttonsSectionClass}
         headingAreaClass={section.headingAreaClass}
+        {...section}
       />
-    ))}
+    ))
+  }
 </Layout>

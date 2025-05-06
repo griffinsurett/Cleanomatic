@@ -44,6 +44,8 @@ const sections = meta.sections?.length
         description: meta.description,
       },
     ];
+
+    console.log("robots", meta.robots);
 ---
 
 <Layout
@@ -51,6 +53,7 @@ const sections = meta.sections?.length
   title={capitalize(collection)}
   description={meta.description}
   keywords={meta.keywords}
+  robots={meta.robots}
   ogType={meta.ogType}
 >
   {
@@ -62,12 +65,15 @@ const sections = meta.sections?.length
         query={section.query}
         heading={section.heading}
         buttons={section.buttons}
+        description={section.description}
+        descriptionClass={section.descriptionClass}
         sectionClass={section.sectionClass}
         contentClass={section.contentClass}
         itemsClass={section.itemsClass}
         itemClass={section.itemClass}
         buttonsSectionClass={section.buttonsSectionClass}
         headingAreaClass={section.headingAreaClass}
+        {...section}
       />
     ))
   }
