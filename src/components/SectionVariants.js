@@ -49,7 +49,7 @@ export const SectionVariants = {
   // ─────────── Testimonials ───────────
   testimonials: {
     sectionClass:
-      "section-main flex justify-center items-center w-full text-center text-bg px-[var(--spacing-xl)]",
+      "section-main flex justify-center items-center w-full text-center text-bg px-[var(--spacing-xl)] slide-up",
     contentClass:
       "content-container container flex flex-wrap flex-col justify-center items-center w-full py-[var(--spacing-2xl)] px-[var(--spacing-lg)]",
     itemsClass:
@@ -90,7 +90,7 @@ export const SectionVariants = {
   // ─────────── Service Areas ───────────
   serviceAreas: {
     sectionClass:
-      "section-lg flex justify-center items-center text-center bg-accent text-bg lg:px-[var(--spacing-lg)]",
+      "section-lg flex justify-center items-center text-center bg-accent text-bg lg:px-[var(--spacing-lg)] slide-up",
     contentClass: "content-container",
     itemsClass:
       "w-full flex flex-wrap justify-center items-stretch gap-[var(--spacing-md)] my-[var(--spacing-lg)] md:my-[var(--spacing-2xl)]",
