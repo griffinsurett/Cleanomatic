@@ -1,6 +1,7 @@
 // src/components/SectionVariants.js
 
-import FAQimg from "@/assets/glen-rushton-PjeZGaKunAI-unsplash.jpg"
+import FAQimg from "@/assets/glen-rushton-PjeZGaKunAI-unsplash.jpg";
+import truck2 from "@/assets/truck2.jpg";
 /**
  * SectionVariants
  *
@@ -10,7 +11,7 @@ import FAQimg from "@/assets/glen-rushton-PjeZGaKunAI-unsplash.jpg"
  * (not overwritten) on top of these.
  */
 export const SectionVariants = {
-// ─────────── Benefits ───────────
+  // ─────────── Benefits ───────────
   imageCol: {
     sectionClass: "flex justify-center items-center text-left section-sm",
     contentClass:
@@ -18,7 +19,7 @@ export const SectionVariants = {
     itemsClass:
       "flex flex-col items-start justify-start gap-[var(--spacing-md)]",
     itemClass: "",
-    buttonsSectionClass: "",
+    buttonsSectionClass: "scale-up",
     headingAreaClass: "flex flex-col",
     backgroundMedia: undefined,
     topContentClass: "flex flex-col gap-[var(--spacing-md)]",
@@ -26,32 +27,41 @@ export const SectionVariants = {
     childPlacement: "",
     childSlotClass: "lg:sticky lg:top-0",
     buttonsPlacement: "top-content-section",
+    descriptionClass: "slide-down"
   },
 
   // ─────────── FAQ ───────────
   faq: {
-    sectionClass: "section-sm w-full flex justify-center items-center bg-bg-2 py-[50px]",
+    sectionClass:
+      "section-sm w-full flex justify-center items-center bg-bg-2 py-[50px]",
     contentClass: "flex justify-between flex-col xl:flex-row content-container",
     itemsClass: "flex flex-col gap-[var(--spacing-lg)]",
     itemClass: "",
     buttonsSectionClass: "hidden",
-    headingAreaClass: "text-center lg:text-left",
+    headingAreaClass: "text-center lg:text-left slide-right",
     backgroundMedia: undefined,
     topContentClass: "xl:mr-[var(--spacing-2xl)] lg:sticky lg:top-0",
     itemPlacement: "",
     childPlacement: "",
     childSlotClass: "",
-},
+  },
 
   // ─────────── Testimonials ───────────
   testimonials: {
     sectionClass:
-      "section-main flex justify-center items-center w-full text-center bg-primary text-bg px-[var(--spacing-xl)]",
+      "section-main flex justify-center items-center w-full text-center text-bg px-[var(--spacing-xl)]",
     contentClass:
       "content-container container flex flex-wrap flex-col justify-center items-center w-full py-[var(--spacing-2xl)] px-[var(--spacing-lg)]",
     itemsClass:
       "flex flex-wrap md:flex-nowrap justify-center items-stretch gap-[var(--spacing-xl)] my-[var(--spacing-lg)] md:my-[var(--spacing-2xl)]",
-    backgroundMedia: undefined,
+    backgroundMedia: {
+      image: {
+        src: truck2,
+        imageClass: "filter brightness-50 bg-cover bg-center xl:bg-fixed",
+      },
+      overlayClass: "bg-black opacity-50",
+    },
+    buttonsSectionClass: "scale-up",
   },
 
   // ─────────── Gallery ───────────
@@ -69,7 +79,7 @@ export const SectionVariants = {
   // ─────────── Mission & Vision ───────────
   missionVision: {
     sectionClass:
-      "section-md flex justify-center items-center text-center px-[var(--spacing-xl)] bg-accent text-bg",
+      "section-md flex justify-center items-center slide-up text-center px-[var(--spacing-xl)] bg-accent text-bg",
     contentClass:
       "content-container flex flex-col justify-center w-full py-[var(--spacing-xl)] px-[var(--spacing-lg)]",
     itemsClass:

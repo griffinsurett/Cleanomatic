@@ -2,19 +2,19 @@
     {
       "title": "Sunset Over Beach",
       "description": "A beautiful sunset over the beach.",
-      "src": "@/assets/dryervent2.jpg",
+      "src": "@/assets/generations.jpg",
       "id": "sunset-over-beach"
     },
     {
       "title": "Mountain Landscape",
       "description": "A scenic view of mountains during sunrise.",
-      "src": "@/assets/dryervent2.jpg",
+      "src": "@/assets/david.jpg",
       "id": "mountain-landscape"
     },
     {
       "title": "City Lights",
       "description": "The city skyline illuminated at night.",
-      "src": "@/assets/dryervent2.jpg",
+      "src": "@/assets/truck2.jpg",
       "id": "city-lights"
     }
   ]

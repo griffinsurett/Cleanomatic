@@ -11,7 +11,7 @@ const { item, collectionName, HasPage, showButton = true } = Astro.props;
 const effectiveHasPage = item.data.hasPage !== undefined ? item.data.hasPage : HasPage;
 ---
 
-<li class="w-full flex flex-col items-center">
+<li class="w-full flex flex-col items-center slide-left">
   <div class="w-full px-[var(--spacing-md)] bg-bg flex flex-col items-left">
     <Heading tagName="label" className="h6 text-[var(--color-text)]">
       {item.data.title}

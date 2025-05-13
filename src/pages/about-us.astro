@@ -7,7 +7,7 @@ import David from "@/assets/david.jpg";
 import { Picture } from "astro:assets";
 import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
 
-const paragraphClass = "w-full lg:w-19/20";
+const paragraphClass = "w-full lg:w-19/20 slide-up";
 const aboutContainer = "text-center lg:text-left w-full"
 ---
 
@@ -31,7 +31,7 @@ const aboutContainer = "text-center lg:text-left w-full"
         class: "text-secondary h5",
       },
       {
-        text: "Welcome to Cleanomatic!",
+        text: "The Cleanomatic Difference",
         tagName: "h2",
         class: "text-accent h2",
       },
@@ -64,10 +64,7 @@ const aboutContainer = "text-center lg:text-left w-full"
         <br />
 
         <p class={paragraphClass}>
-          Our commitment to customer satisfaction is unmatched, and we take
-          pride in our attention to detail and personalized service. We are here
-          to help you achieve a clean and healthy environment for you and your
-          family or employees.
+          Cleanomatic is more than a business—it’s a family operation. David is often joined by members of his family, who help him manage the growing demand with the same level of dedication and care. Their teamwork ensures customers always feel like they’re in good hands, whether it’s for a one-time clean or ongoing service. Cleanomatic proudly serves not only Lakewood, but also the entire Monmouth County area and the greater Jersey Shore region. Whether it’s a family home in Jackson, a business in Howell, or a vacation property in Point Pleasant, David and his family bring professionalism, reliability, and warmth to every job—earning loyal customers across the shore.
         </p>
         <br />
 
@@ -86,7 +83,7 @@ const aboutContainer = "text-center lg:text-left w-full"
           quality="low"
           fetchpriority="high"
           aria-hidden="true"
-          class="w-[528px] h-fit"
+          class="w-[528px] h-fit scale-up"
         />
       </div>
       <div class=`about-right ${aboutContainer}`>

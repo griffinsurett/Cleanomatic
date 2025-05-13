@@ -26,7 +26,7 @@ export default function LocationItem({ item, collectionName, HasPage }) {
   const hoverClass = effectiveHasPage ? "hover:underline" : "";
   
   return (
-    <li className="location-item">
+    <li className="location-item scale-up">
       <Button
         variant="underline"
         // Provide href only if effectiveHasPage is true.
