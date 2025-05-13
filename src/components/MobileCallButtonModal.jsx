@@ -26,7 +26,7 @@ export default function MobileCallButtonModal({ children }) {
       {/* Label styled as a clickable phone icon */}
       <label
         htmlFor="mobile-call-toggle"
-        className="p-[var(--spacing-sm)] rounded-full bg-primary text-bg cursor-pointer focus:outline-none"
+        className="scale-up p-[var(--spacing-sm)] rounded-full bg-primary text-bg cursor-pointer focus:outline-none"
         aria-label="Call Us"
       >
         <svg

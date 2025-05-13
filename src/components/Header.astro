@@ -62,7 +62,7 @@ const mobileMediaQuery = `(max-width: ${breakpointsMapping[breakpoint] - 1}px)`;
         <MobileCallButtonModal client:media={mobileMediaQuery}>
           <Menu
             items={phoneMenuItems}
-            menuClass="phone-list bg-accent gap-[var(--spacing-xl)] flex justify-center items-center w-[60vw] h-[40vh] overflow-y-auto scale-up"
+            menuClass="phone-list bg-accent gap-[var(--spacing-xl)] flex justify-center items-center w-[60vw] h-[40vh] overflow-y-auto"
             listClass="flex flex-col justify-center gap-[var(--spacing-xl)] text-bg"
             menuItem={{ component: PhoneNumber, class: "cursor-pointer h4"}}
             
@@ -70,7 +70,7 @@ const mobileMediaQuery = `(max-width: ${breakpointsMapping[breakpoint] - 1}px)`;
         </MobileCallButtonModal>
         <Menu
         items={headerItems}
-        menuClass="menu-class bg-primary flex lg:hidden text-text justify-center items-center scale-up"
+        menuClass="menu-class bg-primary flex lg:hidden text-text justify-center items-center"
         menuItem={{
           component: MenuItem,
           class:
@@ -85,7 +85,7 @@ const mobileMediaQuery = `(max-width: ${breakpointsMapping[breakpoint] - 1}px)`;
         isHierarchical={true}
         breakpoint={breakpoint}
         hamburgerMenu={{
-          hamburgerIconClass: "bg-primary",
+          hamburgerIconClass: "bg-primary scale-up",
           hamburgerIconTransform: false,
           menuBackground: "bg-primary bg-opacity-75 flex items-center justify-center w-full",
           menuOverlay: "bg-black bg-opacity-50",
