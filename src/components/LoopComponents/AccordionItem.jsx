@@ -11,11 +11,11 @@ export default function AccordionItem({
   const toggle = () => setOpen((prev) => !prev);
 
   return (
-    <li className={`bg-neutral ${itemClass}`}>
+    <li className={`bg-neutral scale-up ${itemClass}`}>
       {/* Header: clicking toggles open/closed */}
       <div
         onClick={toggle}
-        className="flex justify-between items-center px-[var(--spacing-xl)] py-[var(--spacing-lg)] cursor-pointer select-none scale-up"
+        className="flex justify-between items-center px-[var(--spacing-xl)] py-[var(--spacing-lg)] cursor-pointer select-none"
       >
         <div className="accordion-text grow w-5/6">
         <span className="h6">{item.data.title || item.slug}</span>
