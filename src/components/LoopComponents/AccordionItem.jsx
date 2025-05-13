@@ -11,7 +11,7 @@ export default function AccordionItem({
   const toggle = () => setOpen((prev) => !prev);
 
   return (
-    <li className={`bg-neutral scale-up ${itemClass}`}>
+    <li className={`bg-neutral load scale-up ${itemClass}`}>
       {/* Header: clicking toggles open/closed */}
       <div
         onClick={toggle}

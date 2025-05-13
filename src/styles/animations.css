@@ -1,52 +1,51 @@
-/* src/styles/animations.css */
 @import "tailwindcss";
 
 /* 1️⃣ Scroll‑linked animations in supporting browsers */
 @layer utilities {
   @supports (animation-timeline: view()) or (animation-timeline: scroll()) {
-    .animate-on-appear {
+    .load.animate-on-appear {
       animation-name: fade-in-up;
       animation-duration: 1s;
       animation-timeline: view();
       animation-range: entry 0% cover 45%;
       animation-fill-mode: both;
     }
-    .slide-down {
+    .load.slide-down {
       animation-name: slide-down;
       animation-duration: 1s;
       animation-timeline: view();
       animation-range: entry 0% cover 45%;
       animation-fill-mode: both;
     }
-    .slide-in {
+    .load.slide-in {
       animation-name: slide-in;
       animation-duration: 1s;
       animation-timeline: view();
       animation-range: entry 0% cover 45%;
       animation-fill-mode: both;
     }
-    .slide-up {
+    .load.slide-up {
       animation-name: slide-up;
       animation-duration: 1s;
       animation-timeline: view();
       animation-range: entry 0% cover 45%;
       animation-fill-mode: both;
     }
-    .slide-left {
+    .load.slide-left {
       animation-name: slide-left;
       animation-duration: 1s;
       animation-timeline: view();
       animation-range: entry 0% cover 45%;
       animation-fill-mode: both;
     }
-    .slide-right {
+    .load.slide-right {
       animation-name: slide-right;
       animation-duration: 1s;
       animation-timeline: view();
       animation-range: entry 0% cover 45%;
       animation-fill-mode: both;
     }
-    .scale-up {
+    .load.scale-up {
       animation-name: scale-up;
       animation-duration: 1s;
       animation-timeline: view();
@@ -59,29 +58,30 @@
 /* 2️⃣ IntersectionObserver fallback when timeline isn’t supported */
 @layer utilities {
   @supports not ((animation-timeline: view()) or (animation-timeline: scroll())) {
-    .animate-on-appear,
-    .slide-down,
-    .slide-in,
-    .slide-up,
-    .slide-left,
-    .slide-right,
-    .scale-up {
+    /* Hide only .load elements until they’re visible */
+    .load.animate-on-appear,
+    .load.slide-down,
+    .load.slide-in,
+    .load.slide-up,
+    .load.slide-left,
+    .load.slide-right,
+    .load.scale-up {
       opacity: 0;
       transform: translateY(1rem);
     }
 
-    /* Once JS adds .visible, run the same keyframe animation */
-    .animate-on-appear.visible    { animation: fade-in-up 1s both; }
-    .slide-down.visible           { animation: slide-down 1s both; }
-    .slide-in.visible             { animation: slide-in 1s both; }
-    .slide-up.visible             { animation: slide-up 1s both; }
-    .slide-left.visible           { animation: slide-left 1s both; }
-    .slide-right.visible          { animation: slide-right 1s both; }
-    .scale-up.visible             { animation: scale-up 1s both; }
+    /* Once the IO adds .visible to a .load element, run the keyframe */
+    .load.animate-on-appear.visible    { animation: fade-in-up 1s both; }
+    .load.slide-down.visible           { animation: slide-down 1s both; }
+    .load.slide-in.visible             { animation: slide-in 1s both; }
+    .load.slide-up.visible             { animation: slide-up 1s both; }
+    .load.slide-left.visible           { animation: slide-left 1s both; }
+    .load.slide-right.visible          { animation: slide-right 1s both; }
+    .load.scale-up.visible             { animation: scale-up 1s both; }
   }
 }
 
-/* 3️⃣ Shared keyframes (for scroll‑linked only) */
+/* 3️⃣ Shared keyframes */
 @layer utilities {
   @keyframes fade-in-up {
     from { opacity: 0; transform: translateY(1rem); }
@@ -108,13 +108,7 @@
     to   { opacity: 1; transform: translateX(0); }
   }
   @keyframes scale-up {
-    from {
-      opacity: 0;
-      transform: scale(0.8);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.8); }
+    to   { opacity: 1; transform: scale(1); }
   }
 }
