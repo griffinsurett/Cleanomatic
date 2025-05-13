@@ -2,6 +2,7 @@
 import Form      from "@/components/Forms/Form.astro";
 import TextInput from "@/components/Forms/Inputs/TextInput.astro";
 import Textarea  from "@/components/Forms/Inputs/Textarea.astro";
+import { SiteData } from "@/content/SiteData";
 import { getCurrentEntryId } from "@/utils/CurrentEntry";
 
 const {
@@ -77,5 +78,19 @@ console.log("Current page:", currentPage);
       inputClass={inputClasses}
       wrapperClass={wrapperClasses}
     />
+  </div>
+
+    <!-- Consent -->
+  <div class="flex items-start">
+    <input
+      type="checkbox"
+      id="consent"
+      name="consent"
+      required
+      class="mr-[var(--spacing-sm)] mt-[4px] w-4 h-4 checked:bg-primary"
+    />
+    <label for="consent" class={"m-0 text-bg"}>
+      I consent to have {SiteData.title} store my message so they can respond
+    </label>
   </div>
 </Form>
