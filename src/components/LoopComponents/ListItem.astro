@@ -10,7 +10,7 @@ const { item, collectionName, HasPage, showButton = true } = Astro.props;
 const effectiveHasPage = item.data.hasPage !== undefined ? item.data.hasPage : HasPage;
 ---
 
-<li class="list-disc list-inside marker:text-[var(--color-text)] mb-[var(--spacing-md)] slide-left">
+<li class="list-disc list-inside marker:text-[var(--color-text)] mb-[var(--spacing-md)] load slide-left">
   <!-- Title sits inline with the bullet marker -->
   <Heading tagName="label" className="h6 text-[var(--color-text)]">
     {item.data.title}

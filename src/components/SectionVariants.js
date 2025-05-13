@@ -19,7 +19,7 @@ export const SectionVariants = {
     itemsClass:
       "flex flex-col items-start justify-start gap-[var(--spacing-md)]",
     itemClass: "",
-    buttonsSectionClass: "scale-up",
+    buttonsSectionClass: "load scale-up",
     headingAreaClass: "flex flex-col",
     backgroundMedia: undefined,
     topContentClass: "flex flex-col gap-[var(--spacing-md)]",
@@ -27,7 +27,7 @@ export const SectionVariants = {
     childPlacement: "",
     childSlotClass: "lg:sticky lg:top-0",
     buttonsPlacement: "top-content-section",
-    descriptionClass: "slide-down"
+    descriptionClass: "load slide-down"
   },
 
   // ─────────── FAQ ───────────
@@ -38,7 +38,7 @@ export const SectionVariants = {
     itemsClass: "flex flex-col gap-[var(--spacing-lg)]",
     itemClass: "",
     buttonsSectionClass: "hidden",
-    headingAreaClass: "text-center lg:text-left slide-right",
+    headingAreaClass: "text-center lg:text-left load slide-right",
     backgroundMedia: undefined,
     topContentClass: "xl:mr-[var(--spacing-2xl)] lg:sticky lg:top-0",
     itemPlacement: "",
@@ -49,7 +49,7 @@ export const SectionVariants = {
   // ─────────── Testimonials ───────────
   testimonials: {
     sectionClass:
-      "section-main flex justify-center items-center w-full text-center text-bg px-[var(--spacing-xl)] slide-up",
+      "section-main flex justify-center items-center w-full text-center text-bg px-[var(--spacing-xl)] load slide-up",
     contentClass:
       "content-container container flex flex-wrap flex-col justify-center items-center w-full py-[var(--spacing-2xl)] px-[var(--spacing-lg)]",
     itemsClass:
@@ -61,7 +61,7 @@ export const SectionVariants = {
       },
       overlayClass: "bg-black opacity-50",
     },
-    buttonsSectionClass: "scale-up",
+    buttonsSectionClass: "load scale-up",
   },
 
   // ─────────── Gallery ───────────
@@ -79,7 +79,7 @@ export const SectionVariants = {
   // ─────────── Mission & Vision ───────────
   missionVision: {
     sectionClass:
-      "section-md flex justify-center items-center slide-up text-center px-[var(--spacing-xl)] bg-accent text-bg",
+      "section-md flex justify-center items-center load slide-up text-center px-[var(--spacing-xl)] bg-accent text-bg",
     contentClass:
       "content-container flex flex-col justify-center w-full py-[var(--spacing-xl)] px-[var(--spacing-lg)]",
     itemsClass:
@@ -90,7 +90,7 @@ export const SectionVariants = {
   // ─────────── Service Areas ───────────
   serviceAreas: {
     sectionClass:
-      "section-lg flex justify-center items-center text-center bg-accent text-bg lg:px-[var(--spacing-lg)] slide-up",
+      "section-lg flex justify-center items-center text-center bg-accent text-bg lg:px-[var(--spacing-lg)] load slide-up",
     contentClass: "content-container",
     itemsClass:
       "w-full flex flex-wrap justify-center items-stretch gap-[var(--spacing-md)] my-[var(--spacing-lg)] md:my-[var(--spacing-2xl)]",
