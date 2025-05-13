@@ -49,9 +49,9 @@ export const SectionVariants = {
   // ─────────── Testimonials ───────────
   testimonials: {
     sectionClass:
-      "section-main flex justify-center items-center w-full text-center text-bg px-[var(--spacing-xl)] load slide-up",
+      "section-main flex justify-center items-center w-full text-center text-bg px-[var(--spacing-xl)] load fade-in",
     contentClass:
-      "content-container container flex flex-wrap flex-col justify-center items-center w-full py-[var(--spacing-2xl)] px-[var(--spacing-lg)]",
+      "content-container load slide-up container flex flex-wrap flex-col justify-center items-center w-full py-[var(--spacing-2xl)] px-[var(--spacing-lg)]",
     itemsClass:
       "flex flex-wrap md:flex-nowrap justify-center items-stretch gap-[var(--spacing-xl)] my-[var(--spacing-lg)] md:my-[var(--spacing-2xl)]",
     backgroundMedia: {
