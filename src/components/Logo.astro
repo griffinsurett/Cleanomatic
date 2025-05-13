@@ -10,25 +10,30 @@ const {
   imageClass = "",
 } = Astro.props;
 ---
-
 <a
   href="/"
   class={`flex flex-col justify-center ${containerClass}`}
 >
-  <div class={`${titleClass}`}>
+  <!-- Site title fades in -->
+  <div class={`${titleClass} fade-in`}>
     {SiteData.title}
   </div>
-  <div
-    class={`tagline-and-logo w-fit flex justify-center items-center text-stroke h5 font-bold capitalize italic ${taglineClass}`}
-  >
-    {SiteData.tagline}
+
+  <!-- Tagline grouped so we can fade it in separately -->
+  <div class="tagline-container flex">
+    <div
+      class={`tagline-text text-stroke h5 font-bold capitalize italic fade-in ${taglineClass}`}
+    >
+      {SiteData.tagline}
+    </div>
     <Image
       src={SiteData.logo.src}
       alt={`${SiteData.title} logo`}
-      class={`h-4 w-auto md:h-7 mx-[var(--spacing-xs)] ${imageClass}`}
+      class={`h-4 w-auto md:h-7 mx-[var(--spacing-xs)] slide-left ${imageClass}`}
       loading="eager"
       fetchpriority="high"
       aria-hidden="true"
     />
   </div>
 </a>
+

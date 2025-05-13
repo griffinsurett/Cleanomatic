@@ -1,54 +1,50 @@
 ---
 // src/components/StaticSections/PrimaryHero.astro
 
-import Section from "../Section.astro";
+import Section from "@/components/Section.astro";
 import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
-import Menu from "../Menu/Menu.astro";
-import BusinessHoursItem from "../Menu/BusinessHoursItem.astro";
+import Menu from "@/components/Menu/Menu.astro";
+import BusinessHoursItem from "@/components/Menu/BusinessHoursItem.astro";
 import { getBusinessHours } from "@/queries/BusinessHoursQuery";
+import { SiteData, CTAdata } from "@/content/SiteData";
 
-// Props with defaults:
-const {
-  heading,
-  description,
-  buttons = [
+// Fetch business hours (server-side)
+const businessHours = await getBusinessHours();
+---
+<Section
+  sectionClass="section-lg flex flex-col items-center justify-center bg-cover bg-fixed bg-center z-100 md:p-[var(--spacing-sm)] text-bg text-base md:text-xl"
+  contentClass="w-8/10 mt-[-150px] sm:mt-0 xl:mt-[-50px]"
+  headingAreaClass="xl:max-w-7/8"
+  heading={[
     {
-      text: "Request Estimate",
-      link: "/contact-us",
+      // Sub‑heading
+      text: "Your Trusted Cleaning Experts in New Jersey!",
+      tagName: "h2",
+      class: "h2 text-bg slide-down",
     },
-  ],
-  // You can override just the image URL or the entire object:
-  backgroundMedia = {
+  ]}
+  description="Welcome to Cleanomatic, your one‑stop solution for water removal as well as dryer vent, air duct, furniture, carpet and floor cleaning services in New Jersey."
+  descriptionClass="slide-up"
+  backgroundMedia={{
     image: {
       src: HeroBg,
       imageClass: "filter brightness-50 bg-cover bg-center xl:bg-fixed",
     },
     overlayClass: "bg-black opacity-50",
-  },
-  buttonsSectionClass = "mt-[var(--spacing-md)] order-last sm:mt-0",
-  sectionClass = "section-lg flex flex-col items-center justify-center bg-cover bg-fixed bg-center z-100 md:p-[var(--spacing-sm)] text-bg text-base md:text-xl",
-  contentClass = "w-8/10 mt-[-150px] sm:mt-0 xl:mt-[-50px]",
-  headingAreaClass = "xl:max-w-7/8",
-  childPlacement = "top-content-section",
-} = Astro.props;
-
-// Fetch business hours once—still works as a server component
-const businessHours = await getBusinessHours();
----
-
-<Section
-  backgroundMedia={backgroundMedia}
-  heading={heading}
-  description={description}
-  buttons={buttons}
-  buttonsSectionClass={buttonsSectionClass}
-  sectionClass={sectionClass}
-  contentClass={contentClass}
-  headingAreaClass={headingAreaClass}
-  childPlacement={childPlacement}
+  }}
+  buttons={[
+    {
+      text: CTAdata.buttonText,
+      link: CTAdata.buttonLink,
+      variant: "primary",
+    },
+  ]}
+  buttonsSectionClass="mt-[var(--spacing-md)] order-last sm:mt-0 scale-up"
+  childPlacement="top-content-section"
 >
+  <!-- Business hours slot -->
   <div class="business-hours-menu text-stroke italic my-[var(--spacing-md)]">
-    <label class="h4 text-bg my-[var(--spacing-sm)] italic">
+    <label class="h4 text-bg my-[var(--spacing-sm)] italic fade-in">
       Business Hours:
     </label>
     <Menu
