@@ -9,25 +9,22 @@ import "@/styles/animations.css";
     <slot />
 
     <!-- Only run observer fallback when scroll‑timeline is NOT supported -->
-    <script is:inline>
-  if (!CSS.supports('animation-timeline', 'view()')) {
-    document.documentElement.classList.add('use-io');
+    <script is:inline client:load>
+      if (!CSS.supports('animation-timeline', 'view()')) {
+        console.log('Scroll timeline not supported, using IntersectionObserver fallback');
+        document.documentElement.classList.add('use-io');
+        const io = new IntersectionObserver((entries, obs) => {
+          entries.forEach(({ target, isIntersecting }) => {
+            if (isIntersecting) {
+              target.classList.add('visible');
+              obs.unobserve(target);
+            }
+          });
+        }, { threshold: 0 });
 
-    // run as soon as DOM is parsed
-    window.addEventListener('DOMContentLoaded', () => {
-      const io = new IntersectionObserver((entries, obs) => {
-        entries.forEach(({ target, isIntersecting }) => {
-          if (isIntersecting) {
-            target.classList.add('visible');
-            obs.unobserve(target);
-          }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.load').forEach(el => io.observe(el));
-    });
-  }
-</script>
-
+        // Observe only elements with .load
+        document.querySelectorAll('.load').forEach(el => io.observe(el));
+      }
+    </script>
   </body>
 </html>
