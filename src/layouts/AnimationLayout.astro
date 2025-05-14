@@ -23,7 +23,7 @@ import "@/styles/animations.css";
         }, { threshold: 0.1 });
 
         // Observe only elements with .load
-        document.querySelector('.load').forEach(el => io.observe(el));
+        document.querySelectorAll('.load').forEach(el => io.observe(el));
       }
     </script>
   </body>
