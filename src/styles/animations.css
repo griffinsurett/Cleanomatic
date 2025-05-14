@@ -105,7 +105,8 @@
 }
 
 /* 2️⃣ IntersectionObserver fallback when timeline isn’t supported */
-@supports not (animation-timeline: view()) {
+@layer utilities {
+  @supports not (animation-timeline: view()) {
   /* only activate when the JS detected no timeline support */
   .use-io .load.animate-on-appear,
   .use-io .load.fade-in,
@@ -143,6 +144,8 @@
   .use-io .load.scale-up.visible {
     animation: scale-up 1s both;
   }
+}
+
 }
 
 /* 3️⃣ Shared keyframes */
