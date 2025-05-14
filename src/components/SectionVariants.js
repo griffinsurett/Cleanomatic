@@ -49,7 +49,7 @@ export const SectionVariants = {
   // ─────────── Testimonials ───────────
   testimonials: {
     sectionClass:
-      "section-main flex justify-center items-center w-full text-center text-bg px-[var(--spacing-xl)] load fade-in",
+      "section-main flex justify-center items-center w-full text-center text-bg px-[var(--spacing-xl)]",
     contentClass:
       "content-container load slide-up container flex flex-wrap flex-col justify-center items-center w-full py-[var(--spacing-2xl)] px-[var(--spacing-lg)]",
     itemsClass:
@@ -57,7 +57,7 @@ export const SectionVariants = {
     backgroundMedia: {
       image: {
         src: truck2,
-        imageClass: "filter brightness-50 bg-cover bg-center xl:bg-fixed",
+        imageClass: "filter brightness-50 bg-cover bg-center xl:bg-fixed load fade-in",
       },
       overlayClass: "bg-black opacity-50",
     },

@@ -29,6 +29,7 @@ export const CTAdata = {
 
 export const ContactData = {
   email: "cleanomaticnj@gmail.com",
+  address: "20 Carter Dr, Marlboro Township, NJ 07746",
   phone: [
     {
       type: "office",
