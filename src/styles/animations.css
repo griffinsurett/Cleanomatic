@@ -108,20 +108,25 @@
   @supports not (
     (animation-timeline: view()) or (animation-timeline: scroll())
   ) {
-    /* Hide only .load elements until they’re visible */
+    /* Only these animations start translated down */
     .load.animate-on-appear,
-    .load.fade-in,
     .load.slide-down,
-    .load.slide-in,
     .load.slide-up,
-    .load.slide-left,
-    .load.slide-right,
     .load.scale-up {
       opacity: 0;
       transform: translateY(1rem);
     }
 
-    /* Once the IO adds .visible to a .load element, run the keyframe */
+    /* fade-in (and slide‑in/left/right) only start hidden, no translate */
+    .load.fade-in,
+    .load.slide-in,
+    .load.slide-left,
+    .load.slide-right {
+      opacity: 0;
+      transform: none;
+    }
+
+    /* When they become visible... */
     .load.animate-on-appear.visible {
       animation: fade-in-up 1s both;
     }
@@ -148,6 +153,7 @@
     }
   }
 }
+
 
 /* 3️⃣ Shared keyframes */
 @layer utilities {
