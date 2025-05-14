@@ -20,7 +20,7 @@ import "@/styles/animations.css";
               obs.unobserve(target);
             }
           });
-        }, { threshold: 0 });
+        }, { threshold: 0.1 });
 
         // Observe only elements with .load
         document.querySelectorAll('.load').forEach(el => io.observe(el));
