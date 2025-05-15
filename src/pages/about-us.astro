@@ -8,7 +8,9 @@ import { Picture } from "astro:assets";
 import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
 
 const paragraphClass = "w-full lg:w-19/20 load slide-up";
-const aboutContainer = "text-center lg:text-left w-full"
+const aboutContainer = "text-center lg:text-left w-full";
+const paragraphHeadingClass =
+  "text-accent h5 italic w-full lg:w-19/20 load slide-up";
 ---
 
 <ExtendedLayout
@@ -20,10 +22,14 @@ const aboutContainer = "text-center lg:text-left w-full"
 
   <Section
     headingAreaClass="text-center lg:text-left"
-    sectionClass="flex justify-center items-center text-left section-sm lg:w-full px-0",
-    contentClass="content-container flex flex-col justify-center items-center text-left",
-    topContentClass="text-left flex flex-col justify-start items-start w-full py-[var(--spacing-xl)] lg:py-[var(--spacing-2xl)]",
-    childSlotClass="flex flex-col justify-start items-start gap-[var(--spacing-lg)]",
+    sectionClass="flex justify-center items-center text-left section-sm lg:w-full px-0"
+    ,
+    contentClass="content-container flex flex-col justify-center items-center text-left"
+    ,
+    topContentClass="text-left flex flex-col justify-start items-start w-full py-[var(--spacing-xl)] lg:py-[var(--spacing-2xl)]"
+    ,
+    childSlotClass="flex flex-col justify-start items-start gap-[var(--spacing-lg)]"
+    ,
     heading={[
       {
         text: "Keeping Jersey Clean Since 1999!",
@@ -43,62 +49,9 @@ const aboutContainer = "text-center lg:text-left w-full"
     ]}
   >
     <div
-      class="about-content flex gap-[var(--spacing-2xl)] flex-col lg:flex-row lg:gap-[var(--spacing-3xl)] w-full"
+      class="about-content flex gap-[var(--spacing-2xl)] flex-col lg:gap-[var(--spacing-3xl)] w-full"
     >
-      <div class=`about-left ${aboutContainer}`>
-        <p class={paragraphClass}>
-          Cleanomatic is a licensed and fully insured company with over 20 years
-          of experience in the cleaning industry. Our team of experts is
-          dedicated to providing you with the highest quality cleaning services,
-          using the latest techniques and eco-friendly products to ensure your
-          home or business is clean, safe, and healthy.
-        </p>
-        <br />
-        <p class={paragraphClass}>
-          At Cleanomatic, we understand that every customer has unique needs,
-          which is why we offer a wide range of services to meet your specific
-          requirements. Whether you need a one-time deep cleaning or regular
-          maintenance, we have the expertise and equipment to get the job done
-          right.
-        </p>
-        <br />
-
-        <p class={paragraphClass}>
-          Cleanomatic is more than a business—it’s a family operation. David is often joined by members of his family, who help him manage the growing demand with the same level of dedication and care. Their teamwork ensures customers always feel like they’re in good hands, whether it’s for a one-time clean or ongoing service. Cleanomatic proudly serves not only Lakewood, but also the entire Monmouth County area and the greater Jersey Shore region. Whether it’s a family home in Jackson, a business in Howell, or a vacation property in Point Pleasant, David and his family bring professionalism, reliability, and warmth to every job—earning loyal customers across the shore.
-        </p>
-        <br />
-
-        <p class={paragraphClass}>
-          Thank you for considering Cleanomatic for your cleaning needs. We look
-          forward to serving you and exceeding your expectations!
-        </p>
-        <br />
-
-        <Picture
-          src={HeroBg}
-          alt="Benefits of Cleanomatic"
-          formats={["avif", "webp"]}
-          fallbackFormat="jpg"
-          loading="eager"
-          quality="low"
-          fetchpriority="high"
-          aria-hidden="true"
-          class="w-[528px] h-fit load scale-up"
-        />
-      </div>
-      <div class=`about-right ${aboutContainer}`>
-        <Picture
-          src={HeroBg}
-          alt="Benefits of Cleanomatic"
-          formats={["avif", "webp"]}
-          fallbackFormat="jpg"
-          loading="eager"
-          quality="low"
-          fetchpriority="high"
-          aria-hidden="true"
-          class="w-[528px] h-fit"
-        />
-        <br />
+      <div class="about-top">
         <p class={paragraphClass}>
           Welcome to Cleanomatic, your one-stop solution for water removal as
           well as dryer vent, air duct, furniture, carpet and floor cleaning
@@ -109,33 +62,153 @@ const aboutContainer = "text-center lg:text-left w-full"
           products to ensure your home or business is clean, safe, and healthy.
         </p>
         <br />
+      </div>
+      <div
+        class="about-bottom flex flex-col lg:flex-row lg:gap-[var(--spacing-3xl)] w-full"
+      >
+        <div class={`about-left ${aboutContainer}`}>
+          <h5 class={paragraphHeadingClass}>About Cleanomatic</h5>
+          <p class={paragraphClass}>
+            Cleanomatic is a licensed and fully insured company with over 20
+            years of experience in the cleaning industry. Our team of experts is
+            dedicated to providing you with the highest quality cleaning
+            services, using the latest techniques and eco-friendly products to
+            ensure your home or business is clean, safe, and healthy.
+          </p>
+          <br />
 
-        <p class={paragraphClass}>
-          At Cleanomatic, we understand that every customer has unique needs,
-          which is why we offer a wide range of services to meet your specific
-          requirements. Whether you need a one-time deep cleaning or regular
-          maintenance, we have the expertise and equipment to get the job done
-          right.
-        </p>
-        <br />
+          <h5 class={paragraphHeadingClass}>
+            Personalized Services for Every Need
+          </h5>
+          <p class={paragraphClass}>
+            At Cleanomatic, we understand that every customer has unique needs,
+            which is why we offer a wide range of services to meet your specific
+            requirements. Whether you need a one-time deep cleaning or regular
+            maintenance, we have the expertise and equipment to get the job done
+            right.
+          </p>
+          <br />
 
-        <p class={paragraphClass}>
-          Our commitment to customer satisfaction is unmatched, and we take
-          pride in our attention to detail and personalized service. We are here
-          to help you achieve a clean and healthy environment for you and your
-          family or employees.
-        </p>
-        <br />
+          <h5 class={paragraphHeadingClass}>A Family-Run Operation</h5>
+          <p class={paragraphClass}>
+            Cleanomatic is more than a business—it’s a family operation. David
+            is often joined by members of his family, who help him manage the
+            growing demand with the same level of dedication and care. Their
+            teamwork ensures customers always feel like they’re in good hands,
+            whether it’s for a one-time clean or ongoing service.
+          </p>
+          <br />
+    <Picture
+            src={HeroBg}
+            alt="Benefits of Cleanomatic"
+            formats={["avif", "webp"]}
+            fallbackFormat="jpg"
+            loading="eager"
+            quality="low"
+            fetchpriority="high"
+            aria-hidden="true"
+            class="w-[528px] h-fit load scale-up"
+          />
+          <br />
+          <h5 class={paragraphHeadingClass}>
+            Serving the Jersey Shore with Pride
+          </h5>
+          <p class={paragraphClass}>
+            Cleanomatic proudly serves not only Lakewood, but also the entire
+            Monmouth County area and the greater Jersey Shore region. Whether
+            it’s a family home in Jackson, a business in Howell, or a vacation
+            property in Point Pleasant, David and his family bring
+            professionalism, reliability, and warmth to every job—earning loyal
+            customers across the shore.
+          </p>
+          <br />
 
-        <p class={paragraphClass}>
-          Thank you for considering Cleanomatic for your cleaning needs. We look
-          forward to serving you and exceeding your expectations!
-        </p>
-        <br />
+          <h5 class={paragraphHeadingClass}>Emergency Ready, Always</h5>
+          <p class={paragraphClass}>
+            Cleanomatic is available 24/7 for urgent cleaning and water damage
+            restoration. Fully licensed and insured, David and his team handle
+            both residential and commercial jobs with speed and care.
+          </p>
+          <br />
+        </div>
+
+        <div class=`about-right ${aboutContainer}`>
+          <Picture
+            src={HeroBg}
+            alt="Benefits of Cleanomatic"
+            formats={["avif", "webp"]}
+            fallbackFormat="jpg"
+            loading="eager"
+            quality="low"
+            fetchpriority="high"
+            aria-hidden="true"
+            class="w-[528px] h-fit"
+          />
+          <br />
+
+          <h5 class={paragraphHeadingClass}>The Cleanomatic Difference</h5>
+          <p class={paragraphClass}>
+            David’s warm demeanor and “work-with-me” personality set him apart.
+            Even during his busiest seasons, he makes time for every customer.
+            His secret? Treating every job like it’s personal. He’s known to go
+            the extra mile—returning multiple times if needed to ensure every
+            stain is gone and every client is fully satisfied.
+          </p>
+          <br />
+
+          <h5 class={paragraphHeadingClass}>Meet David Derhi of Cleanomatic</h5>
+          <p class={paragraphClass}>
+            For over 22 years, David Derhi has been a trusted name in Monmouth
+            County homes. Through his business, Cleanomatic, David provides
+            top-quality carpet, tile, air duct, and dryer vent cleaning
+            services—with a personal touch that keeps customers calling him
+            back.
+          </p>
+          <br />
+
+          <h5 class={paragraphHeadingClass}>A Legacy of Hard Work</h5>
+          <p class={paragraphClass}>
+            David’s roots go back to a strong family work ethic. After
+            immigrating to America, he took on various jobs—eventually launching
+            his own car service and later a restaurant. But it was in the world
+            of professional cleaning where he found his true calling. With
+            passion and perseverance, Cleanomatic quickly became a household
+            name.
+          </p>
+          <br />
+
+          <h5 class={paragraphHeadingClass}>
+            Monmouth County Loves Cleanomatic
+          </h5>
+          <p class={paragraphClass}>
+            David’s clients aren’t just customers—they’re community. Families
+            often request that he come when their kids are home, just so they
+            can watch him work. He’s been invited to weddings, bar mitzvahs, and
+            countless Shabbat tables. In his words, “The people are nice.
+            They’re pleasant to work for.”
+          </p>
+          <br />
+
+          <h5 class={paragraphHeadingClass}>
+            Thank You for Considering Cleanomatic
+          </h5>
+          <p class={paragraphClass}>
+            Thank you for considering Cleanomatic for your cleaning needs. We
+            look forward to serving you and exceeding your expectations!
+          </p>
+          <br />
+
+          <p class={paragraphClass}>
+            Thank you for considering Cleanomatic for your cleaning needs. We
+            look forward to serving you and exceeding your expectations!
+          </p>
+          <br />
+        </div>
       </div>
     </div>
   </Section>
+    <Section collection="gallery" query="getAll" />
+
 
   <Section collection="missionVision" query="getAll" topContentClass="hidden" />
-  <Section collection="gallery" query="getAll" />
 </ExtendedLayout>
