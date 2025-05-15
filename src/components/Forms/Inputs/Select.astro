@@ -1,0 +1,37 @@
+---
+const {
+  label,
+  name,
+  options = [],
+  required = false,
+  selectClass = "",
+  wrapperClass = "",
+  labelClass = "",
+} = Astro.props;
+
+// Build the first-option text, injecting "*" if no label and required
+const firstOptionText = required && !label
+  ? `Select ${name}${required ? " *" : ""}`
+  : `Select ${label || name}`;
+---
+<div class={wrapperClass}>
+  {label && (
+    <label for={name} class={labelClass}>
+      {label}
+      {required && <span class="text-primary ml-1">*</span>}
+    </label>
+  )}
+  <select
+    id={name}
+    name={name}
+    required={required}
+    class={selectClass}
+  >
+    <option value="" disabled selected>
+      { firstOptionText }
+    </option>
+    {options.map(opt => (
+      <option value={opt.value}>{opt.label}</option>
+    ))}
+  </select>
+</div>

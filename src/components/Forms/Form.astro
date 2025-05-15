@@ -1,53 +1,30 @@
 ---
-/** Generic <Form> wrapper
- *
- * Props
- * ─────────────────────────────────────────────────────────────
- * name            – unique Netlify form name (default "generic-form")
- * method          – HTTP method (default "post")
- * action          – optional success redirect URL
- * netlify         – boolean flag to inject Netlify attrs (default true)
- * honeypotName    – name of the hidden honeypot field (default "bot-field")
- * class           – Tailwind classes for the outer container
- * formLabel       – optional label for the form
- * labelClass      – Tailwind classes for the form label
- * enableSuccessBanner – boolean flag to show a success banner
- * successBannerMessage – message to show in the success banner
- * successBannerClass – Tailwind classes for the success banner
- * formClass       – extra classes on <form>
- * submitClass     – default Tailwind classes for the fallback button
- * submitLabel     – text for the fallback button (default "Submit")
- *
- * Slots
- * ─────────────────────────────────────────────────────────────
- * default         – your input fields
- * submit          – optional custom submit content; if omitted we render a
- *                   default <Button />
- */
- import Button from "@/components/Button";
+// src/components/Forms/Form.astro
+
+import Button from "@/components/Button";
+import { SiteData } from "@/content/SiteData";
 
 const {
-  name = "generic-form",
-  method = "post",
+  name                   = "generic-form",
+  method                 = "post",
   action,
-  /** now using the built‑in `class` prop */
-  class: className = "",
-  /** optional form‑wide label text */
-  formLabel = "",
-  /** classes for that form‑wide label */
-  labelClass = "",
-  /** extra classes on the <form> itself */
-  formClass = "",
-  /** default classes for the submit button */
-  submitClass = "w-full mt-[var(--spacing-sm)] justify-center cursor-pointer",
-  /** text for the submit button */
-  submitLabel = "Submit",
-  /** enable the JS success banner on submit? */
-  enableSuccessBanner = false,
-  /** banner text */
-  successBannerMessage = "Thank you for your submission!",
-  /** banner classes */
-  successBannerClass = "p-[var(--spacing-sm)] bg-primary text-bg border border-[var(--color-border)]",
+  class: className       = "",
+  formLabel              = "",
+  labelClass             = "",
+  formClass              = "",
+  submitClass            = "w-full mt-[var(--spacing-sm)] justify-center cursor-pointer",
+  submitLabel            = "Submit",
+  enableSuccessBanner    = false,
+  successBannerMessage   = "Thank you for your submission!",
+  successBannerClass     = "p-[var(--spacing-sm)] bg-primary text-bg border border-[var(--color-border)]",
+  /** NEW — control consent text & link */
+  showConsent            = true,
+  consentText            = `I consent to have ${SiteData.title} store my submitted information so they can respond`,
+  consentLearnMoreLabel  = "Learn more",
+  consentLearnMoreUrl    = "/privacy-policy",
+  consentWrapperClass    = "flex items-start text-bg/50 mb-[var(--spacing-md)]",
+  consentInputClass      = "mr-[var(--spacing-sm)] mt-[4px] w-4 h-4 checked:bg-primary",
+  consentLabelClass      = labelClass + " m-0",
 } = Astro.props;
 ---
 
@@ -68,6 +45,25 @@ const {
     data-success-class={successBannerClass}
   >
     <slot />
+
+    {/** ——— inject consent checkbox here ——— */}
+    {showConsent && (
+      <div class={consentWrapperClass}>
+        <input
+          type="checkbox"
+          id="consent"
+          name="consent"
+          required
+          class={consentInputClass}
+        />
+        <label for="consent" class={consentLabelClass}>
+          {consentText}&nbsp;
+          <a href={consentLearnMoreUrl} class="underline">
+            {consentLearnMoreLabel}
+          </a>
+        </label>
+      </div>
+    )}
 
     {Astro.slots.has("submit") ? (
       <slot name="submit" />

@@ -19,6 +19,7 @@ console.log("Current page:", currentPage);
   enableSuccessBanner={true}
   successBannerMessage="Thank you for your message. We will get in touch with you shortly."
   successBannerClass="p-[var(--spacing-sm)] bg-primary text-bg border border-[var(--color-border)] bg-light-opacity"
+  
 >
   <!-- track which page this came from -->
   <input type="hidden" name="Page-of-Submission" value={currentPage} />
@@ -80,17 +81,4 @@ console.log("Current page:", currentPage);
     />
   </div>
 
-    <!-- Consent -->
-  <div class="flex items-start">
-    <input
-      type="checkbox"
-      id="consent"
-      name="consent"
-      required
-      class="mr-[var(--spacing-sm)] mt-[4px] w-4 h-4 checked:bg-primary"
-    />
-    <label for="consent" class={"m-0 text-bg"}>
-      I consent to have {SiteData.title} store my message so they can respond <a href="/privacy-policy" class="text-bg underline">Learn more</a>
-    </label>
-  </div>
 </Form>
