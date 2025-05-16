@@ -9,6 +9,7 @@ import Button from "./Button";
 import Logo from "../components/Logo.astro"; // new Logo component
 import { getPhoneNumberMenuItems } from "@/queries/PhoneNumberMenuQuery";
 import MobileCallButtonModal from "../components/MobileCallButtonModal.jsx"; // updated component
+import MessageSlider from '@/components/MessageSlider.jsx';
 
 const MainNavMenu = [
   { id: "home", label: "Home", slug: "/" },
@@ -38,10 +39,18 @@ const mobileMediaQuery = `(max-width: ${breakpointsMapping[breakpoint] - 1}px)`;
 ---
 <header class="flex flex-col justify-between items-center sticky top-0 z-[150] shadow-xl">
   <div class="top-header w-full flex justify-center items-center py-[var(--spacing-xs)] sm:py-[var(--spacing-md)] bg-primary text-tertiary">
-    <div class="header-and-footer-wrap h5 font-bold italic uppercase flex justify-center items-center w-full scale-up">
-        <p class="font-bold">Licensed and Fully Insured!</p>
-        <!-- <p>24 Hour Emergency Service!</p> -->
-    </div>
+    <div class="header‑and‑footer‑wrap h5 italic uppercase w-full scale-up">
+  <MessageSlider
+    client:load
+    messages={[
+      'Licensed and Fully Insured!',
+      '24 Hour Emergency Service!'
+    ]}
+    interval={3000}
+    fadeDuration={600}
+    className="flex"
+  />
+</div>
   </div>
   <div class="main-header bg-accent text-bg lg:w-full flex justify-center w-full p-[var(--spacing-md)]">
     <div class="header-and-footer-wrap flex justify-between items-center w-full">
