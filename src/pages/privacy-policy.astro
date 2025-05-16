@@ -7,6 +7,9 @@ import { formatPhoneNumber }      from "@/utils/ContentUtils";
 import IntegrationsSnippet from "@/components/PrivacyPolicy/IntegrationsSnippet.astro";
 
 const effectiveDate = "May 14, 2025";
+
+// A simple counter for section numbers
+let sectionNumber = 0;
 ---
 <BaseLayout
   title={`Privacy Policy — ${SiteData.title}`}
@@ -18,7 +21,7 @@ const effectiveDate = "May 14, 2025";
     <h1>Privacy Policy</h1>
     <p><em>Effective date:</em> {effectiveDate}</p>
 
-    <h2>1. Information We Collect</h2>
+    <h2>{`${++sectionNumber}. Information We Collect`}</h2>
     <p>When you interact with <strong>{SiteData.title}</strong>, we may collect:</p>
     <ul>
       <li>
@@ -36,47 +39,48 @@ const effectiveDate = "May 14, 2025";
       </li>
     </ul>
 
-    <h2>2. How We Use Your Information</h2>
+    <h2>{`${++sectionNumber}. How We Use Your Information`}</h2>
     <ul>
       <li>To respond to inquiries and provide quotes or support.</li>
       <li>To monitor, maintain, and enhance site performance and security.</li>
       <li>To send service updates or marketing messages if you opt in.</li>
     </ul>
 
-    <h2>3. Data Retention</h2>
+    <h2>{`${++sectionNumber}. Data Retention`}</h2>
     <p>
       We retain your personal information (e.g., contact details and form submissions)
       indefinitely to support your ongoing relationship with us. If you’d like your
       data removed at any time, please <a href={`mailto:${ContactData.email}`}>contact us</a> and we will delete it.
     </p>
 
-   <!-- use your snippet, customizing the number & title -->
+    {/* Pass the next auto‑incremented number to your snippet */}
     <IntegrationsSnippet
-      number="4."
+      number={`${++sectionNumber}.`}
       title="Third‑Party Integrations"
     />
-    <h2>4. Cookies &amp; Tracking</h2>
+
+    <h2>{`${++sectionNumber}. Cookies &amp; Tracking`}</h2>
     <p>
       We use cookies and similar tools to recognize you, remember preferences,
       and analyze usage. For full details, see our{" "}
       <a href="/cookie-policy" class="underline">Cookie Policy</a>.
     </p>
 
-    <h2>5. Data Security</h2>
+    <h2>{`${++sectionNumber}. Data Security`}</h2>
     <p>
       We implement reasonable technical and organizational measures to protect
       your data against unauthorized access, disclosure, alteration, or
       destruction.
     </p>
 
-    <h2>6. Children’s Privacy</h2>
+    <h2>{`${++sectionNumber}. Children’s Privacy`}</h2>
     <p>
       {SiteData.title} does not knowingly collect personal information from
       anyone under 16. If you believe we have inadvertently done so, please
       contact us to have it removed.
     </p>
 
-    <h2>7. Your Rights</h2>
+    <h2>{`${++sectionNumber}. Your Rights`}</h2>
     <p>
       Depending on your jurisdiction, you may have rights to access, correct,
       or delete your personal data. To exercise these rights, email us at{" "}
@@ -85,13 +89,13 @@ const effectiveDate = "May 14, 2025";
       </a>.
     </p>
 
-    <h2>8. Changes to This Policy</h2>
+    <h2>{`${++sectionNumber}. Changes to This Policy`}</h2>
     <p>
       We may update this policy at any time; changes will be posted here with a
       revised “Effective date.”
     </p>
 
-    <h2>9. Contact Us</h2>
+    <h2>{`${++sectionNumber}. Contact Us`}</h2>
     <p>If you have any questions, reach us at:</p>
     <ul>
       <li>
