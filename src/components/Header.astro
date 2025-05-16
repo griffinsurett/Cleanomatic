@@ -55,7 +55,7 @@ const mobileMediaQuery = `(max-width: ${breakpointsMapping[breakpoint] - 1}px)`;
   <div class="main-header bg-accent text-bg lg:w-full flex justify-center w-full p-[var(--spacing-md)]">
     <div class="header-and-footer-wrap flex justify-between items-center w-full">
       <Logo />
-      <div class="phone-and-cta-on-header hidden lg:flex justify-right items-center">
+      <div class="phone-and-cta-on-header hidden xl:flex justify-right items-center">
         <!-- Phone number menu using the dynamic Menu component -->
         <Menu
           items={phoneMenuItems}
@@ -66,7 +66,7 @@ const mobileMediaQuery = `(max-width: ${breakpointsMapping[breakpoint] - 1}px)`;
           {CTAdata.buttonText}
         </Button>
       </div>
-      <div class="mobile-menu flex justify-right items-center gap-[var(--spacing-md)] lg:hidden">
+      <div class="mobile-menu flex justify-right items-center gap-[var(--spacing-md)] xl:hidden">
         <!-- Mobile call button modal (with dynamic media query based on breakpoint) -->
         <MobileCallButtonModal client:media={mobileMediaQuery}>
           <Menu
@@ -79,7 +79,7 @@ const mobileMediaQuery = `(max-width: ${breakpointsMapping[breakpoint] - 1}px)`;
         </MobileCallButtonModal>
         <Menu
         items={headerItems}
-        menuClass="menu-class bg-primary flex lg:hidden text-text justify-center items-center"
+        menuClass="menu-class bg-primary flex xl:hidden text-text justify-center items-center"
         menuItem={{
           component: MenuItem,
           class:
@@ -108,7 +108,7 @@ const mobileMediaQuery = `(max-width: ${breakpointsMapping[breakpoint] - 1}px)`;
       </div>
     </div>
   </div>
-  <div class="bottom-header hidden lg:flex header-bottom w-full items-center bg-primary justify-center fade-in">
+  <div class="bottom-header hidden xl:flex header-bottom w-full items-center bg-primary justify-center fade-in">
     <div class="header-and-footer-wrap w-full flex">
       <!-- Desktop menu -->
       <Menu
