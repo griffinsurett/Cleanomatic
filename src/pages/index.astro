@@ -6,6 +6,7 @@ import PrimaryHero from "@/components/StaticSections/PrimaryHero.astro";
 import { Picture } from "astro:assets";
 import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
 import generations from "@/assets/generations.jpg";
+import { Image } from "astro:assets";
 ---
 
 <ExtendedLayout
@@ -92,6 +93,18 @@ import generations from "@/assets/generations.jpg";
     ]}
   />
   <Section collection="testimonials" query="getAll" />
-  <Section collection="faq" query="getAll" />
+  <Section collection="faq" query="getAll">
+  <Picture
+      src={HeroBg}
+      alt="Benefits of Cleanomatic"
+      formats={["avif", "webp"]}
+      fallbackFormat="jpg"
+      loading="eager"
+      quality="low"
+      fetchpriority="high"
+      aria-hidden="true"
+      class="w-[538px] h-fit load scale-up"
+    />
+    </Section>
   <Section collection="gallery" query="getAll" />
 </ExtendedLayout>

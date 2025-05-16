@@ -42,8 +42,8 @@ export const SectionVariants = {
     backgroundMedia: undefined,
     topContentClass: "xl:mr-[var(--spacing-2xl)] lg:sticky lg:top-0",
     itemPlacement: "",
-    childPlacement: "",
-    childSlotClass: "",
+    childPlacement: "top-content-section",
+    childSlotClass: "hidden lg:block",
   },
 
   // ─────────── Testimonials ───────────
