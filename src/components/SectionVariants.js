@@ -40,7 +40,7 @@ export const SectionVariants = {
     buttonsSectionClass: "hidden",
     headingAreaClass: "text-center lg:text-left load scale-up lg:slide-right",
     backgroundMedia: undefined,
-    topContentClass: "xl:mr-[var(--spacing-2xl)] lg:sticky lg:top-0",
+    topContentClass: "xl:mr-[var(--spacing-2xl)] xl:sticky xl:top-0",
     itemPlacement: "",
     childPlacement: "top-content-section",
     childSlotClass: "hidden lg:block",
