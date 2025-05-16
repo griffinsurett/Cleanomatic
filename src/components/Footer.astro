@@ -6,9 +6,10 @@ import { getSocialMenuItems } from "@/queries/SocialMenuQuery";
 import PhoneNumber from "./LoopComponents/ContactMenu/ContactInfo"; // updated contact info component
 import Logo from "./Logo.astro";
 import Heading from "./Heading";
-import { SiteData } from "@/content/SiteData";
+import { CTAdata, SiteData } from "@/content/SiteData";
 import { getBusinessHours } from "@/queries/BusinessHoursQuery";
 import BusinessHoursItem from "./Menu/BusinessHoursItem.astro";
+import Button from "./Button";
 
 // Define shared class strings for menus, headings, and menu items.
 const menuListClass =
@@ -64,14 +65,14 @@ const FooterMenu = [
       <div
         class="footer-menus w-full flex flex-wrap sm:flex-row justify-between xl:w-2/3"
       >
-        <div class="footer-menu w-full sm:w-1/2 md:w-auto">
+        <div class="footer-menu w-full md:w-auto">
           <Heading tagName="label" className={menuHeadingClass}> Info </Heading>
           <Menu
             listClass={menuListClass}
             items={await buildMenuQueries({ FooterMenu })}
           />
         </div>
-        <div class="contact-info w-full sm:w-1/2 md:w-auto">
+        <div class="contact-info w-full md:w-auto">
           <Heading tagName="label" className={menuHeadingClass}>
             Contact Us
           </Heading>
@@ -84,6 +85,11 @@ const FooterMenu = [
             }}
           />
         </div>
+         <div class="contact-info w-full md:w-auto">
+          <Button variant="secondary" href={CTAdata.buttonLink} className="scale-up">
+          {CTAdata.buttonText}
+        </Button>
+         </div>
       </div>
     </div>
   </div>
