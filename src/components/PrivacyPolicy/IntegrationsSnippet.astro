@@ -30,7 +30,7 @@ const providers = Array.from(new Set(bases));
     <p>We integrate with the following companies for forms, CRM, analytics, etc.:</p>
     <ul class="list-disc ml-6">
       {providers.map((name) => (
-        <li key={name}>
+        <li>
           {name.charAt(0).toUpperCase() + name.slice(1)}
         </li>
       ))}
