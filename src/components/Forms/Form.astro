@@ -17,12 +17,12 @@ const {
   enableSuccessBanner = false,
   successBannerMessage = "Thank you for your submission!",
   successBannerClass = "p-[var(--spacing-sm)] bg-primary text-bg border border-[var(--color-border)]",
-  /** NEW — control consent text & link */
+  // new props:
   showConsent = true,
   consentText = `I consent to have ${SiteData.title} store my submitted information so they can respond`,
   consentLearnMoreLabel = "Learn more",
   consentLearnMoreUrl = "/privacy-policy",
-  consentWrapperClass = "flex items-start text-bg/75 mb-[var(--spacing-md)]",
+  consentWrapperClass = "flex items-start text-left text-text mb-[var(--spacing-md)]",
   consentInputClass = "mr-[var(--spacing-sm)] mt-[4px] w-4 h-4 checked:bg-primary",
   consentLabelClass = labelClass + " m-0",
 } = Astro.props;
@@ -48,7 +48,7 @@ const {
   >
     <slot />
 
-    {/** ——— inject consent checkbox here ——— */}
+    {/** — inject consent checkbox here — */}
     {
       showConsent && (
         <div class={consentWrapperClass}>
@@ -89,17 +89,44 @@ const {
         form.addEventListener("submit", async (e) => {
           e.preventDefault();
           const data = new URLSearchParams(new FormData(form));
-          await fetch(form.action || "/", {
-            method: form.method.toUpperCase() || "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: data.toString(),
-          });
+
+          let res;
+          try {
+            res = await fetch(form.action || "/", {
+              method: form.method.toUpperCase(),
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Accept": "application/json"
+              },
+              body: data.toString(),
+            });
+          } catch (networkErr) {
+            console.error("Network error submitting form:", networkErr);
+            return;
+          }
+
+          // hide the form in all cases
+          form.style.display = "none";
+
           const banner = document.createElement("div");
           banner.className = form.dataset.successClass;
-          banner.textContent = form.dataset.successMessage;
-          form.style.display = "none";
+
+          if (res.ok) {
+            // your custom success message
+            banner.textContent = form.dataset.successMessage;
+          } else {
+            // try to pull an error out of the JSON, or fall back
+            let errMsg = "There was a problem submitting the form.";
+            try {
+              const json = await res.json();
+              if (json.error) errMsg = json.error;
+            } catch {}
+            banner.textContent = errMsg;
+          }
+
           form.parentNode.insertBefore(banner, form.nextSibling);
         });
       });
   });
 </script>
+

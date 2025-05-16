@@ -5,7 +5,7 @@ import react from '@astrojs/react';
 import mdx from '@astrojs/mdx';
 
 export default defineConfig({
-  site: 'https://cleanomatic-akzho.kinsta.page/',
+  site: 'https://cleanomaticnj.com',
   server: {
     port: 4000,
   },
