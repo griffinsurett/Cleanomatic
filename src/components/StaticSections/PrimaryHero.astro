@@ -1,30 +1,46 @@
 ---
-// src/components/StaticSections/PrimaryHero.astro
-
 import Section from "@/components/Section.astro";
 import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
-import Menu from "@/components/Menu/Menu.astro";
-import BusinessHoursItem from "@/components/Menu/BusinessHoursItem.astro";
 import { getBusinessHours } from "@/queries/BusinessHoursQuery";
 import { SiteData, CTAdata } from "@/content/SiteData";
+import Heading from "../Heading";
 
-// Fetch business hours (server-side)
+// Fetch business hours (server‑side)
 const businessHours = await getBusinessHours();
+
+// ── Reusable class variables ───────────────────────────────────
+const sectionClassVar =
+  "min-h-[140vh] lg:min-h-[115vh] flex flex-col items-center justify-center bg-cover bg-fixed bg-center z-100 md:p-[var(--spacing-sm)] text-bg text-base md:text-xl";
+const contentClassVar = "w-8/10 mt-[-150px] sm:mt-0 xl:mt-[-50px]";
+const headingAreaClassVar = "xl:max-w-7/8";
+const buttonsSectionClassVar =
+  "mt-[var(--spacing-md)] order-last sm:mt-0 scale-up";
+
+const childContainerClassVar =
+  "py-[var(--spacing-lg)] prose prose-lg text-bg";
+const listClassVar = "px-[var(--spacing-lg)] list-disc list-inside space-y-[var(--spacing-md)]";
+const listItemClassVar = "space-y-[var(--spacing-sm)] slide-left";
 ---
 
 <Section
-  sectionClass="section-lg flex flex-col items-center justify-center bg-cover bg-fixed bg-center z-100 md:p-[var(--spacing-sm)] text-bg text-base md:text-xl"
-  contentClass="w-8/10 mt-[-150px] sm:mt-0 xl:mt-[-50px]"
-  headingAreaClass="xl:max-w-7/8"
+  sectionClass={sectionClassVar}
+  contentClass={contentClassVar}
+  headingAreaClass={headingAreaClassVar}
   heading={[
     {
-      // Sub‑heading
+      text: "Since 1999",
+      tagName: "label",
+      class: "h4 italic text-bg slide-down",
+    },
+    {
       text: "Your Trusted Cleaning Experts in New Jersey!",
       tagName: "h2",
       class: "h2 text-bg slide-down",
     },
   ]}
-  description="Welcome to Cleanomatic, your one‑stop solution for water removal as well as dryer vent, air duct, furniture, carpet and floor cleaning services in New Jersey."
+  description={`
+    Welcome to Cleanomatic, your trusted, full‑service partner for all things clean in New Jersey. Whether you’re dealing with water damage after a leak, improving indoor air quality by clearing dryer vents and air ducts, or giving your home a fresh start with deep furniture, carpet, and floor cleaning, we’ve got you covered.
+  `}
   descriptionClass="slide-up"
   backgroundMedia={{
     image: {
@@ -40,22 +56,32 @@ const businessHours = await getBusinessHours();
       variant: "primary",
     },
   ]}
-  buttonsSectionClass="mt-[var(--spacing-md)] order-last sm:mt-0 scale-up"
+  buttonsSectionClass={buttonsSectionClassVar}
   childPlacement="top-content-section"
 >
-  <!-- Business hours slot -->
-  <div class="business-hours-menu text-stroke italic my-[var(--spacing-md)]">
-    <label class="h4 text-bg my-[var(--spacing-sm)] italic fade-in">
-      Business Hours:
-    </label>
-    <Menu
-      items={businessHours}
-      menuItem={{
-        component: BusinessHoursItem,
-        class: "flex justify-start items-start",
-      }}
-      listClass="business-hours-list flex flex-col list-disc pl-[var(--spacing-2xl)]"
-    />
-    <label class={"h6"}> *24/7 Emergency Service Available! </label>
+  <div class={childContainerClassVar}>
+    <ul class={listClassVar}>
+      <li class={listItemClassVar}>
+        Fast, Reliable Water Removal
+      </li>
+
+      <li class={listItemClassVar}>
+        Breathe Easier with Dryer Vent &amp; Air Duct Cleaning
+      </li>
+
+      <li class={listItemClassVar}>
+        Pristine Carpets, Floors &amp; Upholstery
+      </li>
+
+      <li class={listItemClassVar}>
+        Fully Licensed, Insured &amp; Satisfaction‑Guaranteed
+      </li>
+    </ul>
+    <p class="my-[var(--spacing-lg)] ">
+      Serving homes and businesses across New Jersey—Monmouth, Ocean, Middlesex,
+      and beyond—we’re committed to restoring your property to its cleanest,
+      healthiest state. Contact us today for a free estimate or to schedule
+      emergency service. Let Cleanomatic make your space sparkle!
+    </p>
   </div>
 </Section>

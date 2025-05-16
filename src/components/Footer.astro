@@ -84,22 +84,6 @@ const FooterMenu = [
             }}
           />
         </div>
-        <div class="business-hours-menu h6 text-stroke grow md:grow-0 italic">
-          <Heading tagName="label" className={menuHeadingClass}>
-            Business Hours
-          </Heading>
-          <Menu
-            items={await getBusinessHours()}
-            menuItem={{
-              component: BusinessHoursItem, // Import the component you just created
-              class: "custom-business-hours", // optional additional classes
-            }}
-            listClass="business-hours-list flex flex-col"
-          />
-          <Heading tagName={"label"} className={"h6"}>
-            *24/7 Emergency Service Available!
-          </Heading>
-        </div>
       </div>
     </div>
   </div>
