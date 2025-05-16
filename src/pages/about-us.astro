@@ -7,8 +7,8 @@ import David from "@/assets/david.jpg";
 import { Picture } from "astro:assets";
 import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
 
-const paragraphTailwindClass = "w-full lg:w-19/20";
-const paragraphAnimationClass = "load slide-up";
+const paragraphTailwindClass = "w-full lg:w-19/20 slide-up";
+const paragraphAnimationClass = "load";
 const paragraphClass = `${paragraphTailwindClass} ${paragraphAnimationClass}`;
 const aboutContainer = "text-center lg:text-left w-full";
 const paragraphHeadingClass =
@@ -37,17 +37,17 @@ const aboutImageClass = "w-[528px] h-fit load scale-up";
       {
         text: "Keeping Jersey Clean Since 1999!",
         tagName: "label",
-        class: "text-secondary h5",
+        class: "text-secondary h5 italic slide-down",
       },
       {
         text: "The Cleanomatic Difference",
         tagName: "h2",
-        class: "text-accent h2",
+        class: "text-accent h2 fade-in",
       },
       {
         text: "Your Trusted Cleaning Experts in New Jersey, Licensed and Fully Insured!",
         tagName: "h6",
-        class: "text-text h6",
+        class: "text-text h6 slide-up",
       },
     ]}
   >
