@@ -1,9 +1,10 @@
 ---
 // src/pages/privacy-policy.astro
-import SecondaryHero from "@/components/StaticSections/SecondaryHero.astro";
-import BaseLayout      from "../layouts/BaseLayout.astro";
+import SecondaryHero       from "@/components/StaticSections/SecondaryHero.astro";
+import BaseLayout          from "../layouts/BaseLayout.astro";
 import { SiteData, ContactData } from "@/content/SiteData";
-import { formatPhoneNumber }     from "@/utils/ContentUtils";
+import { formatPhoneNumber }      from "@/utils/ContentUtils";
+import IntegrationsSnippet from "@/components/PrivacyPolicy/IntegrationsSnippet.astro";
 
 const effectiveDate = "May 14, 2025";
 ---
@@ -22,7 +23,7 @@ const effectiveDate = "May 14, 2025";
     <ul>
       <li>
         <strong>Contact Details:</strong> Your name, email address, and phone
-        number when you submit a form via Formspree.
+        number when you submit any form on our site.
       </li>
       <li>
         <strong>Technical Data:</strong> IP address, browser type, device model,
@@ -42,51 +43,40 @@ const effectiveDate = "May 14, 2025";
       <li>To send service updates or marketing messages if you opt in.</li>
     </ul>
 
-    <h2>3. Forms and Data Submission</h2>
+    <h2>3. Data Retention</h2>
     <p>
-      All form submissions are processed by{" "}
-      <a href="https://formspree.io">Formspree</a>. We do not store form data on
-      our servers; Formspree securely forwards submissions to our inbox.
+      We retain your personal information (e.g., contact details and form submissions)
+      indefinitely to support your ongoing relationship with us. If you’d like your
+      data removed at any time, please <a href={`mailto:${ContactData.email}`}>contact us</a> and we will delete it.
     </p>
 
-    <h2>4. Cookies & Tracking</h2>
+   <!-- use your snippet, customizing the number & title -->
+    <IntegrationsSnippet
+      number="4."
+      title="Third‑Party Integrations"
+    />
+    <h2>4. Cookies &amp; Tracking</h2>
     <p>
       We use cookies and similar tools to recognize you, remember preferences,
       and analyze usage. For full details, see our{" "}
       <a href="/cookie-policy" class="underline">Cookie Policy</a>.
     </p>
 
-    <h2>5. Third‑Party Services</h2>
-    <ul>
-      <li>
-        <strong>Form Processing:</strong> Formspree for secure handling of form
-        data.
-      </li>
-      <li>
-        <strong>Analytics Providers:</strong> Services we use to understand site
-        usage and improve our offerings.
-      </li>
-      <li>
-        <strong>Service Providers:</strong> Companies that help with hosting,
-        maintenance, or marketing communications.
-      </li>
-    </ul>
-
-    <h2>6. Data Security</h2>
+    <h2>5. Data Security</h2>
     <p>
       We implement reasonable technical and organizational measures to protect
       your data against unauthorized access, disclosure, alteration, or
       destruction.
     </p>
 
-    <h2>7. Children’s Privacy</h2>
+    <h2>6. Children’s Privacy</h2>
     <p>
       {SiteData.title} does not knowingly collect personal information from
       anyone under 16. If you believe we have inadvertently done so, please
       contact us to have it removed.
     </p>
 
-    <h2>8. Your Rights</h2>
+    <h2>7. Your Rights</h2>
     <p>
       Depending on your jurisdiction, you may have rights to access, correct,
       or delete your personal data. To exercise these rights, email us at{" "}
@@ -95,13 +85,13 @@ const effectiveDate = "May 14, 2025";
       </a>.
     </p>
 
-    <h2>9. Changes to This Policy</h2>
+    <h2>8. Changes to This Policy</h2>
     <p>
       We may update this policy at any time; changes will be posted here with a
       revised “Effective date.”
     </p>
 
-    <h2>10. Contact Us</h2>
+    <h2>9. Contact Us</h2>
     <p>If you have any questions, reach us at:</p>
     <ul>
       <li>
