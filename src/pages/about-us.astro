@@ -7,10 +7,13 @@ import David from "@/assets/david.jpg";
 import { Picture } from "astro:assets";
 import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
 
-const paragraphClass = "w-full lg:w-19/20 load slide-up";
+const paragraphTailwindClass = "w-full lg:w-19/20";
+const paragraphAnimationClass = "load slide-up";
+const paragraphClass = `${paragraphTailwindClass} ${paragraphAnimationClass}`;
 const aboutContainer = "text-center lg:text-left w-full";
 const paragraphHeadingClass =
   "text-accent h5 italic w-full lg:w-19/20 load slide-up";
+const aboutImageClass = "w-[528px] h-fit load scale-up";
 ---
 
 <ExtendedLayout
@@ -26,7 +29,7 @@ const paragraphHeadingClass =
     ,
     contentClass="content-container flex flex-col justify-center items-center text-left"
     ,
-    topContentClass="text-left flex flex-col justify-start items-start w-full py-[var(--spacing-xl)] lg:py-[var(--spacing-2xl)]"
+    topContentClass="text-left flex flex-col justify-start items-start w-full pt-[var(--spacing-xl)] pb-[var(--spacing-md)] lg:pt-[var(--spacing-2xl)]"
     ,
     childSlotClass="flex flex-col justify-start items-start gap-[var(--spacing-lg)]"
     ,
@@ -52,7 +55,7 @@ const paragraphHeadingClass =
       class="about-content flex gap-[var(--spacing-2xl)] flex-col lg:gap-[var(--spacing-3xl)] w-full"
     >
       <div class="about-top">
-        <p class={paragraphClass}>
+        <p class={paragraphTailwindClass}>
           Welcome to Cleanomatic, your one-stop solution for water removal as
           well as dryer vent, air duct, furniture, carpet and floor cleaning
           services in New Jersey. We are a licensed and fully insured company
@@ -107,7 +110,7 @@ const paragraphHeadingClass =
             quality="low"
             fetchpriority="high"
             aria-hidden="true"
-            class="w-[528px] h-fit load scale-up"
+            class={aboutImageClass}
           />
           <br />
           <h5 class={paragraphHeadingClass}>
@@ -142,7 +145,7 @@ const paragraphHeadingClass =
             quality="low"
             fetchpriority="high"
             aria-hidden="true"
-            class="w-[528px] h-fit"
+            class={aboutImageClass}
           />
           <br />
 
