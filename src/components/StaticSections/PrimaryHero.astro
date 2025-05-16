@@ -11,6 +11,7 @@ import { SiteData, CTAdata } from "@/content/SiteData";
 // Fetch business hours (server-side)
 const businessHours = await getBusinessHours();
 ---
+
 <Section
   sectionClass="section-lg flex flex-col items-center justify-center bg-cover bg-fixed bg-center z-100 md:p-[var(--spacing-sm)] text-bg text-base md:text-xl"
   contentClass="w-8/10 mt-[-150px] sm:mt-0 xl:mt-[-50px]"
@@ -55,8 +56,6 @@ const businessHours = await getBusinessHours();
       }}
       listClass="business-hours-list flex flex-col list-disc pl-[var(--spacing-2xl)]"
     />
-        <label class={"h6"}>
-            Unless an Emergency!
-          </label>
+    <label class={"h6"}> *24/7 Emergency Service Available! </label>
   </div>
 </Section>
