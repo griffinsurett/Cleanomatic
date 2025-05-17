@@ -25,34 +25,32 @@ export const CTAdata = {
   description: "Contact us today for a free quote on our cleaning services.",
   buttonText: "Get Clean!",
   buttonLink: "/contact-us",
-}
+};
 
 export const ContactData = {
   email: "cleanomaticnj@gmail.com",
   address: "20 Carter Dr, Marlboro Township, NJ 07746",
   phone: [
     {
-      type: "office",
+      type: "cell",
       number: "7329950995",
     },
     {
-      type: "cell",
-      number: "7329950909",
+      type: "office",
+      number: "7329720909",
     },
-  ]
+  ],
 };
 
 export const SocialData = [
-    {
-        title: "Twitter",
-        href: "https://twitter.com/griffin",
-        icon: "twitter",
-    },
-    {
-        title: "LinkedIn",
-        href: "https://linkedin.com/griffin",
-        icon: "linkedin",
-    },
-]
-
-
+  {
+    title: "Twitter",
+    href: "https://twitter.com/griffin",
+    icon: "twitter",
+  },
+  {
+    title: "LinkedIn",
+    href: "https://linkedin.com/griffin",
+    icon: "linkedin",
+  },
+];

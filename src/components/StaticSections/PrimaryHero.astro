@@ -10,15 +10,15 @@ const businessHours = await getBusinessHours();
 
 // ── Reusable class variables ───────────────────────────────────
 const sectionClassVar =
-  "min-h-[150vh] md:min-h-[70vh] xl:min-h-[115vh] flex flex-col items-center justify-center bg-cover bg-fixed bg-center z-100 md:p-[var(--spacing-sm)] text-bg text-base md:text-xl";
-const contentClassVar = "w-8/10 mt-[-150px] sm:mt-0 xl:mt-[-50px]";
+  "min-h-[100vh] md:min-h-[80vh] xl:min-h-[100vh] flex flex-col items-center justify-center bg-cover bg-fixed bg-center z-100 md:p-[var(--spacing-sm)] text-bg text-base md:text-xl";
+const contentClassVar = "w-8/10 sm:mt-0 xl:mt-[-50px]";
 const headingAreaClassVar = "xl:max-w-7/8";
 const buttonsSectionClassVar =
   "mt-[var(--spacing-md)] order-last sm:mt-0 scale-up";
 
 const childContainerClassVar =
   "py-[var(--spacing-lg)] prose prose-lg text-bg";
-const listClassVar = "px-[var(--spacing-lg)] list-disc list-inside space-y-[var(--spacing-md)]";
+const listClassVar = "px-[var(--spacing-xl)] list-disc list-inside space-y-[var(--spacing-md)]";
 const listItemClassVar = "space-y-[var(--spacing-sm)] slide-left";
 ---
 
@@ -39,7 +39,8 @@ const listItemClassVar = "space-y-[var(--spacing-sm)] slide-left";
     },
   ]}
   description={`
-    Welcome to Cleanomatic, your trusted, full‑service partner for all things clean in New Jersey. Whether you’re dealing with water damage after a leak, improving indoor air quality by clearing dryer vents and air ducts, or giving your home a fresh start with deep furniture, carpet, and floor cleaning, we’ve got you covered.
+    Welcome to Cleanomatic, your trusted, full‑service partner for all things clean in New Jersey—Monmouth, Ocean, Middlesex,
+      and beyond. Whether you’re dealing with water damage after a leak, improving indoor air quality by clearing dryer vents and air ducts, or giving your home a fresh start with deep furniture, carpet, and floor cleaning, we’ve got you covered.
   `}
   descriptionClass="slide-up"
   backgroundMedia={{
@@ -77,11 +78,5 @@ const listItemClassVar = "space-y-[var(--spacing-sm)] slide-left";
         Fully Licensed, Insured &amp; Satisfaction‑Guaranteed
       </li>
     </ul>
-    <p class="my-[var(--spacing-lg)] ">
-      Serving homes and businesses across New Jersey—Monmouth, Ocean, Middlesex,
-      and beyond—we’re committed to restoring your property to its cleanest,
-      healthiest state. Contact us today for a free estimate or to schedule
-      emergency service. Let Cleanomatic make your space sparkle!
-    </p>
   </div>
 </Section>
