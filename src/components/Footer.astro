@@ -18,13 +18,13 @@ const menuHeadingClass = "h4 text-bg my-[var(--spacing-sm)] italic";
 const menuItemClass = "text-right text-base hover:underline";
 
 const FooterMenu = [
-{
+  {
     id: "about",
     label: "About Us",
     slug: "/about-us",
     weight: 30,
   },
-{
+  {
     id: "contact",
     label: "Contact Us",
     slug: "/contact-us",
@@ -55,9 +55,7 @@ const FooterMenu = [
       <div
         class="w-full xl:w-1/4 md:mb-[var(--spacing-lg)] mb-0 xl:text-left text-center flex flex-col lg:items-center pb-[var(--spacing-lg)]"
       >
-        <Logo
-        containerClass="flex flex-col items-center"
-        />
+        <Logo containerClass="flex flex-col items-center" />
         <p class="text-base mt-[var(--spacing-sm)] px-[var(--spacing-sm)]">
           {SiteData.description}
         </p>
@@ -85,11 +83,23 @@ const FooterMenu = [
             }}
           />
         </div>
-         <div class="contact-info w-full md:w-auto">
-          <Button variant="secondary" href={CTAdata.buttonLink} className="scale-up">
-          {CTAdata.buttonText}
-        </Button>
-         </div>
+        <div class="contact-info w-full md:w-auto space-y-[var(--spacing-md)]">
+          <Button
+            variant="secondary"
+            href={CTAdata.buttonLink}
+            className="scale-up"
+          >
+            {CTAdata.buttonText}
+          </Button>
+
+          <p class="h5 italic">
+            Licensed and Fully Insured!
+          </p>
+
+          <p>
+            
+          </p>
+        </div>
       </div>
     </div>
   </div>
