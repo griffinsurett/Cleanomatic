@@ -138,10 +138,6 @@
 }
 
 @layer utilities {
-  .animate-slide-right {
-    animation: slide-right 0.5s ease-out forwards;
-  }
-
   .transition-default {
     transition: var(--transition-default);
     transition-delay: var(--transition-delay-default);

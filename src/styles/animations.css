@@ -2,7 +2,10 @@
 
 /* 1️⃣ Scroll‑linked animations in supporting browsers */
 @layer utilities {
-   
+  .slide-logo-left {
+    animation: slide-logo-right .8s ease-in-out forwards;
+    animation-fill-mode: both;
+  }   
 
   @supports (animation-timeline: view()) or (animation-timeline: scroll()) {
 /* All of these will animate immediately on insertion */
@@ -235,4 +238,16 @@
       transform: scale(1);
     }
   }
+
+    @keyframes slide-logo-right {
+    from {
+      opacity: 0;
+      transform: translateX(-100vw);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
 }
