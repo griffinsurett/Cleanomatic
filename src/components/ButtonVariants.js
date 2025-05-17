@@ -1,16 +1,10 @@
 // src/components/ButtonVariants.js
 
-// The shared base classes for all non-underline variants
+// Shared base classes: spacing, container layout, and transition
 export const baseButtonClasses =
-  "rounded-none py-[var(--spacing-md)] px-[var(--spacing-2xl)] transform transition-all duration-300 ease-in-out text-base font-semibold text-stroke md:text-lg xl:text-2xl uppercase italic";
+  "rounded-none py-[var(--spacing-md)] px-[var(--spacing-2xl)] relative inline-flex items-center group transition-colors duration-300 ease-in-out  text-base font-semibold text-stroke md:text-lg xl:text-2xl uppercase italic";// Shared default icon behavior
+const sharedIconDefaults = { hoverOnly: true, animateIcon: true };
 
-// Default icon behavior for each variant
-const sharedIconDefaults = {
-  hoverOnly: true,
-  animateIcon: true,
-};
-
-// Per-variant definitions
 export const ButtonVariants = {
   primary: {
     variantClasses:
@@ -25,11 +19,9 @@ export const ButtonVariants = {
     iconDefaults: { ...sharedIconDefaults },
   },
   underline: {
-    variantClasses: "",
-    buttonClasses: "",      // no base styling for underline
-    iconDefaults: {
-      hoverOnly: false,     // always show underline icon
-      animateIcon: false,   // no animation
-    },
+    variantClasses:
+      "underline text-[var(--color-primary)] hover:text-[var(--color-secondary)]",
+    buttonClasses: baseButtonClasses,
+    iconDefaults: { hoverOnly: false, animateIcon: false },
   },
 };
