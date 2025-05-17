@@ -33,7 +33,7 @@ export const SectionVariants = {
   // ─────────── FAQ ───────────
   faq: {
     sectionClass:
-      "section-sm w-full flex justify-center items-center bg-bg-2 py-[50px]",
+      "section-sm w-full flex justify-center items-center bg-bg py-[50px]",
     contentClass: "flex justify-between flex-col xl:flex-row content-container",
     itemsClass: "flex flex-col gap-[var(--spacing-lg)]",
     itemClass: "",
