@@ -9,8 +9,8 @@
   --color-text: #111111;
   --color-primary: #0000fe;
   --color-secondary: #111eb5; /*6564F0*/
-  --color-accent: #db1417;
-  --color-accent-secondary: #a00000;
+  --color-accent: #a00000;
+  --color-accent-secondary: #db1417;
   --color-neutral: #f3f4f6;
   --color-tertiary: #ffca07;
   --color-border: #b1b1b1;
@@ -62,7 +62,7 @@
 
   @layer components {
     .header-and-footer-wrap {
-      @apply px-[var(--spacing-sm)] sm:px-[var(--spacing-md)] lg:px-[var(--spacing-lg)];
+      @apply px-[var(--spacing-sm)] sm:px-[var(--spacing-md)];
       max-width: 1200px;
     }
 

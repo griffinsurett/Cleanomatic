@@ -19,7 +19,7 @@ export const SectionVariants = {
     itemsClass:
       "flex flex-col items-start justify-start gap-[var(--spacing-md)]",
     itemClass: "",
-    buttonsSectionClass: "load scale-up",
+    buttonsSectionClass: "hidden",
     headingAreaClass: "flex flex-col",
     backgroundMedia: undefined,
     topContentClass: "flex flex-col gap-[var(--spacing-md)]",

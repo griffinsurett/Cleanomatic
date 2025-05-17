@@ -37,7 +37,6 @@ const pageDesc =
     heading={[
       { text: data.description, class: "h4" },
     ]}
-    description={body}
     buttons={[
       { text: "Get a Quote", link: `#static-default-${entry.slug}`, variant: "primary" },
     ]}
@@ -55,8 +54,7 @@ const pageDesc =
     </Section>
   )}
           <!-- {body && <p class="mb-[var(--spacing-md)]">{body}</p>} -->
-
-  <!-- Render the page or collection sections -->
+  <!-- this will render your MDX section + Button -->
   <slot />
   <QuoteForm />
 </BaseLayout>

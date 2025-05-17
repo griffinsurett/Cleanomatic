@@ -45,7 +45,7 @@ const FooterMenu = [
 ];
 ---
 
-<footer class="flex justify-center items-center flex-col w-full load fade-in">
+<footer class="flex justify-center items-center flex-col load fade-in">
   <div
     class="w-full flex flex-col lg:flex-row justify-center items-center bg-accent text-bg pt-[var(--spacing-3xl)] pb-[var(--spacing-3xl)] md:pb-[var(--spacing-xl)] px-[var(--spacing-xl)] lg:px-[var(--spacing-xl)]"
   >
@@ -56,7 +56,7 @@ const FooterMenu = [
         class="w-full xl:w-1/4 md:mb-[var(--spacing-lg)] mb-0 xl:text-left text-center flex flex-col lg:items-center pb-[var(--spacing-lg)]"
       >
         <Logo containerClass="flex flex-col items-center" />
-        <p class="text-base mt-[var(--spacing-sm)] px-[var(--spacing-sm)]">
+        <p class="text-base mt-[var(--spacing-sm)]">
           {SiteData.description}
         </p>
       </div>
@@ -70,6 +70,22 @@ const FooterMenu = [
             items={await buildMenuQueries({ FooterMenu })}
           />
         </div>
+                <div class="other-info w-full md:w-auto space-y-[var(--spacing-md)]">
+          <p class="h5 italic">Licensed and Fully Insured!</p>
+          <div class="flex items-center">
+            <Heading tagName={"label"} className={"h6 mr-1.5"}>
+              License Number:
+            </Heading>
+            <p>#####</p>
+          </div>
+                    <Button
+            variant="secondary"
+            href={CTAdata.buttonLink}
+            className="scale-up"
+          >
+            {CTAdata.buttonText}
+          </Button>
+        </div>
         <div class="contact-info w-full md:w-auto">
           <Heading tagName="label" className={menuHeadingClass}>
             Contact Us
@@ -82,23 +98,6 @@ const FooterMenu = [
               class: menuItemClass,
             }}
           />
-        </div>
-        <div class="contact-info w-full md:w-auto space-y-[var(--spacing-md)]">
-          <Button
-            variant="secondary"
-            href={CTAdata.buttonLink}
-            className="scale-up"
-          >
-            {CTAdata.buttonText}
-          </Button>
-
-          <p class="h5 italic">Licensed and Fully Insured!</p>
-          <div class="flex items-center">
-            <Heading tagName={"label"} className={"h6 mr-1.5"}>
-              License Number:
-            </Heading>
-            <p>#####</p>
-          </div>
         </div>
       </div>
     </div>
