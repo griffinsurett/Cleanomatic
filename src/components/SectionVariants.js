@@ -38,7 +38,7 @@ export const SectionVariants = {
     itemsClass: "flex flex-col gap-[var(--spacing-lg)]",
     itemClass: "",
     buttonsSectionClass: "hidden",
-    headingAreaClass: "text-center lg:text-left load scale-up lg:slide-right",
+    headingAreaClass: "text-center lg:text-left load slide-left",
     backgroundMedia: undefined,
     topContentClass: "xl:mr-[var(--spacing-2xl)] xl:sticky xl:top-0",
     itemPlacement: "",
