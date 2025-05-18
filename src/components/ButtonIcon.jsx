@@ -1,20 +1,19 @@
 // src/components/ButtonIcon.jsx
 import React from "react";
 import { getImage } from "astro:assets";
-import DefaultIcon from "@/assets/cleanomaticvanright3.png";
 
 export default async function ButtonIcon({
   showIcon,
-  element,              // Custom icon element/component.
-  hoverOnly,            // Boolean: whether icon animation is hover-only.
-  animateIcon,          // Boolean: whether to animate the icon.
-  position,             // "left" or "right"
-  iconCustomClass = "", // Additional custom classes.
+  element,        // React SVG component or function
+  src,            // image/SVG URL
+  hoverOnly,
+  animateIcon,
+  position,
+  iconCustomClass = ""
 }) {
-  // If no icon should be shown, return null.
   if (!showIcon) return null;
 
-  // Compute container classes based on hover/animation settings.
+  // Build hover/animation container classes
   let iconContainerClasses = "";
   if (hoverOnly) {
     if (animateIcon) {
@@ -37,39 +36,39 @@ export default async function ButtonIcon({
     ? iconCustomClass
     : `${iconCustomClass} ${iconContainerClasses}`.trim();
 
-  // If a custom icon element is provided, handle that synchronously.
+  // 1) Inline React SVG component
   if (element) {
-    let customIcon = null;
-    if (React.isValidElement(element)) {
-      customIcon = element;
-    } else if (typeof element === "function") {
-      customIcon = React.createElement(element);
-    } else if (typeof element === "string") {
-      // Assume it's an image or SVG file path.
-      customIcon = (
-        <img src={element} alt="Icon" className="h-4 w-auto" loading="lazy" />
-      );
-    }
-    return <span className={finalIconContainerClass}>{customIcon}</span>;
+    const CustomIcon = typeof element === "function" ? element : () => element;
+    return (
+      <span className={finalIconContainerClass}>
+        <CustomIcon />
+      </span>
+    );
   }
 
-  // Otherwise, use the default icon with image optimization.
-  const optimizedDefaultIcon = await getImage(
-    { src: DefaultIcon },
-    {
-      format: "webp",
-      quality: 5,
-      width: 20,      // Adjust width as needed.
-      sizes: "16px",  // Intended display size.
-    }
-  );
-  const defaultIconElem = (
-    <img
-      src={optimizedDefaultIcon?.src}
-      alt="Icon"
-      className="h-4 w-10"
-      loading="lazy"
-    />
-  );
-  return <span className={finalIconContainerClass}>{defaultIconElem}</span>;
+  // 2) Optimize and render ANY custom `src`
+  if (src) {
+    const optimized = await getImage(
+      { src },
+      {
+        format: "webp",
+        quality: 50,
+        width: 20,
+        sizes: "16px"
+      }
+    );
+    return (
+      <span className={finalIconContainerClass}>
+        <img
+          src={optimized.src}
+          alt=""
+          className="h-4 w-auto"
+          loading="lazy"
+        />
+      </span>
+    );
+  }
+
+  // 3) If neither element nor src, render nothing
+  return null;
 }

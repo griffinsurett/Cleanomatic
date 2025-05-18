@@ -1,111 +1,69 @@
 // src/components/Button.jsx
-import ButtonIcon from "./ButtonIcon"; // Import the new icon component
-
-// Default base button classes for non-underline variants.
-const baseButtonClasses =
-  "rounded-none py-[var(--spacing-md)] px-[var(--spacing-2xl)] transform transition-all duration-300 ease-in-out text-base font-semibold text-stroke md:text-lg xl:text-2xl uppercase italic";
-
-// Consolidate variant defaults.
-const buttonVariantDefaults = {
-  primary: {
-    variantClasses:
-      "bg-[var(--color-accent)] text-[var(--color-bg)] hover:bg-[var(--color-accent-secondary)]",
-    buttonClasses: baseButtonClasses,
-    iconDefaults: {
-      hoverOnly: true,
-      animateIcon: true,
-    },
-  },
-  secondary: {
-    variantClasses:
-      "bg-[var(--color-primary)] text-[var(--color-bg)] hover:bg-[var(--color-secondary)]",
-    buttonClasses: baseButtonClasses,
-    iconDefaults: {
-      hoverOnly: true,
-      animateIcon: true,
-    },
-  },
-  underline: {
-    variantClasses: "",
-    buttonClasses: "", // Override default button classes for underline.
-    iconDefaults: {
-      hoverOnly: false,
-      animateIcon: false,
-    },
-  },
-};
+import ButtonIcon from "./ButtonIcon";
+import { ButtonVariants } from "./ButtonVariants.js";
 
 export default async function Button({
   as: ComponentProp,
   type = "button",
   onClick,
-  disabled, // New prop to manually disable a button.
+  disabled,
   children,
   className = "",
   href,
-  variant, // "primary", "secondary", or "underline"
-  iconProps = {}, // Consolidated icon properties.
-  showIcon = true, // Controls whether an icon is rendered.
+  variant = "primary",
+  iconProps = {},
+  showIcon = true,
   ...props
 }) {
-  // Default the variant to "primary" if not provided.
-  variant = variant || "primary";
-
-  // Pull in the variant defaults.
+  // 1) Get styling + default iconProps from the variant
   const { variantClasses, buttonClasses, iconDefaults } =
-    buttonVariantDefaults[variant] || buttonVariantDefaults.primary;
+    ButtonVariants[variant] || ButtonVariants.primary;
 
-  // Merge the variant's icon defaults with any custom iconProps.
+  // 2) Merge in any overrides
   const mergedIconProps = { ...iconDefaults, ...iconProps };
   const {
-    element,               // The actual icon element (e.g., an inline SVG, image, etc.)
-    position = "right",    // "left" or "right"
-    className: iconCustomClass = "", // Additional class for the icon container.
+    element,     // React SVG component
+    src,         // image/SVG URL
+    position = "right",
+    className: iconCustomClass = "",
     hoverOnly,
-    animateIcon,
+    animateIcon
   } = mergedIconProps;
 
-  // Ensure the button container is positioned correctly.
-  const containerDefaults = "relative inline-flex items-center group";
+  // 3) Build classes
+  let combinedClasses = [className, variantClasses, buttonClasses]
+    .filter(Boolean)
+    .join(" ");
 
-  // Build overall class names.
-  let combinedClassNames =
-    variant === "underline"
-      ? `${className} ${variantClasses} transition-colors duration-300 ease-in-out ${containerDefaults} inline-flex items-center group`
-      : `${className} ${variantClasses} ${buttonClasses} ${containerDefaults}`;
+  // 4) Disabled logic
+  const computedDisabled = disabled ?? false;
+  const ComponentFinal = computedDisabled
+    ? "button"
+    : ComponentProp || (href ? "a" : "button");
 
-  // Determine disabled state.
-  // If the disabled prop is passed, or if no href is provided (implying hasPage is false), then disable.
-const computedDisabled = disabled ?? false;
-  // Force disabled rendering as a <button> (i.e. not as an anchor).
-  const ComponentFinal =
-    computedDisabled
-      ? "button"
-      : ComponentProp || (href ? "a" : "button");
-
-  // Prepare additional props.
   const additionalProps = { ...props };
   if (ComponentFinal === "button") {
     additionalProps.disabled = computedDisabled;
-  } else if (ComponentFinal === "a") {
-    // When rendering as an anchor, if disabled then remove href and add disabled styling.
+  } else {
     additionalProps.href = computedDisabled ? undefined : href;
     if (computedDisabled) {
-      combinedClassNames += " pointer-events-none opacity-50";
+      combinedClasses += " pointer-events-none opacity-50";
     }
   }
 
+  // 5) Render
   return (
     <ComponentFinal
       {...(ComponentFinal === "button" ? { type } : { href: additionalProps.href })}
       onClick={computedDisabled ? undefined : onClick}
-      className={combinedClassNames}
+      className={combinedClasses}
       {...(ComponentFinal === "button" ? additionalProps : {})}
     >
       {showIcon && position === "left" && (
         <ButtonIcon
           showIcon={showIcon}
           element={element}
+          src={src}
           hoverOnly={hoverOnly}
           animateIcon={animateIcon}
           position={position}
@@ -117,6 +75,7 @@ const computedDisabled = disabled ?? false;
         <ButtonIcon
           showIcon={showIcon}
           element={element}
+          src={src}
           hoverOnly={hoverOnly}
           animateIcon={animateIcon}
           position={position}
