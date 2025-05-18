@@ -7,7 +7,10 @@ export const baseButtonClasses =
 
 const sharedIconDefaults = {
   hoverOnly: true,
-  animateIcon: true
+  animateIcon: true,
+  element: null,       // no inline SVG by default
+  src: null,           // no image by default
+  position: "right"
 };
 
 export const ButtonVariants = {
@@ -29,13 +32,11 @@ export const ButtonVariants = {
     iconDefaults: {
       ...sharedIconDefaults,
       src: DefaultIcon,
-      position: "right"
     }
   },
   underline: {
     variantClasses:
       "hover:underline hover:decoration-[var(--color-bg)]",
-    // buttonClasses: baseButtonClasses,
     iconDefaults: {
       hoverOnly: false,
       animateIcon: false,

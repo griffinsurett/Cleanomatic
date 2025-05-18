@@ -15,27 +15,24 @@ export default async function Button({
   showIcon = true,
   ...props
 }) {
-  // 1) Get styling + default iconProps from the variant
   const { variantClasses, buttonClasses, iconDefaults } =
     ButtonVariants[variant] || ButtonVariants.primary;
 
-  // 2) Merge in any overrides
-  const mergedIconProps = { ...iconDefaults, ...iconProps };
+  // Merge defaults ⇢ overrides
+  const merged = { ...iconDefaults, ...iconProps };
   const {
-    element,     // React SVG component
-    src,         // image/SVG URL
+    element,
+    src,
     position = "right",
     className: iconCustomClass = "",
     hoverOnly,
-    animateIcon
-  } = mergedIconProps;
+    animateIcon,
+  } = merged;
 
-  // 3) Build classes
   let combinedClasses = [className, variantClasses, buttonClasses]
     .filter(Boolean)
     .join(" ");
 
-  // 4) Disabled logic
   const computedDisabled = disabled ?? false;
   const ComponentFinal = computedDisabled
     ? "button"
@@ -46,12 +43,9 @@ export default async function Button({
     additionalProps.disabled = computedDisabled;
   } else {
     additionalProps.href = computedDisabled ? undefined : href;
-    if (computedDisabled) {
-      combinedClasses += " pointer-events-none opacity-50";
-    }
+    if (computedDisabled) combinedClasses += " pointer-events-none opacity-50";
   }
 
-  // 5) Render
   return (
     <ComponentFinal
       {...(ComponentFinal === "button" ? { type } : { href: additionalProps.href })}
