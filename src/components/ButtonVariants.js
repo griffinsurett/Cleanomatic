@@ -20,7 +20,7 @@ export const ButtonVariants = {
   },
   underline: {
     variantClasses:
-      "underline text-[var(--color-primary)] hover:text-[var(--color-secondary)]",
+      "underline text-bg hover:text-[var(--color-secondary)]",
     buttonClasses: baseButtonClasses,
     iconDefaults: { hoverOnly: false, animateIcon: false },
   },
