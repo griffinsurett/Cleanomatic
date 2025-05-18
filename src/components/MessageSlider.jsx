@@ -3,29 +3,44 @@ import React, { useState, useEffect, useRef } from 'react';
 
 export default function MessageSlider({
   messages = [],
-  interval = 4000,    // time between slides (ms)
-  slideDuration = 500,// slide animation time (ms)
+  interval = 4000,     // time between slides (ms)
+  slideDuration = 500, // slide animation time (ms)
+  infinite = true,    // new prop: loop infinitely if true
   className = '',
 }) {
-  // we append the first message to the end to allow seamless wrap
-  const slides = [...messages, messages[0] || ''];
+  // Prepare slides; if infinite, append first slide for wrap-around
+  const slides = infinite
+    ? [...messages, messages[0] || '']
+    : [...messages];
+
   const [index, setIndex] = useState(0);
   const [transitionOn, setTransitionOn] = useState(true);
+  const intervalRef = useRef(null);
 
   useEffect(() => {
+    // Only start sliding if there's more than one message
     if (messages.length < 2) return;
-    const timer = setInterval(() => {
+
+    intervalRef.current = setInterval(() => {
       setIndex(i => i + 1);
       setTransitionOn(true);
     }, interval);
-    return () => clearInterval(timer);
-  }, [messages.length, interval]);
+
+    return () => clearInterval(intervalRef.current);
+  }, [messages.length, interval, infinite]);
 
   const handleTransitionEnd = () => {
-    // when we've just animated into the duplicate slide, jump to real first
-    if (index === messages.length) {
-      setTransitionOn(false);  // disable transition for the instant reset
-      setIndex(0);
+    if (infinite) {
+      // Infinite wrap: when reaching the duplicate slide, snap back to start
+      if (index === messages.length) {
+        setTransitionOn(false);
+        setIndex(0);
+      }
+    } else {
+      // Non-infinite: stop at last slide
+      if (index >= slides.length - 1 && intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
     }
   };
 
