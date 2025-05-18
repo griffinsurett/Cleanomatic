@@ -59,6 +59,9 @@ const sectionSchema = z.object({
   buttonsPlacement: z.union([z.string(), z.array(z.string())]).optional(),
   childSlotClass: z.string().optional(),
   client: z.enum(["load", "idle", "visible"]).optional(),
+  manualOrder: z.boolean().optional(),
+  sortBy: z.enum(["date", "title", "slug", "id"]).optional(),
+  sortOrder: z.enum(["asc", "desc"]).optional(),
 });
 
 export const QueryItemSchema = z.object({
@@ -93,6 +96,7 @@ const baseSchema = ({ image }: { image: Function }) =>
     featuredImage: image().optional(),
     heading: headingSchema.optional(),
     description: descriptionSchema.optional(),
+    order: z.number().optional(),
     layout: z.string().optional(),
     itemsLayout: z.string().optional(),
     keywords: z.array(z.string()).optional(),
