@@ -30,6 +30,24 @@ export const SectionVariants = {
     descriptionClass: "load slide-down"
   },
 
+    imageCol2: {
+    sectionClass: "flex justify-center items-center text-left section-sm",
+    contentClass:
+      "flex justify-between items-center content-container py-[var(--spacing-2xl)] flex-col-reverse md:flex-row-reverse gap-[var(--spacing-xl)] lg:gap-[var(--spacing-2xl)]",
+    itemsClass:
+      "flex flex-col items-start justify-start gap-[var(--spacing-md)]",
+    itemClass: "",
+    buttonsSectionClass: "hidden",
+    headingAreaClass: "flex flex-col",
+    backgroundMedia: undefined,
+    topContentClass: "flex flex-col gap-[var(--spacing-md)]",
+    itemPlacement: "top-content-section",
+    childPlacement: "",
+    childSlotClass: "lg:sticky lg:top-0",
+    buttonsPlacement: "top-content-section",
+    descriptionClass: "slide-down"
+  },
+
   // ─────────── FAQ ───────────
   faq: {
     sectionClass:
@@ -90,8 +108,8 @@ export const SectionVariants = {
   // ─────────── Service Areas ───────────
   serviceAreas: {
     sectionClass:
-      "section-lg py-[var(--spacing-lg)] flex justify-center items-center text-center bg-accent text-bg lg:px-[var(--spacing-lg)] load slide-up",
-    contentClass: "content-container",
+      "section-lg py-[var(--spacing-lg)] flex justify-center items-center text-center bg-accent text-bg lg:px-[var(--spacing-lg)] load fade-in",
+    contentClass: "content-container load slide-up",
     itemsClass:
       "w-full flex flex-wrap justify-center items-stretch gap-[var(--spacing-md)] my-[var(--spacing-lg)] md:my-[var(--spacing-2xl)]",
     buttonsSectionClass: "hidden",

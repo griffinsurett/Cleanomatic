@@ -1,11 +1,11 @@
 ---
 // src/layouts/ServicesLayout.astro
-import BaseLayout from './BaseLayout.astro';
-import SecondaryHero from '@/components/StaticSections/SecondaryHero.astro';
-import Section from '@/components/Section.astro';
-import { Image } from 'astro:assets';
-import { capitalize } from '@/utils/ContentUtils';
-import QuoteForm from '@/components/StaticSections/QuoteForm.astro';
+import BaseLayout from "./BaseLayout.astro";
+import SecondaryHero from "@/components/StaticSections/SecondaryHero.astro";
+import Section from "@/components/Section.astro";
+import QuoteForm from "@/components/StaticSections/QuoteForm.astro";
+import { Image } from "astro:assets";
+import { capitalize } from "@/utils/ContentUtils";
 
 const {
   collection,
@@ -19,28 +19,38 @@ const {
 
 const isItemPage = Boolean(entry);
 const data = entry?.data || {};
-const body = entry?.body || '';
 const pageTitle =
   overrideTitle ?? (isItemPage ? data.title : capitalize(collection));
 const pageDesc =
   overrideDesc ?? (isItemPage ? data.description : rest.description);
 ---
-<BaseLayout title={pageTitle} description={pageDesc} keywords={keywords} ogType={ogType} {...rest}>
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDesc}
+  keywords={keywords}
+  ogType={ogType}
+  {...rest}
+>
   <!-- Hero for both collection roots and item pages -->
   <SecondaryHero title={pageTitle} />
 
-  <!-- Use Section component to wrap item page content -->
-  {isItemPage && (
-    <Section 
-    variant="imageCol"
-    topContentClass="lg:w-2/3"
-    heading={[
-      { text: data.description, class: "h4" },
-    ]}
-    buttons={[
-      { text: "Get a Quote", link: `#static-default-${entry.slug}`, variant: "primary" },
-    ]}
->
+  <!-- Service item content -->
+  {
+    isItemPage && (
+      <Section
+        variant="imageCol2"
+        topContentClass="lg:w-2/3"
+        heading={[{ text: data.title, class: "h4" }]}
+        description={data.description}
+        buttons={[
+          {
+            text: "Get a Quote",
+            link: `#static-default-${entry.slug}`,
+            variant: "primary",
+          },
+        ]}
+      >
         {data.featuredImage && (
           <Image
             src={data.featuredImage}
@@ -51,9 +61,18 @@ const pageDesc =
             class="mb-[var(--spacing-md)]"
           />
         )}
-    </Section>
-  )}
-  <!-- this will render your MDX section + Button -->
-  <slot />
+        <slot />
+      </Section>
+    )
+  }
+
+  <!-- Common sections for services pages -->
+  <Section collection="testimonials" query="getAll" />
+  <Section collection="serviceAreas" query="getAll" />
+  <Section collection="gallery" query="getAll" />
+  <Section collection="faq" query="related" />
+  <Section collection="services" query="sibling" headingAreaClass="hidden" />
+
+  <!-- Contact / Quote form -->
   <QuoteForm />
 </BaseLayout>
