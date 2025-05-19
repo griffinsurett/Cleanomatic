@@ -144,7 +144,7 @@ imageCol3: {
     textCol: {
     sectionClass:"flex justify-start items-center w-full lg:w-12/20",
     childSlotClass:"flex flex-col",
-    headingAreaClass:"hidden",
+    // headingAreaClass:"hidden",
     childPlacement:"top-content-section"
   },
    headAndP: {
