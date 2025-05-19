@@ -82,14 +82,26 @@ export const SectionVariants = {
     buttonsSectionClass: "load scale-up",
   },
 
-  // ─────────── Gallery ───────────
+  // ─────────── Gallery1 ───────────
   gallery: {
     sectionClass:
-      "section-main flex justify-center items-center text-center bg-bg px-[var(--spacing-xl)]",
+      "section-main flex justify-center items-center text-center px-[var(--spacing-xl)]",
     contentClass:
-      "content-container flex flex-col justify-center w-full py-[var(--spacing-xl)] px-[var(--spacing-lg)]",
+      "content-container flex flex-col justify-center w-full px-[var(--spacing-lg)]",
     itemsClass:
-      "flex flex-wrap justify-between items-stretch gap-[var(--spacing-xl)] my-[var(--spacing-lg)] md:my-[var(--spacing-2xl)]",
+      "flex flex-wrap justify-between items-stretch gap-[var(--spacing-sm)]",
+    buttonsSectionClass: "hidden",
+    backgroundMedia: undefined,
+  },
+
+   // ─────────── Gallery ───────────
+  gallery2: {
+    sectionClass:
+      "flex justify-center items-center text-center px-[var(--spacing-xl)]",
+    contentClass:
+      "content-container flex flex-col justify-center w-full px-[var(--spacing-lg)]",
+    itemsClass:
+      "flex flex-wrap justify-between items-stretch gap-[var(--spacing-sm)]",
     buttonsSectionClass: "hidden",
     backgroundMedia: undefined,
   },

@@ -20,50 +20,100 @@ import { Image } from "astro:assets";
   ]}
 >
   <!-- Hero Section with primary call-to-action -->
-    <PrimaryHero />
-
+  <PrimaryHero />
 
   <!-- Additional sections such as Services, Service Areas, Testimonials, Gallery, etc. -->
   <Section collection="services" query="getAll" buttonsSectionClass="hidden" />
 
-  <!-- About -->  <!-- About Section with a background picture -->
   <Section
-  heading={[
+    heading={[
+      {
+        text: "From Mess to Masterpiece",
+        tagName: "h2",
+        class: "h2 text-bg mb-[var(--spacing-sm)] load slide-up",
+      },
+      {
+        text: "We don’t just clean— we conquer chaos.",
+        tagName: "h6",
+        class: "h6 text-bg load slide-up",
+      },
+    ]}
+    sectionClass="bg-accent py-[var(--spacing-xl)] md:py-[var(--spacing-2xl)] lg:py-[var(--spacing-3xl)] text-bg"
+    contentClass="text-center"
+    childSlotClass="flex flex-col text-center justify-center"
+  >
+    <div
+      class="galleries flex flex-col justify-center items-center py-[var(--spacing-xl)] md:py-[var(--spacing-2xl)] lg:py-[var(--spacing-3xl)] gap-[var(--spacing-xl)]"
+    >
+      <!-- Dirty Before Gallery -->
+      <Section
+        collection="gallery"
+        query="getAll"
+        variant="gallery2"
+        heading={[
+          {
+            text: "Before: The Mess",
+            tagName: "h3",
+            class: "h3 text-bg load slide-up",
+          },
+        ]}
+      />
+
+      <!-- Sparkling After Gallery -->
+      <Section
+        collection="gallery"
+        query="getAll"
+        variant="gallery2"
+        heading={[
+          {
+            text: "After: The Masterpiece",
+            tagName: "h3",
+            class: "h3 text-bg load slide-up",
+          },
+        ]}
+      />
+    </div>
+  </Section>
+
+  <!-- About -->
+  <!-- About Section with a background picture -->
+  <Section
+    heading={[
       {
         text: "Generations of Clean",
         tagName: "label",
         class: "h5 load slide-down italic",
       },
-    {
+      {
         text: "Family Owned and Operated",
-      tagName: "h2",
-      class: "h2 text-accent mb-[var(--spacing-sm)] load slide-up",
-    },
-  ]}
-  buttons={[
-    { text: "More About Us", link: "/about-us", variant: "secondary" },
-  ]}
-  description="With over 22 years of hands-on experience and hundreds of happy clients, Cleanomatic has become a household name for dependable, honest cleaning services throughout Monmouth and Ocean County. From air ducts to dryer vents, carpets to emergency water damage, our owner-operated team puts integrity and results first."
-  descriptionClass="load slide-up"
-  sectionClass="flex justify-center items-center text-left section-lg bg-bg"
-  contentClass="content-container flex justify-between items-start py-[var(--spacing-2xl)] flex-col-reverse md:flex-row gap-[var(--spacing-xl)] lg:gap-[var(--spacing-2xl)] text-xl"
-  topContentClass="w-full lg:min-w-1/2"
-  childSlotClass="lg:sticky lg:top-0"
-  buttonsSectionClass="py-[var(--spacing-xl)] load scale-up"
-  buttonsPlacement="top-content-section"
->
-  <Picture
-    src={generations}
-    alt="Benefits of Cleanomatic"
-    formats={["avif", "webp"]}
-    fallbackFormat="jpg"
-    loading="eager"
-    quality="low"
-    fetchpriority="high"
-    aria-hidden="true"
-    class="w-full h-fit load scale-up"
-  />
-</Section>
+        tagName: "h2",
+        class: "h2 text-accent mb-[var(--spacing-sm)] load slide-up",
+      },
+    ]}
+    buttons={[
+      { text: "More About Us", link: "/about-us", variant: "secondary" },
+    ]}
+    description="With over 22 years of hands-on experience and hundreds of happy clients, Cleanomatic has become a household name for dependable, honest cleaning services throughout Monmouth and Ocean County. From air ducts to dryer vents, carpets to emergency water damage, our owner-operated team puts integrity and results first."
+    descriptionClass="load slide-up"
+    sectionClass="flex justify-center items-center text-left section-lg bg-bg"
+    contentClass="content-container flex justify-between items-start py-[var(--spacing-2xl)] flex-col-reverse md:flex-row gap-[var(--spacing-xl)] lg:gap-[var(--spacing-2xl)] text-xl"
+    topContentClass="w-full lg:min-w-1/2"
+    childSlotClass="lg:sticky lg:top-0"
+    buttonsSectionClass="py-[var(--spacing-xl)] load scale-up"
+    buttonsPlacement="top-content-section"
+  >
+    <Picture
+      src={generations}
+      alt="Benefits of Cleanomatic"
+      formats={["avif", "webp"]}
+      fallbackFormat="jpg"
+      loading="eager"
+      quality="low"
+      fetchpriority="high"
+      aria-hidden="true"
+      class="w-full h-fit load scale-up"
+    />
+  </Section>
 
   <!-- Benefits Section with a background picture -->
   <Section collection="benefits" query="getAll">
@@ -89,7 +139,7 @@ import { Image } from "astro:assets";
   />
   <Section collection="testimonials" query="getAll" />
   <Section collection="faq" query="getAll">
-  <Picture
+    <Picture
       src={HeroBg}
       alt="Benefits of Cleanomatic"
       formats={["avif", "webp"]}
@@ -100,6 +150,6 @@ import { Image } from "astro:assets";
       aria-hidden="true"
       class="w-[538px] py-[var(--spacing-xl)] h-fit load scale-up"
     />
-    </Section>
+  </Section>
   <Section collection="gallery" query="getAll" />
 </ExtendedLayout>

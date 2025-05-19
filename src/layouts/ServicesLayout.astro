@@ -61,10 +61,37 @@ const pageDesc =
             class="mb-[var(--spacing-md)]"
           />
         )}
-        <slot />
       </Section>
     )
   }
+        <slot />
+
+          <Section
+  heading={[
+    { text: "From Mess to Masterpiece", tagName: "h2", class: "h2 text-bg mb-[var(--spacing-sm)] load slide-up" },
+    { text: "We don’t just clean— we conquer chaos.", tagName: "h6", class: "h6 text-bg load slide-up" },
+  ]}
+  sectionClass="bg-accent py-[var(--spacing-xl)] md:py-[var(--spacing-2xl)] lg:py-[var(--spacing-3xl)] text-bg"
+  contentClass="text-center"
+  childSlotClass="flex flex-col text-center justify-center"
+
+>
+<div class="galleries flex flex-col justify-center items-center py-[var(--spacing-xl)] md:py-[var(--spacing-2xl)] lg:py-[var(--spacing-3xl)] gap-[var(--spacing-xl)]">
+  <!-- Dirty Before Gallery -->
+  <Section collection="gallery" query="getAll" variant="gallery2"
+   heading={[
+    { text: "Before: The Mess", tagName: "h3", class: "h3 text-bg load slide-up" },
+  ]} />
+
+
+  <!-- Sparkling After Gallery -->
+  <Section collection="gallery" query="getAll" variant="gallery2"
+  heading={[
+    { text: "After: The Masterpiece", tagName: "h3", class: "h3 text-bg load slide-up" },
+  ]} />
+</div>
+
+</Section>
 
   <!-- Common sections for services pages -->
   <Section collection="testimonials" query="getAll" />
