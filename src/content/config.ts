@@ -78,6 +78,7 @@ export const metaSchema = z.object({
   heading: headingSchema.optional(),
   description: descriptionSchema.optional(),
   layout: z.string().optional(),
+  itemsLayout: z.string().optional(),
   keywords: z.array(z.string()).optional(),
   ogType: z.string().optional(),
   hasPage: z.boolean().default(true),

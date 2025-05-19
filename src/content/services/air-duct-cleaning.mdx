@@ -11,22 +11,15 @@ keywords:
   - "allergen removal"
 ---
 import Section from '@/components/Section.astro';
-import Button  from '@/components/Button.jsx';
-
+import Button  from '@/components/Button';
 
 <Section
-  heading={[
-    {
-      text: 'Hablamos Español',
-      tagName: 'h2',
-      class: 'h2 text-bg uppercase py-[var(--spacing-sm)]',
-    },
-  ]}
-  description="Nuestro equipo habla español para que su experiencia sea más cómoda y clara."
+  heading={[ { text: 'Hablamos Español', tagName: 'h2', class: 'h2 italic' } ]}
+  description="Nuestro equipo habla español…"
 >
-  <Button href="tel:732-123-4567" variant="primary">
-    Llámanos Ahora
-  </Button>
+  <Button href="tel:732-123-4567">Ll ámanos Ahora</Button>
 </Section>
+
+Aquí continúa el resto de tu contenido en MDX…
 
 Aquí continúa el resto de tu contenido en MDX…
