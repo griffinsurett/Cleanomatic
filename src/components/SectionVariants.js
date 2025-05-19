@@ -90,7 +90,7 @@ export const SectionVariants = {
   // ─────────── Service Areas ───────────
   serviceAreas: {
     sectionClass:
-      "section-lg flex justify-center items-center text-center bg-accent text-bg lg:px-[var(--spacing-lg)] load slide-up",
+      "section-lg py-[var(--spacing-lg)] flex justify-center items-center text-center bg-accent text-bg lg:px-[var(--spacing-lg)] load slide-up",
     contentClass: "content-container",
     itemsClass:
       "w-full flex flex-wrap justify-center items-stretch gap-[var(--spacing-md)] my-[var(--spacing-lg)] md:my-[var(--spacing-2xl)]",

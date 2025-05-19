@@ -62,7 +62,7 @@
 
   @layer components {
     .header-and-footer-wrap {
-      @apply px-[var(--spacing-sm)] sm:px-[var(--spacing-md)] max-w-[90%];
+      @apply px-[var(--spacing-sm)] sm:px-[var(--spacing-md)] max-w-[95%] lg:max-w-[90%];
     }
 
     .container {
