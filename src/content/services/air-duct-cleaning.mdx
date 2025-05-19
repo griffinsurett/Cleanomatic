@@ -10,19 +10,91 @@ keywords:
   - "indoor air quality"
   - "allergen removal"
 ---
-import Section from '@/components/Section.astro';
+
+import Section from "@/components/Section.astro";
 import ductImg from "@/assets/airduct.jpg";
 import { Image } from "astro:assets";
 
 <Section
-  variant="imageCol"
-  heading="Air Duct Cleaning"
-  description="Our professional air duct cleaning service removes dust, pet dander, pollen, mold spores, and microbial contaminants from your HVAC system, dramatically improving indoor air quality and reducing allergy and asthma triggers. By clearing blockages and debris, it enhances airflow and system efficiency—potentially lowering energy consumption by up to 20%—and extends the lifespan of your HVAC equipment. Additionally, clean ducts eliminate musty odors and decrease dust accumulation throughout your home, resulting in a fresher, healthier living environment."
+  variant="imageCol3"
+  childSlotClass="flex flex-row-reverse"
+>
+  <Section
+    variant="textCol"
   >
-<Image src={ductImg} alt="Air Duct Cleaning" class="w-full h-auto rounded-lg shadow-lg mb-6" loading="lazy" />
+  <Section
+    variant="headAndP"
+    heading={[{ text: "What Is Air Duct Cleaning?", tagName: "h4" }]}
+  >
+    <p>
+      Over months and years, your home’s or business’s air ducts trap dust,
+      pollen, pet dander—and sometimes mold spores or microbial growth. Every
+      time your HVAC kicks on, those contaminants circulate, reducing efficiency
+      and compromising the air you and your loved ones breathe. Our professional
+      air duct cleaning pulls back the curtain on what’s hiding in your vents,
+      restores optimal airflow, and delivers fresher, healthier air throughout
+      your property.
+    </p>
+  </Section>
+    <Section
+        variant="headAndP"
+    heading={[{ text: "Why You Can’t Wait to Clean Your Air Ducts", tagName: "h4" }]}
+  >
+    <p>
+    Left unchecked, your ductwork can become a breeding ground for <strong>mold spores</strong>, dust mites, and bacteria—each cycle of your HVAC system then spreads these hidden hazards through every room. Over time, this <strong>significantly worsens indoor air quality</strong>, aggravates allergies, and can even trigger respiratory infections in vulnerable family members. Don’t risk breathing <em>contaminated air</em> day after day when a professional cleaning can immediately halt the buildup at its source.
+  </p>
+  <br></br>
+  <p>
+    Beyond health concerns, neglected ducts force your system to work harder—driving up energy bills by as much as <strong>20%</strong> and shortening the lifespan of your furnace or air handler. A full duct cleaning not only restores proper airflow but also <strong>prevents costly breakdowns</strong>. Slots are limited: <strong>book today</strong> to safeguard both your indoor comfort and your wallet against the expensive consequences of delay.
+  </p>
+  </Section>
+ 
+  </Section>
+ 
+  <Section variant="contentImgSec">
+    <Image
+      src={ductImg}
+      alt="Technician inspecting air ducts"
+      class="w-full h-auto rounded-lg shadow-lg mb-6"
+      loading="lazy"
+    />
+  </Section>
 </Section>
 
-{/* <Section
-  collection="services"
-  query="related"
-/> */}
+
+<Section variant="imageCol3" childSlotClass="flex flex-row-reverse">
+   <Section variant="contentImgSec">
+    <Image
+      src={ductImg}
+      alt="Technician inspecting air ducts"
+      class="w-full h-auto rounded-lg shadow-lg mb-6"
+      loading="lazy"
+    />
+  </Section>
+<Section
+  heading={[{ text: "Our Five‑Step Air Duct Cleaning Process", tagName: "h4" }]}
+  description="At Cleanomatic, we’ve refined air duct cleaning into a clear, five‑step experience—focused on delivering healthier air, improved efficiency, and complete peace of mind."
+      variant="textCol"
+      sectionClass="lg:sticky lg:top-0"
+
+>
+  <ul class="list-disc ml-6 space-y-4">
+    <li>
+      <strong>Free Personalized Estimate:</strong> David or one of our certified technicians will provide a transparent, no‑obligation quote tailored to your home or business.
+    </li>
+    <li>
+      <strong>Detailed System Inspection:</strong> David or one of our certified technicians checks every register, vent, and duct run to pinpoint any buildup, leaks, or areas of concern.
+    </li>
+    <li>
+      <strong>Thorough Debris Removal:</strong> Using professional cleaning tools, we remove accumulated dust, allergens, and debris—keeping it contained and out of your living spaces.
+    </li>
+    <li>
+      <strong>Sanitization & Sealing:</strong> We apply safe, industry‑trusted treatments to eliminate biological contaminants and seal any gaps for optimal airflow.
+    </li>
+    <li>
+      <strong>Final Walk‑Through & Tips:</strong> We guide you through the results, demonstrate the improved airflow, and share simple maintenance tips to keep your ducts performing at their best.
+    </li>
+  </ul>
+  </Section>
+
+</Section>
