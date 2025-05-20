@@ -76,6 +76,14 @@ const pageDesc =
     heading={[
       { text: `Our Five‑Step ${data.title} Cleaning Process`, tagName: "h4", class:"h4 load fade-in" },
     ]}
+    buttons={[
+      {
+        text: "Get a Quote",
+        link: `/contact-us`,
+        variant: "primary",
+      },
+    ]}
+    buttonsSectionClass="flex justify-start mt-[var(--spacing-lg)]"
     description=`At Cleanomatic, we’ve refined ${data.title} cleaning into a clear, five‑step experience—focused on delivering healthier air, improved efficiency, and complete peace of mind.`
     descriptionClass="load slide-up"
     variant="textCol"
@@ -84,7 +92,6 @@ const pageDesc =
     query="related"
   />
 </Section>
-
 
   <Section
     heading={[
@@ -138,9 +145,10 @@ const pageDesc =
 
   <!-- Common sections for services pages -->
   <Section collection="testimonials" query="getAll" />
+    <Section collection="faq" query="related" />
+
   <Section collection="serviceAreas" query="getAll" />
   <!-- <Section collection="gallery" query="getAll" /> -->
-  <Section collection="faq" query="related" />
   <!-- <Section collection="services" query="sibling" headingAreaClass="hidden" /> -->
 
   <!-- Contact / Quote form -->
