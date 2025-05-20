@@ -1,22 +1,21 @@
 ---
-import Form      from "@/components/Forms/Form.astro";
+import Form from "@/components/Forms/Form.astro";
 import TextInput from "@/components/Forms/Inputs/TextInput.astro";
-import Textarea  from "@/components/Forms/Inputs/Textarea.astro";
+import Textarea from "@/components/Forms/Inputs/Textarea.astro";
 import { SiteData } from "@/content/SiteData";
 import { getCurrentEntryId } from "@/utils/CurrentEntry";
 
 const {
-  inputClasses   = "border border-[var(--color-border)] transition-default p-[var(--spacing-md)] w-full bg-light-opacity placeholder:text-[var(--color-bg)] text-bg outline-none focus:border-[var(--color-bg)] focus:ring-1 focus:ring-[var(--color-primary)] focus:bg-primary",
+  inputClasses = "transition-default p-[var(--spacing-md)] w-full bg-light-opacity placeholder:text-[var(--color-bg)] text-bg outline-none focus:border-[var(--color-bg)] focus:ring-1 focus:ring-[var(--color-primary)] focus:bg-primary",
   wrapperClasses = "mb-[var(--spacing-sm)] w-full",
 } = Astro.props;
 
 const currentPage = getCurrentEntryId(Astro);
 console.log("Current page:", currentPage);
 
-const formAction = (
+const formAction =
   import.meta.env.PUBLIC_INTEGRATION_FORMSPREE +
-  import.meta.env.PUBLIC_QUOTE_FORM
-);
+  import.meta.env.PUBLIC_QUOTE_FORM;
 ---
 
 <Form
@@ -24,7 +23,8 @@ const formAction = (
   enableSuccessBanner={true}
   successBannerMessage="Thank you for your message. We will get in touch with you shortly."
   successBannerClass="p-[var(--spacing-sm)] bg-primary text-bg border border-[var(--color-border)] bg-light-opacity"
-  consentWrapperClass = "flex items-start text-left text-bg/65 mb-[var(--spacing-md)]",
+  consentWrapperClass="flex items-start text-left text-bg/65 mb-[var(--spacing-md)]"
+  ,
   action={formAction}
 >
   <!-- track which page this came from -->
@@ -86,5 +86,4 @@ const formAction = (
       wrapperClass={wrapperClasses}
     />
   </div>
-
 </Form>
