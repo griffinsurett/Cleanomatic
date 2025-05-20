@@ -1,6 +1,6 @@
 ---
 title: "Tile and Grout Cleaning"
-description: "Our professional tile and grout cleaning service employs specialized hot water extraction equipment to blast away deep‑seated dirt, grime, and allergens from porous grout lines and tile surfaces, restoring your floors’ original shine and color. After cleaning, we apply a premium grout sealer that acts as an invisible barrier against future stains and moisture intrusion, greatly extending the life and beauty of your tile installations. For high‑traffic or sanitary environments, we use electrostatic spraying of hospital‑grade germicides to eliminate harmful bacteria and ensure a hygienic finish. Our technicians begin with a thorough assessment to identify tile type and any damage, select the ideal pH‑balanced cleaning solutions, hand‑scrub grout lines where necessary, and finish with high‑pressure vacuum extraction for rapid drying."
+description: "David’s tile & grout service blasts away dirt, soap scum, and stains with hot water and hand‑scrub tools, then seals grout lines to keep floors looking fresh longer. Perfect for kitchens, baths, patios, and entryways."
 icon: "🧼"
 order: 5
 featuredImage: "@/assets/grout2.jpg"
@@ -9,4 +9,48 @@ keywords:
   - "grout cleaning"
   - "floor restoration"
   - "stain removal"
+  - "David tile expert"
 ---
+
+import Section from "@/components/Section.astro";
+import groutImg from "@/assets/grout2.jpg";
+import { Image } from "astro:assets";
+
+<Section variant="imageCol3" childSlotClass="flex lg:flex-row-reverse">
+  <Section variant="textCol">
+    <Section
+      variant="headAndP"
+      heading={[{ text: "Surface‑Safe, Deep‑Clean", tagName: "h4" }]}
+    >
+      <p>
+        Tile and grout collect dirt in porous lines and slip‑hazard residue on surfaces. David uses an adjustable‑pressure hot water lance that safely loosens grime, then hand‑scrubs stubborn spots with precision tools.
+      </p>
+      <br/>
+      <p>
+        Our high‑powered vacuum extraction removes every drop of dirty water—leaving tile bright and grout pores bone‑dry.
+      </p>
+    </Section>
+    <Section
+      variant="headAndP"
+      heading={[{ text: "Sealing for Long‑Term Clean", tagName: "h4" }]}
+    >
+      <p>
+        Clean grout is still vulnerable—so we hand‑apply a premium sealer that fills pores and repels spills, oils, and mildew. Floors stay cleaner, floors stay safer.
+      </p>
+      <br/>
+      <p>
+        In moisture‑prone areas like showers or entryways, we finish with a quick‑dry spray that adds an invisible barrier against bacteria and dirt.
+      </p>
+    </Section>
+  </Section>
+
+  <Section variant="contentImgSec">
+    <Image
+      src={groutImg}
+      alt="Specialized tile & grout cleaning"
+      class="w-full h-auto rounded-lg shadow-lg mb-6"
+      loading="lazy"
+    />
+  </Section>
+</Section>
+

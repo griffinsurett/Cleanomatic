@@ -1,6 +1,6 @@
 ---
 title: "Dryer Vent Cleaning"
-description: "Our dryer vent cleaning service removes hazardous lint buildup and debris from your dryer exhaust system, significantly reducing the risk of household fires and ensuring safe operation of your appliance. Clear airflow through the vents allows your dryer to run at peak efficiency, lowering energy consumption and cutting drying times, which helps you save on utility bills. By preventing moisture retention in the ductwork, we eliminate the conditions that foster mold and mildew growth, protecting both your clothes and indoor air quality. Our certified technicians use high‑speed rotary brushes, powerful vacuums, and camera inspections to ensure a complete clean, and provide before‑and‑after reports so you can see the difference."
+description: "David clears lint and debris from your dryer vent to reduce fire risk, improve airflow, and speed up drying times. Camera‑verified and brush‑powered, we make sure nothing’s left behind."
 icon: "🔥"
 order: 3
 featuredImage: "@/assets/dryervent2.jpg"
@@ -9,4 +9,48 @@ keywords:
   - "lint removal"
   - "fire safety"
   - "dryer maintenance"
+  - "David dryer expert"
 ---
+
+import Section from "@/components/Section.astro";
+import ventImg from "@/assets/dryervent2.jpg";
+import { Image } from "astro:assets";
+
+<Section variant="imageCol3" childSlotClass="flex lg:flex-row-reverse">
+  <Section variant="textCol">
+    <Section
+      variant="headAndP"
+      heading={[{ text: "Stop a Hidden Fire Hazard", tagName: "h4" }]}
+    >
+      <p>
+        Clogged dryer vents are one of the leading causes of household fires. Every ounce of lint removed lowers that risk—David uses high‑speed rotary brushes to dislodge debris, then powerful vacuums to haul it away.
+      </p>
+      <br/>
+      <p>
+        With clear before‑and‑after camera footage, you’ll see exactly where blockages were—and know you’re safe when your dryer runs.
+      </p>
+    </Section>
+    <Section
+      variant="headAndP"
+      heading={[{ text: "Efficiency & Longevity", tagName: "h4" }]}
+    >
+      <p>
+        A free‑flowing exhaust not only dries clothes up to 30% faster but also puts less strain on your appliance—extending its service life and shaving dollars off energy bills.
+      </p>
+      <br/>
+      <p>
+        David’s team finishes with a full system check—verifying vent integrity, seals, and clearances—so you get both safety and performance in one service.
+      </p>
+    </Section>
+  </Section>
+
+  <Section variant="contentImgSec">
+    <Image
+      src={ventImg}
+      alt="Cleaning inside a dryer vent"
+      class="w-full h-auto rounded-lg shadow-lg mb-6"
+      loading="lazy"
+    />
+  </Section>
+</Section>
+

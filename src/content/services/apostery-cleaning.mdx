@@ -1,12 +1,54 @@
 ---
-title: "Apostery Cleaning"
-description: "Our professional upholstery cleaning employs advanced low‑moisture extraction techniques to penetrate deep into your furniture fabrics, effectively removing embedded allergens such as dust mites, pet dander, and pollen that can exacerbate respiratory issues. By using eco‑friendly, hypoallergenic cleaning solutions, we ensure your sofas, chairs, and other upholstered pieces are sanitized without leaving harmful residues or strong chemical odors behind. Routine deep cleaning not only revitalizes the appearance and texture of your furniture but also extends its lifespan by preventing fiber degradation and fabric discoloration caused by accumulated soils and oils. Our thorough process includes a pre‑inspection, targeted pretreatment of stains and high‑traffic areas, gentle agitation to loosen grime, and precision extraction to remove moisture quickly, promoting faster drying times and preventing mold growth."
+title: "Upholstery Cleaning"
+description: "David’s upholstery cleaning uses proven low‑moisture extraction to remove dirt, allergens, and stains from every fabric type. Fast‑drying and thorough, we restore your furniture’s look and feel—no fluff, just clean."
 icon: "🛋️"
 order: 1
 featuredImage: "@/assets/couch.jpg"
 keywords:
-  - "couch cleaning"
+  - "upholstery cleaning"
   - "furniture cleaning"
-  - "sanitizing furniture"
-  - "apostery cleaning"
+  - "low‑moisture extraction"
+  - "David upholstery expert"
 ---
+
+import Section from "@/components/Section.astro";
+import couchImg from "@/assets/couch.jpg";
+import { Image } from "astro:assets";
+
+<Section variant="imageCol3" childSlotClass="flex lg:flex-row-reverse">
+  <Section variant="textCol">
+    <Section
+      variant="headAndP"
+      heading={[{ text: "Why David’s Method Works", tagName: "h4" }]}
+    >
+      <p>
+        David starts every job with a close inspection—identifying fabric type, soil level, and any trouble spots. Then he applies a targeted pretreatment that loosens oils, body soils, and everyday spills without over‑wetting.
+      </p>
+      <br/>
+      <p>
+        Next, our low‑moisture extraction tool drives powerful suction right through the fibers, pulling out moisture along with the grime. Your upholstery dries in under 4 hours* and feels entirely renewed.
+      </p>
+    </Section>
+    <Section
+      variant="headAndP"
+      heading={[{ text: "Total Fabric Protection", tagName: "h4" }]}
+    >
+      <p>
+        Beyond stain removal, David seals cleaned fibers to ward off future spills and dust. That means fewer stains setting in, softer cushions longer, and less allergy‑trigger buildup over time.
+      </p>
+      <br/>
+      <p>
+        From delicate velvets to durable microsuedes, our process adapts to every weave—bringing out the original color and texture without harsh chemicals or residue.
+      </p>
+    </Section>
+  </Section>
+
+  <Section variant="contentImgSec">
+    <Image
+      src={couchImg}
+      alt="David inspecting and cleaning a sofa"
+      class="w-full h-auto rounded-lg shadow-lg mb-6"
+      loading="lazy"
+    />
+  </Section>
+</Section>

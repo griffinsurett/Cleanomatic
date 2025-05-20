@@ -24,6 +24,8 @@ const pageTitle =
   overrideTitle ?? (isItemPage ? data.title : capitalize(collection));
 const pageDesc =
   overrideDesc ?? (isItemPage ? data.description : rest.description);
+
+  // console.log("title: ", data.title);
 ---
 
 <BaseLayout
@@ -66,15 +68,16 @@ const pageDesc =
     <Image
       src={ductImg}
       alt="Technician inspecting air ducts"
-      class="w-full h-auto rounded-lg shadow-lg mb-6"
+      class="w-full h-auto rounded-lg shadow-lg mb-6 load scale-up"
       loading="lazy"
     />
   </Section>
   <Section
     heading={[
-      { text: "Our Five‑Step Air Duct Cleaning Process", tagName: "h4" },
+      { text: `Our Five‑Step ${data.title} Cleaning Process`, tagName: "h4", class:"h4 load fade-in" },
     ]}
-    description="At Cleanomatic, we’ve refined air duct cleaning into a clear, five‑step experience—focused on delivering healthier air, improved efficiency, and complete peace of mind."
+    description=`At Cleanomatic, we’ve refined ${data.title} cleaning into a clear, five‑step experience—focused on delivering healthier air, improved efficiency, and complete peace of mind.`
+    descriptionClass="load slide-up"
     variant="textCol"
     sectionClass="lg:sticky lg:top-0"
     collection="process"

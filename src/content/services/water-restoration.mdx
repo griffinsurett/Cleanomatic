@@ -1,12 +1,76 @@
 ---
 title: "Water Restoration"
-description: "Our water restoration service begins with a comprehensive inspection to classify the category of water damage—ranging from clean water to black water—and determine the precise remediation strategy needed for your property. We employ powerful extraction pumps and industrial‑grade dehumidifiers to remove standing water and moisture, followed by targeted drying techniques that lower humidity to prevent mold growth. Thorough cleaning and disinfection of all affected surfaces eliminate bacteria, pathogens, and odors using EPA‑approved antimicrobial agents and hospital‑grade germicides for maximum protection. Once sanitized, our restoration experts perform structural repairs—such as drywall replacement, flooring repairs, and cabinetry restoration—to return your property to its pre‑loss condition with meticulous attention to detail. To safeguard against future incidents, we offer moisture intrusion solutions like sealants and advanced leak detection systems, giving you lasting peace of mind."
+description: "When flooding or leaks strike, David’s 24‑hour emergency water restoration team moves fast—using pumps, dehumidifiers, and cleanup crews to stop damage and restore your home back to normal."
 icon: "💧"
 order: 6
 featuredImage: "@/assets/water-dm.jpg"
 keywords:
   - "water restoration"
-  - "water extraction"
+  - "emergency flood cleanup"
   - "mold prevention"
-  - "flood cleanup"
+  - "24-hour service"
 ---
+
+import Section from "@/components/Section.astro";
+import waterImg from "@/assets/water-dm.jpg";
+import { Image } from "astro:assets";
+
+<Section variant="imageCol3" childSlotClass="flex lg:flex-row-reverse">
+  <Section variant="textCol">
+    <Section
+      variant="headAndP"
+      heading={[{ text: "Always On‑Call for Emergencies", tagName: "h4" }]}
+    >
+      <p>
+        When water invades—day or night—call David. Our fully equipped team responds within hours, deploying high‑capacity pumps to remove standing water before it seeps deeper.
+      </p>
+      <br/>
+      <p>
+        Rapid action means minimal damage, lower repair costs, and peace of mind when you need it most.
+      </p>
+    </Section>
+    <Section
+      variant="headAndP"
+      heading={[{ text: "Drying, Cleaning, Repair", tagName: "h4" }]}
+    >
+      <p>
+        After extraction, we set up industrial dehumidifiers and airflow systems to pull moisture from walls and floors. Then David’s crew cleans surfaces and tackles repairs—drywall, flooring, trim—so your space looks exactly as it did before the crisis.
+      </p>
+      <br/>
+      <p>
+        Every step includes clear updates and site walkthroughs, so you’re never left wondering about progress or costs.
+      </p>
+    </Section>
+  </Section>
+
+  <Section variant="contentImgSec">
+    <Image
+      src={waterImg}
+      alt="Rapid water extraction in progress"
+      class="w-full h-auto rounded-lg shadow-lg mb-6"
+      loading="lazy"
+    />
+  </Section>
+</Section>
+
+<Section
+  variant="imageCol3"
+  childSlotClass="flex lg:flex-row-reverse py-[var(--spacing-3xl)]"
+>
+  <Section variant="contentImgSec">
+    <Image
+      src={waterImg}
+      alt="Fully restored living space"
+      class="w-full h-auto rounded-lg shadow-lg mb-6"
+      loading="lazy"
+    />
+  </Section>
+  <Section
+    heading={[{ text: "Our Five‑Step Water Restoration Process", tagName: "h4" }]}
+    description="Emergency Extraction → Targeted Drying → Sanitizing Cleanup → Repairs & Restoration → Final Walkthrough—David’s process gets you back to normal, fast."
+    variant="textCol"
+    sectionClass="lg:sticky lg:top-0"
+    collection="process"
+    query="getAll"
+/>
+</Section>

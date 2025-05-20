@@ -3,35 +3,70 @@
     "id": "estimate",
     "order": 1,
     "title": "Free Personalized Estimate",
-    "description": "David or one of our certified technicians will provide a transparent, no‑obligation quote tailored to your home or business.",
-    "services": ["air-duct-cleaning"]
+    "description": "David or one of our certified technicians will visit your property, discuss your needs in detail, and provide a transparent, no‑obligation quote tailored to the specific cleaning or restoration service you’re requesting.",
+    "services": [
+      "apostery-cleaning",
+      "air-duct-cleaning",
+      "carpet-cleaning",
+      "dryer-vent-cleaning",
+      "tile-and-grout-cleaning",
+      "water-restoration"
+    ]
   },
   {
     "id": "inspection",
     "order": 2,
     "title": "Detailed System Inspection",
-    "description": "We check every register, vent, and duct run to pinpoint any buildup, leaks, or areas of concern.",
-    "services": ["air-duct-cleaning"]
+    "description": "We conduct a thorough on‑site assessment—whether that’s examining upholstery fabrics, tracing ductwork, scanning grout lines, inspecting your carpet pile, checking vent pathways, or surveying water damage—to pinpoint trouble spots and plan the most effective approach.",
+    "services": [
+      "apostery-cleaning",
+      "air-duct-cleaning",
+      "carpet-cleaning",
+      "dryer-vent-cleaning",
+      "tile-and-grout-cleaning",
+      "water-restoration"
+    ]
   },
   {
-    "id": "debris-removal",
+    "id": "deep-cleaning",
     "order": 3,
-    "title": "Thorough Debris Removal",
-    "description": "Using professional cleaning tools, we remove accumulated dust, allergens, and debris—keeping it contained and out of your living spaces.",
-    "services": ["air-duct-cleaning"]
+    "title": "Specialized Cleaning",
+    "description": "Using the right equipment for each job—low‑moisture extractors for upholstery, hot water extraction for carpet, rotary brushes and vacuums for vents, high‑pressure hoses for tile & grout, or pumps and dehumidifiers for water removal—we eliminate dirt, debris, allergens, and excess moisture at the source.",
+    "services": [
+      "apostery-cleaning",
+      "air-duct-cleaning",
+      "carpet-cleaning",
+      "dryer-vent-cleaning",
+      "tile-and-grout-cleaning",
+      "water-restoration"
+    ]
   },
   {
-    "id": "sanitization",
+    "id": "protection",
     "order": 4,
-    "title": "Sanitization & Sealing",
-    "description": "We apply safe, industry‑trusted treatments to eliminate biological contaminants and seal any gaps for optimal airflow.",
-    "services": ["air-duct-cleaning"]
+    "title": "Protective Treatment",
+    "description": "Once cleaning is complete, we apply service‑specific finishes—fabric protectants to guard against future spills, sealers to lock out grout stains, system‑tune‑ups for ducts and vents, or moisture barriers for restored areas—to extend results and keep your space or equipment performing at its best.",
+    "services": [
+      "apostery-cleaning",
+      "air-duct-cleaning",
+      "carpet-cleaning",
+      "dryer-vent-cleaning",
+      "tile-and-grout-cleaning",
+      "water-restoration"
+    ]
   },
   {
     "id": "walk-through",
     "order": 5,
     "title": "Final Walk‑Through & Tips",
-    "description": "We guide you through the results, demonstrate the improved airflow, and share simple maintenance tips to keep your ducts performing at their best.",
-    "services": ["air-duct-cleaning"]
+    "description": "David will personally walk you through the completed work—showing before/after comparisons, answering your questions, and providing tailored maintenance advice to help you keep everything in peak condition long after we’re gone.",
+    "services": [
+      "apostery-cleaning",
+      "air-duct-cleaning",
+      "carpet-cleaning",
+      "dryer-vent-cleaning",
+      "tile-and-grout-cleaning",
+      "water-restoration"
+    ]
   }
 ]

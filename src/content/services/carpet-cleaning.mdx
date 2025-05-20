@@ -1,6 +1,6 @@
 ---
 title: "Carpet Cleaning"
-description: "We specialize in eco‑friendly carpet cleaning methods that utilize biodegradable, non‑toxic cleaning agents to gently lift dirt, stains, and trapped allergens from deep within carpet fibers, improving indoor air quality and reducing chemical exposure. Our hot water extraction and low‑moisture encapsulation techniques ensure thorough cleaning without overwetting carpets, minimizing drying time and preventing mold or mildew formation. Regular professional cleaning restores your carpets’ vibrant appearance and plush feel by removing tough stains like coffee, wine, and pet accidents using enzyme‑based solutions and steam cleaning when appropriate. Additionally, our preventive maintenance services—including soil protection and deodorizing treatments—safeguard your investment by extending the life of your carpets and keeping them fresh between deep‑clean cycles."
+description: "David’s carpet cleaning uses hot water extraction and powerful vacuums to pull dirt, pet stains, and odors out of every fiber. Fast‑drying and thorough, we leave carpets looking fresh and ready to use."
 icon: "🧹"
 order: 4
 featuredImage: "@/assets/carpet.jpg"
@@ -8,5 +8,48 @@ keywords:
   - "carpet cleaning"
   - "deep cleaning"
   - "stain removal"
-  - "eco-friendly carpet cleaning"
+  - "David carpet specialist"
 ---
+
+import Section from "@/components/Section.astro";
+import carpetImg from "@/assets/carpet.jpg";
+import { Image } from "astro:assets";
+
+<Section variant="imageCol3" childSlotClass="flex lg:flex-row-reverse">
+  <Section variant="textCol">
+    <Section
+      variant="headAndP"
+      heading={[{ text: "Why Deep‑Clean Carpets Matter", tagName: "h4" }]}
+    >
+      <p>
+        Over time, carpets trap grit, pet dander, spills, and odors deep in the pile—wearing fibers thin and dulling colors. David’s hot water extraction blasts right through that buildup, restoring your carpet’s full loft and brightness.
+      </p>
+      <br/>
+      <p>
+        Our high‑pressure rinse not only lifts away hidden soils but also flushes out trapped allergens—so your home not only looks cleaner, it breathes easier too.
+      </p>
+    </Section>
+    <Section
+      variant="headAndP"
+      heading={[{ text: "Stain‑Fighting Power", tagName: "h4" }]}
+    >
+      <p>
+        From red wine to pet accidents, David brings enzyme boosters to the toughest spots—breaking down stains at the source before deep‑extraction renders them invisible.
+      </p>
+      <br/>
+      <p>
+        Every carpet cleaning ends with a high‑velocity spin‑dry, so your floors are walk‑on‑ready in as little as 6 hours—no soggy setbacks, just fresh, dry fibers.
+      </p>
+    </Section>
+  </Section>
+
+  <Section variant="contentImgSec">
+    <Image
+      src={carpetImg}
+      alt="Technician performing hot water extraction on carpet"
+      class="w-full h-auto rounded-lg shadow-lg mb-6"
+      loading="lazy"
+    />
+  </Section>
+</Section>
+
