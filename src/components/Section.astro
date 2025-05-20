@@ -376,6 +376,7 @@ const itemsDefaultHasPage = meta.itemsHasPage ?? false;
               ItemComponent={finalComponent}
               HasPage={itemsDefaultHasPage}
               pathname={Astro.url.pathname}
+              client={finalClient}
               sortBy={sortBy}
               sortOrder={sortOrder}
               manualOrder={manualOrder}
