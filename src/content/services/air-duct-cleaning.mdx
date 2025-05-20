@@ -15,42 +15,52 @@ import Section from "@/components/Section.astro";
 import ductImg from "@/assets/airduct.jpg";
 import { Image } from "astro:assets";
 
-<Section
-  variant="imageCol3"
-  childSlotClass="flex flex-row-reverse"
->
-  <Section
-    variant="textCol"
-  >
-  <Section
-    variant="headAndP"
-    heading={[{ text: "What Is Air Duct Cleaning?", tagName: "h4" }]}
-  >
-    <p>
-      Over months and years, your home’s or business’s air ducts trap dust,
-      pollen, pet dander—and sometimes mold spores or microbial growth. Every
-      time your HVAC kicks on, those contaminants circulate, reducing efficiency
-      and compromising the air you and your loved ones breathe. Our professional
-      air duct cleaning pulls back the curtain on what’s hiding in your vents,
-      restores optimal airflow, and delivers fresher, healthier air throughout
-      your property.
-    </p>
-  </Section>
+<Section variant="imageCol3" childSlotClass="flex lg:flex-row-reverse">
+  <Section variant="textCol">
     <Section
-        variant="headAndP"
-    heading={[{ text: "Why You Can’t Wait to Clean Your Air Ducts", tagName: "h4" }]}
-  >
-    <p>
-    Left unchecked, your ductwork can become a breeding ground for <strong>mold spores</strong>, dust mites, and bacteria—each cycle of your HVAC system then spreads these hidden hazards through every room. Over time, this <strong>significantly worsens indoor air quality</strong>, aggravates allergies, and can even trigger respiratory infections in vulnerable family members. Don’t risk breathing <em>contaminated air</em> day after day when a professional cleaning can immediately halt the buildup at its source.
-  </p>
-  <br></br>
-  <p>
-    Beyond health concerns, neglected ducts force your system to work harder—driving up energy bills by as much as <strong>20%</strong> and shortening the lifespan of your furnace or air handler. A full duct cleaning not only restores proper airflow but also <strong>prevents costly breakdowns</strong>. Slots are limited: <strong>book today</strong> to safeguard both your indoor comfort and your wallet against the expensive consequences of delay.
-  </p>
+      variant="headAndP"
+      heading={[{ text: "What Is Air Duct Cleaning?", tagName: "h4" }]}
+    >
+      <p>
+        Over months and years, your home’s or business’s air ducts trap dust,
+        pollen, pet dander—and sometimes mold spores or microbial growth. Every
+        time your HVAC kicks on, those contaminants circulate, reducing
+        efficiency and compromising the air you and your loved ones breathe. Our
+        professional air duct cleaning pulls back the curtain on what’s hiding
+        in your vents, restores optimal airflow, and delivers fresher, healthier
+        air throughout your property.
+      </p>
+    </Section>
+    <Section
+      variant="headAndP"
+      heading={[
+        { text: "Why You Can’t Wait to Clean Your Air Ducts", tagName: "h4" },
+      ]}
+    >
+      <p>
+        Left unchecked, your ductwork can become a breeding ground for{" "}
+        <strong>mold spores</strong>, dust mites, and bacteria—each cycle of
+        your HVAC system then spreads these hidden hazards through every room.
+        Over time, this{" "}
+        <strong>significantly worsens indoor air quality</strong>, aggravates
+        allergies, and can even trigger respiratory infections in vulnerable
+        family members. Don’t risk breathing <em>contaminated air</em> day after
+        day when a professional cleaning can immediately halt the buildup at its
+        source.
+      </p>
+      <br></br>
+      <p>
+        Beyond health concerns, neglected ducts force your system to work
+        harder—driving up energy bills by as much as <strong>20%</strong> and
+        shortening the lifespan of your furnace or air handler. A full duct
+        cleaning not only restores proper airflow but also{" "}
+        <strong>prevents costly breakdowns</strong>. Slots are limited:{" "}
+        <strong>book today</strong> to safeguard both your indoor comfort and
+        your wallet against the expensive consequences of delay.
+      </p>
+    </Section>
   </Section>
- 
-  </Section>
- 
+
   <Section variant="contentImgSec">
     <Image
       src={ductImg}
@@ -61,8 +71,7 @@ import { Image } from "astro:assets";
   </Section>
 </Section>
 
-
-<Section variant="imageCol3" childSlotClass="flex flex-row-reverse">
+<Section variant="imageCol3" childSlotClass="flex lg:flex-row-reverse py-[var(--spacing-3xl)]">
    <Section variant="contentImgSec">
     <Image
       src={ductImg}
@@ -76,9 +85,8 @@ import { Image } from "astro:assets";
   description="At Cleanomatic, we’ve refined air duct cleaning into a clear, five‑step experience—focused on delivering healthier air, improved efficiency, and complete peace of mind."
       variant="textCol"
       sectionClass="lg:sticky lg:top-0"
-
 >
-  <ul class="list-disc ml-9 space-y-4">
+  <ol class="list-decimal ml-9 space-y-4">
     <li>
       <strong>Free Personalized Estimate:</strong> David or one of our certified technicians will provide a transparent, no‑obligation quote tailored to your home or business.
     </li>
@@ -94,7 +102,7 @@ import { Image } from "astro:assets";
     <li>
       <strong>Final Walk‑Through & Tips:</strong> We guide you through the results, demonstrate the improved airflow, and share simple maintenance tips to keep your ducts performing at their best.
     </li>
-  </ul>
+  </ol>
   </Section>
 
 </Section>
