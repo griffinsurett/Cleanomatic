@@ -1,0 +1,37 @@
+[
+  {
+    "id": "estimate",
+    "order": 1,
+    "title": "Free Personalized Estimate",
+    "description": "David or one of our certified technicians will provide a transparent, no‑obligation quote tailored to your home or business.",
+    "services": ["air-duct-cleaning"]
+  },
+  {
+    "id": "inspection",
+    "order": 2,
+    "title": "Detailed System Inspection",
+    "description": "We check every register, vent, and duct run to pinpoint any buildup, leaks, or areas of concern.",
+    "services": ["air-duct-cleaning"]
+  },
+  {
+    "id": "debris-removal",
+    "order": 3,
+    "title": "Thorough Debris Removal",
+    "description": "Using professional cleaning tools, we remove accumulated dust, allergens, and debris—keeping it contained and out of your living spaces.",
+    "services": ["air-duct-cleaning"]
+  },
+  {
+    "id": "sanitization",
+    "order": 4,
+    "title": "Sanitization & Sealing",
+    "description": "We apply safe, industry‑trusted treatments to eliminate biological contaminants and seal any gaps for optimal airflow.",
+    "services": ["air-duct-cleaning"]
+  },
+  {
+    "id": "walk-through",
+    "order": 5,
+    "title": "Final Walk‑Through & Tips",
+    "description": "We guide you through the results, demonstrate the improved airflow, and share simple maintenance tips to keep your ducts performing at their best.",
+    "services": ["air-duct-cleaning"]
+  }
+]

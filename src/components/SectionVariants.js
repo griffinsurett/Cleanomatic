@@ -18,7 +18,7 @@ export const SectionVariants = {
       "flex justify-between items-center content-container py-[var(--spacing-2xl)] flex-col-reverse md:flex-row-reverse gap-[var(--spacing-xl)] lg:gap-[var(--spacing-2xl)]",
     itemsClass:
       "flex flex-col items-start justify-start gap-[var(--spacing-md)]",
-    itemClass: "",
+    itemClass:"list-disc list-inside ml-6",
     buttonsSectionClass: "hidden",
     headingAreaClass: "flex flex-col",
     backgroundMedia: undefined,
@@ -58,7 +58,6 @@ imageCol3: {
       "section-sm w-full flex justify-center items-center bg-bg py-[50px]",
     contentClass: "flex justify-between flex-col xl:flex-row content-container",
     itemsClass: "flex flex-col gap-[var(--spacing-lg)]",
-    itemClass: "",
     buttonsSectionClass: "hidden",
     headingAreaClass: "text-center lg:text-left load slide-left",
     backgroundMedia: undefined,
@@ -144,15 +143,15 @@ imageCol3: {
     textCol: {
     sectionClass:"flex justify-start items-center w-full lg:w-12/20",
     childSlotClass:"flex flex-col",
-    // headingAreaClass:"hidden",
-    childPlacement:"top-content-section"
+    childPlacement:"top-content-section",
+    itemClass:"list-decimal list-inside ml-6"
   },
    headAndP: {
     sectionClass:"flex justify-center items-center pb-[var(--spacing-2xl)]",
     contentClass:"flex justify-center items-center",
     childSlotClass:"flex flex-col",
     topContentClass:"text-left",
-    childPlacement:"top-content-section"
+    childPlacement:"top-content-section",
   },
   contentImgSec: {
     sectionClass: "flex justify-center items-center text-center w-full lg:w-8/20 lg:sticky lg:top-0"

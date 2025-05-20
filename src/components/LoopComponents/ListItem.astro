@@ -1,30 +1,33 @@
 ---
 // src/components/ListItem.astro
 import Button from "../Button.jsx";
-import Heading from "../Heading.jsx";
 
-// Expect props for the item, collectionName, and a flag for whether the item has its own page.
-const { item, collectionName, HasPage, showButton = true } = Astro.props;
+const {
+  item,
+  collectionName,
+  HasPage,
+  showButton = true,
+  itemClass = "",
+} = Astro.props;
 
-// Determine if the button should be shown; if the item explicitly defines its own value, use that.
-const effectiveHasPage = item.data.hasPage !== undefined ? item.data.hasPage : HasPage;
+// decide whether this entry should show a “View More” button
+const effectiveHasPage =
+  item.data.hasPage !== undefined ? item.data.hasPage : HasPage;
 ---
 
-<li class="list-disc list-inside marker:text-[var(--color-text)] mb-[var(--spacing-md)] load slide-left">
-  <!-- Title sits inline with the bullet marker -->
-  <Heading tagName="label" className="h6 text-[var(--color-text)]">
-    {item.data.title}
-  </Heading>
+<li class={`${itemClass} py-[var(--spacing-sm)] list-inside`}>
+  {/* Inline title + description */}
+  <strong class="font-semibold">{item.data.title}:</strong>&nbsp;
+  <span class="inline text-sm leading-relaxed">
+    {item.data.description}
+  </span>
 
-  <!-- Description & button go in their own block below -->
-  <div class="w-full px-[var(--spacing-md)] bg-bg flex flex-col items-start mt-[var(--spacing-xs)]">
-    <p class="text-[var(--color-text)] mb-[var(--spacing-md)]">
-      {item.data.description}
-    </p>
-    {effectiveHasPage && showButton && (
+  {/* Optional “View More” button on its own line */}
+  {effectiveHasPage && showButton && (
+    <div class="mt-2">
       <Button variant="primary" href={`/${collectionName}/${item.slug}`}>
         View More
       </Button>
-    )}
-  </div>
+    </div>
+  )}
 </li>

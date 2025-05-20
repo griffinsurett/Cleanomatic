@@ -6,6 +6,7 @@ import Section from "@/components/Section.astro";
 import QuoteForm from "@/components/StaticSections/QuoteForm.astro";
 import { Image } from "astro:assets";
 import { capitalize } from "@/utils/ContentUtils";
+import ductImg from "@/assets/airduct.jpg";
 
 const {
   collection,
@@ -58,6 +59,31 @@ const pageDesc =
   <slot />
 
   <Section
+  variant="imageCol3"
+  childSlotClass="flex lg:flex-row-reverse py-[var(--spacing-3xl)]"
+>
+  <Section variant="contentImgSec">
+    <Image
+      src={ductImg}
+      alt="Technician inspecting air ducts"
+      class="w-full h-auto rounded-lg shadow-lg mb-6"
+      loading="lazy"
+    />
+  </Section>
+  <Section
+    heading={[
+      { text: "Our Five‑Step Air Duct Cleaning Process", tagName: "h4" },
+    ]}
+    description="At Cleanomatic, we’ve refined air duct cleaning into a clear, five‑step experience—focused on delivering healthier air, improved efficiency, and complete peace of mind."
+    variant="textCol"
+    sectionClass="lg:sticky lg:top-0"
+    collection="process"
+    query="related"
+  />
+</Section>
+
+
+  <Section
     heading={[
       {
         text: "From Mess to Masterpiece",
@@ -70,7 +96,7 @@ const pageDesc =
         class: "h6 text-bg load slide-up",
       },
     ]}
-    sectionClass="bg-accent py-[var(--spacing-xl)] md:py-[var(--spacing-2xl)] lg:py-[var(--spacing-3xl)] text-bg"
+    sectionClass="bg-accent py-[var(--spacing-xl)] md:py-[var(--spacing-2xl)] lg:py-[var(--spacing-3xl)] text-bg load fade-in"
     contentClass="text-center"
     childSlotClass="flex flex-col text-center justify-center"
   >

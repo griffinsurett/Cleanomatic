@@ -70,39 +70,3 @@ import { Image } from "astro:assets";
     />
   </Section>
 </Section>
-
-<Section variant="imageCol3" childSlotClass="flex lg:flex-row-reverse py-[var(--spacing-3xl)]">
-   <Section variant="contentImgSec">
-    <Image
-      src={ductImg}
-      alt="Technician inspecting air ducts"
-      class="w-full h-auto rounded-lg shadow-lg mb-6"
-      loading="lazy"
-    />
-  </Section>
-<Section
-  heading={[{ text: "Our Five‑Step Air Duct Cleaning Process", tagName: "h4" }]}
-  description="At Cleanomatic, we’ve refined air duct cleaning into a clear, five‑step experience—focused on delivering healthier air, improved efficiency, and complete peace of mind."
-      variant="textCol"
-      sectionClass="lg:sticky lg:top-0"
->
-  <ol class="list-decimal ml-9 space-y-4">
-    <li>
-      <strong>Free Personalized Estimate:</strong> David or one of our certified technicians will provide a transparent, no‑obligation quote tailored to your home or business.
-    </li>
-    <li>
-      <strong>Detailed System Inspection:</strong> David or one of our certified technicians checks every register, vent, and duct run to pinpoint any buildup, leaks, or areas of concern.
-    </li>
-    <li>
-      <strong>Thorough Debris Removal:</strong> Using professional cleaning tools, we remove accumulated dust, allergens, and debris—keeping it contained and out of your living spaces.
-    </li>
-    <li>
-      <strong>Sanitization & Sealing:</strong> We apply safe, industry‑trusted treatments to eliminate biological contaminants and seal any gaps for optimal airflow.
-    </li>
-    <li>
-      <strong>Final Walk‑Through & Tips:</strong> We guide you through the results, demonstrate the improved airflow, and share simple maintenance tips to keep your ducts performing at their best.
-    </li>
-  </ol>
-  </Section>
-
-</Section>

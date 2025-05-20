@@ -153,4 +153,13 @@ export const collections = {
     loader: file("src/content/missionVision/missionVision.json"),
     schema: ({ image }) => baseSchema({ image }),
   }),
+  process: defineCollection({
+    loader: file("src/content/process/ourProcess.json"),
+    schema: ({ image }) =>
+      baseSchema({ image }).extend({
+          services: z
+          .union([reference("services"), z.array(reference("services"))])
+          .optional(),
+      }),
+  }),
 };
