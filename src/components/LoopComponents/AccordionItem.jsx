@@ -23,7 +23,7 @@ export default function AccordionItem({
         <div className="accordion-icon w-1/6 flex justify-end items-center">
           <svg
             className={`
-              w-8 lg:w-4 h-auto
+              w-5 lg:w-4 h-auto
               transform transition-transform duration-200
               ${open ? "rotate-180" : "rotate-0"}
             `}
