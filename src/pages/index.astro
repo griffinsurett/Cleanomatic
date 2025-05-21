@@ -6,7 +6,7 @@ import PrimaryHero from "@/components/StaticSections/PrimaryHero.astro";
 import { Picture } from "astro:assets";
 import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
 import generations from "@/assets/generations.jpg";
-import { Image } from "astro:assets";
+import { SiteData, CTAdata } from "@/content/SiteData";
 ---
 
 <ExtendedLayout
@@ -20,12 +20,46 @@ import { Image } from "astro:assets";
   ]}
 >
   <!-- Hero Section with primary call-to-action -->
-  <PrimaryHero />
+  <!-- Hero Section as Section variant -->
+  <Section variant="primaryHero" heading={[
+    {
+      text: "Keeping NJ Clean Since 1999!",
+      tagName: "label",
+      class: "h4 italic text-bg slide-down",
+    },
+    {
+      text: "Your Trusted Cleaning Experts in New Jersey.",
+      tagName: "h2",
+      class: "h2 text-bg slide-down",
+    },
+  ]}
+  description={`
+    Welcome to Cleanomatic, your trusted, full‑service partner for all things clean in New Jersey—Monmouth, Ocean, Middlesex,
+      and beyond. Whether you’re dealing with water damage after a leak, improving indoor air quality by clearing dryer vents and air ducts, or giving your home a fresh start with deep furniture, carpet, and floor cleaning, we’ve got you covered.
+  `}
+   buttons={[
+    {
+      text: CTAdata.buttonText,
+      link: CTAdata.buttonLink,
+      variant: "primary",
+    },
+  ]}
+  >
+    <!-- these children become your bullet list -->
+    <div class="py-[var(--spacing-lg)] prose prose-lg text-bg">
+      <ul class="px-[var(--spacing-xl)] list-disc list-inside space-y-[var(--spacing-md)]">
+        <li class="space-y-[var(--spacing-sm)] slide-left">Fast, Reliable Water Removal</li>
+        <li class="space-y-[var(--spacing-sm)] slide-left">Breathe Easier with Dryer Vent &amp; Air Duct Cleaning</li>
+        <li class="space-y-[var(--spacing-sm)] slide-left">Pristine Carpets, Floors &amp; Upholstery</li>
+        <li class="space-y-[var(--spacing-sm)] slide-left">Fully Licensed, Insured &amp; Satisfaction-Guaranteed</li>
+      </ul>
+    </div>
+  </Section>
 
   <!-- Additional sections such as Services, Service Areas, Testimonials, Gallery, etc. -->
   <Section collection="services" query="getAll" buttonsSectionClass="hidden" />
 
-  <Section
+ <Section
     heading={[
       {
         text: "From Mess to Masterpiece",
@@ -38,35 +72,20 @@ import { Image } from "astro:assets";
         class: "h6 text-bg load slide-up",
       },
     ]}
-    sectionClass="bg-accent py-[var(--spacing-xl)] md:py-[var(--spacing-2xl)] lg:py-[var(--spacing-3xl)] text-bg"
+    sectionClass="bg-accent py-[var(--spacing-xl)] md:py-[var(--spacing-2xl)] lg:py-[var(--spacing-3xl)] text-bg load fade-in"
     contentClass="text-center"
     childSlotClass="flex flex-col text-center justify-center"
   >
     <div
       class="galleries flex flex-col justify-center items-center py-[var(--spacing-xl)] md:py-[var(--spacing-2xl)] lg:py-[var(--spacing-3xl)] gap-[var(--spacing-xl)]"
     >
-      <!-- Dirty Before Gallery -->
       <Section
         collection="gallery"
         query="getAll"
         variant="gallery2"
         heading={[
           {
-            text: "Before: The Mess",
-            tagName: "h3",
-            class: "h3 text-bg load slide-up",
-          },
-        ]}
-      />
-
-      <!-- Sparkling After Gallery -->
-      <Section
-        collection="gallery"
-        query="getAll"
-        variant="gallery2"
-        heading={[
-          {
-            text: "After: The Masterpiece",
+            text: "No Mess We Can’t Tackle",
             tagName: "h3",
             class: "h3 text-bg load slide-up",
           },

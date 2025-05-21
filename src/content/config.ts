@@ -134,9 +134,11 @@ export const collections = {
           .optional(),
       }),
   }),
-  serviceAreas: defineCollection({
-    loader: file("src/content/serviceAreas/serviceAreas.json"),
-    schema: ({ image }) => baseSchema({ image }),
+   serviceAreas: defineCollection({
+    loader: file("src/content/serviceAreas/serviceAreas.json"), // file-loaded collection
+    schema: ({ image }) => baseSchema({ image }).extend({
+      tags: z.array(z.string()).optional(),
+    }),
   }),
   gallery: defineCollection({
     loader: file("src/content/gallery/gallery.json"), // file-loaded collection

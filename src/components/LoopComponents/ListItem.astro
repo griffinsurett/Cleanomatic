@@ -17,17 +17,17 @@ const effectiveHasPage =
 
 <li class={`${itemClass} py-[var(--spacing-sm)] list-inside load slide-left`}>
   {/* Inline title + description */}
-  <strong class="font-semibold">{item.data.title}:</strong>&nbsp;
-  <span class="inline text-sm leading-relaxed">
-    {item.data.description}
-  </span>
+  <strong class="font-semibold">{item.data.title}:</strong>
+  {item.data.description}
 
   {/* Optional “View More” button on its own line */}
-  {effectiveHasPage && showButton && (
-    <div class="mt-2">
-      <Button variant="primary" href={`/${collectionName}/${item.slug}`}>
-        View More
-      </Button>
-    </div>
-  )}
+  {
+    effectiveHasPage && showButton && (
+      <div class="mt-2">
+        <Button variant="primary" href={`/${collectionName}/${item.slug}`}>
+          View More
+        </Button>
+      </div>
+    )
+  }
 </li>

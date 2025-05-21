@@ -134,6 +134,10 @@
   .h5 {
     -webkit-text-stroke: 1px var(--color-text);
   }
+
+   .sticky-top {
+    @apply lg:sticky lg:top-30;
+  }
 }
 
 @layer utilities {

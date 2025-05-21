@@ -7,6 +7,7 @@ import Heading from '@/components/Heading.jsx';
 import { Image } from 'astro:assets';
 import { capitalize } from '@/utils/ContentUtils';
 import PrimaryHero from '@/components/StaticSections/PrimaryHero.astro';
+import { SiteData, CTAdata } from "@/content/SiteData";
 
 const {
   collection,
@@ -29,15 +30,39 @@ const pageDesc =
 <BaseLayout title={pageTitle} description={pageDesc} keywords={keywords} ogType={ogType} {...rest}>
   <!-- Hero for both collection roots and item pages -->
   <!-- Hero Section with primary call-to-action -->
-  <PrimaryHero
-    heading={[
-      {
-        text: `Welcome to Cleanomatic – Your Trusted Cleaning Experts in ${pageTitle}!`,
-        tagName: "h1",
-        class: "text-bg h2",
-      },
-    ]}
-    description=`Welcome to Cleanomatic, your one‑stop solution for water removal as well as dryer vent, air duct, furniture, carpet and floor cleaning services in ${pageTitle}.`
-  />  <!-- Render the page or collection sections -->
+    <Section variant="primaryHero" heading={[
+    {
+      text: `Keeping ${pageTitle} Clean Since 1999!`,
+      tagName: "label",
+      class: "h4 italic text-bg slide-down",
+    },
+    {
+      text: `Your Trusted Cleaning Experts in ${pageTitle}.`,
+      tagName: "h2",
+      class: "h2 text-bg slide-down",
+    },
+  ]}
+  description={`
+    Welcome to Cleanomatic, your trusted, full‑service partner for all things clean in ${pageTitle}. Whether you’re dealing with water damage after a leak, improving indoor air quality by clearing dryer vents and air ducts, or giving your home a fresh start with deep furniture, carpet, and floor cleaning, we’ve got you covered.
+  `}
+   buttons={[
+    {
+      text: CTAdata.buttonText,
+      link: CTAdata.buttonLink,
+      variant: "primary",
+    },
+  ]}
+  >
+    <!-- these children become your bullet list -->
+    <div class="py-[var(--spacing-lg)] prose prose-lg text-bg">
+      <ul class="px-[var(--spacing-xl)] list-disc list-inside space-y-[var(--spacing-md)]">
+        <li class="space-y-[var(--spacing-sm)] slide-left">Fast, Reliable Water Removal</li>
+        <li class="space-y-[var(--spacing-sm)] slide-left">Breathe Easier with Dryer Vent &amp; Air Duct Cleaning</li>
+        <li class="space-y-[var(--spacing-sm)] slide-left">Pristine Carpets, Floors &amp; Upholstery</li>
+        <li class="space-y-[var(--spacing-sm)] slide-left">Fully Licensed, Insured &amp; Satisfaction-Guaranteed</li>
+      </ul>
+    </div>
+  </Section>
+
   <slot />
 </BaseLayout>

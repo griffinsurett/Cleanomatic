@@ -1,5 +1,6 @@
 // src/components/SectionVariants.js
 
+import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
 import FAQimg from "@/assets/glen-rushton-PjeZGaKunAI-unsplash.jpg";
 import truck2 from "@/assets/truck2.jpg";
 /**
@@ -11,21 +12,41 @@ import truck2 from "@/assets/truck2.jpg";
  * (not overwritten) on top of these.
  */
 export const SectionVariants = {
+  // ─────────── Primary Hero ───────────
+  primaryHero: {
+    sectionClass:
+      "min-h-[100vh] md:min-h-[80vh] xl:min-h-[100vh] flex flex-col items-center justify-center bg-cover bg-fixed bg-center z-100 md:p-[var(--spacing-sm)] text-bg text-base md:text-xl",
+    contentClass: "w-8/10 sm:mt-0 xl:mt-[-50px]",
+    headingAreaClass: "xl:max-w-7/8",
+    descriptionClass: "slide-up",
+    backgroundMedia: {
+      image: {
+        src: HeroBg,                // you’ll need to import HeroBg at top
+        imageClass: "filter brightness-50 bg-cover bg-center xl:bg-fixed",
+      },
+      overlayClass: "bg-black opacity-50",
+    },
+    buttonsSectionClass: "flex justify-start mt-[var(--spacing-md)] order-last sm:mt-0 scale-up",
+    topContentClass: "",            // no special top-content logic
+    childPlacement: "top-content-section",
+    childSlotClass: "",             // handled inline
+    buttonsPlacement: "content-section",
+  },
   // ─────────── Benefits ───────────
   imageCol: {
     sectionClass: "flex justify-center items-center text-left section-sm",
     contentClass:
-      "flex justify-between items-center content-container py-[var(--spacing-2xl)] flex-col-reverse md:flex-row-reverse gap-[var(--spacing-xl)] lg:gap-[var(--spacing-2xl)]",
+      "flex justify-between items-start content-container py-[var(--spacing-2xl)] flex-col-reverse md:flex-row-reverse gap-[var(--spacing-xl)] lg:gap-[var(--spacing-2xl)]",
     itemsClass:
       "flex flex-col items-start justify-start gap-[var(--spacing-md)]",
     itemClass:"list-disc list-inside ml-6",
     buttonsSectionClass: "hidden",
     headingAreaClass: "flex flex-col",
     backgroundMedia: undefined,
-    topContentClass: "flex flex-col gap-[var(--spacing-md)]",
+    topContentClass: "flex flex-col gap-[var(--spacing-md)] w-full lg:w-12/20",
     itemPlacement: "top-content-section",
     childPlacement: "",
-    childSlotClass: "lg:sticky lg:top-0",
+    childSlotClass: "lg:sticky lg:top-0 w-full lg:w-8/20",
     buttonsPlacement: "top-content-section",
     descriptionClass: "load slide-down"
   },

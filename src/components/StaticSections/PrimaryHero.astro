@@ -3,10 +3,7 @@ import Section from "@/components/Section.astro";
 import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
 import { getBusinessHours } from "@/queries/BusinessHoursQuery";
 import { SiteData, CTAdata } from "@/content/SiteData";
-import Heading from "../Heading";
 
-// Fetch business hours (server‑side)
-const businessHours = await getBusinessHours();
 
 // ── Reusable class variables ───────────────────────────────────
 const sectionClassVar =

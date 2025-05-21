@@ -1,41 +1,188 @@
 [
-  { "title": "Marlboro", "id": "marlboro" },
-  { "title": "Freehold", "id": "freehold" },
-  { "title": "Howell", "id": "howell" },
-  { "title": "Lakewood", "id": "lakewood" },
-  { "title": "Toms River", "id": "toms-river" },
-  { "title": "Manchester", "id": "manchester" },
-  { "title": "Manalapan", "id": "manalapan" },
-  { "title": "Old Bridge", "id": "old-bridge" },
-  { "title": "East Brunswick", "id": "east-brunswick" },
-  { "title": "Jackson", "id": "jackson" },
-  { "title": "Wall", "id": "wall" },
-  { "title": "Tinton Falls", "id": "tinton-falls" },
-  { "title": "Middletown", "id": "middletown" },
-  { "title": "Holmdel", "id": "holmdel" },
-  { "title": "Matawan", "id": "matawan" },
-  { "title": "Aberdeen", "id": "aberdeen" },
-  { "title": "Hazlet", "id": "hazlet" },
-  { "title": "Keyport", "id": "keyport" },
-  { "title": "Atlantic Highlands", "id": "atlantic-highlands" },
-  { "title": "Highlands", "id": "highlands" },
-  { "title": "South Amboy", "id": "south-amboy" },
-  { "title": "Sayreville", "id": "sayreville" },
-  { "title": "Long Branch", "id": "long-branch" },
-  { "title": "Ocean", "id": "ocean" },
-  { "title": "Deal", "id": "deal" },
-  { "title": "Asbury Park", "id": "asbury-park" },
-  { "title": "Oakhurst", "id": "oakhurst" },
-  { "title": "Ocean Grove", "id": "ocean-grove" },
-  { "title": "Bradley Beach", "id": "bradley-beach" },
-  { "title": "Avon", "id": "avon" },
-  { "title": "Manasquan", "id": "manasquan" },
-  { "title": "Pt. Pleasant", "id": "pt-pleasant" },
-  { "title": "Colts Neck", "id": "colts-neck" },
-  { "title": "Red Bank", "id": "red-bank" },
-  { "title": "Shrewsbury", "id": "shrewsbury" },
-  { "title": "Little Silver", "id": "little-silver" },
-  { "title": "Rumson", "id": "rumson" },
-  { "title": "Monmouth Beach", "id": "monmouth-beach" },
-  { "title": "Seabright", "id": "seabright" }
+  {
+    "title": "Marlboro",
+    "id": "marlboro",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Freehold",
+    "id": "freehold",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Howell",
+    "id": "howell",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Manalapan",
+    "id": "manalapan",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Wall",
+    "id": "wall",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Tinton Falls",
+    "id": "tinton-falls",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Middletown",
+    "id": "middletown",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Holmdel",
+    "id": "holmdel",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Matawan",
+    "id": "matawan",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Aberdeen",
+    "id": "aberdeen",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Hazlet",
+    "id": "hazlet",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Keyport",
+    "id": "keyport",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Atlantic Highlands",
+    "id": "atlantic-highlands",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Highlands",
+    "id": "highlands",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Long Branch",
+    "id": "long-branch",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Ocean",
+    "id": "ocean",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Deal",
+    "id": "deal",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Asbury Park",
+    "id": "asbury-park",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Oakhurst",
+    "id": "oakhurst",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Ocean Grove",
+    "id": "ocean-grove",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Bradley Beach",
+    "id": "bradley-beach",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Avon",
+    "id": "avon",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Manasquan",
+    "id": "manasquan",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Pt. Pleasant",
+    "id": "pt-pleasant",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Colts Neck",
+    "id": "colts-neck",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Red Bank",
+    "id": "red-bank",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Shrewsbury",
+    "id": "shrewsbury",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Little Silver",
+    "id": "little-silver",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Rumson",
+    "id": "rumson",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Monmouth Beach",
+    "id": "monmouth-beach",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+  {
+    "title": "Seabright",
+    "id": "seabright",
+    "tags": ["monmouth-county", "central-jersey"]
+  },
+
+  {
+    "title": "Lakewood",
+    "id": "lakewood",
+    "tags": ["ocean-county", "south-jersey"]
+  },
+  {
+    "title": "Toms River",
+    "id": "toms-river",
+    "tags": ["ocean-county", "south-jersey"]
+  },
+  {
+    "title": "Manchester",
+    "id": "manchester",
+    "tags": ["ocean-county", "south-jersey"]
+  },
+  {
+    "title": "Point Pleasant Beach",
+    "id": "point-pleasant-beach",
+    "tags": ["ocean-county", "south-jersey"]
+  },
+  {
+    "title": "South Toms River",
+    "id": "south-toms-river",
+    "tags": ["ocean-county", "south-jersey"]
+  },
+  {
+    "title": "Jackson",
+    "id": "jackson",
+    "tags": ["ocean-county", "south-jersey"]
+  }
 ]
