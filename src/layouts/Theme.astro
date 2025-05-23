@@ -1,9 +1,21 @@
 ---
 // src/components/Theme.astro
-import '../styles/global.css';
+import "../styles/global.css";
 ---
-<!-- You may include additional theme-related meta tags here -->
-<!-- Favicon -->
+
+<!-- You may include additional theme-related meta tags here --><!-- Favicon -->
 <link rel="icon" href="/favicon.svg" type="image/x-icon" />
-<meta name="theme-color" content="#111eb5" />
+<meta name="theme-color" content="" />
 <meta name="apple-mobile-web-app-status-bar-style" content="#0000FE" />
+<script>
+  // wait till DOM is ready
+  document.addEventListener("DOMContentLoaded", () => {
+    const rootStyles = getComputedStyle(document.documentElement);
+    const primary = rootStyles.getPropertyValue("--color-primary").trim();
+    if (primary) {
+      document
+        .querySelector('meta[name="theme-color"]')
+        ?.setAttribute("content", primary);
+    }
+  });
+</script>
