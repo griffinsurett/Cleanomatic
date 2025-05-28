@@ -141,6 +141,14 @@
 }
 
 @layer utilities {
+  .hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari, Opera */
+}
+
   .transition-default {
     transition: var(--transition-default);
     transition-delay: var(--transition-delay-default);
