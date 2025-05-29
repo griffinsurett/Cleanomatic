@@ -15,7 +15,7 @@ const effectiveHasPage =
   item.data.hasPage !== undefined ? item.data.hasPage : HasPage;
 ---
 
-<li class={`${itemClass} py-[var(--spacing-sm)] list-inside load slide-left`}>
+<article class={`${itemClass} py-[var(--spacing-sm)] list-inside load slide-left`}>
   {/* Inline title + description */}
   <strong class="font-semibold">{item.data.title}:</strong>
   {item.data.description}
@@ -30,4 +30,4 @@ const effectiveHasPage =
       </div>
     )
   }
-</li>
+</article>

@@ -11,7 +11,7 @@ export default function AccordionItem({
   const toggle = () => setOpen(prev => !prev);
 
   return (
-    <li className={`bg-neutral load scale-up ${itemClass}`}>
+    <article className={`bg-neutral load scale-up ${itemClass}`}>
       {/* Header */}
       <div
         onClick={toggle}
@@ -52,6 +52,6 @@ export default function AccordionItem({
           {item.data.description ?? item.body}
         </p>
       </div>
-    </li>
+    </article>
   );
 }

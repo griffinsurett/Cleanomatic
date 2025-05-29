@@ -8,13 +8,13 @@ export default function ContactInfo({ item }) {
   const linkHref = isEmail ? `mailto:${item.slug}` : `tel:${item.slug}`;
 
   return (
-    <li className="contact-info-item">
+    <article className="contact-info-item">
       <span className="contact-type pr-[var(--spacing-xs)] h6 text-stroke italic">{item.label}:</span>
       <a href={linkHref}>
         <span className="contact-value">
           {isEmail ? item.slug : formatPhoneNumber(item.slug)}
         </span>
       </a>
-    </li>
+    </article>
   );
 }

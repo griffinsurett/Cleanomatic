@@ -3,13 +3,13 @@ import Button from "../Button.jsx";
 import Heading from "../Heading.jsx";
 import { Image } from "astro:assets";
 
-const { item, collectionName, HasPage } = Astro.props;
+const { item, itemClass, collectionName, HasPage } = Astro.props;
 
 // Determine whether to show the button
 const effectiveHasPage = item.data.hasPage !== undefined ? item.data.hasPage : HasPage;
 ---
 
-<li class="card load scale-up w-full md:flex-2/5 xl:flex-1/4 border-1 box-shadow-primary bg-text border-border flex flex-col items-center">
+<article class={`card ${itemClass} load scale-up w-full md:flex-2/5 xl:flex-1/4 border-1 box-shadow-primary bg-text border-border flex flex-col items-center`}>
   <div class="card-image w-full hover:opacity-50 duration-500">
     {item.data.featuredImage && (
       <div class="w-full h-38 md:h-48">  <!-- Fixed height for all screen sizes -->
@@ -36,4 +36,4 @@ const effectiveHasPage = item.data.hasPage !== undefined ? item.data.hasPage : H
     )}
         <!-- </div> -->
   </div>
-</li>
+</article>

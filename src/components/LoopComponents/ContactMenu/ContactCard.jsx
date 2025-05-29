@@ -44,7 +44,7 @@ export default function MenuCard({ item, className = "", ...props }) {
   const formattedValue = isEmail ? item.slug : formatPhoneNumber(item.slug);
 
   return (
-    <div
+    <article
       className={`menu-card load scale-up w-full h-[25vh] text-center flex flex-col justify-center items-center border border-[var(--color-border)] shadow-sm ${className}`}
       {...props}
     >
@@ -67,6 +67,6 @@ export default function MenuCard({ item, className = "", ...props }) {
       >
         {formattedValue}
       </Button>
-    </div>
+    </article>
   );
 }
