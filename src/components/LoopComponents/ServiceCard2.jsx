@@ -11,7 +11,7 @@ export default function Card({ item, collectionName, HasPage }) {
   const effectiveHasPage =
     item.data.hasPage !== undefined ? item.data.hasPage : HasPage;
   return (
-    <li className="card p-[var(--spacing-xl)] flex md:flex-1/2 flex-col md:justify-left items-center text-left max-w-full md:max-w-6/12">
+    <article className="card p-[var(--spacing-xl)] flex md:flex-1/2 flex-col md:justify-left items-center text-left max-w-full md:max-w-6/12">
       <div className="card-container lg:w-8/12">
       <div className="card-content flex flex-col">
       <Heading tagName={"h3"} className="h3 mb-[var(--spacing-sm)] text-[var(--color-text)]">{item.data.title}</Heading>
@@ -23,6 +23,6 @@ export default function Card({ item, collectionName, HasPage }) {
         </Button>
       )}
       </div>
-    </li>
+    </article>
   );
 }
