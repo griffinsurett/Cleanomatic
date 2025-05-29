@@ -6,6 +6,7 @@ import ExtendedLayout from "@/layouts/ExtendedLayout.astro";
 import David from "@/assets/david.jpg";
 import { Picture } from "astro:assets";
 import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
+import CertificateSection from "@/components/StaticSections/CertificateSection.astro";
 
 const paragraphTailwindClass = "w-full lg:w-19/20 slide-up";
 const paragraphAnimationClass = "load";
@@ -101,7 +102,7 @@ const aboutImageClass = "w-[528px] h-fit load scale-up";
             whether it’s for a one-time clean or ongoing service.
           </p>
           <br />
-    <Picture
+          <Picture
             src={HeroBg}
             alt="Benefits of Cleanomatic"
             formats={["avif", "webp"]}
@@ -200,13 +201,12 @@ const aboutImageClass = "w-[528px] h-fit load scale-up";
             look forward to serving you and exceeding your expectations!
           </p>
           <br />
-
+          <CertificateSection/>
         </div>
       </div>
     </div>
   </Section>
-    <Section collection="gallery" query="getAll" />
-
+  <Section collection="gallery" query="getAll" />
 
   <Section collection="missionVision" query="getAll" topContentClass="hidden" />
 </ExtendedLayout>

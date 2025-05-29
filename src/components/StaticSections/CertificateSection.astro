@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+import Certification1 from "@/assets/iicrccertifiedlogo.png";
+import Certification2 from "@/assets/iicr-cert.png";
+
+const certImageClass = "w-auto h-25";
+---
+ <div class="flex items-center gap-[var(--spacing-md)]">
+            <Image
+              src={Certification1}
+              alt="Cleanomatic License Number"
+              class={certImageClass}
+              loading="lazy"
+              format="webp"
+              quality="low"
+            />
+             <Image
+              src={Certification2}
+              alt="Cleanomatic License Number"
+              class={certImageClass}
+              loading="lazy"
+              format="webp"
+              quality="low"
+            />
+          </div>
