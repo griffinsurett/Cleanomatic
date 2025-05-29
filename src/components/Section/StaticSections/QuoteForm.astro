@@ -1,8 +1,9 @@
 ---
 // src/components/StaticSections/QuoteForm.astro
-import Section from "@/components/Section.astro";
-import QuoteForm from "@/components/Forms/QuoteForm.astro";
+import Section from "@/components/Section/Section.astro";
+import QuoteForm from "@/components/Form/Forms/QuoteForm.astro";
 ---
+
 <Section
   sectionClass="section-sm bg-primary flex justify-center items-center text-center lg:text-left load fade-in"
   contentClass="content-container flex justify-between items-center flex-wrap lg:flex-nowrap py-[var(--spacing-2xl)] gap-[var(--spacing-2xl)] load slide-up"
@@ -13,9 +14,9 @@ import QuoteForm from "@/components/Forms/QuoteForm.astro";
       text: "Fill out this form to Contact us and Request a Free Quote",
       tagName: "h2",
       class: "h2 text-[var(--color-bg)]",
-    }
+    },
   ]}
   childSlotClass="w-full lg:min-w-1/2"
-  >
+>
   <QuoteForm />
 </Section>

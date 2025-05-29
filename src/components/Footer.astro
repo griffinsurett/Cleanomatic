@@ -9,8 +9,8 @@ import Heading from "./Heading";
 import { CTAdata, SiteData } from "@/content/SiteData";
 import { getBusinessHours } from "@/queries/BusinessHoursQuery";
 import BusinessHoursItem from "./Menu/BusinessHoursItem.astro";
-import Button from "./Button";
-import CertificateSection from "@/components/StaticSections/CertificateSection.astro";
+import Button from "./Button/Button";
+import CertificateSection from "@/components/Section/StaticSections/CertificateSection.astro";
 
 // Define shared class strings for menus, headings, and menu items.
 const menuListClass =
@@ -73,7 +73,7 @@ const FooterMenu = [
         </div>
         <div class="other-info w-full md:w-auto space-y-[var(--spacing-md)]">
           <p class="h5 italic">Licensed and Fully Insured!</p>
-      <CertificateSection/>
+          <CertificateSection />
         </div>
         <div class="contact-info w-full md:w-auto">
           <Heading tagName="label" className={menuHeadingClass}>

@@ -5,11 +5,11 @@ import Menu from "../components/Menu/Menu.astro";
 import MenuItem from "../components/Menu/BarMenu/MenuItem.astro"; // default main menu item
 import PhoneNumber from "./LoopComponents/ContactMenu/HeaderPhoneNumber"; // updated phone number component
 import { Image } from "astro:assets";
-import Button from "./Button";
+import Button from "./Button/Button.jsx";
 import Logo from "../components/Logo.astro"; // new Logo component
 import { getPhoneNumberMenuItems } from "@/queries/PhoneNumberMenuQuery";
 import MobileCallButtonModal from "../components/MobileCallButtonModal.jsx"; // updated component
-import MessageSlider from '@/components/MessageSlider.jsx';
+import MessageSlider from "@/components/MessageSlider.jsx";
 
 const MainNavMenu = [
   { id: "home", label: "Home", slug: "/" },
@@ -37,78 +37,95 @@ const breakpointsMapping = {
 // Use the breakpoint variable to create a media query:
 const mobileMediaQuery = `(max-width: ${breakpointsMapping[breakpoint] - 1}px)`;
 ---
-<header class="flex flex-col justify-between items-center sticky top-0 z-[150] shadow-xl">
-  <div class="top-header w-full flex justify-center items-center py-[var(--spacing-xs)] sm:py-[var(--spacing-sm)] bg-primary text-tertiary">
+
+<header
+  class="flex flex-col justify-between items-center sticky top-0 z-[150] shadow-xl"
+>
+  <div
+    class="top-header w-full flex justify-center items-center py-[var(--spacing-xs)] sm:py-[var(--spacing-sm)] bg-primary text-tertiary"
+  >
     <div class="header‑and‑footer‑wrap h5 italic uppercase w-full scale-up">
-  <MessageSlider
-    client:load
-    messages={[
-      'Licensed and Fully Insured!',
-      '24 Hour Emergency Service!'
-    ]}
-    interval={3000}
-    fadeDuration={600}
-    className="flex"
-  />
-</div>
+      <MessageSlider
+        client:load
+        messages={["Licensed and Fully Insured!", "24 Hour Emergency Service!"]}
+        interval={3000}
+        fadeDuration={600}
+        className="flex"
+      />
+    </div>
   </div>
-  <div class="main-header bg-accent text-bg lg:w-full flex justify-center w-full py-[var(--spacing-md)] md:p-[var(--spacing-md)]">
-    <div class="header-and-footer-wrap flex justify-between items-center w-full">
+  <div
+    class="main-header bg-accent text-bg lg:w-full flex justify-center w-full py-[var(--spacing-md)] md:p-[var(--spacing-md)]"
+  >
+    <div
+      class="header-and-footer-wrap flex justify-between items-center w-full"
+    >
       <Logo />
-      <div class="phone-and-cta-on-header hidden xl:flex justify-right items-center">
+      <div
+        class="phone-and-cta-on-header hidden xl:flex justify-right items-center"
+      >
         <!-- Phone number menu using the dynamic Menu component -->
         <Menu
           items={phoneMenuItems}
           menuClass="phone-list flex"
-          menuItem={{ component: PhoneNumber, class: "phone-menu-item fade-in" }}
+          menuItem={{
+            component: PhoneNumber,
+            class: "phone-menu-item fade-in",
+          }}
         />
-        <Button variant="secondary" href={CTAdata.buttonLink} className="scale-up">
+        <Button
+          variant="secondary"
+          href={CTAdata.buttonLink}
+          className="scale-up"
+        >
           {CTAdata.buttonText}
         </Button>
       </div>
-      <div class="mobile-menu flex justify-right items-center gap-[var(--spacing-md)] xl:hidden">
+      <div
+        class="mobile-menu flex justify-right items-center gap-[var(--spacing-md)] xl:hidden"
+      >
         <!-- Mobile call button modal (with dynamic media query based on breakpoint) -->
         <MobileCallButtonModal client:media={mobileMediaQuery}>
           <Menu
             items={phoneMenuItems}
             menuClass="phone-list bg-accent gap-[var(--spacing-xl)] flex justify-center items-center w-[60vw] h-[40vh] overflow-y-auto"
             listClass="flex flex-col justify-center gap-[var(--spacing-xl)] text-bg"
-            menuItem={{ component: PhoneNumber, class: "cursor-pointer h4"}}
-            
+            menuItem={{ component: PhoneNumber, class: "cursor-pointer h4" }}
           />
         </MobileCallButtonModal>
         <Menu
-        items={headerItems}
-        menuClass="menu-class bg-primary flex xl:hidden text-text justify-center items-center"
-        menuItem={{
-          component: MenuItem,
-          class:
-            "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] h2",
-          activeClass: "bg-secondary"
-        }}
-        submenuItem={{
-          component: MenuItem,
-          class: "bg-primary py-[var(--spacing-sm)] h5 italic",
-          activeClass: "bg-secondary"
-        }}
-        isHierarchical={true}
-        breakpoint={breakpoint}
-        hamburgerMenu={{
-          hamburgerIconClass: "bg-primary scale-up",
-          hamburgerIconTransform: false,
-          menuBackground: "bg-primary bg-opacity-75 flex items-center justify-center w-full",
-          menuOverlay: "bg-black bg-opacity-50",
-          listClass: "",
-          closeButton: true,
-          closeButtonClass:
-            "absolute top-0 right-0 m-4 text-white hover:text-accent",
-        }}
-        
-      />      
+          items={headerItems}
+          menuClass="menu-class bg-primary flex xl:hidden text-text justify-center items-center"
+          menuItem={{
+            component: MenuItem,
+            class: "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] h2",
+            activeClass: "bg-secondary",
+          }}
+          submenuItem={{
+            component: MenuItem,
+            class: "bg-primary py-[var(--spacing-sm)] h5 italic",
+            activeClass: "bg-secondary",
+          }}
+          isHierarchical={true}
+          breakpoint={breakpoint}
+          hamburgerMenu={{
+            hamburgerIconClass: "bg-primary scale-up",
+            hamburgerIconTransform: false,
+            menuBackground:
+              "bg-primary bg-opacity-75 flex items-center justify-center w-full",
+            menuOverlay: "bg-black bg-opacity-50",
+            listClass: "",
+            closeButton: true,
+            closeButtonClass:
+              "absolute top-0 right-0 m-4 text-white hover:text-accent",
+          }}
+        />
       </div>
     </div>
   </div>
-  <div class="bottom-header hidden xl:flex header-bottom w-full items-center bg-primary justify-center fade-in">
+  <div
+    class="bottom-header hidden xl:flex header-bottom w-full items-center bg-primary justify-center fade-in"
+  >
     <div class="header-and-footer-wrap w-full flex">
       <!-- Desktop menu -->
       <Menu
@@ -117,7 +134,8 @@ const mobileMediaQuery = `(max-width: ${breakpointsMapping[breakpoint] - 1}px)`;
         listClass="flex justify-center items-center w-full"
         menuItem={{
           component: MenuItem,
-          class: "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] h5 uppercase hover:bg-secondary italic",
+          class:
+            "text-bg py-[var(--spacing-md)] px-[var(--spacing-xl)] h5 uppercase hover:bg-secondary italic",
           activeClass: "bg-secondary",
         }}
         submenuItem={{ component: MenuItem, class: "bg-primary h6 uppercase" }}

@@ -1,9 +1,9 @@
 ---
 // src/layouts/ServicesLayout.astro
 import BaseLayout from "./BaseLayout.astro";
-import SecondaryHero from "@/components/StaticSections/SecondaryHero.astro";
-import Section from "@/components/Section.astro";
-import QuoteForm from "@/components/StaticSections/QuoteForm.astro";
+import SecondaryHero from "@/components/Section/StaticSections/SecondaryHero.astro";
+import Section from "@/components/Section/Section.astro";
+import QuoteForm from "@/components/Section/StaticSections/QuoteForm.astro";
 import { Image } from "astro:assets";
 import { capitalize } from "@/utils/ContentUtils";
 import ductImg from "@/assets/airduct.jpg";
@@ -25,7 +25,7 @@ const pageTitle =
 const pageDesc =
   overrideDesc ?? (isItemPage ? data.description : rest.description);
 
-  // console.log("title: ", data.title);
+// console.log("title: ", data.title);
 ---
 
 <BaseLayout
@@ -55,44 +55,48 @@ const pageDesc =
             variant: "primary",
           },
         ]}
-      ></Section>
+      />
     )
   }
   <slot />
 
   <Section
-  variant="imageCol3"
-  childSlotClass="flex lg:flex-row-reverse py-[var(--spacing-3xl)]"
->
-  <Section variant="contentImgSec">
-    <Image
-      src={ductImg}
-      alt="Technician inspecting air ducts"
-      class="w-full h-auto rounded-lg shadow-lg mb-6 load scale-up"
-      loading="lazy"
+    variant="imageCol3"
+    childSlotClass="flex lg:flex-row-reverse py-[var(--spacing-3xl)]"
+  >
+    <Section variant="contentImgSec">
+      <Image
+        src={ductImg}
+        alt="Technician inspecting air ducts"
+        class="w-full h-auto rounded-lg shadow-lg mb-6 load scale-up"
+        loading="lazy"
+      />
+    </Section>
+    <Section
+      heading={[
+        {
+          text: `Our Five‑Step ${data.title} Cleaning Process`,
+          tagName: "h4",
+          class: "h4 load fade-in",
+        },
+      ]}
+      buttons={[
+        {
+          text: "Get a Quote",
+          link: `/contact-us`,
+          variant: "primary",
+        },
+      ]}
+      buttonsSectionClass="flex justify-start mt-[var(--spacing-lg)]"
+      description=`At Cleanomatic, we’ve refined ${data.title} cleaning into a clear, five‑step experience—focused on delivering healthier air, improved efficiency, and complete peace of mind.`
+      descriptionClass="load slide-up"
+      variant="textCol"
+      itemsClass="py-[var(--spacing-sm)] lg:py-[var(--spacing-md)]"
+      sectionClass="lg:sticky lg:top-0"
+      collection="process"
+      query="related"
     />
   </Section>
-  <Section
-    heading={[
-      { text: `Our Five‑Step ${data.title} Cleaning Process`, tagName: "h4", class:"h4 load fade-in" },
-    ]}
-    buttons={[
-      {
-        text: "Get a Quote",
-        link: `/contact-us`,
-        variant: "primary",
-      },
-    ]}
-    buttonsSectionClass="flex justify-start mt-[var(--spacing-lg)]"
-    description=`At Cleanomatic, we’ve refined ${data.title} cleaning into a clear, five‑step experience—focused on delivering healthier air, improved efficiency, and complete peace of mind.`
-    descriptionClass="load slide-up"
-    variant="textCol"
-    itemsClass="py-[var(--spacing-sm)] lg:py-[var(--spacing-md)]"
-    sectionClass="lg:sticky lg:top-0"
-    collection="process"
-    query="related"
-  />
-</Section>
 
   <Section
     heading={[
@@ -147,7 +151,7 @@ const pageDesc =
 
   <!-- Common sections for services pages -->
   <Section collection="testimonials" query="getAll" />
-    <Section collection="faq" query="related" />
+  <Section collection="faq" query="related" />
 
   <Section collection="serviceAreas" query="getAll" />
   <!-- <Section collection="gallery" query="getAll" /> -->

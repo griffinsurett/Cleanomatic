@@ -1,13 +1,13 @@
 // src/components/LoopComponents/LocationItem.jsx
 import React from "react";
-import Button from "../Button.jsx";
+import Button from "../Button/Button.jsx";
 
 // Your custom LocationIcon defined as a React component.
 const LocationIcon = () => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    viewBox="0 0 24 24" 
-    fill="currentColor" 
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="currentColor"
     stroke="black"
     className="w-7 h-7"
   >
@@ -19,12 +19,13 @@ export default function LocationItem({ item, collectionName, HasPage }) {
   // Use the explicit item value if defined; otherwise, rely on the meta value (passed as HasPage)
   const effectiveHasPage =
     item.data.hasPage !== undefined ? item.data.hasPage : HasPage;
-  
+
   // Base classes for the item.
-  const baseClasses = "flex items-center gap-[var(--spacing-xs)] p-[var(--spacing-sm)]";
+  const baseClasses =
+    "flex items-center gap-[var(--spacing-xs)] p-[var(--spacing-sm)]";
   // Only add the hover:underline class when the button is enabled.
   const hoverClass = effectiveHasPage ? "hover:underline" : "";
-  
+
   return (
     <article className="location-item load scale-up">
       <Button

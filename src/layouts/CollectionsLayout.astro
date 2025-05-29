@@ -1,11 +1,17 @@
 ---
 // src/layouts/CollectionsLayout.astro
 
-import BaseLayout from './BaseLayout.astro';
-import SecondaryHero from '@/components/StaticSections/SecondaryHero.astro';
-import { capitalize } from '@/utils/ContentUtils';
+import BaseLayout from "./BaseLayout.astro";
+import SecondaryHero from "@/components/Section/StaticSections/SecondaryHero.astro";
+import { capitalize } from "@/utils/ContentUtils";
 
-const { collection, entry, title: overrideTitle, description: overrideDesc, ...props } = Astro.props;
+const {
+  collection,
+  entry,
+  title: overrideTitle,
+  description: overrideDesc,
+  ...props
+} = Astro.props;
 
 // determine if this is an item‐page or collection root:
 const isItemPage = Boolean(entry);
@@ -13,12 +19,12 @@ const isItemPage = Boolean(entry);
 //  • use explicit overrideTitle/overrideDesc (passed in from page)
 //  • otherwise, for items use entry.data.title/description
 //  • otherwise, for roots use capitalized collection name + meta.description
-const pageTitle = overrideTitle
-  ?? (isItemPage ? entry.data.title : capitalize(collection));
-const pageDesc  = overrideDesc
-  ?? (isItemPage ? entry.data.description : props.description);
-
+const pageTitle =
+  overrideTitle ?? (isItemPage ? entry.data.title : capitalize(collection));
+const pageDesc =
+  overrideDesc ?? (isItemPage ? entry.data.description : props.description);
 ---
+
 <BaseLayout title={pageTitle} description={pageDesc} {...props}>
   {/* hero for both roots & items */}
   <SecondaryHero title={pageTitle} />

@@ -1,9 +1,8 @@
 ---
-import Section from "@/components/Section.astro";
+import Section from "@/components/Section/Section.astro";
 import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
 import { getBusinessHours } from "@/queries/BusinessHoursQuery";
 import { SiteData, CTAdata } from "@/content/SiteData";
-
 
 // ── Reusable class variables ───────────────────────────────────
 const sectionClassVar =
@@ -13,9 +12,9 @@ const headingAreaClassVar = "xl:max-w-7/8";
 const buttonsSectionClassVar =
   "mt-[var(--spacing-md)] order-last sm:mt-0 scale-up";
 
-const childContainerClassVar =
-  "py-[var(--spacing-lg)] prose prose-lg text-bg";
-const listClassVar = "px-[var(--spacing-xl)] list-disc list-inside space-y-[var(--spacing-md)]";
+const childContainerClassVar = "py-[var(--spacing-lg)] prose prose-lg text-bg";
+const listClassVar =
+  "px-[var(--spacing-xl)] list-disc list-inside space-y-[var(--spacing-md)]";
 const listItemClassVar = "space-y-[var(--spacing-sm)] slide-left";
 ---
 
@@ -54,14 +53,12 @@ const listItemClassVar = "space-y-[var(--spacing-sm)] slide-left";
       variant: "primary",
     },
   ]}
-    childPlacement="top-content-section"
+  childPlacement="top-content-section"
   buttonsSectionClass={buttonsSectionClassVar}
 >
   <div class={childContainerClassVar}>
     <ul class={listClassVar}>
-      <li class={listItemClassVar}>
-        Fast, Reliable Water Removal
-      </li>
+      <li class={listItemClassVar}>Fast, Reliable Water Removal</li>
 
       <li class={listItemClassVar}>
         Breathe Easier with Dryer Vent &amp; Air Duct Cleaning

@@ -5,9 +5,11 @@ import Section from '../components/Section.astro';
 // export the mapping so MDX will render <Section> with your Astro component
 export const components = { Section };
 ---
+
 # Our Amazing Service
-import Section from '@/components/Section.astro';
-import ServiceCard from '@/components/LoopComponents/ServiceCard.astro';
+
+import Section from "@/components/Section/Section.astro";
+import ServiceCard from "@/components/LoopComponents/ServiceCard.astro";
 
 <Section
   collection="services"
@@ -15,5 +17,7 @@ import ServiceCard from '@/components/LoopComponents/ServiceCard.astro';
   variant="services"
   component={ServiceCard}
 >
-  <p>This descends from MDX but is rendered inside your Section.astro wrapper!</p>
+  <p>
+    This descends from MDX but is rendered inside your Section.astro wrapper!
+  </p>
 </Section>

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import Modal from './Modal.jsx';
-import Button from './Button.jsx';
+import React, { useState } from "react";
+import Modal from "./Modal.jsx";
+import Button from "./Button/Button.jsx";
 
 export default function ModalDemo() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +17,8 @@ export default function ModalDemo() {
         <div className="p-[var(--spacing-lg)]">
           <h2 className="h2 mb-[var(--spacing-md)]">Demo Modal</h2>
           <p className="mb-[var(--spacing-lg)]">
-            This is a demonstration modal using the shared Button and Modal components.
+            This is a demonstration modal using the shared Button and Modal
+            components.
           </p>
           {/* <Button onClick={closeModal} variant="secondary">
             Close

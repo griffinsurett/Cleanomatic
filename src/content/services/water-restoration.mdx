@@ -11,7 +11,7 @@ keywords:
   - "24-hour service"
 ---
 
-import Section from "@/components/Section.astro";
+import Section from "@/components/Section/Section.astro";
 import waterImg from "@/assets/water-dm.jpg";
 import { Image } from "astro:assets";
 
@@ -66,11 +66,13 @@ import { Image } from "astro:assets";
     />
   </Section>
   <Section
-    heading={[{ text: "Our Five‑Step Water Restoration Process", tagName: "h4" }]}
+    heading={[
+      { text: "Our Five‑Step Water Restoration Process", tagName: "h4" },
+    ]}
     description="Emergency Extraction → Targeted Drying → Sanitizing Cleanup → Repairs & Restoration → Final Walkthrough—David’s process gets you back to normal, fast."
     variant="textCol"
     sectionClass="lg:sticky lg:top-0"
     collection="process"
     query="getAll"
-/>
+  />
 </Section>

@@ -1,6 +1,6 @@
 ---
 // /[collection]/index.astro
-import Section from "@/components/Section.astro";
+import Section from "@/components/Section/Section.astro";
 import { collections } from "@/content/config";
 import { getCollectionMeta } from "@/utils/FetchMeta";
 import { capitalize } from "@/utils/ContentUtils";
@@ -45,7 +45,7 @@ const sections = meta.sections?.length
       },
     ];
 
-    console.log("robots", meta.robots);
+console.log("robots", meta.robots);
 ---
 
 <Layout

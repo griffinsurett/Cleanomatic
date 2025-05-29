@@ -1,6 +1,6 @@
 ---
 // src/components/ListItem.astro
-import Button from "../Button.jsx";
+import Button from "../Button/Button.jsx";
 
 const {
   item,
@@ -15,7 +15,9 @@ const effectiveHasPage =
   item.data.hasPage !== undefined ? item.data.hasPage : HasPage;
 ---
 
-<article class={`${itemClass} py-[var(--spacing-sm)] list-inside load slide-left`}>
+<article
+  class={`${itemClass} py-[var(--spacing-sm)] list-inside load slide-left`}
+>
   {/* Inline title + description */}
   <strong class="font-semibold">{item.data.title}:</strong>
   {item.data.description}

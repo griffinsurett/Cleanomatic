@@ -1,7 +1,7 @@
 ---
 // src/pages/index.astro
 import ExtendedLayout from "@/layouts/ExtendedLayout.astro";
-import Section from "@/components/Section.astro";
+import Section from "@/components/Section/Section.astro";
 import { Picture } from "astro:assets";
 import generations from "@/assets/generations.jpg";
 import { SiteData, CTAdata } from "@/content/SiteData";
@@ -21,40 +21,52 @@ import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
 >
   <!-- Hero Section with primary call-to-action -->
   <!-- Hero Section as Section variant -->
-  <Section variant="primaryHero" heading={[
-    {
-      text: "Keeping NJ Clean Since 1999!",
-      tagName: "label",
-      class: "h4 italic text-bg slide-down",
-    },
-    {
-      text: "Your Trusted Cleaning Experts in New Jersey.",
-      tagName: "h2",
-      class: "h2 text-bg slide-down",
-    },
-  ]}
-  description={`
+  <Section
+    variant="primaryHero"
+    heading={[
+      {
+        text: "Keeping NJ Clean Since 1999!",
+        tagName: "label",
+        class: "h4 italic text-bg slide-down",
+      },
+      {
+        text: "Your Trusted Cleaning Experts in New Jersey.",
+        tagName: "h2",
+        class: "h2 text-bg slide-down",
+      },
+    ]}
+    description={`
     Welcome to Cleanomatic, your trusted, full‑service partner for all things clean in New Jersey—Monmouth, Ocean, Middlesex,
       and beyond. Whether you’re dealing with water damage after a leak, improving indoor air quality by clearing dryer vents and air ducts, or giving your home a fresh start with deep furniture, carpet, and floor cleaning, we’ve got you covered.
   `}
-   buttons={[
-    {
-      text: CTAdata.buttonText,
-      link: CTAdata.buttonLink,
-      variant: "primary",
-    },
-  ]}
+    buttons={[
+      {
+        text: CTAdata.buttonText,
+        link: CTAdata.buttonLink,
+        variant: "primary",
+      },
+    ]}
   >
     <!-- these children become your bullet list -->
     <div class="py-[var(--spacing-lg)] prose prose-lg text-bg">
-      <ul class="px-[var(--spacing-xl)] list-disc list-inside space-y-[var(--spacing-md)]">
-        <li class="space-y-[var(--spacing-sm)] slide-left">Fast, Reliable Water Removal</li>
-        <li class="space-y-[var(--spacing-sm)] slide-left">Breathe Easier with Dryer Vent &amp; Air Duct Cleaning</li>
-        <li class="space-y-[var(--spacing-sm)] slide-left">Pristine Carpets, Floors &amp; Upholstery</li>
-        <li class="space-y-[var(--spacing-sm)] slide-left">Fully Licensed, Insured &amp; Satisfaction-Guaranteed</li>
+      <ul
+        class="px-[var(--spacing-xl)] list-disc list-inside space-y-[var(--spacing-md)]"
+      >
+        <li class="space-y-[var(--spacing-sm)] slide-left">
+          Fast, Reliable Water Removal
+        </li>
+        <li class="space-y-[var(--spacing-sm)] slide-left">
+          Breathe Easier with Dryer Vent &amp; Air Duct Cleaning
+        </li>
+        <li class="space-y-[var(--spacing-sm)] slide-left">
+          Pristine Carpets, Floors &amp; Upholstery
+        </li>
+        <li class="space-y-[var(--spacing-sm)] slide-left">
+          Fully Licensed, Insured &amp; Satisfaction-Guaranteed
+        </li>
       </ul>
     </div>
   </Section>
 
-<MainPageLayout/>
+  <MainPageLayout />
 </ExtendedLayout>

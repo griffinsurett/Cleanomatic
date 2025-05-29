@@ -1,12 +1,13 @@
 ---
 // src/pages/contact-us.astro
-import SecondaryHero from "@/components/StaticSections/SecondaryHero.astro";
+import SecondaryHero from "@/components/Section/StaticSections/SecondaryHero.astro";
 import ExtendedLayout from "../layouts/ExtendedLayout.astro";
 import Menu from "@/components/Menu/Menu.astro";
 import { getContactMenuItems } from "@/queries/ContactMenuQuery";
 import ContactCard from "@/components/LoopComponents/ContactMenu/ContactCard";
-import Section from "@/components/Section.astro";
+import Section from "@/components/Section/Section.astro";
 ---
+
 <ExtendedLayout
   title="Contact Us"
   description="Get in touch with Cleanomatic"
