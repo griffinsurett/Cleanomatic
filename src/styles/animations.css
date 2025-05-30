@@ -3,7 +3,7 @@
 /* 1️⃣ Scroll‑linked animations in supporting browsers */
 @layer utilities {
   .slide-logo-left {
-    animation: slide-logo-right 1s ease-in-out forwards;
+    animation: slide-logo-right 1.1s ease-in-out forwards;
     animation-fill-mode: both;
   }   
 
