@@ -58,9 +58,12 @@ const pageDesc =
       />
     )
   }
-  <slot />
 
-  <Section
+
+  <slot />
+    <!-- Contact / Quote form -->
+  <QuoteForm />
+  <!-- <Section
     variant="imageCol3"
     childSlotClass="flex lg:flex-row-reverse py-[var(--spacing-3xl)]"
   >
@@ -72,7 +75,7 @@ const pageDesc =
         loading="lazy"
       />
     </Section>
-    <!-- <Section
+    <Section
       heading={[
         {
           text: `Our Five‑Step ${data.title} Cleaning Process`,
@@ -95,8 +98,8 @@ const pageDesc =
       sectionClass="lg:sticky lg:top-0"
       collection="process"
       query="related"
-    /> -->
-  </Section>
+    />
+  </Section> -->
 
   <Section
     heading={[
@@ -153,10 +156,6 @@ const pageDesc =
   <Section collection="testimonials" query="getAll" />
   <Section collection="faq" query="related" />
 
-  <Section collection="serviceAreas" query="getAll" />
-  <!-- <Section collection="gallery" query="getAll" /> -->
+  <Section collection="gallery" query="getAll" />
   <!-- <Section collection="services" query="sibling" headingAreaClass="hidden" /> -->
-
-  <!-- Contact / Quote form -->
-  <QuoteForm />
 </BaseLayout>
