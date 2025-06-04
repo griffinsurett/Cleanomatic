@@ -33,9 +33,9 @@ const isServiceAreasRoute = Astro.url.pathname.includes("/serviceAreas");
     class="galleries flex flex-col justify-center items-center py-[var(--spacing-xl)] md:py-[var(--spacing-2xl)] lg:py-[var(--spacing-3xl)] gap-[var(--spacing-xl)]"
   >
     <Section
-      collection="gallery"
-      query="getAll"
+      collection="projects" query="getAll"
       variant="gallery2"
+      childSlotClass="w-full flex items-center justify-center"
       heading={[
         {
           text: "No Mess We Can’t Tackle",

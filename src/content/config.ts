@@ -65,7 +65,7 @@ const sectionSchema = z.object({
   slider: z
     .object({
       enabled: z.boolean(),
-      hideScrollbar: z.boolean().optional(), 
+      hideScrollbar: z.boolean().optional(),
       autoplay: z.boolean().optional(),
       autoplaySpeed: z.number().optional(),
       infinite: z.boolean().optional(),
@@ -131,6 +131,22 @@ export const collections = {
           .optional(),
       }),
   }),
+  projects: defineCollection({
+    schema: ({ image }) =>
+      baseSchema({ image }).extend({
+        beforeImage: image().optional(),
+        afterImage: image().optional(),
+        services: z
+          .union([reference("services"), z.array(reference("services"))])
+          .optional(),
+        testimonials: z
+          .union([
+            reference("testimonials"),
+            z.array(reference("testimonials")),
+          ])
+          .optional(),
+      }),
+  }),
   testimonials: defineCollection({
     schema: ({ image }) => baseSchema({ image }),
   }),
@@ -146,11 +162,12 @@ export const collections = {
           .optional(),
       }),
   }),
-   serviceAreas: defineCollection({
+  serviceAreas: defineCollection({
     loader: file("src/content/serviceAreas/serviceAreas.json"), // file-loaded collection
-    schema: ({ image }) => baseSchema({ image }).extend({
-      tags: z.array(z.string()).optional(),
-    }),
+    schema: ({ image }) =>
+      baseSchema({ image }).extend({
+        tags: z.array(z.string()).optional(),
+      }),
   }),
   gallery: defineCollection({
     loader: file("src/content/gallery/gallery.json"), // file-loaded collection
@@ -171,7 +188,7 @@ export const collections = {
     loader: file("src/content/process/ourProcess.json"),
     schema: ({ image }) =>
       baseSchema({ image }).extend({
-          services: z
+        services: z
           .union([reference("services"), z.array(reference("services"))])
           .optional(),
       }),
