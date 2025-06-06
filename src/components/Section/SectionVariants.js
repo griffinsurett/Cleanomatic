@@ -113,7 +113,7 @@ imageCol3: {
     contentClass:
       "content-container flex flex-col justify-center w-full px-[var(--spacing-lg)]",
     itemsClass:
-      "flex flex-wrap justify-between items-stretch gap-[var(--spacing-sm)]",
+      "gap-[var(--spacing-sm)]",
     buttonsSectionClass: "hidden",
     backgroundMedia: undefined,
   },

@@ -1,20 +1,25 @@
-// src/components/LoopComponents/ClientImageCard.jsx
+// src/components/LoopComponents/GalleryCard.jsx
 import React from "react";
 import Heading from "../Heading.jsx";
 
-export default function GalleryCard({ item, collectionName, HasPage }) {
+export default function GalleryCard({
+  item,
+  collectionName,
+  HasPage,
+  itemClass = "",
+}) {
   const effectiveHasPage =
     item.data.hasPage !== undefined ? item.data.hasPage : HasPage;
   const { title, featuredImage } = item.data;
-
-  // Determine the image URL
   const imageSrc =
     featuredImage && (typeof featuredImage === "string"
       ? featuredImage
       : featuredImage.src || "");
 
   return (
-    <article className="scale-up relative group w-full h-64 lg:h-[35vh] overflow-hidden shadow hover:shadow-lg transition-shadow">
+    <article
+      className={`relative w-full overflow-hidden ${itemClass} h-64 lg:h-[55vh]`}
+    >
       {effectiveHasPage ? (
         <a
           href={`/${collectionName}/${item.slug}`}
@@ -44,3 +49,4 @@ export default function GalleryCard({ item, collectionName, HasPage }) {
     </article>
   );
 }
+
