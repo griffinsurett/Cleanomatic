@@ -1,6 +1,8 @@
 // src/components/BeforeAfterSlider.jsx
 import React, { useRef, useState, useEffect } from 'react';
 
+const BandAabelClass = "absolute bg-primary text-bg uppercase py-[var(--spacing-xs)] px-[var(--spacing-sm)] rounded select-none"
+
 export default function BeforeAfterSlider({ item, className = '' }) {
   // 1️⃣ pull out just the URLs
   const beforeSrc = item.data.beforeImage?.src;
@@ -63,13 +65,12 @@ export default function BeforeAfterSlider({ item, className = '' }) {
       ref={containerRef}
       className={`relative w-full select-none overflow-hidden ${className} h-64 lg:h-[55vh]`}
     >
-      {/* ── AFTER IMAGE (sits underneath, clipped on left) ── */}
+      {/* ── AFTER IMAGE (underneath, clipped on left) ── */}
       <img
         src={afterSrc}
         alt={`After: ${altText}`}
         className="absolute inset-0 w-full h-full object-cover"
         style={{
-          // clip the left portion so only [dividerPct..1] is visible:
           clipPath: `inset(0 0 0 ${dividerPct * 100}%)`,
         }}
         loading="lazy"
@@ -81,11 +82,20 @@ export default function BeforeAfterSlider({ item, className = '' }) {
         alt={`Before: ${altText}`}
         className="absolute inset-0 w-full h-full object-cover"
         style={{
-          // clip the right portion so only [0..dividerPct] is visible:
           clipPath: `inset(0 ${(1 - dividerPct) * 100}% 0 0)`,
         }}
         loading="lazy"
       />
+
+      {/* ── “Before” Label ── */}
+      <div className={`top-4 left-4 filter brightness-60 contrast-150 ${BandAabelClass}`}>
+        Before
+      </div>
+
+      {/* ── “After” Label ── */}
+      <div className={`top-4 right-4 ${BandAabelClass}`}>
+        After
+      </div>
 
       {/* ── DRAG HANDLE ── */}
       <div
@@ -99,7 +109,7 @@ export default function BeforeAfterSlider({ item, className = '' }) {
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}
       >
-        <div className="bg-primary w-12 h-12 rounded-sm flex items-center justify-center shadow-lg">
+        <div className="bg-primary w-12 h-12 rounded-sm flex items-center justify-center shadow-lg select-none">
           {/* Left chevron SVG */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -109,11 +119,7 @@ export default function BeforeAfterSlider({ item, className = '' }) {
             stroke="currentColor"
             strokeWidth={2}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15 19l-7-7 7-7"
-            />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
 
           {/* Right chevron SVG */}
@@ -125,11 +131,7 @@ export default function BeforeAfterSlider({ item, className = '' }) {
             stroke="currentColor"
             strokeWidth={2}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M9 5l7 7-7 7"
-            />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
           </svg>
         </div>
       </div>
