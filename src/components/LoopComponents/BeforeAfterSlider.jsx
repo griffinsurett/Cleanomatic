@@ -59,9 +59,9 @@ export default function BeforeAfterSlider({ item, className = '' }) {
   }, []);
 
   return (
-    <div
+    <article
       ref={containerRef}
-      className={`relative w-full overflow-hidden ${className} h-64 lg:h-[55vh]`}
+      className={`relative w-full select-none overflow-hidden ${className} h-64 lg:h-[55vh]`}
     >
       {/* ── AFTER IMAGE (sits underneath, clipped on left) ── */}
       <img
@@ -133,6 +133,6 @@ export default function BeforeAfterSlider({ item, className = '' }) {
           </svg>
         </div>
       </div>
-    </div>
+    </article>
   );
 }
