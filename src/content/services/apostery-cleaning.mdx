@@ -15,7 +15,7 @@ import Section from "@/components/Section/Section.astro";
 import featuredImage from "@/assets/couch.jpg";
 import ImagePoster from "@/assets/couch-clean.jpg";
 import featuredVideo from "/couch-clean-video.mov";
-import MediaWithFallback from "@/components/StaticSection/MediaWithFallback.astro";
+import VideoWithFallback from "@/components/Section/StaticSections/VideoWithFallback.astro";
 
 <Section variant="imageCol3" childSlotClass="flex lg:flex-row-reverse">
   <Section variant="textCol">
@@ -58,7 +58,7 @@ import MediaWithFallback from "@/components/StaticSection/MediaWithFallback.astr
   </Section>
 
  <Section variant="contentImgSec">
-  <MediaWithFallback
+  <VideoWithFallback
     featuredVideo={VideoFile}
     featuredImage={ImagePoster}
     altText={"David cleaning a couch"}
