@@ -123,7 +123,7 @@ imageCol3: {
     sectionClass:
       "flex justify-center items-center text-center px-[var(--spacing-xl)]",
     contentClass:
-      "content-container flex flex-col justify-center w-full px-[var(--spacing-lg)]",
+      "content-container flex flex-col justify-center w-full my-[var(--spacing-sm)] px-[var(--spacing-lg)]",
     itemsClass:
       "flex justify-between items-stretch gap-[var(--spacing-sm)]",
     buttonsSectionClass: "hidden",

@@ -1,0 +1,24 @@
+---
+/*
+  Props:
+    - featuredVideo (string): path/URL to the video file
+    - featuredImage (string): path/URL to the fallback image
+    - altText       (string): alt text for the fallback <img>
+    - className     (string, optional): any extra Tailwind classes you want to pass
+*/
+const { featuredVideo, featuredImage, altText, className = "" } = Astro.props;
+---
+<video
+  src={featuredVideo}
+  controls
+  autoplay
+  poster={featuredImage}
+  class={`w-full h-auto lg:h-[75vh] rounded-lg shadow-lg mb-6 ${className}`}
+>
+  <img
+    src={featuredImage}
+    alt={altText}
+    class="w-full h-auto rounded-lg shadow-lg mb-6"
+  />
+  Sorry, your browser doesn’t support embedded videos.
+</video>

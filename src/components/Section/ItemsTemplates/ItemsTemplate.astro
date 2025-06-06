@@ -52,9 +52,6 @@ if (manualOrder) {
   items = sorted;
 }
 
-/* 2. Server‑side dynamic import of your component */
-import { basename } from "path";
-
 let RenderComponent;
 if (typeof ItemComponent === "string") {
   try {

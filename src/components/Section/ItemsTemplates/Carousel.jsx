@@ -44,7 +44,7 @@ export default function Carousel({
   const arrowStyles = "absolute top-1/2 transform -translate-y-1/2 z-10 p-2 text-xl";
 
   return (
-    <div className="relative overflow-hidden contents">
+    <div className="relative overflow-hidden">
       {arrows && (
         <>
           <button
@@ -77,12 +77,11 @@ export default function Carousel({
           snap-x snap-mandatory hide-scrollbar
           ${containerClass}
         `}
-        style={{ WebkitOverflowScrolling: "touch" }}
       >
         {items.map((item) => (
           <li
             key={item.slug}
-            className={`contents`}
+            className={`${itemClass}`}
           >
             {renderItem(item)}
           </li>

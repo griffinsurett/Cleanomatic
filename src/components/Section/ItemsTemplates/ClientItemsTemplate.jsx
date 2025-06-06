@@ -77,6 +77,7 @@ const astroPath = `../../LoopComponents/${componentKey}.astro`;
           item={item}
           collectionName={collectionName}
           HasPage={HasPage}
+          itemClass={itemClass}
         />
       </li>
       ))}

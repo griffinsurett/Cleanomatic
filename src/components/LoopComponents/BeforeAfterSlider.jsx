@@ -40,11 +40,16 @@ export default function BeforeAfterSlider({ item, className = '' }) {
   };
   const handleMouseUp    = () => (isDragging.current = false);
   const handleTouchEnd   = () => (isDragging.current = false);
-  const handleMouseDown  = () => (isDragging.current = true);
-  const handleTouchStart = (e) => {
-    e.preventDefault();
+  // mark drag start, but stop the event from bubbling up into the carousel
+  const handleMouseDown  = (e) => {
+    e.stopPropagation();
     isDragging.current = true;
   };
+  const handleTouchStart = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    isDragging.current = true;
+ };
 
   // 7️⃣ add/remove listeners to track dragging
   useEffect(() => {
@@ -105,9 +110,10 @@ export default function BeforeAfterSlider({ item, className = '' }) {
           transform: 'translate(-50%, -50%)',
           cursor:    'ew-resize',
           zIndex:    10,
+          touchAction: 'none',
         }}
-        onMouseDown={handleMouseDown}
-        onTouchStart={handleTouchStart}
+        onMouseDown={(e) => handleMouseDown(e)}
+        onTouchStart={(e) => handleTouchStart(e)}
       >
         <div className="bg-primary w-12 h-12 rounded-sm flex items-center justify-center shadow-lg select-none">
           {/* Left chevron SVG */}
