@@ -71,7 +71,7 @@ export const SectionVariants = {
 imageCol3: {
     sectionClass: "flex flex-col lg:flex-row items-center justify-center",
     contentClass: "w-full flex flex-col justify-center items-center",
-    childSlotClass: "flex flex-col w-9/10 items-start justify-center gap-[var(--spacing-xl)]",
+    childSlotClass: "flex flex-col w-9/10 lg:w-full items-start justify-center gap-[var(--spacing-xl)]",
   },
   // ─────────── FAQ ───────────
   faq: {
@@ -125,7 +125,7 @@ imageCol3: {
     contentClass:
       "content-container flex flex-col justify-center w-full px-[var(--spacing-lg)]",
     itemsClass:
-      "flex flex-wrap justify-between items-stretch gap-[var(--spacing-sm)]",
+      "flex justify-between items-stretch gap-[var(--spacing-sm)]",
     buttonsSectionClass: "hidden",
     backgroundMedia: undefined,
   },
@@ -175,6 +175,6 @@ imageCol3: {
     childPlacement:"top-content-section",
   },
   contentImgSec: {
-    sectionClass: "flex justify-center items-center text-center w-full lg:w-8/20 lg:sticky lg:top-0"
+    sectionClass: "flex justify-start items-center text-center w-full lg:w-auto lg:sticky lg:top-0",
   }
 };

@@ -1,19 +1,21 @@
 ---
 title: "Upholstery Cleaning"
-description: "David’s upholstery cleaning uses proven low‑moisture extraction to remove dirt, allergens, and stains from every fabric type. Fast‑drying and thorough, we restore your furniture’s look and feel—no fluff, just clean."
+description: "David’s upholstery cleaning uses proven low-moisture extraction to remove dirt, allergens, and stains from every fabric type. Fast-drying and thorough, we restore your furniture’s look and feel—no fluff, just clean."
 icon: "🛋️"
 order: 1
 featuredImage: "@/assets/couch.jpg"
+featuredVideo: "/couch-clean-video.mov"
 keywords:
   - "upholstery cleaning"
   - "furniture cleaning"
-  - "low‑moisture extraction"
+  - "low-moisture extraction"
   - "David upholstery expert"
 ---
-
 import Section from "@/components/Section/Section.astro";
-import couchImg from "@/assets/couch.jpg";
-import { Image } from "astro:assets";
+import featuredImage from "@/assets/couch.jpg";
+import ImagePoster from "@/assets/couch-clean.jpg";
+import featuredVideo from "../../public/couch-clean-video.mov";
+import MediaWithFallback from "@/components/StaticSection/MediaWithFallback.astro";
 
 <Section variant="imageCol3" childSlotClass="flex lg:flex-row-reverse">
   <Section variant="textCol">
@@ -22,11 +24,16 @@ import { Image } from "astro:assets";
       heading={[{ text: "Why David’s Method Works", tagName: "h4" }]}
     >
       <p>
-        David starts every job with a close inspection—identifying fabric type, soil level, and any trouble spots. Then he applies a targeted pretreatment that loosens oils, body soils, and everyday spills without over‑wetting.
+        David starts every job with a close inspection—identifying fabric type,
+        soil level, and any trouble spots. Then he applies a targeted
+        pretreatment that loosens oils, body soils, and everyday spills without
+        over-wetting.
       </p>
-      <br/>
+      <br />
       <p>
-        Next, our low‑moisture extraction tool drives powerful suction right through the fibers, pulling out moisture along with the grime. Your upholstery dries in under 4 hours* and feels entirely renewed.
+        Next, our low-moisture extraction tool drives powerful suction right
+        through the fibers, pulling out moisture along with the grime. Your
+        upholstery dries in under 4 hours* and feels entirely renewed.
       </p>
     </Section>
     <Section
@@ -34,21 +41,28 @@ import { Image } from "astro:assets";
       heading={[{ text: "Total Fabric Protection", tagName: "h4" }]}
     >
       <p>
-        Beyond stain removal, David seals cleaned fibers to ward off future spills and dust. That means fewer stains setting in, softer cushions longer, and less allergy‑trigger buildup over time.
+        Beyond stain removal, David seals cleaned fibers to ward off future
+        spills and dust. That means fewer stains setting in, softer cushions
+        longer, and less allergy-trigger buildup over time.
       </p>
-      <br/>
+      <br />
       <p>
-        From delicate velvets to durable microsuedes, our process adapts to every weave—bringing out the original color and texture without harsh chemicals or residue.
+        From delicate velvets to durable microsuedes, our process adapts to
+        every weave—bringing out the original color and texture without harsh
+        chemicals or residue.
       </p>
     </Section>
+    {/* <Section collection="gallery" query="getAll" topContentClass="hidden" slider={{
+      enabled: false,
+    }}/> */}
   </Section>
 
-  <Section variant="contentImgSec">
-    <Image
-      src={couchImg}
-      alt="David inspecting and cleaning a sofa"
-      class="w-full h-auto rounded-lg shadow-lg mb-6"
-      loading="lazy"
-    />
-  </Section>
+ <Section variant="contentImgSec">
+  <MediaWithFallback
+    featuredVideo={VideoFile}
+    featuredImage={ImagePoster}
+    altText={"David cleaning a couch"}
+    className="mx-auto"
+  />
+</Section>
 </Section>

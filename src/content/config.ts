@@ -105,7 +105,7 @@ export const metaSchema = z.object({
 // Update baseSchema to include ogType as well.
 const baseSchema = ({ image }: { image: Function }) =>
   z.object({
-    title: z.string(),
+    title: z.string().optional(),
     featuredImage: image().optional(),
     heading: headingSchema.optional(),
     description: descriptionSchema.optional(),
@@ -126,12 +126,14 @@ export const collections = {
     schema: ({ image }) =>
       baseSchema({ image }).extend({
         icon: z.string().optional(),
+        featuredVideo: z.string().optional(),
         parent: z
           .union([reference("services"), z.array(reference("services"))])
           .optional(),
       }),
   }),
   projects: defineCollection({
+    loader: file("src/content/projects/projects.json"),
     schema: ({ image }) =>
       baseSchema({ image }).extend({
         beforeImage: image().optional(),
@@ -171,10 +173,7 @@ export const collections = {
   }),
   gallery: defineCollection({
     loader: file("src/content/gallery/gallery.json"), // file-loaded collection
-    schema: ({ image }) =>
-      baseSchema({ image }).extend({
-        src: image(),
-      }),
+    schema: ({ image }) => baseSchema({ image }),
   }),
   benefits: defineCollection({
     loader: file("src/content/benefits/benefits.json"), // file-loaded collection

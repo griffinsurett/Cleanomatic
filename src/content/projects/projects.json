@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "beforeImage": "@/assets/beforeairduct1.jpg",
+    "afterImage": "@/assets/afterairduct1.jpg",
+    "services": ["air-duct-cleaning"]
+  },
+  {
+    "id": 2,
+    "beforeImage": "@/assets/birds-nest-before.jpg",
+    "afterImage": "@/assets/birds-nest-after.png",
+    "services": ["dryer-vent-cleaning"]
+  },
+  {
+    "id": 3,
+    "beforeImage": "@/assets/beforeairduct1.jpg",
+    "afterImage": "@/assets/afterairduct1.jpg"
+  },
+  {
+    "id": 4,
+    "beforeImage": "@/assets/beforeairduct1.jpg",
+    "afterImage": "@/assets/afterairduct1.jpg"
+  }
+]

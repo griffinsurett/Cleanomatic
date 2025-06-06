@@ -1,20 +1,14 @@
 [
     {
-      "title": "Sunset Over Beach",
-      "description": "A beautiful sunset over the beach.",
-      "src": "@/assets/generations.jpg",
+      "featuredImage": "@/assets/generations.jpg",
       "id": "sunset-over-beach"
     },
     {
-      "title": "Mountain Landscape",
-      "description": "A scenic view of mountains during sunrise.",
-      "src": "@/assets/david.jpg",
+      "featuredImage": "@/assets/david.jpg",
       "id": "mountain-landscape"
     },
     {
-      "title": "City Lights",
-      "description": "The city skyline illuminated at night.",
-      "src": "@/assets/truck2.jpg",
+      "featuredImage": "@/assets/truck2.jpg",
       "id": "city-lights"
     }
   ]

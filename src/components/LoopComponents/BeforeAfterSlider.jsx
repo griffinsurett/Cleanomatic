@@ -2,27 +2,27 @@
 import React, { useRef, useState, useEffect } from 'react';
 
 export default function BeforeAfterSlider({ item, className = '' }) {
-  // 1️⃣ Extract just the URL string for each image
+  // 1️⃣ pull out just the URLs
   const beforeSrc = item.data.beforeImage?.src;
   const afterSrc  = item.data.afterImage?.src;
   const altText   = item.data.title || item.slug || 'project-image';
 
-  // 2️⃣ If either “before” or “after” is missing, don’t render anything
+  // 2️⃣ if either image is missing, bail
   if (!beforeSrc || !afterSrc) {
     return null;
   }
 
-  // 3️⃣ dividerPct ranges from 0 → 1 (0 = all the way left; 1 = all the way right)
+  // 3️⃣ dividerPct → 0..1
   const [dividerPct, setDividerPct] = useState(0.5);
 
-  // 4️⃣ We need a ref to measure the container’s width for pointer calculations
+  // 4️⃣ refs for measuring/tracking drag
   const containerRef = useRef(null);
-  const isDragging = useRef(false);
+  const isDragging  = useRef(false);
 
-  // 5️⃣ Clamp helper to keep values between min and max
+  // 5️⃣ clamp helper
   const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
 
-  // 6️⃣ Convert a clientX into [0..1] relative position inside the container
+  // 6️⃣ convert a clientX → 0..1 inside container
   const onPointerMove = (clientX) => {
     if (!isDragging.current || !containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
@@ -44,7 +44,7 @@ export default function BeforeAfterSlider({ item, className = '' }) {
     isDragging.current = true;
   };
 
-  // 7️⃣ Add/remove global listeners for dragging
+  // 7️⃣ add/remove listeners to track dragging
   useEffect(() => {
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseup', handleMouseUp);
@@ -61,60 +61,33 @@ export default function BeforeAfterSlider({ item, className = '' }) {
   return (
     <div
       ref={containerRef}
-      className={`relative w-full overflow-hidden ${className}`}
-      style={{
-        /*
-          Fix this container’s height/width ratio (16:9). Because
-          both <img> tags inside are position:absolute + object-cover,
-          they will never alter the parent’s layout. Only their clip-path changes.
-        */
-        paddingTop: '56.25%', // → 16:9 aspect ratio
-      }}
+      className={`relative w-full overflow-hidden ${className} h-64 lg:h-[55vh]`}
     >
-      {/*
-        ──────────────────────────────────────────────────────────
-        “AFTER” IMAGE: sits fully underneath (no clipping on this one).
-        ──────────────────────────────────────────────────────────
-      */}
+      {/* ── AFTER IMAGE (sits underneath, clipped on left) ── */}
       <img
         src={afterSrc}
         alt={`After: ${altText}`}
         className="absolute inset-0 w-full h-full object-cover"
         style={{
-          /*
-            Clip the left side of the after-image so that
-            only the region [dividerPct .. 1] is visible.
-            That inset value = dividerPct * 100%.
-            clip-path: inset(top, right, bottom, left)
-          */
+          // clip the left portion so only [dividerPct..1] is visible:
           clipPath: `inset(0 0 0 ${dividerPct * 100}%)`,
         }}
+        loading="lazy"
       />
 
-      {/*
-        ──────────────────────────────────────────────────────────
-        “BEFORE” IMAGE: sits on top, clipped on its right side.
-        ──────────────────────────────────────────────────────────
-      */}
+      {/* ── BEFORE IMAGE (on top, clipped on right) ── */}
       <img
         src={beforeSrc}
         alt={`Before: ${altText}`}
         className="absolute inset-0 w-full h-full object-cover"
         style={{
-          /*
-            Clip the right side of the before-image so that
-            only the region [0 .. dividerPct] is visible.
-            That right-inset = (1 - dividerPct) * 100%.
-          */
+          // clip the right portion so only [0..dividerPct] is visible:
           clipPath: `inset(0 ${(1 - dividerPct) * 100}% 0 0)`,
         }}
+        loading="lazy"
       />
 
-      {/*
-        ────────────────────────────────────────────────────────
-        DRAG HANDLE: the square with two arrows, centered at dividerPct.
-        ────────────────────────────────────────────────────────
-      */}
+      {/* ── DRAG HANDLE ── */}
       <div
         className="absolute top-1/2 flex items-center justify-center"
         style={{
@@ -126,13 +99,38 @@ export default function BeforeAfterSlider({ item, className = '' }) {
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}
       >
-        {/* 
-          Square handle (bg-primary) with two chevrons in the center.
-          You can tweak w-12/h-12 or rounded-sm to taste.
-        */}
         <div className="bg-primary w-12 h-12 rounded-sm flex items-center justify-center shadow-lg">
-          <span className="text-white text-xl select-none">{'<'}</span>
-          <span className="text-white text-xl select-none ml-1.5">{'>'}</span>
+          {/* Left chevron SVG */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-5 h-5 text-white mr-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+
+          {/* Right chevron SVG */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-5 h-5 text-white ml-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
         </div>
       </div>
     </div>
