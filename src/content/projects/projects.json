@@ -7,7 +7,7 @@
   },
   {
     "id": 2,
-    "beforeImage": "@/assets/birds-nest-before.jpg",
+    "beforeImage": "@/assets/birds-nest-before.JPG",
     "afterImage": "@/assets/birds-nest-after.png",
     "services": ["dryer-vent-cleaning"]
   },
