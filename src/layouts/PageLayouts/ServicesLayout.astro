@@ -38,13 +38,14 @@ const pageDesc =
   <!-- Hero for both collection roots and item pages -->
   <SecondaryHero title={pageTitle} />
 
+  <div class="flex flex-col justify-center items-center w-17/20 mx-auto">
   <!-- Service item content -->
   {
     isItemPage && (
       <Section
         variant="description"
         contentClass="flex flex-col lg:flex-row items-center justify-center"
-        topContentClass="w-9/10 py-[var(--spacing-2xl)]"
+        topContentClass="py-[var(--spacing-2xl)]"
         heading={[{ text: data.title, class: "hidden" }]}
         description={data.description}
         buttonsSectionClass="hidden"
@@ -59,8 +60,9 @@ const pageDesc =
     )
   }
 
-
   <slot />
+    </div>
+
     <!-- Contact / Quote form -->
   <QuoteForm />
   <!-- <Section
