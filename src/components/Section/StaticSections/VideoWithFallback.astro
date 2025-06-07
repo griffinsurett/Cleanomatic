@@ -1,22 +1,22 @@
 ---
-/*
-  Props:
-    - featuredVideo (string): path/URL to the video file
-    - featuredImage (string): path/URL to the fallback image
-    - altText       (string): alt text for the fallback <img>
-    - className     (string, optional): any extra Tailwind classes you want to pass
-*/
-const { featuredVideo, featuredImage, altText, className = "" } = Astro.props;
+// src/components/Section/StaticSections/VideoWithFallback.astro
+const { featuredVideo, poster, altText, className = "" } = Astro.props;
+
+// poster might be a string URL (from ?url) or an Astro image object:
+const posterUrl = typeof poster === "object" && poster?.src
+  ? poster.src
+  : poster;
 ---
 <video
   src={featuredVideo}
   controls
   autoplay
-  poster={featuredImage}
+  muted
+  poster={posterUrl}
   class={`w-full h-auto lg:h-[75vh] rounded-lg shadow-lg mb-6 ${className}`}
 >
   <img
-    src={featuredImage}
+    src={posterUrl}
     alt={altText}
     class="w-full h-auto rounded-lg shadow-lg mb-6"
   />

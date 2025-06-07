@@ -3,7 +3,8 @@ title: "Air Duct Cleaning"
 description: "Our professional air duct cleaning service removes dust, pet dander, pollen, mold spores, and microbial contaminants from your HVAC system, dramatically improving indoor air quality and reducing allergy and asthma triggers. By clearing blockages and debris, it enhances airflow and system efficiency—potentially lowering energy consumption by up to 20%—and extends the lifespan of your HVAC equipment. Additionally, clean ducts eliminate musty odors and decrease dust accumulation throughout your home, resulting in a fresher, healthier living environment."
 icon: "💨"
 order: 2
-featuredImage: "@/assets/air-duct.JPG"
+featuredImage: "@/assets/AirDuct.jpeg"
+featuredVideo: /airduct.mov
 keywords:
   - "air duct cleaning"
   - "HVAC cleaning"
@@ -12,8 +13,11 @@ keywords:
 ---
 
 import Section from "@/components/Section/Section.astro";
-import ductImg from "@/assets/airduct.jpg";
+import ductImg from "@/assets/AirDuct.jpeg";
 import { Image } from "astro:assets";
+import VideoWithFallback from "@/components/Section/StaticSections/VideoWithFallback.astro";
+import featuredVideo from "/airduct.mov";
+import ImagePoster from "@/assets/airduct-video-poster.jpg"
 
 <Section variant="imageCol3" childSlotClass="flex lg:flex-row-reverse">
   <Section variant="textCol">
@@ -61,12 +65,12 @@ import { Image } from "astro:assets";
     </Section>
   </Section>
 
-  <Section variant="contentImgSec">
-    <Image
-      src={ductImg}
-      alt="Technician inspecting air ducts"
-      class="w-full h-auto rounded-lg shadow-lg mb-6"
-      loading="lazy"
-    />
-  </Section>
+ <Section variant="contentImgSec">
+  <VideoWithFallback
+    featuredVideo={featuredVideo}
+    poster={ImagePoster}
+    altText={"David cleaning a couch"}
+    className="mx-auto"
+  />
+</Section>
 </Section>

@@ -13,7 +13,7 @@ keywords:
 ---
 import Section from "@/components/Section/Section.astro";
 import featuredImage from "@/assets/apostery-cleaning.jpeg";
-import ImagePoster from "@/assets/couch-clean.jpg";
+import ImagePoster from "@/assets/couch-clean.jpg?url";
 import featuredVideo from "/couch-clean-video.mov";
 import VideoWithFallback from "@/components/Section/StaticSections/VideoWithFallback.astro";
 
@@ -60,7 +60,7 @@ import VideoWithFallback from "@/components/Section/StaticSections/VideoWithFall
  <Section variant="contentImgSec">
   <VideoWithFallback
     featuredVideo={featuredVideo}
-    featuredImage={ImagePoster}
+    poster={ImagePoster}
     altText={"David cleaning a couch"}
     className="mx-auto"
   />

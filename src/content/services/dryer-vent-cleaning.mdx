@@ -4,6 +4,7 @@ description: "David clears lint and debris from your dryer vent to reduce fire r
 icon: "🔥"
 order: 3
 featuredImage: "@/assets/dryervent1.jpeg"
+featuredVideo: "/uponlatter.MP4"
 keywords:
   - "dryer vent cleaning"
   - "lint removal"
@@ -15,6 +16,9 @@ keywords:
 import Section from "@/components/Section/Section.astro";
 import ventImg from "@/assets/dryervent1.jpeg";
 import { Image } from "astro:assets";
+import VideoWithFallback from "@/components/Section/StaticSections/VideoWithFallback.astro";
+import featuredVideo from "/uponlatter.MP4";
+import ImagePoster from "@/assets/dryer-vent-latter-poster.jpg";
 
 <Section variant="imageCol3" childSlotClass="flex lg:flex-row-reverse">
   <Section variant="textCol">
@@ -44,12 +48,12 @@ import { Image } from "astro:assets";
     </Section>
   </Section>
 
-  <Section variant="contentImgSec">
-    <Image
-      src={ventImg}
-      alt="Cleaning inside a dryer vent"
-      class="w-full h-auto rounded-lg shadow-lg mb-6"
-      loading="lazy"
-    />
-  </Section>
+ <Section variant="contentImgSec">
+  <VideoWithFallback
+    featuredVideo={featuredVideo}
+    poster={ImagePoster}
+    altText={"David cleaning a couch"}
+    className="mx-auto"
+  />
+</Section>
 </Section>

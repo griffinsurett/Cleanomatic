@@ -3,17 +3,20 @@ title: "Water Restoration"
 description: "When flooding or leaks strike, David’s 24‑hour emergency water restoration team moves fast—using pumps, dehumidifiers, and cleanup crews to stop damage and restore your home back to normal."
 icon: "💧"
 order: 6
-featuredImage: "@/assets/water-dm.jpg"
+featuredImage: "@/assets/water-damage2.jpeg"
+featuredVideo: "/water-restoration-video.MP4"
 keywords:
   - "water restoration"
   - "emergency flood cleanup"
   - "mold prevention"
   - "24-hour service"
 ---
-
 import Section from "@/components/Section/Section.astro";
-import waterImg from "@/assets/water-dm.jpg";
+import waterImg from "@/assets/water-damage2.jpeg";
 import { Image } from "astro:assets";
+import VideoWithFallback from "@/components/Section/StaticSections/VideoWithFallback.astro";
+import featuredVideo from "/water-restoration-video.MP4";
+import ImagePoster from "@/assets/water-restoration-poster.jpg";
 
 <Section variant="imageCol3" childSlotClass="flex lg:flex-row-reverse">
   <Section variant="textCol">
@@ -43,36 +46,12 @@ import { Image } from "astro:assets";
     </Section>
   </Section>
 
-  <Section variant="contentImgSec">
-    <Image
-      src={waterImg}
-      alt="Rapid water extraction in progress"
-      class="w-full h-auto rounded-lg shadow-lg mb-6"
-      loading="lazy"
-    />
-  </Section>
-</Section>
-
-<Section
-  variant="imageCol3"
-  childSlotClass="flex lg:flex-row-reverse py-[var(--spacing-3xl)]"
->
-  <Section variant="contentImgSec">
-    <Image
-      src={waterImg}
-      alt="Fully restored living space"
-      class="w-full h-auto rounded-lg shadow-lg mb-6"
-      loading="lazy"
-    />
-  </Section>
-  <Section
-    heading={[
-      { text: "Our Five‑Step Water Restoration Process", tagName: "h4" },
-    ]}
-    description="Emergency Extraction → Targeted Drying → Sanitizing Cleanup → Repairs & Restoration → Final Walkthrough—David’s process gets you back to normal, fast."
-    variant="textCol"
-    sectionClass="lg:sticky lg:top-0"
-    collection="process"
-    query="getAll"
+ <Section variant="contentImgSec">
+  <VideoWithFallback
+    featuredVideo={featuredVideo}
+    poster={ImagePoster}
+    altText={"David cleaning a couch"}
+    className="mx-auto"
   />
+</Section>
 </Section>

@@ -162,7 +162,7 @@ imageCol3: {
       "flex flex-wrap justify-center items-center gap-[var(--spacing-xl)] my-[var(--spacing-lg)] md:my-[var(--spacing-2xl)]",
   },
     textCol: {
-    sectionClass:"flex justify-start items-center w-full lg:w-12/20",
+    sectionClass:"flex justify-start items-center w-full lg:w-12/20 lg:sticky lg:top-0",
     childSlotClass:"flex flex-col",
     childPlacement:"top-content-section",
     itemClass:"list-decimal list-inside ml-6"
