@@ -1,15 +1,142 @@
 [
+   {
+    "featuredImage": "@/assets/we-get-dirty.jpeg",
+    "id": "We Get Dirty So You Don't Have To"
+  },
+  {
+    "featuredImage": "@/assets/synagogoue.jpg",
+    "id": "synagogue-interior",
+    "services": ["air-duct-cleaning", "tile-and-grout-cleaning"]
+  },
+
+  {
+    "featuredImage": "@/assets/generations.jpg",
+    "id": "David-and-his-sons"
+  },
+  {
+    "featuredImage": "@/assets/david.jpg",
+    "id": "David-in-Truck"
+  },
+  {
+    "featuredImage": "@/assets/truck2.jpg",
+    "id": "Cleanomatic-Truck"
+  },
+  {
+    "featuredImage": "@/assets/building.jpg",
+    "id": "Cleanomatic Team outside Building"
+  },
+  {
+    "featuredImage": "@/assets/cleantile1.jpg",
+    "id": "Clean Looking Tile",
+    "services": ["tile-and-grout-cleaning"]
+  },
+  {
+    "featuredImage": "@/assets/water-damage2.jpeg",
+    "id": "Water Damage Restoration",
+    "services": ["water-restoration"]
+  },
+  {
+    "featuredImage": "@/assets/airduct-clean1.jpeg",
+    "id": "Clean Air Duct",
+    "services": ["air-duct-cleaning"]
+  },
+  {
+    "featuredImage": "@/assets/water-restoration-poster.jpg",
+    "id": "Water Damage Restoration",
+    "services": ["water-restoration"]
+  },
     {
-      "featuredImage": "@/assets/generations.jpg",
-      "id": "sunset-over-beach"
-    },
-    {
-      "featuredImage": "@/assets/david.jpg",
-      "id": "mountain-landscape"
-    },
-    {
-      "featuredImage": "@/assets/truck2.jpg",
-      "id": "city-lights"
-    }
-  ]
-  
+    "featuredImage": "@/assets/airduct-clean1.jpeg",
+    "id": "Clean Air Duct",
+    "services": ["air-duct-cleaning"]
+  },
+  {
+    "featuredImage": "@/assets/tile-and-grout.JPG",
+    "id": "Tile and Grout Cleaning",
+    "services": ["tile-and-grout-cleaning"]
+  },
+  {
+    "featuredImage": "@/assets/tile-cleaning.jpg",
+    "id": "Clean Tile",
+    "services": ["tile-and-grout-cleaning"]
+  },
+  {
+    "featuredImage": "@/assets/trucks.jpeg",
+    "id": "Cleanomatic Trucks"
+  },
+  {
+    "featuredImage": "@/assets/couch-clean.jpg",
+    "id": "Clean Couch",
+    "services": ["apostery-cleaning"]
+  },
+  {
+    "featuredImage": "@/assets/birds-nest-after.png",
+    "id": "Birds Nest Dryer Vent",
+    "services": ["dryer-vent-cleaning"]
+  },
+  {
+    "featuredImage": "@/assets/dryervent1.jpeg",
+    "id": "Dryer Vent Cleaning",
+    "services": ["dryer-vent-cleaning"]
+  },
+  {
+    "featuredImage": "@/assets/dryer.jpeg",
+    "id": "Dryer Vent",
+    "services": ["dryer-vent-cleaning"]
+  },
+  {
+    "featuredImage": "@/assets/dryervent1.jpeg",
+    "id": "Dryer Vent Cleaning",
+    "services": ["dryer-vent-cleaning"]
+  },
+  {
+    "featuredImage": "@/assets/carpet.jpeg",
+    "id": "Clean Carpet",
+    "services": ["carpet-cleaning"]
+  },
+  {
+    "featuredImage": "@/assets/red-chair-clean.jpeg",
+    "id": "Clean Red Chair",
+    "services": ["apostery-cleaning"]
+  },
+  {
+    "featuredImage": "@/assets/carpet1-clean.jpg",
+    "id": "Clean Carpet",
+    "services": ["carpet-cleaning"]
+  },
+  {
+    "featuredImage": "@/assets/dryer-vent-3.jpeg",
+    "id": "Dryer Vent Cleaning",
+    "services": ["dryer-vent-cleaning"]
+  },
+  {
+    "featuredImage": "@/assets/dryer-vent-4.jpeg",
+    "id": "Dryer Vent Cleaning",
+    "services": ["dryer-vent-cleaning"]
+  },
+  {
+    "featuredImage": "@/assets/steps-carpet.jpeg",
+    "id": "Clean Steps Carpet",
+    "services": ["carpet-cleaning"]
+  },
+  {
+    "featuredImage": "@/assets/basement.jpeg",
+    "id": "Basement Carpet",
+    "services": ["carpet-cleaning"]
+  },
+  {
+    "featuredImage": "@/assets/water-restoration.jpeg",
+    "id": "Water Restoration",
+    "services": ["water-restoration"]
+  },
+  {
+    "featuredImage": "@/assets/area-rug-cleaning.jpeg",
+    "id": "Area Rug Cleaning",
+    "services": ["carpet-cleaning"]
+  },
+  {
+    "featuredImage": "@/assets/yellow-wire-dryer.jpeg",
+    "id": "Yellow Wire Dryer Vent",
+    "services": ["dryer-vent-cleaning"]
+  }
+]

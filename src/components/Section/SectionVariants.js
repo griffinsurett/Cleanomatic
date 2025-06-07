@@ -1,7 +1,6 @@
 // src/components/SectionVariants.js
 
 import HeroBg from "@/assets/cleanomatic-truck-1.jpg";
-import FAQimg from "@/assets/glen-rushton-PjeZGaKunAI-unsplash.jpg";
 import truck2 from "@/assets/truck2.jpg";
 /**
  * SectionVariants

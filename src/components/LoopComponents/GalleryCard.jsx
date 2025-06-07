@@ -1,6 +1,5 @@
 // src/components/LoopComponents/GalleryCard.jsx
 import React from "react";
-import Heading from "../Heading.jsx";
 
 export default function GalleryCard({
   item,
@@ -10,11 +9,19 @@ export default function GalleryCard({
 }) {
   const effectiveHasPage =
     item.data.hasPage !== undefined ? item.data.hasPage : HasPage;
-  const { title, featuredImage } = item.data;
+
+  const { featuredImage } = item.data;
   const imageSrc =
     featuredImage && (typeof featuredImage === "string"
       ? featuredImage
       : featuredImage.src || "");
+
+  // Build alt text from item.id: remove -/_, capitalize each word
+  const rawId = item.id || "";
+  const altText = rawId
+    .split(/[-_]/g)
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 
   return (
     <article
@@ -28,7 +35,7 @@ export default function GalleryCard({
           {imageSrc && (
             <img
               src={imageSrc}
-              alt={title}
+              alt={altText}
               loading="lazy"
               className="w-full h-full object-cover object-center transform transition-transform duration-300 ease-in-out group-hover:scale-105"
             />
@@ -39,7 +46,7 @@ export default function GalleryCard({
           {imageSrc && (
             <img
               src={imageSrc}
-              alt={title}
+              alt={altText}
               loading="lazy"
               className="w-full h-full object-cover object-center transform transition-transform duration-300 ease-in-out group-hover:scale-105"
             />
@@ -49,4 +56,3 @@ export default function GalleryCard({
     </article>
   );
 }
-
