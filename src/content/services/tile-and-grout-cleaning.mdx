@@ -4,6 +4,7 @@ description: "David’s tile & grout service blasts away dirt, soap scum, and st
 icon: "🧼"
 order: 5
 featuredImage: "@/assets/tile-cleaning.jpg"
+featuredVideo: "/shuultile.mov"
 keywords:
   - "tile cleaning"
   - "grout cleaning"
@@ -14,6 +15,9 @@ keywords:
 import Section from "@/components/Section/Section.astro";
 import groutImg from "@/assets/grout2.jpg";
 import { Image } from "astro:assets";
+import ImagePoster from "@/assets/clean-tile-poster.jpg";
+import VideoWithFallback from "@/components/Section/StaticSections/VideoWithFallback.astro";
+import featuredVideo from "/shuultile.mov";
 
 <Section variant="imageCol3" childSlotClass="flex lg:flex-row-reverse">
   <Section variant="textCol">
@@ -43,12 +47,12 @@ import { Image } from "astro:assets";
     </Section>
   </Section>
 
-  <Section variant="contentImgSec">
-    <Image
-      src={groutImg}
-      alt="Specialized tile & grout cleaning"
-      class="w-full h-auto rounded-lg shadow-lg mb-6"
-      loading="lazy"
-    />
-  </Section>
+ <Section variant="contentImgSec">
+  <VideoWithFallback
+    featuredVideo={featuredVideo}
+    poster={ImagePoster}
+    altText={"David cleaning a couch"}
+    className="mx-auto"
+  />
+</Section>
 </Section>

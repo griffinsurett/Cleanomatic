@@ -14,6 +14,9 @@ keywords:
 import Section from "@/components/Section/Section.astro";
 import carpetImg from "@/assets/carpet.jpeg";
 import { Image } from "astro:assets";
+import VideoWithFallback from "@/components/Section/StaticSections/VideoWithFallback.astro";
+import featuredVideo from "/carpet-cleaning-video.mov";
+import ImagePoster from "@/assets/carpet-cleaning.jpg";
 
 <Section variant="imageCol3" childSlotClass="flex lg:flex-row-reverse">
   <Section variant="textCol">
@@ -44,11 +47,11 @@ import { Image } from "astro:assets";
   </Section>
 
   <Section variant="contentImgSec">
-    <Image
-      src={carpetImg}
-      alt="Technician performing hot water extraction on carpet"
-      class="w-full h-auto rounded-lg shadow-lg mb-6"
-      loading="lazy"
-    />
-  </Section>
+  <VideoWithFallback
+    featuredVideo={featuredVideo}
+    poster={ImagePoster}
+    altText={"David cleaning a couch"}
+    className="mx-auto"
+  />
+</Section>
 </Section>
