@@ -92,7 +92,7 @@ imageCol3: {
     sectionClass:
       "section-main flex justify-center items-center w-full text-center text-bg px-[var(--spacing-xl)]",
     contentClass:
-      "content-container load slide-up container flex flex-wrap flex-col justify-center items-center w-full py-[var(--spacing-2xl)] px-[var(--spacing-lg)]",
+      "content-container load slide-up container flex flex-wrap flex-col justify-center items-center w-full py-[var(--spacing-2xl)] lg:px-[var(--spacing-lg)]",
     itemsClass:
             "flex justify-between items-stretch gap-[var(--spacing-md)] py-[var(--spacing-lg)]",
     backgroundMedia: {

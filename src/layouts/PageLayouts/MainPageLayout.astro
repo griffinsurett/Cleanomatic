@@ -84,6 +84,8 @@ const isServiceAreasRoute = Astro.url.pathname.includes("/serviceAreas");
   />
 </Section>
 
+<Section collection="testimonials" query="getAll" />
+
 <!-- Benefits Section with a background picture -->
 <Section collection="benefits" query="getAll">
   <Picture
@@ -112,7 +114,6 @@ const isServiceAreasRoute = Astro.url.pathname.includes("/serviceAreas");
   )
 }
 
-<Section collection="testimonials" query="getAll" />
 <Section collection="faq" query="getAll">
   <Picture
     src={HeroBg}

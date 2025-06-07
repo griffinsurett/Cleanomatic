@@ -11,7 +11,7 @@ export default function Card({ item, collectionName, HasPage }) {
   const effectiveHasPage =
     item.data.hasPage !== undefined ? item.data.hasPage : HasPage;
   return (
-    <article className="card load text-center scale-up xl:h-[40vh] w-full p-[var(--spacing-2xl)] md:p-[var(--spacing-3xl)] box-shadow-primary text-text bg-bg h-auto flex flex-col justify-center">
+    <article className="card load text-center scale-up h-[40vh] w-full p-[var(--spacing-md)] md:p-[var(--spacing-3xl)] box-shadow-primary text-text bg-bg flex flex-col justify-center">
       <Heading tagName={"h3"} className="h3 mb-[var(--spacing-sm)]">
         {item.data.title}
       </Heading>
