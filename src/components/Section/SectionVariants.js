@@ -95,7 +95,7 @@ imageCol3: {
     contentClass:
       "content-container load slide-up container flex flex-wrap flex-col justify-center items-center w-full py-[var(--spacing-2xl)] px-[var(--spacing-lg)]",
     itemsClass:
-      "flex flex-wrap md:flex-nowrap justify-center items-stretch gap-[var(--spacing-xl)] my-[var(--spacing-lg)] md:my-[var(--spacing-2xl)]",
+            "flex justify-between items-stretch gap-[var(--spacing-md)] py-[var(--spacing-lg)]",
     backgroundMedia: {
       image: {
         src: truck2,
