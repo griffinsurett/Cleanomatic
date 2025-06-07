@@ -28,6 +28,17 @@
     "beforeImage": "@/assets/carpet2-dirty.jpg",
     "afterImage": "@/assets/carpet2-clean.jpg",
     "services": ["carpet-cleaning"]
-
+  },
+   {
+    "id": 5,
+    "beforeImage": "@/assets/red-chair-dirty.jpeg",
+    "afterImage": "@/assets/red-chair-clean.jpeg",
+    "services": ["apostery-cleaning"]
+  },
+  {
+    "id": 6,
+    "beforeImage": "@/assets/airduct-dirty1.jpeg",
+    "afterImage": "@/assets/airduct-clean1.jpeg",
+    "services": ["air-duct-cleaning"]
   }
 ]
