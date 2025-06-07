@@ -113,7 +113,7 @@ imageCol3: {
     contentClass:
       "content-container flex flex-col justify-center w-full px-[var(--spacing-lg)]",
     itemsClass:
-      "gap-[var(--spacing-sm)]",
+      "gap-[var(--spacing-sm)] py-[var(--spacing-lg)]",
     buttonsSectionClass: "hidden",
     backgroundMedia: undefined,
   },
@@ -125,7 +125,7 @@ imageCol3: {
     contentClass:
       "content-container flex flex-col justify-center w-full my-[var(--spacing-sm)] px-[var(--spacing-lg)]",
     itemsClass:
-      "flex justify-between items-stretch gap-[var(--spacing-sm)]",
+      "flex justify-between items-stretch gap-[var(--spacing-sm)] py-[var(--spacing-lg)]",
     buttonsSectionClass: "hidden",
     backgroundMedia: undefined,
   },

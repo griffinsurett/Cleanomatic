@@ -11,13 +11,20 @@
     "afterImage": "@/assets/birds-nest-after.png",
     "services": ["dryer-vent-cleaning"]
   },
-  {
+   {
     "id": 3,
-    "beforeImage": "@/assets/beforeairduct1.jpg",
-    "afterImage": "@/assets/afterairduct1.jpg"
+    "beforeImage": "@/assets/dirtytile1.jpg",
+    "afterImage": "@/assets/cleantile1.jpg",
+    "services": ["tile-and-grout-cleaning"]
   },
   {
     "id": 4,
+    "beforeImage": "@/assets/carpet1-dirty.jpg",
+    "afterImage": "@/assets/carpet1-clean.jpg",
+    "services": ["carpet-cleaning"]
+  },
+  {
+    "id": 5,
     "beforeImage": "@/assets/beforeairduct1.jpg",
     "afterImage": "@/assets/afterairduct1.jpg"
   }

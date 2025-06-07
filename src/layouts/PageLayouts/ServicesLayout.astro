@@ -101,56 +101,41 @@ const pageDesc =
     />
   </Section> -->
 
-  <Section
-    heading={[
-      {
-        text: "From Mess to Masterpiece",
-        tagName: "h2",
-        class: "h2 text-bg mb-[var(--spacing-sm)] load slide-up",
-      },
-      {
-        text: "We don’t just clean— we conquer chaos.",
-        tagName: "h6",
-        class: "p text-bg load slide-up",
-      },
-    ]}
-    sectionClass="bg-accent py-[var(--spacing-xl)] md:py-[var(--spacing-2xl)] lg:py-[var(--spacing-3xl)] text-bg load fade-in"
-    contentClass="text-center"
-    topContentClass="px-[var(--spacing-xl)] lg:px-0"
-    childSlotClass="flex flex-col text-center justify-center"
+<Section
+  heading={[
+    {
+      text: "From Mess to Masterpiece",
+      tagName: "h2",
+      class: "h2 text-bg mb-[var(--spacing-sm)] load slide-up",
+    },
+    {
+      text: "We don’t just clean— we conquer chaos.",
+      tagName: "p",
+      class: "h6 text-bg load slide-up",
+    },
+  ]}
+  sectionClass="bg-accent py-[var(--spacing-xl)] md:py-[var(--spacing-2xl)] lg:py-[var(--spacing-3xl)] text-bg load fade-in"
+  contentClass="text-center"
+  topContentClass="px-[var(--spacing-xl)] lg:px-0"
+  childSlotClass="flex flex-col text-center justify-center"
+>
+  <div
+    class="galleries flex flex-col justify-center items-center py-[var(--spacing-xl)] md:py-[var(--spacing-2xl)] lg:py-[var(--spacing-3xl)] gap-[var(--spacing-xl)]"
   >
-    <div
-      class="galleries flex flex-col justify-center items-center py-[var(--spacing-xl)] md:py-[var(--spacing-2xl)] lg:py-[var(--spacing-3xl)] gap-[var(--spacing-xl)]"
-    >
-      <!-- Dirty Before Gallery -->
-      <Section
-        collection="gallery"
-        query="getAll"
-        variant="gallery2"
-        heading={[
-          {
-            text: "Before: The Mess",
-            tagName: "h3",
-            class: "h3 text-bg load slide-up",
-          },
-        ]}
-      />
-
-      <!-- Sparkling After Gallery -->
-      <Section
-        collection="gallery"
-        query="getAll"
-        variant="gallery2"
-        heading={[
-          {
-            text: "After: The Masterpiece",
-            tagName: "h3",
-            class: "h3 text-bg load slide-up",
-          },
-        ]}
-      />
-    </div>
-  </Section>
+    <Section
+      collection="projects" query="related"
+      variant="gallery2"
+      childSlotClass="w-full flex items-center justify-center"
+      heading={[
+        {
+          text: "No Mess We Can’t Tackle",
+          tagName: "h3",
+          class: "h3 text-bg load slide-up",
+        },
+      ]}
+    />
+  </div>
+</Section>
 
   <!-- Common sections for services pages -->
   <Section collection="testimonials" query="getAll" />

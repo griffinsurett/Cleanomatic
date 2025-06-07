@@ -68,7 +68,7 @@ export default function BeforeAfterSlider({ item, className = '' }) {
   return (
     <article
       ref={containerRef}
-      className={`relative w-full select-none overflow-hidden ${className} h-64 lg:h-[55vh]`}
+      className={`relative load scale-up w-full select-none overflow-hidden ${className} h-65 lg:h-[65vh]`}
     >
       {/* ── AFTER IMAGE (underneath, clipped on left) ── */}
       <img
