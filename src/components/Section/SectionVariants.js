@@ -125,7 +125,7 @@ imageCol3: {
     contentClass:
       "content-container flex flex-col justify-center w-full my-[var(--spacing-sm)] px-[var(--spacing-lg)]",
     itemsClass:
-      "flex justify-between items-stretch gap-[var(--spacing-sm)] py-[var(--spacing-lg)]",
+      "flex justify-between items-stretch gap-[var(--spacing-md)] py-[var(--spacing-lg)]",
     buttonsSectionClass: "hidden",
     backgroundMedia: undefined,
   },

@@ -25,7 +25,9 @@
   },
   {
     "id": 5,
-    "beforeImage": "@/assets/beforeairduct1.jpg",
-    "afterImage": "@/assets/afterairduct1.jpg"
+    "beforeImage": "@/assets/carpet2-dirty.jpg",
+    "afterImage": "@/assets/carpet2-clean.jpg",
+    "services": ["carpet-cleaning"]
+
   }
 ]

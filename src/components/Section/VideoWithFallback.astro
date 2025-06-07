@@ -12,6 +12,7 @@ const { featuredVideo, featuredImage, altText, className = "" } = Astro.props;
   src={featuredVideo}
   controls
   autoplay
+  muted
   poster={featuredImage}
   class={`w-full h-auto lg:h-[75vh] rounded-lg shadow-lg mb-6 ${className}`}
 >
